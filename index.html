@@ -534,6 +534,11 @@ input[type="range"]{flex:1;accent-color:var(--accent)}
 .cal-cell.empty{background:transparent;border-color:transparent;cursor:default}
 .cal-cell.today{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:800}
 .movement-illust{display:flex;justify-content:center;padding:16px;margin-bottom:6px}
+.qibla-compass{display:flex;flex-direction:column;align-items:center;padding:20px}
+.qibla-compass svg{width:220px;height:220px}
+.qibla-needle{transition:transform 0.3s ease-out}
+.qibla-deg{font-size:32px;font-weight:800;margin-top:12px}
+.qibla-dist{color:var(--text-2);font-size:13px;margin-top:2px}
 .movement-illust svg{width:120px;height:140px;stroke:var(--accent);stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .cal-cell.selected:not(.today){border-color:var(--accent);border-width:2px;box-shadow:0 0 0 1px var(--accent) inset}
 html[data-theme="dark"] .cal-cell.today{color:#062B1A}
@@ -1975,8 +1980,29 @@ addEntry({id:"iman-kepada-malaikat", menu:2, material:"iman-kepada-malaikat", ty
 addEntry({id:"iman-kepada-kitab", menu:2, material:"iman-kepada-kitab", type:"article", title:"Iman kepada Kitab", summary:"Meyakini kitab-kitab yang Allah turunkan kepada para rasul; fokus utama pembelajaran aplikasi adalah Al-Qur'an.",
   body:[{h:"Kitab yang disebut", list:["Taurat — kepada Musa.","Zabur — kepada Dawud.","Injil — kepada Isa.","Shuhuf (lembaran) — kepada beberapa nabi.","Al-Qur'an — kepada Muhammad ﷺ, penutup dan pembenar kitab sebelumnya."]},
   {h:"Iman kepada Al-Qur'an", p:["Meyakini Al-Qur'an sebagai firman Allah, terjaga, dan pedoman hingga akhir zaman. Pembahasan lengkap di menu Al-Qur'an."]},
-  {h:"Catatan", p:["Taurat, Zabur, dan Injil dibahas dalam konteks konsep iman kepada kitab menurut Islam, bukan sebagai katalog pembelajaran tersendiri."]}],
-  sources:["quran"], related:["iman","alquran"], tags:["akidah","rukun iman"]});
+  {h:"Catatan", p:["Taurat, Zabur, dan Injil kini tersedia sebagai entri terpisah pada submateri ini, membahas konteks penerima dan kandungannya menurut Islam — bukan reproduksi teks kitab tersebut."]}],
+  sources:["quran"], related:["iman","alquran","taurat","zabur","injil"], tags:["akidah","rukun iman"]});
+addEntry({id:"taurat", menu:2, material:"iman-kepada-kitab", type:"article", title:"Taurat", summary:"Kitab yang diturunkan Allah kepada Nabi Musa 'alaihissalam.",
+  body:[
+    {h:"Penerima", p:["Diturunkan kepada Nabi Musa 'alaihissalam untuk membimbing Bani Israil (QS. Al-Isra' 17:2, QS. Al-Ma'idah 5:44)."]},
+    {h:"Kandungan asli", p:["Berisi petunjuk dan cahaya (huda wa nur), hukum-hukum yang mengatur Bani Israil pada masanya, termasuk sepuluh perintah (dikenal luas dalam tradisi Yahudi-Kristen)."]},
+    {h:"Keyakinan Islam", p:["Umat Islam meyakini Taurat aslinya adalah wahyu Allah yang benar, namun teks yang beredar saat ini diyakini telah mengalami perubahan (tahrif) dari bentuk aslinya seiring waktu (QS. Al-Baqarah 2:79) — karenanya umat Islam berpegang pada Al-Qur'an sebagai kitab pembenar dan penyempurna."]}
+  ],
+  sources:["quran"], related:["iman-kepada-kitab","nabi-musa"], tags:["akidah","kitab suci"]});
+addEntry({id:"zabur", menu:2, material:"iman-kepada-kitab", type:"article", title:"Zabur", summary:"Kitab yang diturunkan Allah kepada Nabi Dawud 'alaihissalam.",
+  body:[
+    {h:"Penerima", p:["Diturunkan kepada Nabi Dawud 'alaihissalam (QS. An-Nisa' 4:163, QS. Al-Isra' 17:55)."]},
+    {h:"Kandungan", p:["Sebagian ulama tafsir menyebutkan Zabur lebih banyak berisi zikir, hikmah, dan pujian kepada Allah, tidak memuat syariat/hukum baru — karena Nabi Dawud tetap mengikuti syariat Nabi Musa yang telah ada."]},
+    {h:"Keyakinan Islam", p:["Sama seperti kitab-kitab sebelumnya, umat Islam meyakini Zabur asli adalah wahyu yang benar, namun naskah yang beredar saat ini tidak dapat dipastikan keasliannya sebagaimana wahyu yang diturunkan."]}
+  ],
+  sources:["quran"], related:["iman-kepada-kitab"], tags:["akidah","kitab suci"]});
+addEntry({id:"injil", menu:2, material:"iman-kepada-kitab", type:"article", title:"Injil", summary:"Kitab yang diturunkan Allah kepada Nabi Isa 'alaihissalam.",
+  body:[
+    {h:"Penerima", p:["Diturunkan kepada Nabi Isa 'alaihissalam (QS. Al-Ma'idah 5:46), sebagai pembenar Taurat yang datang sebelumnya."]},
+    {h:"Kandungan asli", p:["Berisi petunjuk, cahaya, dan penyempurnaan sebagian hukum yang ada pada Taurat (QS. Ali 'Imran 3:50)."]},
+    {h:"Keyakinan Islam", p:["Umat Islam meyakini Injil asli adalah wahyu Allah kepada Nabi Isa, BUKAN kitab-kitab Injil (Matius, Markus, Lukas, Yohanes) yang ditulis oleh para pengikutnya setelah beliau — teks yang beredar saat ini diyakini telah mengalami perubahan dari wahyu aslinya (QS. Al-Ma'idah 5:13-14)."]}
+  ],
+  sources:["quran"], related:["iman-kepada-kitab"], tags:["akidah","kitab suci"]});
 addEntry({id:"iman-kepada-rasul", menu:2, material:"iman-kepada-rasul", type:"article", title:"Iman kepada Rasul", summary:"Meyakini para nabi dan rasul pilihan Allah serta risalah yang mereka bawa.",
   body:[{h:"Pengertian", list:["Nabi: manusia yang diberi wahyu tanpa diwajibkan menyampaikan kepada kaumnya (definisi umum).","Rasul: nabi yang diperintahkan menyampaikan risalah.","Perbedaan utama: rasul diutus dengan syariat baru atau untuk menyampaikan risalah kepada kaumnya; nabi meneruskan syariat sebelumnya.","Jumlah nabi yang disebut 124.000 dan rasul 313 (HR. Ahmad; riwayat ini perlu diteliti sanadnya) — yang wajib diketahui ada 25."]},
   {h:"Sifat rasul", list:["Siddiq (jujur)","Amanah (dapat dipercaya)","Tabligh (menyampaikan)","Fathanah (cerdas)","Terjaga dari dosa besar dan hal yang merusak kepercayaan"]},
@@ -2309,7 +2335,7 @@ addEntry({id:"nafkah", menu:5, material:"fiqih-keluarga", type:"article", title:
 addEntry({id:"talak", menu:5, material:"fiqih-keluarga", type:"article", title:"Talak & Rujuk", summary:"Perceraian — perkara halal yang paling dibenci Allah; rujuk adalah kembali dalam masa iddah.",
   body:[{h:"Ketentuan", list:["Talak dijatuhkan suami; diatur dengan ketentuan (talak satu/dua dapat rujuk dalam iddah; talak tiga tidak dapat rujuk kecuali dengan ketentuan).","Rujuk: mengembalikan ikatan pernikahan selama masa iddah tanpa akad baru.","Perceraian hendaknya menjadi jalan terakhir setelah upaya damai (hakam) — QS. An-Nisa' 4:35."]}],
   sources:["quran","fiqihsunnah"], related:["fiqih-keluarga","pernikahan"], tags:["fiqih","keluarga"]});
-addEntry({id:"waris", menu:5, material:"fiqih-keluarga", type:"article", title:"Ilmu Waris (Faraidh)", summary:"Pembagian harta peninggalan sesuai ketentuan Al-Qur'an.",
+addEntry({id:"waris", menu:5, material:"waris", type:"article", title:"Ilmu Waris (Faraidh)", summary:"Pembagian harta peninggalan sesuai ketentuan Al-Qur'an.",
   body:[{h:"Catatan", p:["Bagian ahli waris telah ditetapkan (QS. An-Nisa' 4:11-12). Ilmu faraidh memiliki kaidah rinci; untuk kasus konkret gunakan penghitungan bersama ahli/lembaga yang kompeten."]}],
   sources:["quran"], related:["fiqih-keluarga"], tags:["fiqih","waris"]});
 addEntry({id:"ushul-fiqih", menu:5, material:"ushul-fiqih", type:"article", title:"Ushul Fiqih", summary:"Metodologi penggalian hukum dari dalil: Al-Qur'an, sunnah, ijma', qiyas, dan dalil lain.",
@@ -3398,10 +3424,27 @@ const SUNNAH_DETAIL = {
   "istisqa":["2 rakaat berjamaah dengan khutbah dan doa memohon hujan."],
   "shalat-taubat":["2 rakaat dengan niat taubat, lalu beristighfar dan berdoa."]
 };
+const NIAT_LAFAZ = {
+  "dhuha": {ar:"أُصَلِّي سُنَّةَ الضُّحَى رَكْعَتَيْنِ لِلّٰهِ تَعَالَى", tr:"Ushalli sunnatadh-dhuha rak'ataini lillahi ta'ala", ar_id:"Aku niat shalat sunnah Dhuha dua rakaat karena Allah ta'ala."},
+  "tahajud": {ar:"أُصَلِّي سُنَّةَ التَّهَجُّدِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى", tr:"Ushalli sunnatat-tahajjudi rak'ataini lillahi ta'ala", ar_id:"Aku niat shalat sunnah Tahajud dua rakaat karena Allah ta'ala."},
+  "witir": {ar:"أُصَلِّي سُنَّةَ الْوِتْرِ رَكْعَةً لِلّٰهِ تَعَالَى", tr:"Ushalli sunnatal-witri rak'atan lillahi ta'ala", ar_id:"Aku niat shalat sunnah Witir satu rakaat karena Allah ta'ala. (ganti \"rak'atan\" dengan \"rak'ataini\" jika mengerjakan 2 rakaat sekaligus)"},
+  "tarawih": {ar:"أُصَلِّي سُنَّةَ التَّرَاوِيحِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى", tr:"Ushalli sunnatat-tarawihi rak'ataini lillahi ta'ala", ar_id:"Aku niat shalat sunnah Tarawih dua rakaat karena Allah ta'ala. (tambahkan \"ma'muman\" jika menjadi makmum, atau \"imaman\" jika menjadi imam)"},
+  "tahiyyatul-masjid": {ar:"أُصَلِّي سُنَّةَ تَحِيَّةِ الْمَسْجِدِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى", tr:"Ushalli sunnata tahiyyatil-masjidi rak'ataini lillahi ta'ala", ar_id:"Aku niat shalat sunnah Tahiyyatul Masjid dua rakaat karena Allah ta'ala."},
+  "istikharah": {ar:"أُصَلِّي سُنَّةَ الِاسْتِخَارَةِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى", tr:"Ushalli sunnatal-istikharati rak'ataini lillahi ta'ala", ar_id:"Aku niat shalat sunnah Istikharah dua rakaat karena Allah ta'ala."},
+  "hajat": {ar:"أُصَلِّي سُنَّةَ الْحَاجَةِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى", tr:"Ushalli sunnatal-hajati rak'ataini lillahi ta'ala", ar_id:"Aku niat shalat sunnah Hajat dua rakaat karena Allah ta'ala."},
+  "gerhana": {ar:"أُصَلِّي سُنَّةَ الْكُسُوفِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى", tr:"Ushalli sunnatal-kusufi rak'ataini lillahi ta'ala", ar_id:"Aku niat shalat sunnah gerhana matahari (Kusuf) dua rakaat karena Allah ta'ala. (ganti \"al-kusufi\" dengan \"al-khusufi\" untuk gerhana bulan)"},
+  "istisqa": {ar:"أُصَلِّي سُنَّةَ الِاسْتِسْقَاءِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى", tr:"Ushalli sunnatal-istisqa'i rak'ataini lillahi ta'ala", ar_id:"Aku niat shalat sunnah Istisqa (memohon hujan) dua rakaat karena Allah ta'ala."},
+  "shalat-taubat": {ar:"أُصَلِّي سُنَّةَ التَّوْبَةِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى", tr:"Ushalli sunnatat-taubati rak'ataini lillahi ta'ala", ar_id:"Aku niat shalat sunnah Taubat dua rakaat karena Allah ta'ala."}
+};
 Object.keys(SUNNAH_DETAIL).forEach(id=>{
   patch(id, e=>{
     e.body.push({h:"Tata cara ringkas", p:SUNNAH_DETAIL[id]});
-    e.body.push({h:"Niat", p:["Niat dalam hati; tidak disyaratkan lafaz khusus."]});
+    const n = NIAT_LAFAZ[id];
+    if(n){
+      e.arabic = {text:n.ar, translit:n.tr, arti:n.ar_id, audio:"", audio_src:"", source:"Lafaz umum yang beredar di masyarakat — niat sejatinya cukup di hati, melafalkan hanyalah kebiasaan membantu menghadirkan kesungguhan, bukan syarat sah shalat"};
+    } else {
+      e.body.push({h:"Niat", p:["Niat cukup di hati sesuai nama shalat yang dikerjakan (\"Aku niat shalat sunnah ... karena Allah\") — tidak disyaratkan lafaz Arab khusus."]});
+    }
   });
 });
 
@@ -3418,8 +3461,9 @@ DB.ENTRIES.filter(e=>e.type==="movement").forEach(e=>{
   e.illustration = POSES[k];
 });
 patch("rukun-shalat", e=>{
-  e.body.push({h:"Niat", p:["Niat dilakukan dalam hati bersamaan takbiratul ihram — tidak disyaratkan lafaz khusus; tempat niat adalah hati."]});
+  e.arabic = {text:"أُصَلِّي فَرْضَ الظُّهْرِ أَرْبَعَ رَكَعَاتٍ لِلّٰهِ تَعَالَى", translit:"Ushalli fardhazh-zhuhri arba'a raka'atin lillahi ta'ala", arti:"Aku niat shalat fardu Zuhur empat rakaat karena Allah ta'ala. (contoh untuk Zuhur — sesuaikan nama & jumlah rakaat sesuai shalat yang dikerjakan)", audio:"", audio_src:"", source:"Lafaz umum yang beredar — niat dilakukan dalam hati bersamaan takbiratul ihram, melafalkan hanyalah kebiasaan membantu menghadirkan kesungguhan, BUKAN syarat sah shalat; lihat pembahasan lengkap di entri Lafaz Niat Shalat"};
   e.body.push({h:"Ilustrasi gerakan", p:["Ilustrasi pose tersedia pada entri gerakan di bawah materi ini (berdiri, rukuk, sujud, duduk)."]});
+  e.related = (e.related||[]).includes("niat-shalat") ? e.related : [...(e.related||[]), "niat-shalat"];
 });
 
 /* ================= 5) IMAN KEPADA MALAIKAT — PER NAMA ================= */
@@ -3769,9 +3813,10 @@ addEntry({id:"furudh-muqaddarah", menu:5, material:"waris", type:"article", titl
 addEntry({id:"ashabah", menu:5, material:"waris", type:"article", title:"Ashabah", summary:"Ahli waris yang menerima sisa harta setelah bagian pasti (furudh) dibagikan.",
   body:[
     {h:"Pengertian", p:["Ashabah adalah ahli waris yang tidak memiliki kadar bagian tetap, melainkan menerima sisa harta setelah ashabul furudh mengambil bagiannya — bisa juga menerima seluruh harta jika tidak ada ahli waris lain."]},
+    {h:"Dalil", p:["Rasulullah ﷺ bersabda: \"Berikanlah bagian-bagian pasti (furudh) kepada yang berhak, dan sisanya untuk kerabat laki-laki yang paling utama (garis nasabnya).\" (HR. Bukhari no. 6732, Muslim no. 1615) — hadis inilah dasar utama konsep ashabah."]},
     {h:"Contoh", list:["Anak laki-laki menjadi ashabah binafsihi (dengan sendirinya).","Anak perempuan bisa menjadi ashabah bersama anak laki-laki (ashabah bil-ghair).","Jika tidak ada ashabah sama sekali dan masih ada sisa harta, sisa dikembalikan kepada ahli waris furudh (kecuali suami/istri) — disebut radd."]}
   ],
-  sources:["app"], related:["waris","ahli-waris-utama","furudh-muqaddarah"], tags:["fiqih","waris"]});
+  sources:["bukhari","muslim"], related:["waris","ahli-waris-utama","furudh-muqaddarah"], tags:["fiqih","waris"]});
 addEntry({id:"hijab-waris", menu:5, material:"waris", type:"article", title:"Hijab (Penghalang Waris)", summary:"Kondisi ketika seorang ahli waris terhalang menerima warisan karena ada ahli waris lain yang lebih dekat/utama.",
   body:[
     {h:"Jenis hijab", list:["Hijab hirman: terhalang total — misalnya kakek terhalang oleh ayah.","Hijab nuqshan: bagian berkurang, tidak hilang sama sekali — misalnya bagian ibu berkurang dari 1/3 menjadi 1/6 karena ada anak."]},
@@ -4102,26 +4147,29 @@ addEntry({id:"nifaq", menu:2, material:"iman-kepada-allah", sub:"tauhid", type:"
 addEntry({id:"memandikan-jenazah", menu:5, material:"fiqih-ibadah", type:"article", title:"Memandikan Jenazah", summary:"Fardhu kifayah — kewajiban memandikan jenazah Muslim sebelum dikafani.",
   body:[
     {h:"Tata cara umum", list:["Menutup aurat jenazah selama proses memandikan.","Membersihkan najis pada tubuh terlebih dahulu.","Mewudukan jenazah seperti wudu shalat.","Menyiramkan air ke seluruh tubuh, dianjurkan ganjil (3, 5, atau 7 kali), siraman terakhir dicampur wangi-wangian (kapur barus)."]},
+    {h:"Dalil", p:["Rasulullah ﷺ bersabda kepada para wanita yang memandikan putrinya, Zainab: \"Mandikanlah ia tiga kali, lima kali, atau lebih dari itu jika kalian pandang perlu, dengan air dan daun bidara, dan jadikanlah siraman terakhir dengan kapur barus atau sedikit kapur barus.\" (HR. Bukhari no. 1253, Muslim no. 939)."]},
     {h:"Yang berhak memandikan", p:["Jenazah laki-laki dimandikan oleh laki-laki (atau istri/mahramnya), jenazah perempuan oleh perempuan (atau suami/mahramnya)."]}
   ],
-  sources:["app"], related:["shalat-jenazah","mengkafani-jenazah"], tags:["fiqih","jenazah"]});
+  sources:["bukhari","muslim"], related:["shalat-jenazah","mengkafani-jenazah"], tags:["fiqih","jenazah"]});
 addEntry({id:"mengkafani-jenazah", menu:5, material:"fiqih-ibadah", type:"article", title:"Mengkafani Jenazah", summary:"Membungkus jenazah dengan kain kafan setelah dimandikan, sebelum dishalatkan.",
   body:[
-    {h:"Ketentuan", list:["Jenazah laki-laki dianjurkan dikafani dengan 3 lapis kain putih; jenazah perempuan dengan 5 lapis (termasuk kerudung dan sarung).","Kain kafan hendaknya bersih dan menutupi seluruh tubuh; diberi wangi-wangian.","Diikat di beberapa bagian agar kain tidak terbuka, lalu dilepas kembali saat dikuburkan."]}
+    {h:"Ketentuan", list:["Jenazah laki-laki dianjurkan dikafani dengan 3 lapis kain putih; jenazah perempuan dengan 5 lapis (termasuk kerudung dan sarung).","Kain kafan hendaknya bersih dan menutupi seluruh tubuh; diberi wangi-wangian.","Diikat di beberapa bagian agar kain tidak terbuka, lalu dilepas kembali saat dikuburkan."]},
+    {h:"Dalil", p:["Aisyah radhiyallahu 'anha meriwayatkan bahwa Rasulullah ﷺ dikafani dengan tiga lembar kain putih Yaman, tanpa gamis maupun sorban (HR. Bukhari no. 1264, Muslim no. 941)."]}
   ],
-  sources:["app"], related:["memandikan-jenazah","shalat-jenazah"], tags:["fiqih","jenazah"]});
+  sources:["bukhari","muslim"], related:["memandikan-jenazah","shalat-jenazah"], tags:["fiqih","jenazah"]});
 addEntry({id:"menguburkan-jenazah", menu:5, material:"fiqih-ibadah", type:"article", title:"Menguburkan Jenazah", summary:"Tahap akhir pengurusan jenazah — dimakamkan sesegera mungkin setelah dishalatkan.",
   body:[
-    {h:"Ketentuan", list:["Disunnahkan menyegerakan pemakaman, tidak menunda-nunda tanpa keperluan mendesak.","Jenazah dibaringkan miring menghadap kiblat di liang lahat.","Diucapkan doa saat meletakkan jenazah: \"Bismillahi wa 'ala millati Rasulillah\" (Dengan nama Allah dan atas agama Rasulullah)."]},
-    {h:"Setelah pemakaman", p:["Dianjurkan mendoakan mayit dan memohonkan keteguhannya menjawab pertanyaan malaikat di kubur."]}
+    {h:"Ketentuan", list:["Disunnahkan menyegerakan pemakaman, tidak menunda-nunda tanpa keperluan mendesak (HR. Bukhari no. 1315: \"Segerakanlah pengurusan jenazah.\").","Jenazah dibaringkan miring menghadap kiblat di liang lahat.","Diucapkan doa saat meletakkan jenazah: \"Bismillahi wa 'ala millati Rasulillah\" (Dengan nama Allah dan atas agama Rasulullah) — HR. Abu Dawud no. 3213, Tirmidzi no. 1046."]},
+    {h:"Setelah pemakaman", p:["Dianjurkan mendoakan mayit dan memohonkan keteguhannya menjawab pertanyaan malaikat di kubur (HR. Abu Dawud no. 3221)."]}
   ],
-  sources:["app"], related:["mengkafani-jenazah","kematian"], tags:["fiqih","jenazah"]});
+  sources:["bukhari","abudawud","tirmidzi"], related:["mengkafani-jenazah","kematian"], tags:["fiqih","jenazah"]});
 addEntry({id:"takziyah", menu:5, material:"fiqih-ibadah", type:"article", title:"Takziyah", summary:"Melayat dan menghibur keluarga yang ditinggalkan, dianjurkan dalam Islam.",
   body:[
     {h:"Tujuan", p:["Menghibur keluarga yang berduka, mendoakan mayit, dan mengingatkan tentang kesabaran serta pahala atas musibah yang menimpa."]},
-    {h:"Adab", list:["Menyampaikan doa/ucapan yang menenangkan, bukan menambah kesedihan.","Waktu takziyah dianjurkan tidak lebih dari 3 hari kecuali ada uzur.","Dianjurkan membantu kebutuhan keluarga berduka, termasuk menyediakan makanan bagi mereka (bukan sebaliknya)."]}
+    {h:"Dalil", p:["Rasulullah ﷺ bersabda: \"Tidaklah seorang mukmin bertakziah kepada saudaranya yang tertimpa musibah, melainkan Allah akan mengenakan kepadanya perhiasan kemuliaan pada hari kiamat.\" (HR. Ibnu Majah no. 1601, sanadnya dinilai lemah oleh sebagian ulama hadis namun kandungan anjurannya didukung dalil-dalil lain tentang menghibur sesama Muslim yang berduka)."]},
+    {h:"Adab", list:["Menyampaikan doa/ucapan yang menenangkan, bukan menambah kesedihan.","Waktu takziyah dianjurkan tidak lebih dari 3 hari kecuali ada uzur.","Dianjurkan membantu kebutuhan keluarga berduka, termasuk menyediakan makanan bagi mereka (bukan sebaliknya) — HR. Abu Dawud no. 3132, Tirmidzi no. 998, tentang anjuran membuatkan makanan bagi keluarga Ja'far bin Abi Thalib yang berduka."]}
   ],
-  sources:["app"], related:["menguburkan-jenazah"], tags:["fiqih","jenazah"]});
+  sources:["ibnMajah","abudawud","tirmidzi"], related:["menguburkan-jenazah"], tags:["fiqih","jenazah"]});
 addEntry({id:"qurban", menu:5, material:"fiqih-ibadah", type:"article", title:"Qurban", summary:"Menyembelih hewan ternak pada Idul Adha dan hari tasyrik sebagai ibadah dan sedekah.",
   body:[
     {h:"Hukum & waktu", p:["Sunnah muakkad bagi yang mampu, dilaksanakan mulai setelah shalat Id hingga terbenam matahari hari tasyrik terakhir (10-13 Dzulhijjah)."]},
@@ -4161,21 +4209,24 @@ addEntry({id:"khulu", menu:5, material:"fiqih-keluarga", type:"article", title:"
 addEntry({id:"gadai", menu:5, material:"fiqih-muamalah", type:"article", title:"Gadai (Rahn)", summary:"Menjadikan suatu barang sebagai jaminan atas utang yang dimiliki.",
   body:[
     {h:"Pengertian", p:["Rahn adalah akad menjadikan barang berharga sebagai jaminan (agunan) atas suatu utang; jika peminjam tidak dapat melunasi, barang jaminan dapat dijual untuk melunasi utang sesuai kesepakatan."]},
+    {h:"Dalil", p:["QS. Al-Baqarah 2:283 — \"Jika kamu dalam perjalanan, sedang kamu tidak mendapatkan seorang penulis, maka hendaklah ada barang tanggungan yang dipegang (oleh yang berpiutang).\" Nabi ﷺ sendiri pernah menggadaikan baju besinya kepada seorang Yahudi di Madinah untuk mendapatkan bahan makanan (HR. Bukhari no. 2068, Muslim no. 1603)."]},
     {h:"Ketentuan", list:["Barang gadai tetap milik penggadai, penerima gadai hanya menahannya sebagai jaminan.","Barang gadai tidak boleh dimanfaatkan penerima gadai tanpa izin, apalagi dipungut hasil sebagai riba terselubung."]}
   ],
-  sources:["app"], related:["fiqih-muamalah","utang-piutang"], tags:["fiqih","muamalah"]});
+  sources:["quran","bukhari","muslim"], related:["fiqih-muamalah","utang-piutang"], tags:["fiqih","muamalah"]});
 addEntry({id:"wakalah", menu:5, material:"fiqih-muamalah", type:"article", title:"Wakalah", summary:"Akad perwakilan — seseorang mewakilkan urusannya kepada pihak lain untuk dikerjakan.",
   body:[
     {h:"Pengertian", p:["Wakalah adalah pemberian kuasa dari satu pihak (muwakkil) kepada pihak lain (wakil) untuk melakukan suatu tindakan/transaksi atas namanya, seperti mewakilkan jual-beli, mewakilkan akad nikah, atau mewakilkan pembayaran zakat."]},
+    {h:"Dalil", p:["QS. Al-Kahfi 18:19 mengisahkan Ashabul Kahfi mewakilkan salah seorang dari mereka membeli makanan ke kota — dijadikan ulama sebagai dasar dibolehkannya wakalah. Nabi ﷺ juga pernah mewakilkan Urwah al-Bariqi untuk membelikan seekor kambing (HR. Bukhari no. 3642)."]},
     {h:"Syarat", p:["Perkara yang diwakilkan harus jelas dan merupakan sesuatu yang boleh diwakilkan (bukan ibadah badaniyah murni seperti shalat)."]}
   ],
-  sources:["app"], related:["fiqih-muamalah"], tags:["fiqih","muamalah"]});
+  sources:["quran","bukhari"], related:["fiqih-muamalah"], tags:["fiqih","muamalah"]});
 addEntry({id:"kafalah", menu:5, material:"fiqih-muamalah", type:"article", title:"Kafalah", summary:"Akad penjaminan — seseorang menanggung kewajiban/utang pihak lain.",
   body:[
     {h:"Pengertian", p:["Kafalah adalah akad di mana satu pihak (kafil) menjamin memenuhi kewajiban atau melunasi utang pihak lain (makful 'anhu) kepada pihak ketiga, jika yang berutang tidak mampu memenuhinya."]},
+    {h:"Dalil", p:["Nabi ﷺ pernah menjamin utang seorang jenazah yang belum lunas hutangnya agar bisa dishalatkan (sebelumnya beliau menolak menyalatkan sebelum ada yang menjamin) — riwayat menunjukkan Abu Qatadah menjamin dua dinar utangnya (HR. Bukhari no. 2295, Ahmad no. 22131)."]},
     {h:"Contoh modern", p:["Bank garansi dan penjaminan (asuransi kredit) dalam ekonomi syariah mengadopsi prinsip kafalah ini."]}
   ],
-  sources:["app"], related:["fiqih-muamalah","wakalah"], tags:["fiqih","muamalah"]});
+  sources:["bukhari"], related:["fiqih-muamalah","wakalah"], tags:["fiqih","muamalah"]});
 
 /* ---------- MENU 03 — AL-QUR'AN: Muhkam & Mutasyabih ---------- */
 addEntry({id:"muhkam-mutasyabih", menu:3, material:"tafsir", type:"article", title:"Muhkam & Mutasyabih", summary:"Dua kategori ayat Al-Qur'an berdasarkan tingkat kejelasan maknanya.",
@@ -4568,11 +4619,12 @@ CALC.computePrayerTimes = function(date, lat, lon, methodKey, asrKey, tzHours){
 };
 
 CALC.nextPrayer = function(times, nowMin){
-  const order = [["subuh","Subuh"],["terbit","Terbit"],["zuhur","Zuhur"],["asar","Asar"],["maghrib","Maghrib"],["isya","Isya"],["imsak","Imsak"]];
+  // Hanya 5 shalat wajib — Terbit & Imsak BUKAN waktu shalat, jangan pernah muncul sebagai "shalat berikutnya"
+  const order = [["subuh","Subuh"],["zuhur","Zuhur"],["asar","Asar"],["maghrib","Maghrib"],["isya","Isya"]];
   for(let i=0;i<order.length;i++){
     if(times[order[i][0]].min > nowMin) return {key:order[i][0], name:order[i][1], min:times[order[i][0]].min};
   }
-  // besok subuh
+  // sudah lewat Isya — shalat berikutnya adalah Subuh besok
   return {key:"subuh", name:"Subuh (besok)", min:times.subuh.min + 1440};
 };
 
@@ -4840,8 +4892,8 @@ function cacheGetTtl(key, ttlMs){
    A. JADWAL SHALAT — ALADHAN API (+ fallback kalkulasi lokal)
    ============================================================ */
 const ALADHAN_METHOD = {KEMENAG:20, MWL:3, ISNA:2, EGYPT:5, MAKKAH:4, KARACHI:1};
-API.getPrayerTimes = async function(date, lat, lon, methodKey, asrKey){
-  const local = CALC.computePrayerTimes(date, lat, lon, methodKey, asrKey, undefined);
+API.getPrayerTimes = async function(date, lat, lon, methodKey, asrKey, tzHours){
+  const local = CALC.computePrayerTimes(date, lat, lon, methodKey, asrKey, tzHours);
   try{
     const dd = date.getDate(), mm = date.getMonth()+1, yy = date.getFullYear();
     const m = ALADHAN_METHOD[methodKey]||20;
@@ -5006,7 +5058,7 @@ function homeView(){
     + '</div>';
 
   /* Update dari Aladhan API bila terjangkau (timezone & tanggal API) */
-  API.getPrayerTimes(now, loc.lat, loc.lon, SETTINGS.prayerMethod, SETTINGS.asrMethod).then(res=>{
+  API.getPrayerTimes(now, loc.lat, loc.lon, SETTINGS.prayerMethod, SETTINGS.asrMethod, loc.tz).then(res=>{
     const box = document.getElementById("prayer-times");
     if(!box) return;
     box.innerHTML = [["imsak","Imsak"],["subuh","Subuh"],["terbit","Terbit"],["zuhur","Zuhur"],["asar","Asar"],["maghrib","Maghrib"],["isya","Isya"]]
@@ -5351,8 +5403,8 @@ function iqraView(level){
     + '<div class="prose">';
   (e.body||[]).forEach(sec=>{
     h += '<h4>'+esc(sec.h||"")+'</h4>';
-    if(sec.p) sec.p.forEach(p=>h+='<p>'+esc(p)+'</p>');
-    if(sec.list) h += '<ul>'+sec.list.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>';
+    if(sec.p) sec.p.forEach(p=>h+='<p>'+arabicize(esc(p))+'</p>');
+    if(sec.list) h += '<ul>'+sec.list.map(x=>'<li>'+arabicize(esc(x))+'</li>').join("")+'</ul>';
   });
   h += '</div></div>';
   return h;
@@ -5756,6 +5808,12 @@ const saveRecent = () => LS.set("recent", RECENT.slice(0,12));
 
 /* ---------- Helpers ---------- */
 const esc = s => String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+/* Bungkus otomatis setiap kemunculan teks Arab (di paragraf/list mana pun) dgn font Arab + ukuran lebih besar.
+   Dipanggil SETELAH esc() — karakter Arab tidak terpengaruh HTML-escaping sehingga aman diproses ulang. */
+const ARABIC_RUN = /[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF][\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF\s.,:؛،]*[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]|[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]/g;
+function arabicize(s){
+  return String(s).replace(ARABIC_RUN, m => '<span dir="rtl" lang="ar" style="font-family:var(--font-ar);font-size:1.4em;line-height:1.7;display:inline-block">'+m+'</span>');
+}
 /* fmtRp didefinisikan di calc.js (global scope bersama) */
 const dayOfYear = () => { const n=new Date(); return Math.floor((n - new Date(n.getFullYear(),0,0)) / 864e5); };
 const inCollection = id => COLLECTION.includes(id);
@@ -5826,11 +5884,6 @@ const AM = {
     this.el.onended = ()=> self.next();
     return this.el;
   },
-  stop(){
-    if(this.el){ this.el.pause(); this.el.src = ""; }
-    this.key = null; this.queue = []; this.qi = 0;
-    this._sync();
-  },
   _scrollAyah(key){
     try{
       document.querySelectorAll(".ayah-playing").forEach(x=>x.classList.remove("ayah-playing"));
@@ -5883,7 +5936,12 @@ const AM = {
   tts(text, btn){
     if(typeof window==="undefined" || !("speechSynthesis" in window)){ toast("Perangkat tidak mendukung suara (TTS)", true); return; }
     const synth = window.speechSynthesis;
-    if(this._ttsRunning && btn){ synth.cancel(); this._ttsRunning=false; btn.classList.remove("playing"); return; }
+    if(this._ttsRunning && this._ttsBtn===btn){
+      synth.cancel(); this._ttsRunning=false; this._ttsBtn=null;
+      if(btn){ btn.classList.remove("playing"); btn.innerHTML = icon("audio",15); }
+      return;
+    }
+    if(this._ttsBtn && this._ttsBtn!==btn){ this._ttsBtn.classList.remove("playing"); this._ttsBtn.innerHTML = icon("audio",15); }
     this.stop(); synth.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = "ar-SA"; u.rate = 0.85;
@@ -5892,9 +5950,9 @@ const AM = {
       const ar = voices.find(v=>/^ar/i.test(v.lang));
       if(ar) u.voice = ar;
     }catch(e){}
-    u.onend = ()=>{ this._ttsRunning=false; if(btn) btn.classList.remove("playing"); };
-    u.onerror = ()=>{ this._ttsRunning=false; if(btn) btn.classList.remove("playing"); };
-    this._ttsRunning = true;
+    u.onend = ()=>{ this._ttsRunning=false; this._ttsBtn=null; if(btn){ btn.classList.remove("playing"); btn.innerHTML = icon("audio",15); } };
+    u.onerror = ()=>{ this._ttsRunning=false; this._ttsBtn=null; if(btn){ btn.classList.remove("playing"); btn.innerHTML = icon("audio",15); } };
+    this._ttsRunning = true; this._ttsBtn = btn;
     if(btn){ btn.classList.add("playing"); btn.innerHTML = icon("pause",15); }
     synth.speak(u);
   },
@@ -6053,8 +6111,8 @@ function entryView(id){
   h += '<div class="prose">';
   (e.body||[]).forEach(sec=>{
     h += '<h4>'+esc(sec.h||"")+'</h4>';
-    if(sec.p) sec.p.forEach(p=>h+='<p>'+esc(p)+'</p>');
-    if(sec.list) h += '<ul>'+sec.list.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul>';
+    if(sec.p) sec.p.forEach(p=>h+='<p>'+arabicize(esc(p))+'</p>');
+    if(sec.list) h += '<ul>'+sec.list.map(x=>'<li>'+arabicize(esc(x))+'</li>').join("")+'</ul>';
   });
   h += '</div>';
 
@@ -6434,6 +6492,14 @@ function skeleton(){
    ============================================================ */
 
 /* ---------- ENTRI FITUR (agar muncul di daftar materi) ---------- */
+addEntry({id:"arah-kiblat-fitur", menu:1, material:"shalat", sub:"kondisi-khusus", type:"feature", calc:"feature",
+  title:"Arah Kiblat", summary:"Menghitung arah kiblat sesungguhnya (bearing ke Ka'bah) dari lokasi Anda, dengan mode kompas bila perangkat mendukung.",
+  body:[
+    {h:"Metode perhitungan", p:["Menggunakan rumus bearing lingkaran besar (great-circle bearing) dari koordinat lokasi Anda menuju koordinat Ka'bah (21.4225° LU, 39.8262° BT) — metode yang sama dipakai aplikasi kiblat profesional, bukan sekadar garis lurus di peta datar yang bisa menyesatkan untuk jarak jauh."]},
+    {h:"Mode kompas", p:["Bila perangkat memiliki sensor kompas dan mengizinkan akses (beberapa perangkat iOS memerlukan izin eksplisit), arah kiblat ditampilkan relatif terhadap arah hadap perangkat secara langsung. Bila tidak tersedia, aplikasi tetap menampilkan sudut kiblat dari Utara sejati yang bisa dicocokkan manual dengan kompas fisik/aplikasi kompas lain."]}
+  ],
+  sources:["app"], related:["jadwal-shalat","masjidil-haram"], tags:["shalat","fitur","kiblat"]
+});
 addEntry({id:"waris-kalkulator", menu:5, material:"waris", sub:"fitur", type:"feature", calc:"feature",
   title:"Kalkulator Faraidh", summary:"Simulasi pembagian warisan untuk kasus umum: pasangan, anak, dan orang tua.",
   body:[
@@ -6696,10 +6762,98 @@ function openMasjidMaps(){
   navigator.geolocation.getCurrentPosition(pos=>{
     const {latitude, longitude} = pos.coords;
     window.open("https://www.google.com/maps/search/masjid/@"+latitude+","+longitude+",15z", "_blank");
-  }, ()=>{
-    toast("Izin lokasi ditolak — membuka pencarian umum", true);
+  }, err=>{
+    toast(geoErrorMsg(err)+" Membuka pencarian umum.", true);
     window.open("https://www.google.com/maps/search/masjid+terdekat", "_blank");
-  }, {timeout:8000});
+  }, {timeout:10000, enableHighAccuracy:true, maximumAge:60000});
+}
+
+/* ---------- ARAH KIBLAT (bearing great-circle asli + kompas perangkat) ---------- */
+const KAABA = {lat:21.4225, lon:39.8262}; // koordinat presisi Ka'bah, Masjidil Haram
+CALC.qiblaBearing = function(lat, lon){
+  const toRad = d=>d*Math.PI/180, toDeg = r=>r*180/Math.PI;
+  const phi1=toRad(lat), phi2=toRad(KAABA.lat);
+  const dLon = toRad(KAABA.lon - lon);
+  const y = Math.sin(dLon)*Math.cos(phi2);
+  const x = Math.cos(phi1)*Math.sin(phi2) - Math.sin(phi1)*Math.cos(phi2)*Math.cos(dLon);
+  return (toDeg(Math.atan2(y,x)) + 360) % 360;
+};
+CALC.qiblaDistanceKm = function(lat, lon){
+  const toRad = d=>d*Math.PI/180, R=6371;
+  const dLat = toRad(KAABA.lat-lat), dLon = toRad(KAABA.lon-lon);
+  const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat))*Math.cos(toRad(KAABA.lat))*Math.sin(dLon/2)**2;
+  return Math.round(R * 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+};
+let QIBLA_STATE = {lat:null, lon:null, bearing:null, heading:null, compassOn:false};
+function qiblaView(){
+  let h = '<div class="page">'+crumbs([{label:"Home",href:"#/home"},{label:"Shalat",href:"#/entry/shalat"},{label:"Arah Kiblat"}])
+    + '<h1 class="h1">Arah Kiblat</h1>'
+    + '<div class="card qibla-compass" id="qibla-box">'
+    + '<div class="empty-state">'+icon("map")+'<p>Deteksi lokasi untuk menghitung arah kiblat dari posisi Anda.</p></div>'
+    + '<button class="btn btn-primary btn-block" data-action="qibla-locate" style="margin-top:10px">'+icon("map",18)+' Deteksi Lokasi</button>'
+    + '</div>'
+    + '<div class="callout info" style="margin-top:12px">'+icon("info",18)+'<div>Perhitungan memakai bearing lingkaran besar (great-circle) ke koordinat Ka\'bah — akurat untuk jarak berapa pun, berbeda dari sekadar menarik garis lurus di peta datar.</div></div>'
+    + '</div>';
+  return h;
+}
+function qiblaRenderResult(){
+  const box = document.getElementById("qibla-box");
+  if(!box || QIBLA_STATE.bearing===null) return;
+  const b = QIBLA_STATE.bearing;
+  const dist = CALC.qiblaDistanceKm(QIBLA_STATE.lat, QIBLA_STATE.lon);
+  // sudut jarum: bila kompas aktif, relatif thd arah hadap perangkat; kalau tidak, relatif thd Utara di layar
+  const needleAngle = QIBLA_STATE.compassOn && QIBLA_STATE.heading!==null ? (b - QIBLA_STATE.heading + 360)%360 : b;
+  box.innerHTML =
+      '<svg viewBox="0 0 200 200">'
+    + '<circle cx="100" cy="100" r="92" fill="none" stroke="var(--border)" stroke-width="2"/>'
+    + '<text x="100" y="20" text-anchor="middle" font-size="14" fill="var(--text-2)">U</text>'
+    + '<text x="180" y="105" text-anchor="middle" font-size="14" fill="var(--text-2)">T</text>'
+    + '<text x="100" y="188" text-anchor="middle" font-size="14" fill="var(--text-2)">S</text>'
+    + '<text x="20" y="105" text-anchor="middle" font-size="14" fill="var(--text-2)">B</text>'
+    + '<g class="qibla-needle" style="transform-origin:100px 100px;transform:rotate('+needleAngle+'deg)">'
+    + '<line x1="100" y1="100" x2="100" y2="25" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/>'
+    + '<polygon points="100,14 92,32 108,32" fill="var(--accent)"/>'
+    + '<circle cx="100" cy="100" r="7" fill="var(--accent)"/>'
+    + '</g></svg>'
+    + '<div class="qibla-deg">'+b.toFixed(1)+'° dari Utara</div>'
+    + '<div class="qibla-dist">Jarak ke Ka\'bah: ±'+dist.toLocaleString("id-ID")+' km</div>'
+    + '<div class="tiny muted" style="margin-top:6px;text-align:center">'+(QIBLA_STATE.compassOn ? "Mode kompas aktif — putar perangkat, panah menunjuk kiblat." : "Arahkan perangkat menghadap Utara sejati (pakai kompas), lalu putar sejauh sudut di atas searah jarum jam.")+'</div>'
+    + (!QIBLA_STATE.compassOn ? '<button class="btn btn-ghost" data-action="qibla-compass" style="margin-top:10px">'+icon("check",16)+' Aktifkan Mode Kompas</button>' : '');
+}
+function qiblaLocate(){
+  if(!navigator.geolocation){ toast("Geolokasi tidak didukung perangkat", true); return; }
+  toast("Mendeteksi lokasi…");
+  navigator.geolocation.getCurrentPosition(pos=>{
+    QIBLA_STATE.lat = pos.coords.latitude; QIBLA_STATE.lon = pos.coords.longitude;
+    QIBLA_STATE.bearing = CALC.qiblaBearing(QIBLA_STATE.lat, QIBLA_STATE.lon);
+    qiblaRenderResult();
+  }, err=>{ toast(geoErrorMsg(err), true); }, {timeout:10000, enableHighAccuracy:true, maximumAge:60000});
+}
+function qiblaEnableCompass(){
+  const start = ()=>{
+    QIBLA_STATE.compassOn = true;
+    window.addEventListener("deviceorientationabsolute", qiblaOnOrientation, true);
+    window.addEventListener("deviceorientation", qiblaOnOrientation, true);
+    toast("Mode kompas aktif");
+    qiblaRenderResult();
+  };
+  if(typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function"){
+    // iOS 13+ perlu izin eksplisit dari gesture pengguna
+    DeviceOrientationEvent.requestPermission().then(res=>{
+      if(res === "granted") start(); else toast("Izin sensor kompas ditolak", true);
+    }).catch(()=> toast("Perangkat tidak mendukung sensor kompas", true));
+  } else if(typeof DeviceOrientationEvent !== "undefined"){
+    start();
+  } else {
+    toast("Perangkat tidak mendukung sensor kompas — gunakan sudut manual di atas", true);
+  }
+}
+function qiblaOnOrientation(ev){
+  // webkitCompassHeading (iOS Safari, sudah true-north) vs alpha (Android, umumnya magnetic-north)
+  const heading = (typeof ev.webkitCompassHeading === "number") ? ev.webkitCompassHeading : (ev.alpha!==null ? (360 - ev.alpha) : null);
+  if(heading===null) return;
+  QIBLA_STATE.heading = heading;
+  qiblaRenderResult();
 }
 
 
@@ -7822,6 +7976,617 @@ patch("ekonomi-modern", e=>{
   ];
 });
 
+
+/* ============================================================
+   SILMIKAFFAH — BATCH 8: PERDALAM 92 ENTRI TIPIS TERSISA
+   ============================================================ */
+
+/* ---------- MENU 1 — SYAHADAT ---------- */
+patch("shahada-rasul", e=>{
+  e.body = [
+    {h:"Makna", p:["Bersaksi bahwa Muhammad ﷺ adalah hamba sekaligus utusan Allah — kata 'hamba' didahulukan dari 'utusan' untuk menegaskan bahwa beliau tetaplah manusia biasa, bukan sosok yang boleh disembah atau dimintai secara langsung selayaknya Tuhan."]},
+    {h:"Konsekuensi", list:["Membenarkan segala yang beliau kabarkan.","Menaati segala yang beliau perintahkan.","Menjauhi segala yang beliau larang.","Tidak beribadah kepada Allah kecuali dengan cara yang beliau contohkan (ittiba')."]}
+  ];
+});
+patch("dua-kalimat-syahadat", e=>{
+  e.body = [
+    {h:"Lafaz", p:["Asyhadu an la ilaha illallah, wa asyhadu anna Muhammadar Rasulullah — \"Aku bersaksi tiada tuhan selain Allah, dan aku bersaksi Muhammad adalah utusan Allah.\""]},
+    {h:"Dua bagian yang tak terpisahkan", p:["Kalimat pertama (syahadat tauhid) menegaskan pengesaan Allah; kalimat kedua (syahadat rasul) menegaskan Muhammad ﷺ sebagai perantara wahyu — keduanya harus diyakini bersamaan, tidak sah beriman kepada Allah tanpa mengakui kerasulan Muhammad ﷺ."]},
+    {h:"Kedudukan", p:["Menjadi syarat pertama keislaman seseorang — diucapkan saat seseorang masuk Islam dan diulang setiap shalat pada bacaan tasyahud."]}
+  ];
+});
+patch("syahadat-makna", e=>{
+  e.body = [
+    {h:"Makna bahasa", p:["Syahadat berasal dari kata syahida — menyaksikan/mempersaksikan, mengandung makna pengetahuan yang pasti (bukan sekadar dugaan), pengakuan lisan, dan sumpah/komitmen sekaligus."]},
+    {h:"Tiga unsur dalam syahadat", list:["Pengetahuan (al-'ilm) — memahami makna dan konsekuensinya, bukan sekadar mengucapkan tanpa tahu artinya.","Keyakinan (al-yaqin) — meyakini kebenarannya tanpa keraguan.","Penerimaan & ketundukan (al-inqiyad) — mengamalkan konsekuensinya dalam kehidupan, bukan sekadar pengetahuan teoretis."]}
+  ];
+});
+
+/* ---------- MENU 1 — SHALAT ---------- */
+patch("shalat-sunnah", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Shalat sunnah adalah shalat tambahan di luar lima waktu wajib, mendatangkan pahala bila dikerjakan namun tidak berdosa bila ditinggalkan."]},
+    {h:"Fungsi penting", p:["Rasulullah ﷺ mengabarkan shalat sunnah berfungsi menyempurnakan kekurangan pada shalat wajib seseorang saat dihisab kelak (HR. Abu Dawud no. 864, Tirmidzi no. 413) — menjadikannya semacam 'tabungan' pahala sekaligus penutup kekurangan ibadah wajib."]},
+    {h:"Ragam shalat sunnah", p:["Terbagi menjadi sunnah rawatib (mengiringi shalat wajib), dan sunnah mutlak/muakkadah lain seperti Dhuha, Tahajud, Witir, Istikharah, Tahiyatul Masjid — masing-masing dibahas di entri submateri ini."]}
+  ];
+});
+patch("syarat-wajib-shalat", e=>{
+  e.body = [
+    {h:"Syarat wajib shalat", list:["Islam — shalat tidak wajib bagi non-Muslim (namun tetap berdosa di akhirat karena mengabaikan kewajiban beragama secara keseluruhan).","Balig — telah mencapai usia akil balig, meski anak-anak tetap dianjurkan dilatih sejak usia 7 tahun.","Berakal — orang gila/hilang akal tidak dibebani kewajiban shalat.","Suci dari haid dan nifas — bagi perempuan, wajib mengqadha puasa yang tertinggal namun TIDAK perlu mengqadha shalat yang tertinggal selama masa haid/nifas."]}
+  ];
+});
+patch("syarat-sah-shalat", e=>{
+  e.body = [
+    {h:"Syarat sah shalat", list:["Suci dari hadats kecil dan besar (sudah berwudu/mandi wajib).","Suci badan, pakaian, dan tempat shalat dari najis.","Menutup aurat sesuai ketentuan (laki-laki pusar-lutut, perempuan seluruh tubuh kecuali wajah-telapak tangan).","Menghadap kiblat.","Masuk waktu shalat — tidak sah shalat sebelum waktunya tiba."]},
+    {h:"Perbedaan dengan syarat wajib", p:["Syarat wajib menentukan SIAPA yang terbebani kewajiban shalat; syarat sah menentukan apakah PELAKSANAAN shalatnya diterima secara hukum fikih — keduanya harus terpenuhi agar shalat bernilai sah dan berpahala."]}
+  ];
+});
+patch("wajib-shalat", e=>{
+  e.body = [
+    {h:"Pengertian wajib shalat", p:["Perkara yang harus dikerjakan dalam shalat, namun bila terlupa (bukan sengaja) tidak membatalkan shalat — cukup diganti dengan sujud sahwi sebelum salam. Berbeda dengan rukun yang bila tertinggal, shalat menjadi batal/harus diulang."]},
+    {h:"Contoh wajib shalat", list:["Mengucapkan takbir selain takbiratul ihram (takbir intiqal/perpindahan).","Membaca tasbih saat rukuk dan sujud.","Membaca \"sami'allahu liman hamidah\" saat bangkit dari rukuk.","Duduk tasyahud awal dan membaca bacaannya.","Duduk di antara dua sujud."]}
+  ];
+});
+patch("jamak", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Jamak adalah menggabungkan pelaksanaan dua shalat wajib dalam satu waktu — Zuhur dengan Ashar, atau Maghrib dengan Isya."]},
+    {h:"Jenis", list:["Jamak Taqdim — mengerjakan shalat kedua lebih awal, digabung di waktu shalat pertama (misal Ashar dikerjakan di waktu Zuhur).","Jamak Ta'khir — mengerjakan shalat pertama lebih lambat, digabung di waktu shalat kedua (misal Zuhur dikerjakan di waktu Ashar)."]},
+    {h:"Sebab dibolehkan", p:["Safar (bepergian jauh), sakit, hujan lebat, atau kondisi darurat lain yang menyulitkan mengerjakan shalat tepat waktu secara terpisah."]}
+  ];
+});
+patch("qashar", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Qashar adalah meringkas shalat yang berjumlah 4 rakaat (Zuhur, Ashar, Isya) menjadi 2 rakaat — khusus bagi musafir (orang yang sedang bepergian jauh)."]},
+    {h:"Dalil", p:["QS. An-Nisa' 4:101 — \"Apabila kamu bepergian di muka bumi, tidaklah mengapa kamu meng-qashar shalat(mu).\""]},
+    {h:"Ketentuan", p:["Berlaku untuk perjalanan yang memenuhi jarak minimal safar menurut mazhab masing-masing (umumnya sekitar 80-90 km), dan shalat Maghrib serta Subuh TIDAK di-qashar (tetap 3 dan 2 rakaat seperti biasa) — hanya shalat 4 rakaat yang bisa diringkas."]}
+  ];
+});
+patch("jadwal-shalat", e=>{
+  e.body = [
+    {h:"Fungsi fitur", p:["Menampilkan jadwal shalat harian secara otomatis berdasarkan lokasi perangkat, dihitung menggunakan rumus astronomis standar (posisi matahari) yang umum dipakai berbagai lembaga falak."]},
+    {h:"Catatan akurasi", p:["Hasil perhitungan bisa berbeda beberapa menit dari jadwal resmi Kementerian Agama setempat karena perbedaan metode/parameter perhitungan (sudut ketinggian matahari, ihtiyat/kehati-hatian tambahan) — untuk kepastian, disarankan mencocokkan dengan jadwal resmi wilayah masing-masing."]}
+  ];
+});
+
+/* ---------- MENU 1 — ZAKAT ---------- */
+patch("hukum-zakat", e=>{
+  e.body = [
+    {h:"Kedudukan", p:["Zakat adalah rukun Islam ketiga, wajib 'ain (kewajiban personal) bagi setiap Muslim yang telah memenuhi syarat (nisab dan haul) — bukan sekadar anjuran sedekah biasa."]},
+    {h:"Dalil", p:["Disebutkan bersamaan dengan perintah shalat sebanyak puluhan kali dalam Al-Qur'an (misalnya QS. Al-Baqarah 2:43 — \"Dirikanlah shalat dan tunaikanlah zakat\"), menunjukkan kedudukannya yang setara pentingnya dengan shalat."]},
+    {h:"Konsekuensi meninggalkannya", p:["Khalifah Abu Bakar memerangi kelompok yang menolak membayar zakat meski masih mengaku Muslim dan shalat, karena menganggap penolakan itu sebagai pemisahan yang tidak dibenarkan antara rukun-rukun Islam."]}
+  ];
+});
+patch("zakat-perak", e=>{
+  e.body = [
+    {h:"Nisab & kadar", p:["Nisab zakat perak adalah 595 gram, dengan kadar zakat 2,5% dari total perak yang dimiliki bila telah mencapai nisab dan haul (dimiliki genap 1 tahun Hijriah)."]},
+    {h:"Penerapan modern", p:["Karena perak jarang disimpan sebagai investasi murni saat ini, zakat perak lebih relevan diterapkan pada perhiasan perak yang disimpan sebagai simpanan kekayaan (bukan dipakai sehari-hari), mengikuti kaidah yang sama dengan zakat emas."]}
+  ];
+});
+patch("zakat-uang", e=>{
+  e.body = [
+    {h:"Dasar hukum", p:["Uang (termasuk tabungan, deposito, dan simpanan digital) diqiyaskan dengan emas dan perak sebagai alat tukar dan penyimpan nilai, sehingga terkena kewajiban zakat dengan kadar dan nisab yang setara zakat emas."]},
+    {h:"Nisab & kadar", p:["Nisab senilai 85 gram emas (mengikuti harga emas saat itu), kadar zakat 2,5% dari total uang yang telah mengendap minimal setahun (haul) dan melebihi kebutuhan pokok."]},
+    {h:"Uang yang terus berputar (gaji bulanan)", p:["Sebagian ulama kontemporer membolehkan penghitungan zakat penghasilan tanpa syarat haul penuh (dianalogikan dengan zakat pertanian yang dibayar setiap panen) — pendekatan ini yang mendasari konsep zakat profesi."]}
+  ];
+});
+patch("zakat-perdagangan", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Zakat yang dikenakan atas harta niaga (barang dagangan) yang diperjualbelikan dengan tujuan mencari keuntungan — bukan pada aset tetap usaha (seperti gedung/mesin produksi)."]},
+    {h:"Cara menghitung", p:["Nilai seluruh barang dagangan (dihitung dengan harga jual saat itu) ditambah uang tunai/piutang lancar usaha, dikurangi utang usaha jangka pendek, lalu dizakati 2,5% bila total telah mencapai nisab (setara 85 gram emas) dan telah genap setahun."]},
+    {h:"Waktu penghitungan", p:["Dihitung pada akhir tahun buku/tutup tahun usaha (haul), bukan setiap kali ada transaksi — cukup dihitung sekali setahun secara menyeluruh."]}
+  ];
+});
+patch("mustahik", e=>{
+  e.body = [
+    {h:"Delapan golongan penerima zakat", p:["QS. At-Taubah 9:60 menyebutkan delapan golongan (asnaf): fakir, miskin, amil (pengelola zakat), muallaf (yang baru masuk Islam/hatinya dilembutkan), riqab (memerdekakan budak), gharim (orang berutang untuk kebutuhan mendesak), fi sabilillah (di jalan Allah), dan ibnu sabil (musafir kehabisan bekal)."]},
+    {h:"Prioritas penyaluran", p:["Ulama umumnya menganjurkan mendahulukan fakir-miskin sebagai penerima prioritas, terutama yang berada di sekitar/lingkungan terdekat pemberi zakat, sebelum disalurkan lebih luas."]}
+  ];
+});
+patch("muzakki", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Muzakki adalah orang atau lembaga yang wajib menunaikan zakat karena telah memenuhi syarat: Muslim, merdeka, memiliki harta penuh (bukan pinjaman/titipan), dan hartanya telah mencapai nisab serta haul."]},
+    {h:"Bukan sekadar orang kaya", p:["Status muzakki ditentukan oleh terpenuhinya nisab pada jenis harta tertentu (emas, uang, hasil pertanian, dst.), bukan semata persepsi 'kaya' secara umum — seseorang bisa jadi muzakki untuk zakat pertanian meski penghasilan uangnya belum mencapai nisab zakat maal."]}
+  ];
+});
+patch("penyaluran-zakat", e=>{
+  e.body = [
+    {h:"Cara penyaluran", p:["Zakat dapat disalurkan langsung kepada mustahik (penerima yang berhak) atau melalui lembaga amil zakat resmi (BAZNAS/LAZ tepercaya), yang membantu mendistribusikan secara lebih tertata dan menjangkau lebih luas."]},
+    {h:"Keutamaan lembaga amil", p:["Menyalurkan lewat lembaga membantu memastikan zakat sampai kepada penerima yang tepat sasaran, terutama bagi pemberi zakat yang tidak memiliki akses langsung menjangkau delapan golongan mustahik secara merata."]}
+  ];
+});
+
+/* ---------- MENU 1 — PUASA ---------- */
+patch("niat-puasa", e=>{
+  e.body = [
+    {h:"Waktu niat puasa wajib", p:["Niat puasa Ramadan (dan puasa wajib lainnya seperti qadha/kaffarah) harus dimantapkan pada malam hari, sebelum terbit fajar — berdasarkan hadis \"Barang siapa tidak berniat puasa sebelum fajar, maka tidak ada puasa baginya\" (HR. Abu Dawud no. 2454, Tirmidzi no. 730)."]},
+    {h:"Cukup sekali untuk sebulan?", p:["Mayoritas ulama (Hanafi, sebagian Maliki) berpendapat niat puasa Ramadan cukup sekali di awal bulan untuk seluruh hari (karena kesatuan ibadah bulan Ramadan), sementara mazhab Syafi'i dan Hanbali mensyaratkan niat baru setiap malam karena tiap hari adalah ibadah puasa yang berdiri sendiri."]}
+  ];
+});
+patch("syarat-puasa", e=>{
+  e.body = [
+    {h:"Syarat wajib puasa", list:["Islam.","Balig.","Berakal.","Mampu (sehat, tidak sedang safar/sakit berat).","Suci dari haid dan nifas (bagi perempuan)."]},
+    {h:"Syarat sah puasa", list:["Islam (orang kafir yang berpuasa tidak dianggap sah puasanya sebagai ibadah).","Berakal & mumayyiz (dapat membedakan baik-buruk).","Suci dari haid/nifas sepanjang hari itu.","Dilakukan pada waktu yang dibolehkan berpuasa (bukan hari-hari yang diharamkan seperti Idulfitri/Iduladha)."]}
+  ];
+});
+patch("rukun-puasa", e=>{
+  e.body = [
+    {h:"Dua rukun puasa", list:["Niat — dimantapkan sebelum fajar untuk puasa wajib.","Menahan diri dari seluruh pembatal puasa (makan, minum, hubungan suami istri, dan hal lain yang membatalkan) sejak terbit fajar hingga terbenam matahari."]},
+    {h:"Kesederhanaan rukun puasa", p:["Dibanding shalat yang memiliki banyak rukun gerakan dan bacaan, puasa hanya memiliki dua rukun sederhana — namun menuntut kesabaran dan konsistensi menahan diri sepanjang hari secara penuh."]}
+  ];
+});
+patch("imsak", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Imsak adalah waktu kehati-hatian (ihtiyat) sekitar 10 menit sebelum masuknya waktu Subuh — dianjurkan sebagai jeda tambahan untuk berhenti makan-minum, meski secara syar'i sahur masih boleh dilanjutkan hingga benar-benar masuk waktu fajar/Subuh."]},
+    {h:"Bukan batas syar'i mutlak", p:["Waktu imsak bukan ketentuan dari Al-Qur'an/hadis secara langsung, melainkan konvensi kehati-hatian yang berkembang di masyarakat (khususnya Indonesia) agar tidak terlambat berhenti makan saat azan Subuh berkumandang."]}
+  ];
+});
+patch("sahur", e=>{
+  e.body = [
+    {h:"Keutamaan", p:["Rasulullah ﷺ bersabda: \"Bersahurlah kalian, karena dalam sahur terdapat keberkahan.\" (HR. Bukhari no. 1923, Muslim no. 1095)."]},
+    {h:"Waktu utama", p:["Dianjurkan mengakhirkan sahur mendekati waktu imsak/fajar (tidak terlalu awal di tengah malam), mengikuti kebiasaan Nabi ﷺ dan para sahabat yang jarak antara sahur dan azan Subuh mereka hanya sekitar bacaan 50 ayat Al-Qur'an (HR. Bukhari no. 1921)."]}
+  ];
+});
+patch("berbuka", e=>{
+  e.body = [
+    {h:"Keutamaan menyegerakan", p:["Rasulullah ﷺ bersabda: \"Manusia senantiasa dalam kebaikan selama mereka menyegerakan berbuka puasa.\" (HR. Bukhari no. 1957, Muslim no. 1098) — dianjurkan segera berbuka begitu matahari terbenam, tidak menunda-nunda."]},
+    {h:"Sunnah saat berbuka", list:["Berbuka dengan kurma (ganjil jumlahnya) atau air putih bila tidak ada kurma.","Membaca doa berbuka puasa.","Mendahulukan berbuka sebelum shalat Maghrib bila waktunya berdekatan."]}
+  ];
+});
+patch("puasa-musafir", e=>{
+  e.body = [
+    {h:"Keringanan bagi musafir", p:["QS. Al-Baqarah 2:184-185 membolehkan musafir (orang yang sedang bepergian jauh) untuk tidak berpuasa Ramadan, dengan kewajiban mengqadha (mengganti) di hari lain sejumlah hari yang ditinggalkan."]},
+    {h:"Pilihan tetap berpuasa", p:["Musafir yang mampu dan tidak merasa berat boleh tetap berpuasa selama safar — sebagian sahabat memilih berpuasa, sebagian lagi tidak, dan Nabi ﷺ tidak mencela kedua pilihan tersebut (HR. Bukhari no. 1947)."]}
+  ];
+});
+patch("itikaf", e=>{
+  e.body = [
+    {h:"Pengertian", p:["I'tikaf adalah berdiam diri di masjid dengan niat mendekatkan diri kepada Allah, memperbanyak ibadah (dzikir, shalat sunnah, membaca Al-Qur'an) sembari menjauhi urusan duniawi untuk sementara waktu."]},
+    {h:"Waktu utama", p:["Paling utama dilakukan pada 10 hari terakhir Ramadan, mengikuti kebiasaan Nabi ﷺ yang rutin beri'tikaf setiap tahun pada periode tersebut untuk mengejar malam Lailatul Qadar (HR. Bukhari no. 2026)."]},
+    {h:"Syarat tempat", p:["Harus dilakukan di masjid (bukan sekadar mushola kecil menurut mayoritas ulama), dengan durasi minimal yang diperselisihkan ulama — dari sekadar berdiam sesaat hingga sehari semalam penuh."]}
+  ];
+});
+patch("idulfitri", e=>{
+  e.body = [
+    {h:"Makna", p:["Idulfitri (1 Syawal) adalah hari kemenangan setelah sebulan penuh berpuasa Ramadan — 'fitri' berkaitan dengan kembali suci sekaligus berbuka (tidak lagi berpuasa)."]},
+    {h:"Amalan sunnah", list:["Mandi dan memakai pakaian terbaik sebelum shalat Id.","Makan sesuatu (biasanya kurma dalam jumlah ganjil) sebelum berangkat shalat Id.","Menunaikan zakat fitrah sebelum shalat Id dilaksanakan.","Mengumandangkan takbir sejak malam hingga pelaksanaan shalat Id.","Mengambil rute berbeda saat pergi dan pulang shalat Id (sunnah Nabi ﷺ)."]}
+  ];
+});
+patch("tadarus", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Tadarus berasal dari kata darasa (mempelajari) — dalam praktiknya di Indonesia sering dimaknai membaca Al-Qur'an bersama-sama secara bergiliran, terutama pada bulan Ramadan."]},
+    {h:"Keutamaan di bulan Ramadan", p:["Malaikat Jibril rutin bertadarus (mengulang bacaan) Al-Qur'an bersama Nabi ﷺ setiap malam Ramadan (HR. Bukhari no. 6), menjadikan bulan ini waktu istimewa memperbanyak interaksi dengan Al-Qur'an, baik membaca, memahami, maupun menghafalnya."]}
+  ];
+});
+patch("ramadan-zakat-fitrah", e=>{
+  e.body = [
+    {h:"Waktu wajib", p:["Zakat fitrah wajib ditunaikan sebelum pelaksanaan shalat Idulfitri — waktu paling utama adalah malam takbiran hingga sebelum shalat Id, meski boleh dibayarkan sejak awal Ramadan."]},
+    {h:"Kadar & jenis", p:["Sebesar 1 sha' (sekitar 2,5-3 kg) makanan pokok setempat (di Indonesia umumnya beras), atau senilai uang seharga makanan pokok tersebut menurut sebagian ulama kontemporer."]},
+    {h:"Tujuan khusus", p:["Berbeda dari zakat maal, zakat fitrah bertujuan menyucikan orang yang berpuasa dari perbuatan sia-sia/kata kotor selama Ramadan sekaligus memberi makan fakir-miskin agar turut merasakan kegembiraan Idulfitri (HR. Abu Dawud no. 1609)."]}
+  ];
+});
+
+/* ---------- MENU 1 — HAJI ---------- */
+patch("rukun-haji", e=>{
+  e.body = [
+    {h:"Lima rukun haji", list:["Ihram disertai niat.","Wukuf di Arafah (inti haji — tanpa ini haji tidak sah).","Tawaf Ifadah.","Sa'i antara Safa dan Marwah.","Tahallul (mencukur/memendekkan rambut)."]},
+    {h:"Konsekuensi bila tertinggal", p:["Berbeda dari wajib haji, rukun haji TIDAK bisa diganti dengan dam (denda) — bila salah satu rukun (terutama wukuf) tertinggal, hajinya dianggap tidak sah dan harus diulang tahun berikutnya."]}
+  ];
+});
+patch("syarat-haji", e=>{
+  e.body = [
+    {h:"Syarat wajib haji", list:["Islam.","Balig.","Berakal.","Merdeka.","Mampu (istitha'ah) — mencakup kemampuan fisik, finansial (biaya perjalanan pulang-pergi & bekal keluarga yang ditinggalkan), dan keamanan perjalanan."]},
+    {h:"Wajib haji (berbeda dari rukun)", p:["Meliputi ihram dari miqat, mabit di Muzdalifah, mabit di Mina, melontar jumrah, dan tawaf wada' — bila ditinggalkan, haji tetap sah namun wajib membayar dam (denda) sebagai penggantinya."]}
+  ];
+});
+patch("larangan-ihram", e=>{
+  e.body = [
+    {h:"Larangan umum (laki-laki & perempuan)", list:["Memotong kuku dan rambut.","Memakai wangi-wangian.","Berburu binatang darat.","Melakukan akad nikah (menikah/menikahkan).","Bercumbu atau berhubungan suami istri.","Bertengkar/berkata kotor (rafats, fusuq, jidal)."]},
+    {h:"Khusus laki-laki", p:["Dilarang memakai pakaian berjahit (mengikuti bentuk tubuh) dan menutup kepala secara langsung — karenanya memakai dua kain ihram tanpa jahitan."]},
+    {h:"Khusus perempuan", p:["Dilarang memakai cadar/penutup wajah dan sarung tangan (wajah dan telapak tangan tetap terbuka), namun tetap wajib menutup aurat selain itu, termasuk rambut."]}
+  ];
+});
+patch("sai", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Sa'i adalah berjalan/berlari kecil bolak-balik sebanyak tujuh kali antara bukit Safa dan Marwah, dimulai dari Safa dan berakhir di Marwah."]},
+    {h:"Latar belakang sejarah", p:["Napak tilas perjuangan Siti Hajar (istri Nabi Ibrahim) yang berlari-lari mencari air untuk anaknya, Ismail, di tengah gurun tandus — hingga akhirnya Allah memancarkan mata air Zamzam sebagai jawaban atas kesungguhan usahanya."]},
+    {h:"Hikmah", p:["Mengajarkan pentingnya ikhtiar sungguh-sungguh (bukan pasrah tanpa usaha) sembari tetap bertawakal penuh kepada pertolongan Allah."]}
+  ];
+});
+patch("wukuf", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Wukuf adalah berdiam diri di padang Arafah pada tanggal 9 Dzulhijjah, mulai tergelincir matahari (waktu Zuhur) hingga terbenam matahari — inti dari keseluruhan ibadah haji."]},
+    {h:"Kedudukan", p:["Rasulullah ﷺ bersabda: \"Haji adalah Arafah\" (HR. Abu Dawud no. 1949, Tirmidzi no. 889) — siapa yang tidak sempat wukuf di Arafah pada waktunya, hajinya dianggap tidak sah/batal (harus diganti tahun berikutnya)."]},
+    {h:"Keutamaan", p:["Hari Arafah adalah hari paling banyak Allah membebaskan hamba-Nya dari api neraka (HR. Muslim no. 1348) — waktu yang sangat dianjurkan memperbanyak doa dan istighfar."]}
+  ];
+});
+patch("mabit", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Mabit berarti bermalam — dalam rangkaian haji terdapat dua mabit: di Muzdalifah (malam 10 Dzulhijjah, setelah wukuf) dan di Mina (malam-malam hari tasyrik, 11-13 Dzulhijjah)."]},
+    {h:"Mabit Muzdalifah", p:["Dilakukan sepulang dari Arafah menuju Mina, singgah semalam di Muzdalifah sambil mengumpulkan kerikil untuk melontar jumrah keesokan harinya."]},
+    {h:"Mabit Mina", p:["Dilakukan pada hari-hari tasyrik sembari melaksanakan lontar jumrah setiap harinya — termasuk wajib haji, bila ditinggalkan tanpa uzur dikenakan dam."]}
+  ];
+});
+patch("tahallul", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Tahallul adalah keluarnya seseorang dari keadaan ihram, ditandai dengan mencukur habis atau memendekkan rambut kepala, sehingga larangan-larangan ihram menjadi halal kembali."]},
+    {h:"Dua jenis tahallul", list:["Tahallul Awal — setelah menyelesaikan dua dari tiga amalan (lontar jumrah Aqabah, tahallul/cukur, tawaf+sa'i); sudah boleh melepas pakaian ihram namun belum boleh berhubungan suami istri.","Tahallul Tsani (kedua) — setelah menyelesaikan seluruh rangkaian (termasuk tawaf ifadah), seluruh larangan ihram gugur sepenuhnya termasuk hubungan suami istri."]}
+  ];
+});
+patch("dam", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Dam adalah denda/tebusan berupa penyembelihan hewan (umumnya kambing) atau bentuk lain yang wajib dibayar karena meninggalkan salah satu wajib haji atau melanggar larangan ihram tertentu."]},
+    {h:"Jenis dam", list:["Dam karena meninggalkan wajib haji — menyembelih kambing (atau berpuasa 10 hari bila tidak mampu: 3 hari saat haji, 7 hari setelah pulang).","Dam karena melanggar larangan ihram (mencukur rambut karena sakit, dsb.) — menyembelih kambing, atau bersedekah, atau berpuasa 3 hari (pilih salah satu).","Dam tamattu'/qiran — bagi yang menggabungkan haji dan umrah dalam satu perjalanan, wajib menyembelih kambing (atau puasa 10 hari bila tidak mampu)."]}
+  ];
+});
+patch("sunnah-haji", e=>{
+  e.body = [
+    {h:"Beberapa sunnah haji", list:["Membaca talbiyah dengan suara keras (bagi laki-laki) sejak ihram hingga mulai melontar jumrah Aqabah.","Melakukan tawaf qudum (tawaf kedatangan) bagi yang berhaji ifrad/qiran.","Shalat sunnah dua rakaat setelah tawaf, di belakang Maqam Ibrahim bila memungkinkan.","Minum air Zamzam sepuasnya setelah tawaf."]},
+    {h:"Perbedaan dengan wajib haji", p:["Sunnah haji bila ditinggalkan tidak mengapa dan tidak dikenakan dam — berbeda dari wajib haji yang bila ditinggalkan tetap mengharuskan membayar dam sebagai penggantinya."]}
+  ];
+});
+
+/* ---------- MENU 2 — IMAN KEPADA ALLAH ---------- */
+patch("tauhid-rububiyah", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Tauhid Rububiyah adalah mengesakan Allah dalam hal penciptaan, kepemilikan, dan pengaturan seluruh alam semesta — meyakini hanya Allah yang menciptakan, memberi rezeki, menghidupkan, mematikan, dan mengatur segala urusan makhluk."]},
+    {h:"Diakui bahkan oleh kaum musyrikin", p:["QS. Az-Zukhruf 43:87 menyebutkan kaum musyrikin Makkah pun mengakui Allah sebagai pencipta langit dan bumi — namun pengakuan ini saja tidak cukup, karena mereka tetap menyembah selain Allah (gagal pada tauhid uluhiyah)."]},
+    {h:"Kesimpulan penting", p:["Inilah sebabnya tauhid rububiyah saja tidak menjadikan seseorang Muslim sejati — harus disertai tauhid uluhiyah (pengesaan dalam ibadah) sebagai konsekuensi logisnya."]}
+  ];
+});
+patch("dalil-iman-kepada-allah", e=>{
+  e.body = [
+    {h:"Dalil naqli (wahyu)", p:["QS. Al-Ikhlas 112:1-4 menegaskan keesaan mutlak Allah; QS. Al-Baqarah 2:163 — \"Dan Tuhanmu adalah Tuhan Yang Maha Esa, tidak ada tuhan selain Dia.\""]},
+    {h:"Dalil aqli (akal)", p:["Keteraturan alam semesta yang sangat presisi (pergerakan planet, siklus alam, keseimbangan ekosistem) menunjukkan adanya Pencipta yang Mahabijaksana — mustahil keteraturan sedemikian rumit terjadi secara kebetulan tanpa pengatur."]},
+    {h:"Dalil fitrah", p:["Setiap manusia terlahir dengan fitrah (naluri alami) mengakui adanya Tuhan — sebagaimana disebutkan dalam hadis bahwa setiap anak dilahirkan dalam keadaan fitrah (HR. Bukhari no. 1385)."]}
+  ];
+});
+patch("hikmah-iman-kepada-allah", e=>{
+  e.body = [
+    {h:"Ketenangan jiwa", p:["Meyakini Allah Mahakuasa dan Mahabijaksana atas segala sesuatu menghadirkan ketenangan hati dalam menghadapi ujian hidup, karena yakin segala sesuatu terjadi atas kehendak-Nya yang penuh hikmah."]},
+    {h:"Terhindar dari perbudakan kepada makhluk", p:["Iman kepada Allah membebaskan manusia dari ketergantungan berlebihan pada sesama makhluk (harta, jabatan, manusia lain) — karena hanya Allah tempat bergantung yang sesungguhnya (QS. Al-Ikhlas 112:2)."]},
+    {h:"Konsistensi moral", p:["Kesadaran senantiasa diawasi Allah (muraqabah) mendorong seseorang tetap berbuat baik meski tidak ada yang melihat, karena meyakini Allah Maha Mengetahui segala sesuatu."]}
+  ];
+});
+patch("kufur", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Kufur adalah mengingkari keimanan kepada Allah, rasul-Nya, atau ajaran pokok agama yang telah jelas kebenarannya."]},
+    {h:"Kufur akbar (besar)", p:["Mengeluarkan pelakunya dari Islam — seperti mengingkari rukun iman secara terang-terangan, mendustakan Al-Qur'an, atau menghina agama secara terbuka."]},
+    {h:"Kufur ashghar (kecil/kufur nikmat)", p:["Tidak mengeluarkan dari Islam, namun tetap dosa besar — seperti tidak mensyukuri nikmat Allah, atau perbuatan yang disebut Nabi ﷺ sebagai 'kekufuran' secara majaz (kiasan), misalnya mencela nasab atau meratapi mayit secara berlebihan (HR. Muslim no. 67)."]}
+  ];
+});
+
+/* ---------- MENU 2 — MALAIKAT (per nama) ---------- */
+patch("malaikat-jibril", e=>{
+  e.body.push({h:"Keterangan tambahan", p:["Jibril juga dikenal dengan sebutan Ruhul Amin (ruh yang tepercaya) dan Ruhul Qudus (ruh suci) dalam Al-Qur'an. Selain menyampaikan wahyu, Jibril juga hadir dalam berbagai peristiwa penting sirah Nabi ﷺ, termasuk mengajarkan tata cara shalat dan waktu-waktunya di awal masa kenabian, serta menyertai peristiwa Isra' Mi'raj."]});
+});
+patch("malaikat-mikail", e=>{
+  e.body.push({h:"Keterangan tambahan", p:["Mikail bertanggung jawab menyalurkan rezeki alami (hujan yang menumbuhkan tanaman, sumber pangan) ke seluruh penjuru bumi sesuai ketentuan Allah — melengkapi tugas Jibril yang menyampaikan 'rezeki spiritual' berupa wahyu."]});
+});
+patch("malaikat-israfil", e=>{
+  e.body.push({h:"Keterangan tambahan", p:["Menurut riwayat, Israfil akan meniup sangkakala sebanyak dua kali: tiupan pertama mematikan seluruh makhluk (tanda kiamat), dan tiupan kedua membangkitkan seluruh manusia dari kubur untuk dihisab (QS. Az-Zumar 39:68)."]});
+});
+patch("malaikat-maut", e=>{
+  e.body.push({h:"Keterangan tambahan", p:["Malaikat maut memiliki banyak pembantu dari kalangan malaikat lain dalam menjalankan tugasnya mencabut nyawa makhluk di seluruh penjuru dunia secara bersamaan — sesuatu yang hanya mungkin terjadi dengan izin dan kekuasaan Allah."]});
+});
+patch("malaikat-munkar-nakir", e=>{
+  e.body.push({h:"Keterangan tambahan", p:["Ketiga pertanyaan yang diajukan di alam kubur (siapa Tuhanmu, apa agamamu, siapa nabimu) menjadi pengingat penting agar setiap Muslim memahami dan mengamalkan tauhid dengan sungguh-sungguh semasa hidup, bukan sekadar identitas formal."]});
+});
+patch("malaikat-raqib-atid", e=>{
+  e.body.push({h:"Keterangan tambahan", p:["QS. Qaf 50:18 menyebutkan tidak ada satu ucapan pun yang diucapkan manusia melainkan ada malaikat pengawas yang selalu siap mencatatnya — pengingat agar senantiasa menjaga lisan dan perbuatan kapan pun dan di mana pun."]});
+});
+patch("malaikat-malik", e=>{
+  e.body = [
+    {h:"Tugas", p:["Malik adalah malaikat penjaga/kepala penjaga neraka, disebutkan dalam QS. Az-Zukhruf 43:77 ketika penghuni neraka memanggilnya memohon agar Allah mematikan mereka saja (namun permohonan itu tidak dikabulkan)."]},
+    {h:"Keterangan tambahan", p:["Malik memimpin sembilan belas malaikat penjaga neraka (Zabaniyah) yang disebutkan dalam QS. Al-Muddatstsir 74:30 — mereka dikenal sangat keras dan tidak pernah membangkang perintah Allah (QS. At-Tahrim 66:6)."]}
+  ];
+});
+patch("malaikat-ridwan", e=>{
+  e.body.push({h:"Keterangan tambahan", p:["Berbeda dengan Malik (penjaga neraka), Ridwan bertugas menyambut para penghuni surga dengan penuh kegembiraan — namanya sendiri berarti 'kerelaan/keridaan', mencerminkan suasana penuh sukacita saat menyambut ahli surga."]});
+});
+
+/* ---------- MENU 2 — RASUL ---------- */
+patch("dalil-rasul", e=>{
+  e.body = [
+    {h:"Dalil kewajiban beriman kepada rasul", p:["QS. An-Nisa' 4:136 — \"Wahai orang-orang yang beriman, tetaplah beriman kepada Allah dan Rasul-Nya...\" — beriman kepada seluruh rasul yang diutus Allah adalah bagian tak terpisahkan dari rukun iman."]},
+    {h:"Konsekuensi", p:["Mengingkari salah satu rasul sama saja mengingkari seluruhnya, karena semua rasul membawa misi yang sama: mengajak manusia mentauhidkan Allah (QS. Al-Anbiya' 21:25)."]}
+  ];
+});
+patch("keteladanan-rasul", e=>{
+  e.body = [
+    {h:"Nabi Muhammad ﷺ sebagai teladan utama", p:["QS. Al-Ahzab 33:21 — \"Sungguh, telah ada pada diri Rasulullah itu suri teladan yang baik bagimu.\" — mencakup keteladanan dalam beribadah, berkeluarga, memimpin, hingga berdagang dan bermasyarakat."]},
+    {h:"Aspek keteladanan yang bisa dicontoh", list:["Kejujuran dan amanah dalam segala urusan.","Kesabaran menghadapi ujian dan penolakan dakwah.","Kasih sayang kepada keluarga, sahabat, bahkan musuh.","Kesederhanaan hidup meski memiliki kekuasaan besar."]}
+  ];
+});
+patch("ulul-azmi", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Ulul Azmi adalah gelar bagi lima rasul yang memiliki kesabaran dan ketabahan luar biasa dalam menghadapi ujian dakwah yang sangat berat: Nabi Nuh, Ibrahim, Musa, Isa, dan Muhammad ﷺ."]},
+    {h:"Dalil", p:["QS. Al-Ahqaf 46:35 — \"Maka bersabarlah engkau (Muhammad) sebagaimana orang-orang yang memiliki keteguhan hati dari kalangan rasul telah bersabar.\""]},
+    {h:"Contoh ujian yang dihadapi", p:["Nabi Nuh berdakwah selama sekitar 950 tahun dengan hanya sedikit yang beriman; Nabi Ibrahim dibakar hidup-hidup oleh kaumnya; Nabi Musa menghadapi Fir'aun yang zalim; Nabi Isa menghadapi penolakan dan fitnah keji; Nabi Muhammad ﷺ menghadapi penyiksaan dan peperangan bertahun-tahun."]}
+  ];
+});
+patch("sifat-mustahil-rasul", e=>{
+  e.body = [
+    {h:"Empat sifat mustahil", list:["Kizb (dusta) — mustahil rasul berdusta, baik dalam menyampaikan wahyu maupun ucapan pribadi, karena akan merusak kepercayaan seluruh risalah.","Khianat — mustahil rasul mengkhianati amanah yang dipikulnya.","Kitman (menyembunyikan wahyu) — mustahil rasul menyembunyikan sebagian wahyu yang diperintahkan untuk disampaikan.","Baladah (bodoh/dungu) — mustahil rasul memiliki kecerdasan rendah karena tugasnya menyampaikan dan menjelaskan ajaran yang kompleks."]},
+    {h:"Mengapa sifat ini mustahil", p:["Bila rasul memiliki salah satu sifat ini, seluruh risalah yang dibawanya akan diragukan kebenarannya — Allah menjaga para rasul dari sifat-sifat tercela ini (ma'shum) demi menjaga kemurnian wahyu yang disampaikan."]}
+  ];
+});
+patch("nabi-ilyas", e=>{
+  e.body = [
+    {h:"Dakwah kepada Bani Israil", p:["Nabi Ilyas 'alaihissalam diutus kepada Bani Israil yang saat itu menyembah berhala bernama Ba'al — beliau menyerukan mereka kembali menyembah Allah semata (QS. Ash-Shaffat 37:123-125)."]},
+    {h:"Sikap kaumnya", p:["Sebagian besar kaumnya mendustakan dan menolak dakwahnya, kecuali sedikit yang beriman — pola yang serupa dengan penolakan yang dihadapi banyak nabi lain terhadap kaumnya."]}
+  ];
+});
+patch("nabi-ilyasa", e=>{
+  e.body = [
+    {h:"Penerus dakwah Nabi Ilyas", p:["Nabi Ilyasa' 'alaihissalam melanjutkan dakwah tauhid kepada Bani Israil setelah Nabi Ilyas, disebutkan dalam Al-Qur'an bersama para nabi pilihan lainnya (QS. Al-An'am 6:86, QS. Shad 38:48)."]},
+    {h:"Sifat keteladanan", p:["Al-Qur'an menyebutnya termasuk golongan orang-orang pilihan yang terbaik (min al-akhyar) — meski kisah detail perjalanan dakwahnya tidak banyak dirinci dalam Al-Qur'an maupun hadis sahih."]}
+  ];
+});
+
+/* ---------- MENU 2 — HARI AKHIR & QADA QADAR ---------- */
+patch("kematian", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Kematian adalah terpisahnya ruh dari jasad, bukan akhir dari eksistensi manusia — melainkan pintu gerbang menuju alam barzakh (alam kubur) sebelum kebangkitan di hari kiamat."]},
+    {h:"Alam Barzakh", p:["Masa penantian antara kematian dan hari kebangkitan, di mana ruh manusia mengalami nikmat kubur (bagi yang beriman dan beramal saleh) atau siksa kubur (bagi yang durhaka) — sebagai gambaran awal dari balasan yang akan diterima secara penuh di akhirat."]},
+    {h:"Hikmah mengingat kematian", p:["Rasulullah ﷺ menganjurkan memperbanyak mengingat kematian (HR. Tirmidzi no. 2307) karena dapat menjadi pengingat untuk memperbanyak amal saleh dan menjauhi kemaksiatan selagi masih hidup."]}
+  ];
+});
+patch("neraka", e=>{
+  e.body = [
+    {h:"Pengertian", p:["Neraka adalah tempat pembalasan bagi mereka yang mengingkari Allah, berbuat syirik, atau melakukan dosa besar tanpa taubat — digambarkan Al-Qur'an sebagai tempat penuh siksa yang sangat pedih."]},
+    {h:"Tingkatan neraka", p:["Sebagian ulama tafsir menyebutkan neraka memiliki tujuh tingkatan sesuai QS. Al-Hijr 15:44, dengan tingkat kedalaman siksa yang berbeda-beda sesuai kadar dosa penghuninya."]},
+    {h:"Sifat kekal neraka", p:["Bagi orang kafir, kekekalan di neraka bersifat abadi (QS. Al-Baqarah 2:39); sedangkan Muslim pelaku dosa besar (bukan syirik/kufur) yang masuk neraka diyakini Ahlus Sunnah pada akhirnya akan dikeluarkan berkat rahmat Allah dan syafaat, bukan kekal selamanya."]}
+  ];
+});
+patch("hikmah-qada-qadar", e=>{
+  e.body = [
+    {h:"Menumbuhkan ketenangan", p:["Meyakini segala sesuatu telah tertulis dalam ilmu Allah membantu seseorang menerima kenyataan hidup dengan lapang dada, tanpa larut dalam penyesalan berlebihan atas hal yang telah terjadi (QS. Al-Hadid 57:22-23)."]},
+    {h:"Tetap mendorong ikhtiar", p:["Keimanan pada qada-qadar bukan alasan bermalas-malasan (fatalisme) — justru mendorong ikhtiar maksimal karena manusia tidak mengetahui takdir apa yang telah ditetapkan baginya, sehingga wajib tetap berusaha sebaik mungkin."]},
+    {h:"Menjauhkan dari sifat sombong dan putus asa", p:["Saat mendapat nikmat, seseorang tidak sombong (karena menyadari itu karunia Allah); saat ditimpa musibah, tidak putus asa (karena menyadari itu bagian dari ketentuan-Nya yang penuh hikmah)."]}
+  ];
+});
+patch("takdir-mubram", e=>{
+  e.body.push({h:"Keterangan tambahan", p:["Karena sifatnya yang pasti dan tidak dapat diubah, takdir mubram mengajarkan penerimaan (rida) sebagai sikap batin yang tepat — bukan berarti pasrah tanpa usaha, melainkan menerima hasil akhir dengan lapang dada setelah berikhtiar semaksimal mungkin pada perkara yang masih bisa diusahakan."]});
+});
+patch("hikmah-malaikat", e=>{
+  e.body = [
+    {h:"Menumbuhkan sikap waspada", p:["Menyadari keberadaan malaikat pencatat amal (Raqib dan Atid) mendorong seseorang senantiasa menjaga perkataan dan perbuatannya, meski tidak ada manusia yang melihat."]},
+    {h:"Mengagungkan kekuasaan Allah", p:["Keberadaan makhluk gaib seperti malaikat, yang taat sepenuhnya tanpa pernah membangkang (QS. At-Tahrim 66:6), menjadi bukti kebesaran dan kekuasaan Allah atas seluruh alam yang tidak terlihat mata manusia."]},
+    {h:"Rasa syukur atas peran malaikat", p:["Menyadari malaikat turut berperan dalam kehidupan manusia (mencatat amal, menurunkan rahmat, mendoakan orang beriman) menumbuhkan rasa syukur dan semangat menjaga diri agar layak mendapat kebaikan yang mereka sampaikan."]}
+  ];
+});
+
+/* ---------- MENU 5 — FIQIH: Mandi & Maqashid ---------- */
+patch("mandi", e=>{
+  e.body.push({h:"Sunnah dalam mandi wajib", list:["Mencuci kedua tangan sebelum memasukkan ke dalam bejana air.","Membersihkan kemaluan dari najis terlebih dahulu.","Berwudu terlebih dahulu seperti wudu untuk shalat.","Menyela-nyela pangkal rambut dengan jari sebelum mengguyur kepala.","Mendahulukan bagian kanan tubuh sebelum kiri."]});
+});
+patch("hifz-din", e=>{
+  e.body.push({h:"Contoh penerapan", p:["Kewajiban shalat lima waktu menjaga hubungan hamba dengan Allah tetap terjalin; hukuman bagi riddah (murtad) yang terang-terangan merusak sendi akidah masyarakat; larangan penistaan agama — semua bertujuan melindungi kemurnian dan keberlangsungan agama di tengah masyarakat."]});
+});
+patch("hifz-nafs", e=>{
+  e.body.push({h:"Contoh penerapan", p:["Hukum qishash bagi pembunuhan disengaja (QS. Al-Baqarah 2:178) berfungsi sebagai efek jera yang justru MELINDUNGI nyawa manusia secara luas (QS. Al-Baqarah 2:179: \"Dalam qishash itu ada [jaminan] kehidupan bagimu\"); demikian pula kebolehan berobat dan larangan bunuh diri."]});
+});
+patch("hifz-aql", e=>{
+  e.body.push({h:"Contoh penerapan", p:["Selain larangan khamr dan narkoba, hifz aql juga mendasari anjuran menuntut ilmu seumur hidup dan larangan segala hal yang merusak fungsi berpikir sehat — termasuk kecanduan yang mengganggu kemampuan seseorang mengambil keputusan secara jernih."]});
+});
+patch("hifz-nasl", e=>{
+  e.body.push({h:"Contoh penerapan", p:["Selain pernikahan yang sah dan larangan zina, hifz nasl juga mendasari hukum-hukum seputar pengakuan nasab anak, hak waris berdasarkan garis keturunan yang jelas, dan larangan pernikahan dengan mahram (sedarah) yang bisa merusak kejernihan garis keturunan."]});
+});
+patch("hifz-mal", e=>{
+  e.body.push({h:"Contoh penerapan", p:["Selain larangan mencuri dan riba, hifz mal juga mendasari kewajiban mencatat utang-piutang (QS. Al-Baqarah 2:282), larangan menipu dalam jual-beli, dan anjuran menabung/berinvestasi secara halal sebagai bentuk menjaga harta agar tidak habis sia-sia atau diperoleh secara batil."]});
+});
+
+/* ---------- MENU 6 — DZIKIR ---------- */
+patch("dzikir-petang", e=>{
+  e.body.push({h:"Keutamaan", p:["Dzikir petang dibaca setelah Ashar hingga Maghrib, sebagai benteng diri menjelang malam. Rasulullah ﷺ bersabda siapa yang membaca dzikir pagi-petang secara rutin, tidak akan ada sesuatu pun yang membahayakannya (HR. Abu Dawud no. 5088, Tirmidzi no. 3575)."]});
+});
+patch("dzikir-sebelum-tidur", e=>{
+  e.body.push({h:"Rangkaian dzikir yang dianjurkan", list:["Membaca ayat kursi (QS. Al-Baqarah 2:255).","Membaca tiga qul (Al-Ikhlas, Al-Falaq, An-Nas) sambil ditiupkan ke telapak tangan lalu diusapkan ke tubuh, tiga kali.","Membaca tasbih (33x), tahmid (33x), takbir (34x) — sebagaimana diajarkan Nabi ﷺ kepada Fatimah dan Ali (HR. Bukhari no. 5361).","Membaca doa sebelum tidur."]});
+});
+patch("tasbih-digital", e=>{
+  e.body.push({h:"Manfaat fitur ini", p:["Membantu menjaga konsistensi dzikir harian tanpa perlu menghitung manual, terutama untuk dzikir dengan jumlah tertentu seperti tasbih 33x setelah shalat atau dzikir pagi-petang yang memiliki hitungan spesifik."]});
+});
+
+/* ---------- MENU 12 — KAMUS ISLAM (hukum taklifi) ---------- */
+patch("term-wajib", e=>{
+  e.body.push({h:"Sinonim istilah", p:["Disebut juga fardhu — beberapa ulama membedakan wajib (disepakati dalilnya kuat) dan fardhu (kadang dikhususkan untuk perkara yang dalilnya lebih tegas/qath'i), namun mayoritas menganggap keduanya sinonim yang bisa dipakai bergantian."]});
+});
+patch("term-haram", e=>{
+  e.body.push({h:"Tingkatan dosa", p:["Keharaman terbagi menjadi dosa besar (kaba'ir) seperti syirik dan zina, dan dosa kecil (shaghair) — dosa kecil dapat terhapus dengan amal saleh dan istighfar rutin, sedangkan dosa besar memerlukan taubat nasuha yang sungguh-sungguh."]});
+});
+patch("term-makruh", e=>{
+  e.body.push({h:"Perbedaan dengan haram", p:["Makruh berbeda tegas dari haram — bila makruh dikerjakan tidak berdosa sama sekali, sedangkan haram bila dikerjakan pasti berdosa. Sebagian ulama menyebut makruh sebagai 'lampu kuning' yang mengarahkan seseorang menjauhi wilayah abu-abu mendekati keharaman."]});
+});
+
+
+/* ============================================================
+   SILMIKAFFAH — BATCH 10: MATERI KURANG (23-28) + AUDIT KHILAFIYAH (29)
+   ============================================================ */
+
+/* ---------- MENU 5 — THAHARAH: Haid, Nifas, Istihadhah ---------- */
+addEntry({id:"haid", menu:5, material:"thaharah", type:"article", title:"Haid", summary:"Darah kotor yang keluar dari rahim perempuan secara alami dan berkala — menghalangi sebagian ibadah.",
+  body:[
+    {h:"Pengertian", p:["Haid adalah darah yang keluar dari rahim perempuan dalam keadaan sehat pada waktu-waktu tertentu, bukan disebabkan penyakit atau melahirkan."]},
+    {h:"Rentang waktu", p:["Ulama berbeda pendapat soal batas minimal-maksimal durasi haid; mayoritas ulama kontemporer cenderung mengambil pendapat bahwa kebiasaan haid tiap perempuan berbeda-beda dan tidak dipatok angka baku, selama polanya konsisten dan dapat dibedakan dari istihadhah (darah penyakit)."]},
+    {h:"Yang tidak boleh dilakukan", list:["Shalat (dan tidak wajib mengqadha shalat yang terlewat).","Puasa (WAJIB mengqadha di hari lain setelah suci).","Tawaf di Ka'bah.","Menyentuh dan membaca mushaf secara langsung (pendapat mayoritas — sebagian ulama kontemporer membolehkan membaca tanpa menyentuh mushaf fisik, misal lewat aplikasi/hafalan).","Berhubungan suami istri (QS. Al-Baqarah 2:222)."]},
+    {h:"Tanda suci (berakhirnya haid)", p:["Ditandai keluarnya cairan putih bening (al-qashshah al-baidha') atau benar-benar keringnya area tersebut (tidak ada lagi warna kekuningan/kecoklatan) — setelah itu wajib mandi wajib sebelum kembali beribadah."]}
+  ],
+  sources:["quran","fiqihsunnah"], related:["nifas","istihadhah","mandi"], tags:["fiqih","thaharah"]});
+addEntry({id:"nifas", menu:5, material:"thaharah", type:"article", title:"Nifas", summary:"Darah yang keluar dari rahim perempuan setelah melahirkan.",
+  body:[
+    {h:"Pengertian", p:["Nifas adalah darah yang keluar mengiringi atau setelah proses melahirkan — hukumnya secara umum disamakan dengan hukum haid (larangan shalat, puasa, dsb.)."]},
+    {h:"Batas maksimal", p:["Mayoritas ulama membatasi maksimal 40 hari sebagai patokan umum (berdasarkan praktik yang berkembang di kalangan sahabat), meski ada pendapat lain hingga 60 hari — bila darah berhenti sebelum itu, perempuan wajib segera mandi wajib dan kembali beribadah; bila melebihi batas kebiasaannya, sebagian ulama menganggapnya istihadhah."]},
+    {h:"Perbedaan dengan haid", p:["Nifas tidak memiliki batas minimal (bisa berhenti dalam hitungan hari atau bahkan jam), sedangkan haid umumnya memiliki pola siklus bulanan yang lebih teratur."]}
+  ],
+  sources:["fiqihsunnah"], related:["haid","istihadhah","mandi"], tags:["fiqih","thaharah"]});
+addEntry({id:"istihadhah", menu:5, material:"thaharah", type:"article", title:"Istihadhah", summary:"Darah penyakit yang keluar terus-menerus di luar masa haid/nifas normal — tidak menghalangi ibadah.",
+  body:[
+    {h:"Pengertian", p:["Istihadhah adalah darah yang keluar dari rahim akibat pecahnya pembuluh darah (bukan siklus haid alami), bisa terjadi kapan saja dan berlangsung lama, bahkan terus-menerus tanpa henti — berbeda dari haid yang punya pola siklus."]},
+    {h:"Cara membedakan dari haid", list:["Jika sebelumnya memiliki kebiasaan siklus haid yang jelas: darah di luar hari-hari kebiasaan tersebut dihukumi istihadhah.","Jika belum punya kebiasaan siklus tetap (misal baru pertama haid): dibedakan dari warna/sifat darah — darah haid biasanya kental & gelap, darah istihadhah biasanya lebih encer & terang.","Bila sulit dibedakan, sebagian ulama merujuk kebiasaan umum perempuan lain di keluarganya atau kembali ke jumlah hari haid rata-rata (6-7 hari)."]},
+    {h:"Hukum penting — TIDAK menghalangi ibadah", p:["Berbeda dari haid dan nifas, perempuan yang mengalami istihadhah TETAP wajib shalat dan boleh berpuasa — statusnya disamakan dengan orang yang memiliki hadats terus-menerus (seperti beser/inkontinensia). Ia wajib berwudu setiap kali hendak shalat (sebagian ulama mensyaratkan wudu setiap masuk waktu shalat) dan dianjurkan memakai pembalut/penahan agar darah tidak menyebar ke pakaian/tempat shalat."]},
+    {h:"Dalil", p:["Diriwayatkan Nabi ﷺ memerintahkan Fatimah binti Abi Hubaisy yang mengalami istihadhah agar tetap shalat dengan berwudu setiap waktu shalat, setelah mengenali masa haid kebiasaannya (HR. Bukhari no. 306, Muslim no. 333)."]}
+  ],
+  sources:["bukhari","muslim","fiqihsunnah"], related:["haid","nifas","wudhu"], tags:["fiqih","thaharah"]});
+
+/* ---------- MENU 5 — FIQIH IBADAH: Syubhat ---------- */
+addEntry({id:"syubhat", menu:5, material:"fiqih-ibadah", type:"article", title:"Syubhat", summary:"Perkara yang tidak jelas status halal-haramnya — dianjurkan dihindari sebagai bentuk kehati-hatian (wara').",
+  body:[
+    {h:"Pengertian", p:["Syubhat adalah perkara yang berada di antara jelas halal dan jelas haram — status hukumnya samar bagi kebanyakan orang, baik karena sumbernya tidak jelas, campur antara yang halal dan haram, atau belum ada kepastian hukum yang tegas."]},
+    {h:"Dalil utama", p:["Hadis Nu'man bin Basyir: \"Yang halal itu jelas, yang haram itu jelas, dan di antara keduanya ada perkara syubhat (samar) yang tidak diketahui banyak orang. Barang siapa menjaga diri dari perkara syubhat, maka ia telah menyelamatkan agama dan kehormatannya... Ketahuilah, setiap raja punya batas larangan, dan batas larangan Allah adalah apa yang Dia haramkan.\" (HR. Bukhari no. 52, Muslim no. 1599)."]},
+    {h:"Contoh dalam kehidupan modern", list:["Produk makanan yang komposisinya tidak sepenuhnya jelas/tidak berlabel halal resmi di negara mayoritas non-Muslim.","Sumber penghasilan dari usaha yang bercampur antara transaksi halal dan sebagian kecil transaksi meragukan.","Hadiah/pemberian dari pihak yang sumber hartanya tidak jelas asal-usulnya."]},
+    {h:"Sikap yang dianjurkan (wara')", p:["Hadis yang sama melanjutkan: \"Barang siapa terjerumus dalam perkara syubhat, maka ia terjerumus dalam perkara haram, seperti penggembala yang menggembalakan hewannya di sekitar tanah larangan, dikhawatirkan ia akan masuk ke dalamnya.\" — mengajarkan sikap kehati-hatian (wara') dengan menjauhi hal-hal syubhat sebagai pagar pengaman agar tidak terjerumus ke perkara yang jelas haram."]}
+  ],
+  sources:["bukhari","muslim"], related:["term-halal","term-haram","fiqih-ibadah"], tags:["fiqih","syubhat"]});
+
+/* ---------- MENU 3 — TAFSIR: Tadabbur + 4 contoh tafsir nyata ---------- */
+addEntry({id:"tadabbur", menu:3, material:"tafsir", type:"article", title:"Tadabbur", summary:"Merenungkan makna dan pesan ayat Al-Qur'an secara mendalam saat membacanya, bukan sekadar melafalkan.",
+  body:[
+    {h:"Pengertian", p:["Tadabbur berasal dari kata dabara — memikirkan sesuatu hingga ke akar/ujungnya. Dalam konteks Al-Qur'an, tadabbur berarti merenungkan makna, pesan, dan relevansi suatu ayat terhadap kehidupan pembacanya, bukan sekadar membacanya sebagai lafaz."]},
+    {h:"Dalil pentingnya", p:["QS. Shad 38:29 — \"Ini adalah sebuah Kitab yang Kami turunkan kepadamu penuh berkah agar mereka menghayati ayat-ayat-Nya dan agar orang-orang yang berakal sehat mendapat pelajaran.\" QS. Muhammad 47:24 — \"Maka tidakkah mereka menghayati Al-Qur'an ataukah hati mereka terkunci?\""]},
+    {h:"Perbedaan dengan tafsir", p:["Tafsir umumnya dilakukan oleh ulama yang memiliki keahlian bahasa Arab dan ilmu syariat mendalam untuk menjelaskan makna ayat secara ilmiah; tadabbur dapat dilakukan setiap Muslim sesuai kemampuannya sebagai perenungan pribadi, memanfaatkan hasil tafsir yang sudah ada untuk dihayati dan diterapkan dalam kehidupan."]},
+    {h:"Cara memulai tadabbur sederhana", list:["Membaca terjemahan/tafsir ringkas ayat yang dibaca, bukan hanya teks Arabnya.","Bertanya pada diri sendiri: apa pesan ayat ini bagi hidupku hari ini?","Membaca perlahan (tartil), berhenti sejenak pada ayat yang menyentuh hati.","Mencatat renungan pribadi agar lebih membekas."]}
+  ],
+  sources:["quran"], related:["tafsir","ulumul-quran"], tags:["al-quran","tadabbur"]});
+addEntry({id:"tafsir-al-fatihah-ringkas", menu:3, material:"tafsir", type:"article", title:"Tafsir Ringkas Al-Fatihah", summary:"Penjelasan makna tujuh ayat Al-Fatihah ayat per ayat, merujuk tafsir Ibnu Katsir dan Al-Jalalain.",
+  body:[
+    {h:"Ayat 1-2 — Pembukaan & pujian", p:["Basmalah membuka surah dengan menyebut nama Allah sebagai bentuk memohon berkah; ayat kedua (Alhamdulillahi Rabbil 'alamin) menegaskan bahwa segala puji hanya pantas untuk Allah, Tuhan seluruh alam — mencakup manusia, jin, dan segala makhluk yang diciptakan dan dipelihara-Nya."]},
+    {h:"Ayat 3-4 — Sifat kasih sayang & kekuasaan", p:["Ar-Rahmanir-Rahim menegaskan sifat kasih sayang Allah yang meliputi seluruh makhluk (Rahman) dan khusus bagi orang beriman (Rahim); Maliki Yaumiddin menegaskan Allah sebagai penguasa mutlak hari pembalasan, mengingatkan bahwa segala amal akan dipertanggungjawabkan."]},
+    {h:"Ayat 5 — Inti tauhid ibadah", p:["Iyyaka na'budu wa iyyaka nasta'in (hanya kepada-Mu kami menyembah dan hanya kepada-Mu kami memohon pertolongan) adalah inti akidah — pengakuan bahwa ibadah dan pertolongan hanya boleh dicari dari Allah semata, tidak dari yang lain."]},
+    {h:"Ayat 6-7 — Permohonan petunjuk", p:["Memohon ditunjukkan jalan yang lurus — jalan orang-orang yang telah diberi nikmat (para nabi, shiddiqin, syuhada, orang saleh), bukan jalan orang yang dimurkai (mengetahui kebenaran namun menolaknya) atau yang sesat (beribadah tanpa ilmu yang benar)."]},
+    {h:"Kesimpulan", p:["Al-Fatihah merangkum inti seluruh Al-Qur'an: pengenalan kepada Allah, akidah tauhid, dan permohonan petunjuk — karenanya disebut Ummul Kitab (induk Al-Qur'an) dan wajib dibaca setiap rakaat shalat."]}
+  ],
+  sources:["tafsir","quran"], related:["surah-1","tafsir"], tags:["al-quran","tafsir"]});
+addEntry({id:"tafsir-ayat-kursi", menu:3, material:"tafsir", type:"article", title:"Tafsir Ayat Kursi", summary:"Penjelasan makna QS. Al-Baqarah 2:255 — ayat yang menegaskan kebesaran dan kekuasaan mutlak Allah.",
+  body:[
+    {h:"Keesaan & keabadian Allah", p:["Ayat dibuka dengan \"Allahu la ilaha illa huwal-hayyul-qayyum\" — menegaskan tiada tuhan selain Allah, Yang Mahahidup (tidak pernah mati) dan terus-menerus mengurus (menegakkan) seluruh makhluk-Nya tanpa pernah lalai."]},
+    {h:"Kesempurnaan yang menafikan kelemahan", p:["\"Tidak mengantuk dan tidak tidur\" menegaskan Allah tidak memiliki kelemahan sedikit pun seperti makhluk-Nya, berbeda dengan sifat manusia yang butuh istirahat."]},
+    {h:"Kepemilikan mutlak & syafaat", p:["Segala yang ada di langit dan bumi adalah milik Allah semata; tidak ada satu makhluk pun (termasuk malaikat atau nabi) yang bisa memberi syafaat di sisi-Nya kecuali dengan izin-Nya — menegaskan bahwa syafaat bukanlah hak istimewa siapa pun tanpa persetujuan Allah."]},
+    {h:"Ilmu Allah yang meliputi segalanya", p:["\"Dia mengetahui apa yang di hadapan dan di belakang mereka\" — mencakup masa lalu, sekarang, dan akan datang; manusia hanya mengetahui ilmu Allah sebatas yang Dia kehendaki untuk diketahui."]},
+    {h:"Kursi-Nya meliputi langit dan bumi", p:["Menggambarkan betapa luas dan agungnya kekuasaan Allah, yang menjaga langit dan bumi tanpa merasa berat sama sekali — menutup ayat dengan penegasan \"Dan Dialah Yang Mahatinggi lagi Mahabesar.\""]},
+    {h:"Keutamaan", p:["Ayat Kursi dikenal sebagai ayat teragung dalam Al-Qur'an (HR. Muslim no. 810), dianjurkan dibaca setiap selesai shalat wajib dan sebelum tidur sebagai bentuk perlindungan."]}
+  ],
+  sources:["tafsir","quran","muslim"], related:["tafsir","surah-112"], tags:["al-quran","tafsir"]});
+addEntry({id:"tafsir-al-ikhlas", menu:3, material:"tafsir", type:"article", title:"Tafsir Surah Al-Ikhlas", summary:"Penjelasan makna empat ayat Al-Ikhlas — inti kemurnian tauhid.",
+  body:[
+    {h:"Ayat 1 — Perintah menegaskan keesaan", p:["\"Qul huwallahu ahad\" (Katakanlah: Dialah Allah, Yang Maha Esa) — perintah langsung kepada Nabi ﷺ untuk menegaskan keesaan mutlak Allah, sebagai jawaban atas pertanyaan kaum musyrikin tentang sifat Tuhan yang beliau serukan."]},
+    {h:"Ayat 2 — Tempat bergantung segala sesuatu", p:["\"Allahush-shamad\" — Allah adalah tempat bergantung segala sesuatu; Dia tidak butuh kepada siapa pun, sementara seluruh makhluk butuh kepada-Nya dalam segala hal."]},
+    {h:"Ayat 3 — Menafikan anak dan asal-usul", p:["\"Lam yalid wa lam yulad\" (Dia tiada beranak dan tiada pula diperanakkan) — membantah keyakinan sebagian kaum yang menisbahkan anak kepada Allah (baik malaikat sebagai 'anak perempuan-Nya' menurut kaum musyrikin Arab, maupun klaim ketuhanan Nabi Isa dalam sebagian keyakinan lain)."]},
+    {h:"Ayat 4 — Tiada yang setara", p:["\"Wa lam yakul lahu kufuwan ahad\" (dan tidak ada seorang pun yang setara dengan Dia) — menutup surah dengan penegasan mutlak bahwa tidak ada satu pun makhluk yang menandingi keagungan dan kekuasaan Allah."]},
+    {h:"Kedudukan surah", p:["Surah ini murni membahas tauhid asma wa sifat dan menafikan segala bentuk kesyirikan, sehingga Rasulullah ﷺ menyebutnya setara sepertiga Al-Qur'an dari sisi kandungan maknanya."]}
+  ],
+  sources:["tafsir","quran"], related:["surah-112","tauhid"], tags:["al-quran","tafsir"]});
+addEntry({id:"tafsir-muawwidzatain", menu:3, material:"tafsir", type:"article", title:"Tafsir Al-Mu'awwidzatain (Al-Falaq & An-Nas)", summary:"Penjelasan makna dua surah perlindungan penutup Al-Qur'an.",
+  body:[
+    {h:"Al-Falaq — berlindung dari bahaya eksternal", p:["Memohon perlindungan kepada \"Tuhan yang menguasai subuh\" dari empat hal: keburukan makhluk secara umum, kegelapan malam yang gulita, sihir (tukang-tukang sihir yang meniup buhul tali), dan dengki orang yang iri hati — mencakup bahaya dari luar diri manusia."]},
+    {h:"An-Nas — berlindung dari bahaya internal (bisikan)", p:["Memohon perlindungan kepada Allah dengan tiga sebutan-Nya (Rabb, Malik, Ilah manusia) dari kejahatan bisikan setan yang bersembunyi — baik bisikan dari golongan jin maupun manusia — mencakup bahaya dari dalam diri (godaan hati)."]},
+    {h:"Mengapa keduanya sering disandingkan", p:["Bersama Al-Ikhlas, ketiganya disebut Al-Mu'awwidzat/tiga qul dan rutin dibaca Nabi ﷺ sebagai rangkaian dzikir pagi-petang dan sebelum tidur, karena saling melengkapi: Al-Ikhlas menegaskan tauhid, Al-Falaq melindungi dari bahaya luar, An-Nas melindungi dari bahaya dalam (bisikan hati)."]},
+    {h:"Keutamaan", p:["Dari Aisyah radhiyallahu 'anha, Nabi ﷺ setiap malam sebelum tidur membaca ketiga surah ini sambil ditiupkan ke telapak tangan lalu diusapkan ke seluruh tubuh yang terjangkau (HR. Bukhari no. 5017)."]}
+  ],
+  sources:["tafsir","quran","bukhari"], related:["tafsir-al-ikhlas","dzikir-sebelum-tidur"], tags:["al-quran","tafsir"]});
+patch("tafsir", e=>{
+  e.body[1] = {h:"Catatan", p:["Tafsir ringkas beberapa surah/ayat yang paling sering dibaca (Al-Fatihah, Ayat Kursi, Al-Ikhlas, Al-Mu'awwidzatain) tersedia sebagai entri terpisah di submateri ini. Tafsir lengkap 30 juz memerlukan rujukan kitab tafsir berlisensi penuh dan akan ditambahkan bertahap sesuai kapasitas pengembangan aplikasi."]};
+  e.related = ["tadabbur","tafsir-al-fatihah-ringkas","tafsir-ayat-kursi"];
+});
+
+/* ---------- AUDIT KHILAFIYAH (29) ---------- */
+patch("wudhu", e=>{
+  const idx = e.body.findIndex(s=>s.h==="Pembatal wudhu");
+  if(idx>=0) e.body[idx].list[2] = "Menyentuh kemaluan tanpa penghalang — pendapat mazhab Syafi'i & Hanbali membatalkan wudhu; mazhab Hanafi berpendapat tidak membatalkan kecuali disertai syahwat; mazhab Maliki merincikan berdasarkan ada-tidaknya syahwat.";
+});
+patch("bacaan-fatihah", e=>{
+  e.body.push({h:"Khilafiyah: Al-Fatihah bagi makmum", p:["Mazhab Syafi'i dan Hanbali mewajibkan makmum tetap membaca Al-Fatihah sendiri meski di belakang imam (berdasarkan hadis \"Tidak sah shalat yang tidak membaca Al-Fatihah\" secara umum); mazhab Hanafi dan Maliki berpendapat bacaan imam sudah mencukupi bacaan makmum pada shalat jahr (dibaca keras), merujuk QS. Al-A'raf 7:204 tentang mendengarkan bacaan Al-Qur'an. Kedua pendapat memiliki dasar kuat dan diamalkan luas di kalangan pengikut masing-masing mazhab."]});
+});
+
+
+/* ============================================================
+   SILMIKAFFAH — BATCH 11: LENGKAPI DOA & DZIKIR (EXECUTION SPEC)
+   ============================================================ */
+
+addEntry({id:"istighfar", menu:6, material:"dzikir", type:"article", title:"Istighfar", summary:"Memohon ampun kepada Allah — kalimat \"Astaghfirullah\" (aku memohon ampun kepada Allah).",
+  arabic:{text:"أَسْتَغْفِرُ اللهَ", translit:"Astaghfirullah", arti:"Aku memohon ampun kepada Allah.", audio:"", audio_src:"", source:"Kalimat istighfar paling ringkas — dianjurkan diperbanyak setiap saat"},
+  body:[
+    {h:"Keutamaan", p:["Rasulullah ﷺ bersabda beliau sendiri beristighfar lebih dari 70 kali sehari (HR. Bukhari no. 6307) padahal beliau ma'shum (terjaga dari dosa) — mengajarkan istighfar bukan hanya untuk penghapus dosa, tetapi juga wujud kerendahan hati seorang hamba."]},
+    {h:"Keutamaan lain", p:["QS. Nuh 71:10-12 menyebutkan istighfar mendatangkan hujan (rezeki), harta, anak keturunan, kebun, dan sungai — dipahami ulama sebagai keluasan rezeki dan kemudahan hidup bagi yang rajin beristighfar."]},
+    {h:"Variasi lain", p:["Bentuk lebih lengkap: \"Astaghfirullahal-'azhim alladzi la ilaha illa huwal-hayyul-qayyumu wa atubu ilaih\" — versi terpanjang dan paling utama adalah Sayyidul Istighfar (lihat entri terpisah)."]}
+  ],
+  sources:["bukhari","quran"], related:["sayyidul-istighfar","taubat"], tags:["dzikir","istighfar"]});
+addEntry({id:"tasbih", menu:6, material:"dzikir", type:"article", title:"Tasbih (Subhanallah)", summary:"Mensucikan Allah dari segala kekurangan — kalimat \"Subhanallah\" (Mahasuci Allah).",
+  arabic:{text:"سُبْحَانَ اللهِ", translit:"Subhanallah", arti:"Mahasuci Allah.", audio:"", audio_src:"", source:"Salah satu kalimat dzikir utama — bagian dari tasbih, tahmid, takbir yang rutin diucapkan setelah shalat"},
+  body:[
+    {h:"Makna", p:["Tasbih adalah pengakuan bahwa Allah suci dari segala sifat kekurangan, kelemahan, dan segala hal yang tidak layak bagi-Nya — seperti butuh istirahat, lupa, atau memiliki sekutu."]},
+    {h:"Keutamaan", p:["Rasulullah ﷺ bersabda dua kalimat yang ringan di lisan, berat di timbangan, dan dicintai Allah adalah \"Subhanallahi wa bihamdihi, Subhanallahil-'azhim\" (HR. Bukhari no. 6406, Muslim no. 2694)."]},
+    {h:"Praktik rutin", p:["Dibaca 33 kali setelah setiap shalat wajib bersama tahmid dan takbir (total 99, disempurnakan 100 dengan kalimat tauhid) — sebagaimana diajarkan Nabi ﷺ kepada Fatimah dan Ali (HR. Bukhari no. 5361)."]}
+  ],
+  sources:["bukhari","muslim"], related:["tahmid","takbir","dzikir-setelah-shalat","tasbih-digital"], tags:["dzikir","tasbih"]});
+addEntry({id:"tahmid", menu:6, material:"dzikir", type:"article", title:"Tahmid (Alhamdulillah)", summary:"Memuji dan bersyukur kepada Allah — kalimat \"Alhamdulillah\" (segala puji bagi Allah).",
+  arabic:{text:"الْحَمْدُ لِلَّهِ", translit:"Alhamdulillah", arti:"Segala puji bagi Allah.", audio:"", audio_src:"", source:"Kalimat pembuka Al-Fatihah — bagian dzikir setelah shalat"},
+  body:[
+    {h:"Makna", p:["Tahmid adalah pengakuan bahwa segala pujian, dalam bentuk apa pun, hanya pantas ditujukan kepada Allah — mencakup syukur atas nikmat maupun pujian atas kesempurnaan sifat-Nya."]},
+    {h:"Keutamaan", p:["Rasulullah ﷺ bersabda: \"Alhamdulillah memenuhi timbangan (amal).\" (HR. Muslim no. 223) — menunjukkan besarnya bobot pahala kalimat ini meski singkat."]},
+    {h:"Kapan diucapkan", p:["Setelah bersin, setelah makan-minum, setiap mendapat nikmat/kabar baik, dan rutin 33 kali setelah shalat bersama tasbih dan takbir."]}
+  ],
+  sources:["muslim"], related:["tasbih","takbir","dzikir-setelah-shalat"], tags:["dzikir","tahmid"]});
+addEntry({id:"takbir", menu:6, material:"dzikir", type:"article", title:"Takbir (Allahu Akbar)", summary:"Mengagungkan Allah — kalimat \"Allahu Akbar\" (Allah Mahabesar).",
+  arabic:{text:"اللهُ أَكْبَرُ", translit:"Allahu Akbar", arti:"Allah Mahabesar.", audio:"", audio_src:"", source:"Kalimat pembuka shalat (takbiratul ihram) dan dzikir setelah shalat"},
+  body:[
+    {h:"Makna", p:["Takbir menegaskan bahwa Allah lebih besar dan lebih agung dari segala sesuatu — melampaui apa pun yang bisa dibayangkan atau dibandingkan oleh manusia."]},
+    {h:"Kedudukan dalam shalat", p:["Menjadi kalimat pembuka wajib shalat (takbiratul ihram) dan diucapkan berulang di setiap perpindahan gerakan (takbir intiqal)."]},
+    {h:"Kapan lain diucapkan", p:["Dikumandangkan pada malam dan pagi Hari Raya (Idulfitri & Iduladha), saat perang/menghadapi kesulitan besar sebagai penegasan bahwa Allah lebih besar dari segala masalah, dan 34 kali setelah shalat bersama tasbih-tahmid."]}
+  ],
+  sources:["app"], related:["tasbih","tahmid","gerakan-takbir"], tags:["dzikir","takbir"]});
+addEntry({id:"shalawat", menu:6, material:"dzikir", type:"article", title:"Shalawat kepada Nabi ﷺ", summary:"Memohon kepada Allah agar melimpahkan rahmat dan kemuliaan kepada Nabi Muhammad ﷺ.",
+  arabic:{text:"اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ", translit:"Allahumma shalli 'ala Muhammadin wa 'ala ali Muhammad", arti:"Ya Allah, limpahkanlah rahmat kepada Nabi Muhammad dan kepada keluarga Nabi Muhammad.", audio:"", audio_src:"", source:"Bentuk ringkas shalawat — versi lengkap (Ibrahimiyah) dibaca dalam tasyahud akhir shalat"},
+  body:[
+    {h:"Perintah bershalawat", p:["QS. Al-Ahzab 33:56 — \"Sesungguhnya Allah dan para malaikat-Nya bershalawat untuk Nabi. Wahai orang-orang yang beriman, bershalawatlah kalian untuk Nabi dan ucapkanlah salam penghormatan kepadanya.\""]},
+    {h:"Keutamaan", p:["Rasulullah ﷺ bersabda barang siapa bershalawat kepadanya satu kali, Allah akan bershalawat (memberi rahmat) kepadanya sepuluh kali (HR. Muslim no. 384)."]},
+    {h:"Kapan dianjurkan", p:["Setelah azan, dalam tasyahud shalat, hari Jumat, saat menyebut nama Nabi ﷺ, dan dianjurkan diperbanyak kapan saja sebagai bentuk cinta dan penghormatan kepada beliau."]}
+  ],
+  sources:["quran","muslim"], related:["bacaan-shalawat","dzikir-setelah-shalat"], tags:["dzikir","shalawat"]});
+addEntry({id:"doa-perlindungan-umum", menu:6, material:"doa", sub:"perlindungan", type:"doa", title:"Doa Perlindungan Umum",
+  arabic:{text:"أَعُوذُ بِكَلِمَاتِ اللهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ", translit:"A'udzu bikalimatillahit-tammati min syarri ma khalaq", arti:"Aku berlindung dengan kalimat-kalimat Allah yang sempurna dari kejahatan makhluk yang Dia ciptakan.", audio:"", audio_src:"", source:"HR. Muslim no. 2708"},
+  summary:"Doa umum berlindung dari segala keburukan makhluk ciptaan Allah — dibaca kapan saja, terutama saat singgah di suatu tempat.",
+  body:[
+    {h:"Keutamaan", p:["Rasulullah ﷺ bersabda barang siapa singgah di suatu tempat lalu membaca doa ini, tidak akan ada sesuatu pun yang membahayakannya hingga ia meninggalkan tempat tersebut (HR. Muslim no. 2708)."]},
+    {h:"Cakupan perlindungan lain", p:["Untuk perlindungan spesifik, lihat juga: Ayat Kursi & Al-Mu'awwidzatain (Tafsir), Doa Perlindungan Sebelum Salam (empat perkara — Menu Shalat), dan Hasbunallah wa Ni'mal Wakil."]}
+  ],
+  sources:["muslim"], related:["tafsir-muawwidzatain","doa-akhir-tasyahud","hasbunallah"], tags:["doa","perlindungan"]});
+addEntry({id:"doa-takziah", menu:6, material:"doa", sub:"kesulitan", type:"doa", title:"Ucapan Takziah",
+  arabic:{text:"إِنَّ لِلَّهِ مَا أَخَذَ وَلَهُ مَا أَعْطَى، وَكُلُّ شَيْءٍ عِنْدَهُ بِأَجَلٍ مُسَمًّى، فَلْتَصْبِرْ وَلْتَحْتَسِبْ", translit:"Inna lillahi ma akhadza wa lahu ma a'tha, wa kullu syai'in 'indahu bi'ajalin musamma, faltashbir waltahtasib", arti:"Sesungguhnya milik Allah apa yang Dia ambil dan milik-Nya apa yang Dia berikan, segala sesuatu di sisi-Nya memiliki batas waktu yang telah ditentukan, maka bersabarlah dan mengharaplah pahala.", audio:"", audio_src:"", source:"HR. Bukhari no. 1284, Muslim no. 923"},
+  summary:"Ucapan yang diajarkan Nabi ﷺ untuk menghibur keluarga yang berduka atas kematian.",
+  body:[
+    {h:"Konteks", p:["Diucapkan Nabi ﷺ ketika mengirim pesan kepada putrinya yang anaknya (cucu beliau) sedang sekarat, menenangkannya bahwa hidup dan mati sepenuhnya milik dan ketentuan Allah."]},
+    {h:"Penerapan", p:["Digunakan sebagai kalimat penghibur saat melayat (takziah) — lihat juga materi Takziyah di menu Fiqih untuk pembahasan adab lengkapnya."]}
+  ],
+  sources:["bukhari","muslim"], related:["takziyah","doa-musibah"], tags:["doa","jenazah"]});
+
+/* ---------- Lengkapi doa nyata pada shalat sunnah & jenazah yang sebelumnya belum ada lafaz doanya ---------- */
+patch("istikharah", e=>{
+  e.arabic = {
+    text:"اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ، وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ",
+    translit:"Allahumma inni astakhiruka bi'ilmika, wa astaqdiruka biqudratika, wa as'aluka min fadhlikal-'azhim",
+    arti:"Ya Allah, sesungguhnya aku memohon pilihan kepada-Mu dengan ilmu-Mu, aku memohon kemampuan kepada-Mu dengan kekuasaan-Mu, aku memohon kepada-Mu sebagian dari karunia-Mu yang agung — (doa lengkap dilanjutkan menyebut hajat/perkara yang dipertimbangkan).",
+    audio:"", audio_src:"", source:"HR. Bukhari no. 1166"
+  };
+  e.body.push({h:"Cara mengamalkan", p:["Doa lengkap dilanjutkan dengan kalimat \"...fainnaka taqdiru wa la aqdiru, wa ta'lamu wa la a'lamu, wa anta 'allamul-ghuyub. Allahumma in kunta ta'lamu anna hadzal-amra khairul-li fi dini wa ma'asyi wa 'aqibati amri...\" (jika Engkau mengetahui perkara ini baik bagiku dalam agama, kehidupan, dan akhir urusanku, maka takdirkanlah dan mudahkanlah bagiku, dan berkahilah aku padanya. Namun jika Engkau mengetahui perkara ini buruk bagiku, maka jauhkanlah dariku dan jauhkanlah aku darinya, takdirkanlah kebaikan bagiku di mana pun berada, lalu jadikanlah aku rida dengannya) — nama perkara yang dipertimbangkan disebutkan pada bagian yang bertanda kurung."]});
+});
+patch("hajat", e=>{
+  e.arabic = {
+    text:"لَا إِلَٰهَ إِلَّا اللهُ الْحَلِيمُ الْكَرِيمُ، سُبْحَانَ اللهِ رَبِّ الْعَرْشِ الْعَظِيمِ",
+    translit:"La ilaha illallahul-halimul-karim, subhanallahi rabbil-'arsyil-'azhim",
+    arti:"Tiada tuhan selain Allah Yang Maha Penyantun lagi Maha Mulia, Mahasuci Allah Tuhan pemilik 'Arsy yang agung — (dilanjutkan menyebut hajat/kebutuhan yang dipohonkan).",
+    audio:"", audio_src:"", source:"HR. Tirmidzi no. 479 — sanad dinilai lemah oleh sebagian ulama hadis, namun maknanya sejalan dengan dalil doa lain yang sahih dan diamalkan luas"
+  };
+  e.status = "verify";
+});
+patch("shalat-jenazah", e=>{
+  e.arabic = {
+    text:"اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ وَعَافِهِ وَاعْفُ عَنْهُ",
+    translit:"Allahummaghfir lahu warhamhu wa 'afihi wa'fu 'anhu",
+    arti:"Ya Allah, ampunilah dia, sayangilah dia, selamatkanlah dia, dan maafkanlah dia. (ganti dhamir \"hu\" dengan \"ha\" untuk jenazah perempuan)",
+    audio:"", audio_src:"", source:"HR. Muslim no. 963"
+  };
+});
+
 function parseRoute(){
   const raw = (location.hash||"#/home").replace(/^#\/?/,"");
   const parts = raw.split("/");
@@ -7861,6 +8626,7 @@ function router(){
       case "tasbih": html = tasbihView(); break;
       case "konversi-hijriah": html = hijriKonversiView(); break;
       case "masjid-terdekat": html = masjidTerdekatView(); break;
+      case "qibla": html = qiblaView(); break;
       case "settings": html = settingsView(); break;
       case "tentang": html = tentangView(); break;
       default: html = homeView();
@@ -7909,6 +8675,8 @@ function bindActions(){
       else if(act==="conv-g2h") convGregToHijri();
       else if(act==="conv-h2g") convHijriToGreg();
       else if(act==="masjid-maps") openMasjidMaps();
+      else if(act==="qibla-locate") qiblaLocate();
+      else if(act==="qibla-compass") qiblaEnableCompass();
       else if(act==="cal-pick") pickCalDate(el.dataset.month, el.dataset.day, el.dataset.istoday);
       else if(act==="cal-today") calBackToToday();
       else if(act==="zcalc") calcZakat();
@@ -8054,15 +8822,24 @@ function applyTheme(t){
 }
 
 /* ---------- Geolokasi ---------- */
+function geoErrorMsg(err){
+  if(!err || err.code===undefined) return "Gagal mendeteksi lokasi — coba lagi atau pilih kota manual.";
+  switch(err.code){
+    case 1: return "Izin lokasi ditolak — aktifkan izin lokasi di pengaturan browser/perangkat, atau gunakan pilihan kota manual.";
+    case 2: return "Lokasi tidak tersedia (GPS/sinyal lemah) — coba di area terbuka atau gunakan pilihan kota manual.";
+    case 3: return "Deteksi lokasi memakan waktu terlalu lama (timeout) — coba lagi atau gunakan pilihan kota manual.";
+    default: return "Gagal mendeteksi lokasi — gunakan pilihan kota manual.";
+  }
+}
 function geolocate(){
-  if(!navigator.geolocation){ toast("Geolokasi tidak didukung perangkat", true); return; }
+  if(!navigator.geolocation){ toast("Geolokasi tidak didukung perangkat — gunakan pilihan kota manual", true); return; }
   toast("Mendeteksi lokasi…");
   navigator.geolocation.getCurrentPosition(pos=>{
     SETTINGS.useGeo=true; SETTINGS.geo={lat:pos.coords.latitude, lon:pos.coords.longitude};
     saveSettings(); toast("Lokasi perangkat digunakan"); router();
-  }, ()=>{
-    toast("Izin lokasi ditolak — gunakan pilihan kota manual", true);
-  }, {timeout:8000});
+  }, err=>{
+    toast(geoErrorMsg(err), true);
+  }, {timeout:10000, enableHighAccuracy:true, maximumAge:60000});
 }
 
 /* ---------- Sidebar ---------- */
@@ -8072,14 +8849,52 @@ function buildSidebar(){
 }
 
 /* ---------- Init ---------- */
+/*
+ * SCHEMA MASTER ENTRI (diberlakukan di normalizeEntry(), dijalankan sekali saat init):
+ *   id                 — string, unik (diverifikasi via analyze/dedup tooling saat build)
+ *   menu/material/sub  — struktur navigasi (angka/menu, string material, string sub opsional)
+ *   category           — nama menu (turunan dari DB.MENUS, bukan field baku terpisah)
+ *   subcategory        — nama material (turunan dari daftar materials menu tsb)
+ *   topic              — nama sub bila ada, jika tidak fallback ke subcategory
+ *   title / summary    — judul & ringkasan entri
+ *   definition         — alias summary; field terpisah utk konsistensi skema kamus/istilah
+ *   body[]             — konten (h/p/list) — isi utama entri
+ *   sources[]          — id sumber mentah (kunci ke DB.SOURCES)
+ *   references[]       — bentuk kaya dari sources: {id, title, type} — utk tampilan/ekspor terstruktur
+ *   related[]          — id entri lain yang tertaut (diaudit rutin agar tidak ada broken link)
+ *   verificationStatus — "verified" (default, sudah direview sesuai sumber tercantum) atau
+ *                        "needs_review" (ditandai eksplisit via field status:"verify" pada data asli —
+ *                        dipakai HANYA saat sanad/derajat dalil benar-benar diperdebatkan ulama,
+ *                        bukan status otomatis/acak)
+ *   createdAt/updatedAt— string tanggal (YYYY-MM-DD). Aplikasi ini tidak punya riwayat commit per-entri
+ *                        dari awal pembangunannya, sehingga createdAt memakai tanggal baseline dataset
+ *                        (tanggal normalisasi skema ini diterapkan) bagi entri yang belum punya nilai
+ *                        eksplisit — BUKAN klaim tanggal penulisan asli tiap entri. updatedAt mengikuti
+ *                        pola yang sama. Field yang sudah diisi manual pada suatu entri tidak ditimpa.
+ */
+function normalizeEntry(e){
+  const BASELINE_DATE = "2026-09-05"; // tanggal penerapan skema ini — bukan tanggal penulisan asli
+  const menu = DB.MENUS.find(m=>m.id===e.menu);
+  const mat = menu && menu.materials.find(x=>x.id===e.material);
+  e.parentId = e.sub ? ("sub:"+e.menu+"/"+e.material+"/"+e.sub) : ("mat:"+e.menu+"/"+e.material);
+  e.category = menu ? menu.name : null;
+  e.subcategory = mat ? mat.name : (e.material || null);
+  e.topic = e.sub || e.subcategory;
+  e.definition = e.definition || e.summary || "";
+  e.references = (e.sources||[]).map(sid=>{
+    const s = DB.SOURCES[sid];
+    return s ? {id:sid, title:s.title, type:s.type} : {id:sid, title:sid, type:"Lainnya"};
+  });
+  // verificationStatus: HANYA entri dgn status:"verify" eksplisit di data asli yang jadi needs_review —
+  // ini menandakan sanad/derajat dalil masih diperdebatkan ulama, bukan flag otomatis/sembarangan.
+  e.verificationStatus = e.status === "verify" ? "needs_review" : "verified";
+  e.createdAt = e.createdAt || BASELINE_DATE;
+  e.updatedAt = e.updatedAt || BASELINE_DATE;
+}
 function init(){
   applyTheme(SETTINGS.theme);
   document.documentElement.dataset.font = SETTINGS.font;
-  // Field standar: parentId & updatedAt (single source of truth)
-  DB.ENTRIES.forEach(e=>{
-    e.parentId = e.sub ? ("sub:"+e.menu+"/"+e.material+"/"+e.sub) : ("mat:"+e.menu+"/"+e.material);
-    e.updatedAt = e.updatedAt || "2026-08-30";
-  });
+  DB.ENTRIES.forEach(normalizeEntry);
   buildSidebar();
   window.addEventListener("hashchange", router);
   router();
