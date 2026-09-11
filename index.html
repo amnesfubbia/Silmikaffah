@@ -622,6 +622,46 @@ html[data-theme="dark"] .cal-cell.today .dot{background:#062B1A}
 .switch input:checked + i{background:var(--accent)}
 .switch input:checked + i::after{transform:translateX(19px)}
 
+/* ---------- Asmaul Husna: grid & halaman detail ---------- */
+.asma-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.asma-card{position:relative;background:var(--surface-2);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--border)}
+.asma-card-top{position:relative;min-height:150px;display:flex;align-items:center;justify-content:center;padding:18px 10px}
+.asma-num{position:absolute;top:10px;left:10px;background:var(--accent);color:#04231d;font-weight:800;font-size:calc(11.5px * var(--font-scale));padding:3px 8px;border-radius:6px}
+.asma-bookmark-ic{position:absolute;top:10px;right:10px;color:var(--text-3);display:flex}
+.asma-card-top .asma-ar{font-family:var(--font-ar);font-size:34px;color:var(--text);text-align:center;line-height:1.3}
+.asma-card-name{text-align:center;font-weight:800;font-size:calc(14px * var(--font-scale));padding:10px 6px 14px;color:var(--text)}
+.asma-fab{position:fixed;right:18px;bottom:calc(var(--bn-h) + 18px);width:56px;height:56px;border-radius:50%;background:var(--accent);color:#04231d;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);z-index:150;border:none;cursor:pointer}
+@media (min-width:1024px){.asma-fab{bottom:22px}}
+.asma-detail{position:relative;padding-bottom:70px}
+.asma-top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.asma-top-actions{display:flex;gap:14px}
+.icon-btn{background:none;border:none;color:var(--text);cursor:pointer;display:flex;padding:4px}
+.asma-detail-hero{text-align:center;padding:14px 0 6px}
+.asma-detail-num{display:inline-block;background:var(--accent);color:#04231d;font-weight:800;font-size:calc(11.5px * var(--font-scale));padding:3px 9px;border-radius:6px;margin-bottom:16px}
+.asma-detail-arabic{font-family:var(--font-ar);font-size:52px;color:var(--text);line-height:1.3;margin:6px 0}
+.asma-detail-name{font-size:calc(19px * var(--font-scale));font-weight:800;margin-top:8px}
+.asma-panel{background:var(--surface-2);border-radius:14px;padding:16px;margin-top:18px}
+.asma-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.asma-panel-title{font-size:calc(12px * var(--font-scale));color:var(--text-3);font-weight:700;margin-bottom:8px}
+.asma-panel-arti{font-style:italic;font-size:calc(15px * var(--font-scale))}
+.asma-dalil-btn{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--accent);font-size:calc(11px * var(--font-scale));font-weight:700;background:none;border:none;cursor:pointer;flex:none}
+.asma-block{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;margin-top:12px}
+.asma-block-title{color:var(--accent);font-weight:800;margin-bottom:8px;font-size:calc(13.5px * var(--font-scale))}
+.asma-manfaat-row{display:flex;align-items:center;justify-content:space-between;margin-top:16px}
+.asma-manfaat-title{color:var(--accent);font-weight:700;font-size:calc(13.5px * var(--font-scale))}
+.asma-manfaat-content{margin-top:10px;font-size:calc(13.5px * var(--font-scale));color:var(--text-2);display:none}
+.asma-manfaat-content.open{display:block}
+
+/* ---------- Modal generik (mis. pemilih suara) ---------- */
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:1300;padding:20px}
+.modal-box{background:var(--surface-2);border-radius:14px;padding:20px;max-width:360px;width:100%;box-shadow:var(--shadow-lg)}
+.modal-title{font-size:calc(17px * var(--font-scale));font-weight:800;margin-bottom:14px}
+.modal-option{display:flex;align-items:center;gap:12px;padding:10px 0;cursor:pointer}
+.modal-option input{width:20px;height:20px;accent-color:var(--accent)}
+.modal-check{display:flex;align-items:center;gap:10px;padding:10px 0;color:var(--text-3);font-size:calc(12.5px * var(--font-scale))}
+.modal-actions{display:flex;justify-content:flex-end;gap:18px;margin-top:14px}
+.modal-actions button{background:none;border:none;color:var(--accent);font-weight:800;font-size:calc(13px * var(--font-scale));cursor:pointer}
+
 /* ---------- Tabs ---------- */
 .tabs{display:flex;gap:4px;background:var(--surface-2);padding:3px;border-radius:10px;margin-bottom:12px;overflow-x:auto}
 .tab{
@@ -2148,7 +2188,7 @@ ASMA.forEach(a=>{ asmaCounts[a[1]] = (asmaCounts[a[1]]||0)+1; });
 ASMA.forEach((a,i)=>{
   const dupe = asmaCounts[a[1]]>1;
   addEntry({
-    id:"asma-"+(i+1), menu:2, material:"iman-kepada-allah", sub:"asmaul-husna", type:"asmaul",
+    id:"asma-"+(i+1), menu:2, material:"iman-kepada-allah", sub:"asmaul-husna", type:"asmaul", order:i+1,
     title:a[1]+(dupe?" ("+a[0]+")":""), summary:a[2]+" — nama Allah yang ke-"+(i+1),
     arabic:{text:a[0], translit:a[1], arti:a[2], audio:"", audio_src:"", source:"QS. Thaha 20:8, HR. Bukhari no. 2736"},
     body:[
@@ -2565,33 +2605,51 @@ addEntry({
   {h:"Cakupan", p:["Kelahiran, masa kecil & muda, pernikahan, awal wahyu, dakwah Makkah, hijrah, peristiwa penting, Fathu Makkah, Haji Wada', dan wafat — masing-masing sebagai entri di bawah materi ini."]}],
   sources:["quran","sirah"], related:["kelahiran-nabi","awal-wahyu","hijrah","fathu-makkah","haji-wada","nabi-muhammad"], tags:["sirah","sejarah"]
 });
-addEntry({id:"kelahiran-nabi", menu:8, material:"sirah-nabi", type:"article", title:"Kelahiran Nabi Muhammad ﷺ", summary:"Lahir di Makkah pada Tahun Gajah (±570 M), yatim sejak kecil.",
-  body:[{h:"Ringkasan", list:["Lahir di Makkah, Tahun Gajah (± 570 M; tanggal pastinya diperselisihkan — pendapat masyhur 12 Rabiul Awal, ada pendapat lain).","Ayah: Abdullah bin Abdul Muththalib (wafat sebelum beliau lahir/saat ibunya hamil).","Ibu: Aminah binti Wahb (wafat saat beliau berusia ±6 tahun).","Disusui Halimah as-Sa'diyah; diasuh kakek Abdul Muththalib, lalu paman Abu Thalib."]}],
-  sources:["sirah"], related:["sirah","masa-kecil-nabi","nabi-muhammad"], tags:["sirah","nabi"]});
-addEntry({id:"masa-kecil-nabi", menu:8, material:"sirah-nabi", type:"article", title:"Masa Kecil & Muda", summary:"Tumbuh sebagai anak jujur dan terpercaya; dikenal Al-Amin.",
-  body:[{h:"Ringkasan", list:["Masa kecil di Bani Sa'd (Badui) dan Makkah.","Menggembala kambing (HR. Bukhari no. 3402).","Membantu paman berdagang; dikenal jujur (Al-Amin) dan amanah.","Mengikuti perjanjian Hilful Fudhul — membela yang dizalimi."]}],
-  sources:["bukhari","sirah"], related:["sirah","pernikahan-nabi"], tags:["sirah","nabi"]});
-addEntry({id:"pernikahan-nabi", menu:8, material:"sirah-nabi", type:"article", title:"Pernikahan dengan Khadijah", summary:"Menikah dengan Khadijah binti Khuwailid pada usia 25 tahun.",
-  body:[{h:"Ringkasan", p:["Khadijah adalah wanita pertama yang dinikahi Nabi ﷺ, pendukung pertama dakwah, dan ibu bagi anak-anak beliau (selain Ibrahim). Beliau tidak menikah lagi selama Khadijah hidup."]}],
+addEntry({id:"kelahiran-nabi", menu:8, material:"sirah-nabi", type:"article", title:"Kelahiran Nabi Muhammad ﷺ", order:1, summary:"Lahir di Makkah pada Tahun Gajah (±570 M), yatim sejak kecil.",
+  body:[{h:"Latar Tahun Gajah", p:["Nabi Muhammad ﷺ lahir di Makkah pada tahun yang dikenal sebagai 'Tahun Gajah' (±570 M), dinamai demikian karena pada tahun itu Abrahah, gubernur Habasyah di Yaman, menyerang Ka'bah dengan pasukan bergajah untuk menghancurkannya, namun dibinasakan Allah dengan burung Ababil yang melempari mereka batu dari tanah yang terbakar (QS. Al-Fil 105:1-5). Peristiwa ini menjadi penanda waktu penting bagi bangsa Arab sebelum mengenal kalender Hijriah."]},
+  {h:"Silsilah & kelahiran", p:["Ayahnya, Abdullah bin Abdul Muththalib, wafat di Madinah dalam perjalanan dagang saat Aminah (ibunya) masih mengandungnya, sehingga Nabi ﷺ lahir dalam keadaan yatim. Tanggal kelahiran yang paling masyhur menurut mayoritas ulama sirah adalah 12 Rabiul Awal, meski ada pula pendapat lain yang menyebut 9 Rabiul Awal. Kakeknya, Abdul Muththalib, pemuka Quraisy penjaga Ka'bah, memberinya nama Muhammad—nama yang saat itu belum lazim di kalangan Arab—dengan harapan ia akan dipuji banyak orang."]},
+  {h:"Masa penyusuan", p:["Sesuai tradisi Quraisy, bayi disusukan kepada wanita Badui agar tumbuh sehat dan fasih berbahasa Arab murni jauh dari kota. Muhammad kecil disusui oleh Halimah binti Abi Dzuayb (Halimah as-Sa'diyah) dari Bani Sa'd; keberkahan menyertai keluarga Halimah sejak mengasuhnya, sebagaimana banyak diriwayatkan dalam kitab-kitab sirah. Ibunya, Aminah binti Wahb, wafat saat beliau berusia sekitar 6 tahun dalam perjalanan pulang dari Madinah, menjadikannya yatim piatu sepenuhnya di usia sangat belia."]}],
+  sources:["sirah","quran"], related:["sirah","masa-kecil-nabi","nabi-muhammad","tahun-gajah"], tags:["sirah","nabi"]});
+addEntry({id:"masa-kecil-nabi", menu:8, material:"sirah-nabi", type:"article", title:"Masa Kecil & Muda", order:2, summary:"Tumbuh sebagai anak jujur dan terpercaya; dikenal Al-Amin.",
+  body:[{h:"Pengasuhan", p:["Sepeninggal ibunya, Muhammad diasuh kakeknya, Abdul Muththalib, yang sangat menyayanginya. Namun kakeknya pun wafat ketika beliau berusia 8 tahun, sehingga pengasuhan berpindah kepada pamannya, Abu Thalib, yang meski tidak pernah memeluk Islam, senantiasa melindungi dan membela keponakannya sepanjang hidupnya."]},
+  {h:"Menggembala & berdagang", p:["Sejak kecil beliau menggembala kambing penduduk Makkah untuk membantu meringankan beban pamannya, sebuah pekerjaan yang kelak beliau sebut sebagai pengalaman yang dijalani setiap nabi (HR. Bukhari no. 3402). Beranjak remaja, ia turut serta dalam perjalanan dagang Abu Thalib ke Syam; dalam salah satu perjalanan inilah seorang pendeta Nasrani bernama Bahira dikisahkan mengenali tanda-tanda kenabian pada dirinya."]},
+  {h:"Al-Amin & Hilful Fudhul", p:["Sepanjang masa mudanya, beliau dikenal luas oleh penduduk Makkah sebagai sosok yang sangat jujur dan dapat dipercaya, hingga dijuluki 'Al-Amin' (yang terpercaya), sering dititipi barang berharga oleh orang-orang yang hendak bepergian. Ia juga turut serta dalam Hilful Fudhul, sebuah perjanjian antar-suku Quraisy untuk membela dan menolong siapa pun yang dizalimi di Makkah tanpa memandang suku atau golongan—sebuah nilai yang kelak beliau tegaskan tetap relevan meski telah menjadi rasul."]}],
+  sources:["bukhari","sirah"], related:["sirah","kelahiran-nabi","pernikahan-nabi"], tags:["sirah","nabi"]});
+addEntry({id:"pernikahan-nabi", menu:8, material:"sirah-nabi", type:"article", title:"Pernikahan dengan Khadijah", order:3, summary:"Menikah dengan Khadijah binti Khuwailid pada usia 25 tahun.",
+  body:[{h:"Pertemuan", p:["Reputasi kejujuran dan keuletan Muhammad muda menarik perhatian Khadijah binti Khuwailid, seorang saudagar perempuan terpandang dan kaya raya di Makkah. Ia mempekerjakan Muhammad untuk membawa barang dagangannya ke Syam bersama pembantunya, Maisarah, yang pulang membawa kabar tentang kejujuran dan keberkahan perniagaan yang dijalankan Muhammad."]},
+  {h:"Pernikahan", p:["Terkesan dengan akhlak dan keberhasilan dagangnya, Khadijah—melalui perantara sahabatnya—melamar Muhammad, yang saat itu berusia 25 tahun, sementara Khadijah berusia 40 tahun. Pernikahan mereka berlangsung penuh keberkahan; Khadijah menjadi istri pertama dan satu-satunya selama ia hidup, ibu dari seluruh anak Nabi ﷺ kecuali Ibrahim (dari Mariyah al-Qibtiyyah), serta pendukung pertama dan paling setia dalam perjuangan dakwah, termasuk menenangkan beliau saat wahyu pertama turun dan mengorbankan seluruh hartanya demi dakwah."]}],
   sources:["sirah"], related:["sirah","khadijah","awal-wahyu"], tags:["sirah","keluarga"]});
-addEntry({id:"awal-wahyu", menu:8, material:"sirah-nabi", type:"article", title:"Awal Wahyu", summary:"Wahyu pertama turun di Gua Hira: QS. Al-'Alaq 96:1-5.",
-  body:[{h:"Ringkasan", list:["Usia ±40 tahun, beliau menyendiri di Gua Hira.","Malaikat Jibril datang dan menyampaikan \"Iqra'...\" (QS. Al-'Alaq 96:1-5).","Khadijah menenangkan dan membawa beliau kepada Waraqah bin Naufal.","Setelah fatrah (masa terhenti wahyu), wahyu turun kembali dan dakwah dimulai."]}],
-  sources:["bukhari","sirah"], related:["sirah","dakwah-makkah","khadijah"], tags:["sirah","wahyu"]});
-addEntry({id:"dakwah-makkah", menu:8, material:"sirah-nabi", type:"article", title:"Dakwah Periode Makkah", summary:"Dakwah sembunyi-sembunyi lalu terang-terangan; penuh ujian dan kesabaran.",
-  body:[{h:"Ringkasan", list:["Tiga tahun pertama dakwah sembunyi-sembunyi.","Lalu dakwah terang-terangan: \"Maka sampaikanlah apa yang diperintahkan kepadamu...\" (QS. Al-Hijr 15:94).","Boikot, penyiksaan, dan hijrah ke Habasyah bagi sebagian sahabat.","Tahun duka: wafat Abu Thalib dan Khadijah.","Isra' Mi'raj terjadi pada periode ini."]}],
-  sources:["quran","sirah"], related:["sirah","awal-wahyu","hijrah"], tags:["sirah","dakwah"]});
-addEntry({id:"hijrah", menu:8, material:"sirah-nabi", type:"article", title:"Hijrah ke Madinah", summary:"Perpindahan ke Yatsrib (Madinah) pada tahun 622 M — awal kalender Hijriah.",
-  body:[{h:"Ringkasan", list:["Bai'at Aqabah dan undangan penduduk Yatsrib.","Nabi ﷺ hijrah bersama Abu Bakar; bersembunyi di Gua Tsur (QS. At-Taubah 9:40).","Tiba di Quba, membangun masjid; lalu mempersaudarakan Muhajirin dan Anshar.","Peristiwa ini menjadi titik awal penanggalan Hijriah pada masa Umar."]}],
-  sources:["quran","sirah"], related:["sirah","abu-bakar","islam-nusantara"], tags:["sirah","hijrah"]});
-addEntry({id:"fathu-makkah", menu:8, material:"sirah-nabi", type:"article", title:"Fathu Makkah", summary:"Pembebasan Makkah pada 20 Ramadan 8 H tanpa pertumpahan darah besar.",
-  body:[{h:"Ringkasan", list:["Setelah perjanjian Hudaibiyah dilanggar, kaum Muslimin memasuki Makkah.","Rasulullah ﷺ memaafkan penduduk Makkah: \"Pergilah, kalian bebas.\"","Penghancuran berhala di sekitar Ka'bah dan penetapan Makkah sebagai kota suci."]}],
-  sources:["sirah"], related:["sirah","haji-wada"], tags:["sirah","makkah"]});
-addEntry({id:"haji-wada", menu:8, material:"sirah-nabi", type:"article", title:"Haji Wada'", summary:"Haji terakhir Rasulullah ﷺ pada 10 H — khutbah yang sarat wasiat.",
-  body:[{h:"Ringkasan", list:["Beliau berhaji pada 10 H dan berkhutbah di Arafah (khutbah wada').","Wasiat: menjaga darah dan harta, hak wanita, dan berpegang pada Al-Qur'an dan sunnah.","Turun ayat penyempurnaan agama (QS. Al-Ma'idah 5:3)."]}],
-  sources:["bukhari","muslim"], related:["sirah","wafat-nabi","haji"], tags:["sirah","haji"]});
-addEntry({id:"wafat-nabi", menu:8, material:"sirah-nabi", type:"article", title:"Wafat Rasulullah ﷺ", summary:"Wafat di Madinah pada 12 Rabiul Awal 11 H (± 8 Juni 632 M).",
-  body:[{h:"Ringkasan", list:["Setelah sakit beberapa hari, Rasulullah ﷺ wafat di rumah Aisyah.","Beliau dimakamkan di kamar tersebut, kini di dalam Masjid Nabawi.","Abu Bakar menenangkan umat: \"Barang siapa menyembah Muhammad, maka Muhammad telah wafat; barang siapa menyembah Allah, maka Allah Maha Hidup tidak mati.\" (HR. Bukhari no. 1241)."]}],
-  sources:["bukhari","sirah"], related:["sirah","abu-bakar","haji-wada"], tags:["sirah","nabi"]});
+addEntry({id:"awal-wahyu", menu:8, material:"sirah-nabi", type:"article", title:"Awal Wahyu", order:4, summary:"Wahyu pertama turun di Gua Hira: QS. Al-'Alaq 96:1-5.",
+  body:[{h:"Menyendiri di Gua Hira", p:["Menjelang usia 40 tahun, Muhammad ﷺ mulai gemar menyendiri (tahannuts) berhari-hari di Gua Hira, sebuah gua di puncak Jabal Nur dekat Makkah, untuk merenung dan menjauh dari kesibukan serta kerusakan sosial masyarakat Quraisy saat itu."]},
+  {h:"Turunnya wahyu pertama", p:["Pada malam 17 Ramadan, malaikat Jibril datang menemuinya dan berkata, 'Bacalah!' Beliau menjawab, 'Aku tidak bisa membaca,' sebanyak tiga kali, hingga akhirnya Jibril menyampaikan wahyu pertama: 'Bacalah dengan (menyebut) nama Tuhanmu yang menciptakan...' (QS. Al-'Alaq 96:1-5). Beliau pulang dalam keadaan gemetar dan ketakutan, meminta diselimuti kepada Khadijah."]},
+  {h:"Peneguhan Khadijah & Waraqah", p:["Khadijah menenangkan beliau dengan kata-kata yang masyhur: 'Demi Allah, Allah tidak akan pernah menghinakanmu; sesungguhnya engkau menyambung silaturahmi, menanggung beban orang lemah, menghormati tamu, dan menolong dalam menegakkan kebenaran' (HR. Bukhari no. 3, Muslim no. 160). Ia lalu membawa beliau menemui sepupunya, Waraqah bin Naufal, seorang penganut Nasrani yang mengenal kitab-kitab terdahulu, yang menegaskan bahwa yang datang kepadanya adalah malaikat yang sama seperti yang pernah diutus kepada Musa, dan meramalkan beliau akan diusir kaumnya sendiri. Setelah itu terjadi jeda wahyu (fatrah) beberapa waktu sebelum turun kembali dan dakwah resmi dimulai."]}],
+  sources:["bukhari","muslim","sirah"], related:["sirah","dakwah-makkah","khadijah"], tags:["sirah","wahyu"]});
+addEntry({id:"dakwah-makkah", menu:8, material:"sirah-nabi", type:"article", title:"Dakwah Periode Makkah", order:5, summary:"Dakwah sembunyi-sembunyi lalu terang-terangan; penuh ujian dan kesabaran — 13 tahun lamanya.",
+  body:[{h:"Dakwah sembunyi-sembunyi", p:["Selama tiga tahun pertama, dakwah dilakukan secara diam-diam kepada orang-orang terdekat: Khadijah (wanita pertama beriman), Ali bin Abi Thalib (anak-anak pertama beriman), Zaid bin Haritsah (bekas budak pertama beriman), dan Abu Bakar (orang merdeka dewasa pertama beriman), yang kemudian mengajak banyak sahabat lain seperti Utsman, Zubair, dan Sa'ad bin Abi Waqqash."]},
+  {h:"Dakwah terang-terangan & penentangan", p:["Setelah turun perintah 'Maka sampaikanlah apa yang diperintahkan kepadamu (Muhammad) dan berpalinglah dari orang-orang musyrik' (QS. Al-Hijr 15:94), dakwah dilakukan terbuka, memicu penentangan keras Quraisy yang merasa terancam kepentingan sosial-ekonominya. Berbagai bentuk penyiksaan menimpa kaum muslimin yang lemah seperti Bilal, Ammar bin Yasir, dan keluarganya (Yasir dan Sumayyah yang gugur syahid), sementara Nabi ﷺ sendiri dilindungi oleh kedudukan Abu Thalib di tengah Quraisy."]},
+  {h:"Hijrah ke Habasyah & boikot", p:["Karena penyiksaan yang kian memburuk, sebagian sahabat diperintahkan hijrah ke Habasyah (Ethiopia) di bawah pimpinan Ja'far bin Abi Thalib, mendapat perlindungan dari Raja Najasyi yang adil. Quraisy kemudian memboikot total Bani Hasyim dan Bani Muththalib selama tiga tahun—memutus segala bentuk perdagangan dan pernikahan—hingga kaum muslimin mengalami kesulitan pangan yang sangat berat."]},
+  {h:"Tahun Duka (Amul Huzn)", p:["Tak lama setelah boikot berakhir, Nabi ﷺ mengalami dua kehilangan besar dalam waktu berdekatan: wafatnya Abu Thalib, pelindung utamanya di Makkah, dan wafatnya Khadijah, istri dan pendukung tercinta, sehingga tahun itu dikenal sebagai 'Tahun Duka' (Amul Huzn). Pada periode inilah terjadi peristiwa Isra' Mi'raj sebagai penghibur dan penguat bagi beliau."]}],
+  sources:["quran","sirah"], related:["sirah","awal-wahyu","hijrah","isra-miraj"], tags:["sirah","dakwah"]});
+addEntry({id:"hijrah", menu:8, material:"sirah-nabi", type:"article", title:"Hijrah ke Madinah", order:6, summary:"Perpindahan ke Yatsrib (Madinah) pada tahun 622 M — awal kalender Hijriah.",
+  body:[{h:"Undangan Yatsrib", p:["Setelah dua kali Baiat Aqabah, penduduk Yatsrib (kelak disebut Madinah) berjanji melindungi dan menerima dakwah Nabi ﷺ. Beliau kemudian memerintahkan para sahabat berhijrah lebih dulu secara bertahap dan diam-diam, sementara Quraisy yang mengetahui rencana ini bersekongkol membunuh beliau dengan melibatkan satu orang dari tiap kabilah agar tanggung jawabnya terbagi."]},
+  {h:"Perjalanan hijrah", p:["Pada malam yang telah direncanakan, Ali bin Abi Thalib tidur di ranjang Nabi ﷺ sebagai pengalih perhatian, sementara beliau bersama Abu Bakar keluar diam-diam menuju Gua Tsur, bersembunyi selama tiga hari dari kejaran Quraisy—peristiwa yang diabadikan Al-Qur'an: '...ketika keduanya berada dalam gua, di waktu dia berkata kepada temannya, Janganlah engkau bersedih, sesungguhnya Allah bersama kita' (QS. At-Taubah 9:40). Perjalanan dilanjutkan menyusuri jalur tak lazim menuju Madinah, dipandu Abdullah bin Uraiqith."]},
+  {h:"Tiba di Madinah", p:["Beliau singgah lebih dulu di Quba, mendirikan masjid pertama dalam Islam (Masjid Quba), sebelum melanjutkan perjalanan memasuki Madinah yang disambut gegap gempita penduduknya. Di sana beliau membangun Masjid Nabawi serta mempersaudarakan (muakhah) kaum Muhajirin dan Anshar sebagai fondasi masyarakat baru. Peristiwa hijrah ini kelak dijadikan Umar bin Khattab sebagai titik awal perhitungan kalender Hijriah karena menandai babak baru berdirinya masyarakat dan negara Islam."]}],
+  sources:["quran","sirah"], related:["sirah","abu-bakar","baiat-aqabah","periode-madinah"], tags:["sirah","hijrah"]});
+addEntry({id:"fathu-makkah", menu:8, material:"sirah-nabi", type:"article", title:"Fathu Makkah", order:7, summary:"Pembebasan Makkah pada 20 Ramadan 8 H tanpa pertumpahan darah besar.",
+  body:[{h:"Latar belakang", p:["Perjanjian Hudaibiyah yang disepakati dua tahun sebelumnya dilanggar sekutu Quraisy (Bani Bakr) yang menyerang sekutu kaum muslimin (Bani Khuza'ah) dengan bantuan senjata dari Quraisy. Pelanggaran ini membuka jalan bagi Nabi ﷺ untuk memimpin sepuluh ribu pasukan muslimin menuju Makkah."]},
+  {h:"Pembebasan tanpa pertumpahan darah", p:["Menyadari kekuatan pasukan muslimin yang begitu besar, penduduk Makkah tidak mampu dan sebagian besar tidak berniat melakukan perlawanan berarti. Nabi ﷺ memasuki Makkah dengan penuh kerendahan hati sambil menundukkan kepala membaca Surah Al-Fath, dan segera mengumumkan pengampunan umum kepada seluruh penduduk Makkah, termasuk mereka yang dulu paling keras menyiksanya, dengan sabda yang masyhur: 'Pergilah, kalian semua bebas' (semakna dengan riwayat sirah tentang pembebasan Yusuf oleh saudaranya, QS. Yusuf 12:92)."]},
+  {h:"Penghancuran berhala", p:["Beliau memasuki Ka'bah dan menghancurkan 360 berhala yang mengelilinginya sambil membaca 'Telah datang kebenaran dan hilanglah kebatilan; sesungguhnya kebatilan itu pasti lenyap' (QS. Al-Isra' 17:81). Peristiwa ini menjadi titik balik besar sejarah Islam: Makkah, pusat kemusyrikan selama berabad-abad, kembali menjadi pusat tauhid, dan banyak penduduknya kemudian memeluk Islam secara berbondong-bondong."]}],
+  sources:["quran","sirah"], related:["sirah","perjanjian-hudaibiyah","haji-wada"], tags:["sirah","makkah"]});
+addEntry({id:"haji-wada", menu:8, material:"sirah-nabi", type:"article", title:"Haji Wada'", order:8, summary:"Haji terakhir Rasulullah ﷺ pada 10 H — khutbah yang sarat wasiat.",
+  body:[{h:"Pelaksanaan", p:["Pada tahun ke-10 Hijriah, Nabi ﷺ melaksanakan ibadah haji untuk pertama dan satu-satunya kali dalam hidupnya, diikuti oleh puluhan ribu kaum muslimin dari berbagai penjuru jazirah Arab yang telah memeluk Islam. Haji ini kelak dikenal sebagai Haji Wada' (haji perpisahan) karena menjadi kesempatan terakhir umat bertemu langsung dengan beliau."]},
+  {h:"Khutbah Arafah", p:["Di Padang Arafah, beliau menyampaikan khutbah agung yang berisi wasiat-wasiat pokok: larangan menumpahkan darah dan mengambil harta secara zalim, penghapusan riba dan dendam jahiliyah, penegasan hak-hak perempuan agar diperlakukan dengan baik, persamaan derajat manusia di hadapan Allah tanpa membedakan suku bangsa kecuali ketakwaan, serta pesan untuk berpegang teguh pada Al-Qur'an dan sunnahnya. Di penghujung khutbah, beliau berulang kali bertanya, 'Bukankah aku telah menyampaikan?' dan para sahabat menjawab, 'Benar, engkau telah menyampaikan.'"]},
+  {h:"Penyempurnaan agama", p:["Pada saat wukuf di Arafah inilah turun ayat yang menegaskan kesempurnaan agama Islam: 'Pada hari ini telah Aku sempurnakan untuk kamu agamamu, dan telah Aku cukupkan nikmat-Ku bagimu, dan telah Aku ridai Islam sebagai agama bagimu' (QS. Al-Ma'idah 5:3)."]}],
+  sources:["bukhari","muslim","quran"], related:["sirah","wafat-nabi","haji"], tags:["sirah","haji"]});
+addEntry({id:"wafat-nabi", menu:8, material:"sirah-nabi", type:"article", title:"Wafat Rasulullah ﷺ", order:9, summary:"Wafat di Madinah pada 12 Rabiul Awal 11 H (± 8 Juni 632 M).",
+  body:[{h:"Sakit menjelang wafat", p:["Sekitar tiga bulan setelah Haji Wada', Nabi ﷺ mulai jatuh sakit dengan demam tinggi yang berlangsung beberapa hari. Beliau meminta izin kepada istri-istrinya untuk dirawat di rumah Aisyah, tempat beliau menghabiskan hari-hari terakhirnya, dan tetap mengimami shalat berjamaah selama masih mampu, hingga akhirnya menunjuk Abu Bakar untuk menggantikannya memimpin shalat."]},
+  {h:"Detik-detik wafat", p:["Beliau wafat pada hari Senin, 12 Rabiul Awal tahun 11 Hijriah (bertepatan ±8 Juni 632 M), dalam pangkuan Aisyah, dengan kalimat terakhir yang diucapkannya berkaitan dengan umatnya dan kalimat 'Ke hadirat Yang Maha Tinggi' (HR. Bukhari no. 4463). Kabar wafatnya mengguncang seluruh Madinah; sebagian sahabat, termasuk Umar bin Khattab, sempat tidak dapat menerima kenyataan tersebut karena begitu terguncang."]},
+  {h:"Peneguhan Abu Bakar & pemakaman", p:["Abu Bakar tampil menenangkan umat dengan pidato masyhurnya: 'Barang siapa menyembah Muhammad, maka Muhammad telah wafat; barang siapa menyembah Allah, maka Allah Maha Hidup dan tidak akan pernah mati,' sembari membacakan ayat 'Muhammad hanyalah seorang rasul, sungguh telah berlalu sebelumnya beberapa rasul...' (QS. Ali 'Imran 3:144; HR. Bukhari no. 1241). Jenazah beliau dimakamkan di kamar tempat beliau wafat, milik Aisyah, yang kini telah menjadi bagian dari kompleks Masjid Nabawi di Madinah."]}],
+  sources:["bukhari","muslim","quran","sirah"], related:["sirah","abu-bakar","haji-wada"], tags:["sirah","nabi"]});
 addEntry({id:"khulafaur-rasyidin", menu:8, material:"sahabat", type:"article", title:"Khulafaur Rasyidin", summary:"Empat khalifah petunjuk: Abu Bakar, Umar, Utsman, Ali — masa 11–40 H.",
   body:[{h:"Ringkasan", list:["Abu Bakar (11–13 H): memerangi kaum murtad, mengumpulkan Al-Qur'an.","Umar (13–23 H): perluasan wilayah, penetapan kalender Hijriah, pembangunan administrasi.","Utsman (23–35 H): penyeragaman mushaf, perluasan Masjid Nabawi.","Ali (35–40 H): konsolidasi internal, memindahkan pusat pemerintahan ke Kufah."]}],
   sources:["sirah"], related:["abu-bakar","umar","utsman","ali","sirah"], tags:["sejarah","khulafaur rasyidin"]});
@@ -2624,11 +2682,11 @@ addEntry({id:"tokoh", menu:9, material:"sahabat-tabiin", type:"article", title:"
   sources:["app"], related:["nabi-muhammad","abu-bakar","imam-syafii"], tags:["tokoh","biografi"]});
 const PERSONS = [
   {id:"nabi-muhammad", menu:9, mat:"nabi-rasul", name:"Nabi Muhammad ﷺ", alt:"Abul Qasim, Al-Amin", birth:"±570 M (Tahun Gajah)", death:"11 H / 632 M", loc:"Makkah → Madinah", kontribusi:"Rasulullah ﷺ, nabi dan rasul terakhir, pembawa Al-Qur'an dan sunnah.", bio:"Lahir di Makkah dari ayah Abdullah dan ibu Aminah; yatim sejak kecil. Menerima wahyu pertama pada usia ±40 tahun, berdakwah di Makkah lalu hijrah ke Madinah (622 M). Wafat di Madinah dan dimakamkan di Masjid Nabawi."},
-  {id:"abu-bakar", menu:9, mat:"sahabat-tabiin", name:"Abu Bakar ash-Shiddiq", alt:"Abdullah bin Abi Quhafah", birth:"±51 SM/573 M", death:"13 H / 634 M", loc:"Makkah → Madinah", kontribusi:"Khalifah pertama (11–13 H); memerangi kaum murtad; mengumpulkan Al-Qur'an.", bio:"Sahabat terdekat dan mertua Nabi ﷺ; orang dewasa pertama yang masuk Islam; menemani hijrah (Gua Tsur). Setelah wafatnya Nabi, ia diteguhkan sebagai khalifah atas pilihan umat."},
-  {id:"umar", menu:9, mat:"sahabat-tabiin", name:"Umar bin Khattab", alt:"Al-Faruq", birth:"±583 M", death:"23 H / 644 M", loc:"Makkah → Madinah", kontribusi:"Khalifah kedua (13–23 H); perluasan wilayah; penetapan kalender Hijriah; pembangunan administrasi negara.", bio:"Sebelum Islam dikenal keras, lalu keislamannya menjadi kekuatan besar. Di masanya Islam meluas ke Persia, Syam, dan Mesir. Wafat dibunuh oleh Abu Lu'lu'ah saat shalat Subuh."},
-  {id:"utsman", menu:9, mat:"sahabat-tabiin", name:"Utsman bin Affan", alt:"Dzun-Nurain", birth:"±576 M", death:"35 H / 656 M", loc:"Makkah → Madinah", kontribusi:"Khalifah ketiga (23–35 H); menyeragamkan mushaf Al-Qur'an (mushaf Utsmani).", bio:"Sahabat yang dijuluki Dzun-Nurain (pemilik dua cahaya) karena menikahi dua putri Nabi. Pada masanya perluasan wilayah berlanjut dan mushaf diseragamkan. Wafat dalam peristiwa pengepungan rumahnya."},
-  {id:"ali", menu:9, mat:"sahabat-tabiin", name:"Ali bin Abi Thalib", alt:"Abu Hasan", birth:"±600 M", death:"40 H / 661 M", loc:"Makkah → Kufah", kontribusi:"Khalifah keempat (35–40 H); sepupu dan menantu Nabi; dikenal keberanian dan ilmunya.", bio:"Masuk Islam sejak kecil, ikut dalam hampir seluruh peperangan. Setelah masa Utsman, dibaiat sebagai khalifah; memindahkan pusat pemerintahan ke Kufah. Wafat terbunuh oleh Abdurrahman bin Muljam."},
-  {id:"bilal", menu:9, mat:"sahabat-tabiin", name:"Bilal bin Rabah", alt:"Muadzdzin ar-Rasul", birth:"±580 M", death:"±20 H / 640 M", loc:"Makkah → Madinah", kontribusi:"Muazin Rasulullah ﷺ; sahabat berdarah Habasyah yang disiksa karena keimanannya.", bio:"Hamba sahaya yang dibebaskan Abu Bakar setelah disiksa di terik Makkah. Mengumandangkan azan pertama dalam Islam dan menjadi muazin tetap Rasulullah ﷺ."},
+  {id:"abu-bakar", menu:9, mat:"sahabat-tabiin", name:"Abu Bakar ash-Shiddiq", alt:"Abdullah bin Abi Quhafah", birth:"±51 SM/573 M", death:"13 H / 634 M", loc:"Makkah → Madinah", kontribusi:"Khalifah pertama (11–13 H); memerangi kaum murtad (Perang Riddah); memprakarsai pengumpulan mushaf Al-Qur'an.", bio:"Abu Bakar adalah sahabat terdekat Nabi ﷺ sejak sebelum kenabian dan menjadi orang dewasa merdeka pertama yang masuk Islam tanpa keraguan sedikit pun. Ia menemani Rasulullah ﷺ bersembunyi di Gua Tsur saat hijrah ke Madinah, dijuluki Allah sebagai 'salah satu dari dua orang ketika keduanya berada di gua' (QS. At-Taubah 9:40). Gelar 'ash-Shiddiq' (yang membenarkan) diperolehnya karena ia langsung membenarkan peristiwa Isra' Mi'raj tanpa ragu ketika orang lain meragukannya. Sepeninggal Nabi ﷺ, ia dibaiat sebagai khalifah pertama di tengah kegemparan umat; tantangan terbesar masa kekhalifahannya adalah munculnya kaum murtad dan nabi-nabi palsu, yang berhasil dipadamkannya melalui Perang Riddah. Atas usul Umar bin Khattab, ia juga memprakarsai pengumpulan seluruh hafalan dan catatan Al-Qur'an menjadi satu mushaf resmi setelah banyak penghafal gugur dalam Perang Yamamah. Ia wafat setelah memerintah dua tahun, wasiat terakhirnya menunjuk Umar sebagai penggantinya."},
+  {id:"umar", menu:9, mat:"sahabat-tabiin", name:"Umar bin Khattab", alt:"Al-Faruq (Sang Pembeda Kebenaran dan Kebatilan)", birth:"±583 M", death:"23 H / 644 M", loc:"Makkah → Madinah", kontribusi:"Khalifah kedua (13–23 H); perluasan wilayah ke Persia, Syam, dan Mesir; penetapan kalender Hijriah; pembangunan sistem administrasi negara (baitul mal, kepolisian, peradilan).", bio:"Sebelum Islam, Umar dikenal sebagai salah satu penentang paling keras dakwah Nabi ﷺ, hingga suatu hari berniat membunuh beliau namun justru masuk Islam setelah membaca ayat-ayat awal Surah Thaha yang dibacakan adiknya sendiri, Fatimah binti Khattab. Keislamannya membalikkan keadaan kaum muslimin yang tadinya bersembunyi menjadi berani beribadah terang-terangan di Ka'bah, sehingga Nabi ﷺ pernah mendoakan keislaman Umar sebagai penguat Islam. Rasulullah ﷺ menjulukinya 'Al-Faruq' karena ketegasannya membedakan kebenaran dari kebatilan. Pada masa kekhalifahannya, wilayah Islam meluas pesat mencakup Persia, Syam, dan Mesir; ia meletakkan fondasi administrasi negara yang sistematis termasuk baitul mal (perbendaharaan negara), lembaga kepolisian, sistem peradilan, dan penetapan kalender Hijriah terhitung sejak peristiwa hijrah Nabi ﷺ. Ia dikenal sangat sederhana dan tegas menegakkan keadilan tanpa pandang bulu, bahkan kepada anaknya sendiri. Ia wafat ditikam oleh Abu Lu'lu'ah, seorang budak Persia, saat memimpin shalat Subuh berjamaah."},
+  {id:"utsman", menu:9, mat:"sahabat-tabiin", name:"Utsman bin Affan", alt:"Dzun-Nurain (Pemilik Dua Cahaya)", birth:"±576 M", death:"35 H / 656 M", loc:"Makkah → Madinah", kontribusi:"Khalifah ketiga (23–35 H); menyeragamkan mushaf Al-Qur'an (mushaf Utsmani); memperluas Masjid Nabawi dan Masjidil Haram.", bio:"Utsman adalah saudagar kaya raya dari kalangan Quraisy yang termasuk golongan awal masuk Islam melalui ajakan Abu Bakar. Ia dijuluki 'Dzun-Nurain' (pemilik dua cahaya) karena secara berturut-turut menikahi dua putri Rasulullah ﷺ, Ruqayyah dan setelah wafatnya Ummu Kultsum. Ia dikenal sangat dermawan, di antaranya membeli sumur Rumah di Madinah yang airnya mahal lalu mewakafkannya untuk seluruh kaum muslimin, serta membiayai penuh pasukan yang berangkat ke Perang Tabuk (dikenal sebagai Jaisyul 'Usrah). Pada masa kekhalifahannya, perluasan wilayah Islam berlanjut hingga ke Afrika Utara dan sebagian Asia Tengah, serta ia memerintahkan penyeragaman mushaf Al-Qur'an ke dalam satu bacaan (qiraah) resmi untuk mencegah perselisihan bacaan di berbagai wilayah, yang dikenal sebagai Mushaf Utsmani hingga kini. Masa akhir kekhalifahannya diwarnai fitnah dan pemberontakan; ia wafat terbunuh saat rumahnya dikepung, dalam keadaan sedang membaca Al-Qur'an."},
+  {id:"ali", menu:9, mat:"sahabat-tabiin", name:"Ali bin Abi Thalib", alt:"Abu Hasan, Karramallahu Wajhah", birth:"±600 M", death:"40 H / 661 M", loc:"Makkah → Kufah", kontribusi:"Khalifah keempat (35–40 H); sepupu dan menantu Nabi ﷺ; dikenal karena keberanian, ilmu, dan kefasihannya.", bio:"Ali dibesarkan di rumah Rasulullah ﷺ sejak kecil karena membantu pamannya, Abu Thalib, yang sedang kesulitan ekonomi; ia menjadi anak-anak pertama yang memeluk Islam. Ia dikenal sebagai salah satu penunggang kuda dan pendekar paling pemberani di kalangan sahabat, ikut hampir seluruh peperangan bersama Nabi ﷺ kecuali Perang Tabuk karena ditugaskan menjaga Madinah. Ia menikahi Fatimah az-Zahra, putri kesayangan Nabi ﷺ, dan dikaruniai Hasan dan Husain yang menjadi cucu kesayangan Rasulullah ﷺ. Ia dikenal sangat mendalam ilmunya dalam Al-Qur'an dan hukum Islam, sehingga Nabi ﷺ menggambarkannya sebagai 'pintu kota ilmu' (HR. Tirmidzi no. 3723, diperselisihkan derajat kesahihannya oleh sebagian ulama hadis). Setelah terbunuhnya Utsman, ia dibaiat menjadi khalifah keempat di tengah situasi yang penuh gejolak dan fitnah, termasuk Perang Jamal melawan Aisyah, Thalhah, dan Zubair, serta Perang Shiffin melawan Mu'awiyah; ia memindahkan pusat pemerintahan ke Kufah, Irak. Ia wafat ditikam oleh Abdurrahman bin Muljam, seorang Khawarij, saat hendak melaksanakan shalat Subuh."},
+  {id:"bilal", menu:9, mat:"sahabat-tabiin", name:"Bilal bin Rabah", alt:"Muadzdzin ar-Rasul", birth:"±580 M", death:"±20 H / 640 M", loc:"Makkah → Madinah → Syam", kontribusi:"Muazin Rasulullah ﷺ; sahabat berdarah Habasyah yang teguh mempertahankan akidahnya di bawah siksaan.", bio:"Bilal adalah budak berkulit hitam milik Umayyah bin Khalaf yang disiksa dengan sangat kejam di terik pasir Makkah karena menolak melepaskan keimanannya—dijemur dengan batu besar di dadanya sambil terus mengucapkan 'Ahad, Ahad' (Allah Maha Esa). Abu Bakar ash-Shiddiq membeli dan memerdekakannya semata karena Allah, sebuah peristiwa yang disebut sebagian ulama tafsir berkaitan dengan turunnya ayat tentang orang yang berinfak mencari ridha Allah (QS. Al-Lail 92:17-21). Setelah hijrah ke Madinah, Bilal dipercaya Rasulullah ﷺ menjadi muazin tetap, mengumandangkan azan pertama dalam sejarah Islam. Ia dikenal dengan suaranya yang merdu dan menggetarkan, serta amal salehnya berupa shalat sunnah setelah berwudu yang membuat Nabi ﷺ mengabarkan telah mendengar suara terompahnya di surga (HR. Bukhari no. 1149). Setelah wafatnya Rasulullah ﷺ, Bilal merasa sangat berat mengumandangkan azan karena teringat kesedihan mendalam, sehingga ia lebih banyak berdakwah dan berjihad di wilayah Syam hingga akhir hayatnya."},
   {id:"khadijah", menu:9, mat:"tokoh-perempuan", name:"Khadijah binti Khuwailid", alt:"Ummul Mu'minin", birth:"±555 M", death:"±3 tahun sebelum hijrah / 619 M", loc:"Makkah", kontribusi:"Istri pertama Nabi ﷺ; wanita pertama masuk Islam; pendukung utama dakwah awal.", bio:"Wanita Quraisy yang terhormat dan sukses berdagang. Menikah dengan Nabi ﷺ pada usia 40 tahun; menenangkan beliau saat wahyu pertama turun. Wafat pada Tahun Duka."},
   {id:"aisyah", menu:9, mat:"tokoh-perempuan", name:"Aisyah binti Abu Bakar", alt:"Ummul Mu'minin, ash-Shiddiqah", birth:"±614 M", death:"58 H / 678 M", loc:"Makkah → Madinah", kontribusi:"Istri Nabi ﷺ; perawi hadis terbanyak di kalangan istri; sumber ilmu fikih dan hadis.", bio:"Putri Abu Bakar yang dinikahi Nabi ﷺ di Madinah. Meriwayatkan lebih dari 2.000 hadis dan menjadi rujukan para sahabat dalam banyak hukum."},
   {id:"imam-syafii", menu:9, mat:"ulama", name:"Imam asy-Syafi'i", alt:"Muhammad bin Idris", birth:"150 H", death:"204 H / 820 M", loc:"Gaza/Asqalan → Mesir", kontribusi:"Pendiri mazhab Syafi'i; perumus ushul fiqih lewat Ar-Risalah; Imam al-Mathlab.", bio:"Imam besar yang menguasai fikih Madinah (Malik) dan Irak (Hanafi), lalu merumuskan mazhabnya sendiri. Karya monumentalnya Ar-Risalah menjadi kitab pertama dalam disiplin ushul fiqih. Wafat di Mesir."},
@@ -3248,14 +3306,20 @@ addEntry({id:"periode-madinah", menu:8, material:"sirah-nabi", type:"article", t
   body:[{h:"Ringkasan", list:["Membangun Masjid Nabawi sebagai pusat ibadah, pendidikan, dan pemerintahan.","Mempersaudarakan Muhajirin dan Anshar (ukhuwah Islamiyah).","Menyusun perjanjian dengan penduduk Madinah (piagam Madinah) yang mengatur hidup bersama berbagai golongan.","Menetapkan azan, kiblat diubah ke Ka'bah, dan syariat mulai ditetapkan bertahap.","Peperangan defensif untuk melindungi dakwah."]}],
   sources:["sirah"], related:["hijrah","masjid-nabawi","fathu-makkah"], tags:["sirah","madinah"]});
 addEntry({id:"perang-badar", menu:8, material:"perang", type:"event-article", title:"Perang Badar", summary:"Perang besar pertama umat Islam — 17 Ramadan 2 H, kemenangan atas pasukan Quraisy.",
-  body:[{h:"Ringkasan", list:["Lokasi: sumur Badar, antara Makkah dan Madinah.","Pasukan: ±313 muslimin melawan ±1000 orang Quraisy.","Hasil: kemenangan kaum muslimin; banyak tokoh Quraisy tewas.","Dalil: QS. Ali 'Imran 3:123 — \"Sungguh Allah telah menolong kamu dalam Perang Badar...\" dan QS. Al-Anfal 8:42."]}],
-  sources:["quran","sirah"], related:["sirah","dakwah-makkah"], tags:["sirah","perang"]});
+  body:[{h:"Latar belakang", p:["Nabi ﷺ memimpin sekitar 313 sahabat mencegat kafilah dagang besar Quraisy pimpinan Abu Sufyan yang pulang dari Syam, sebagai bagian dari tekanan ekonomi atas Quraisy yang telah merampas harta kaum Muhajirin di Makkah. Abu Sufyan berhasil mengalihkan jalur kafilahnya, namun Quraisy telanjur mengirim pasukan besar berjumlah sekitar 1.000 orang lengkap dengan perbekalan untuk melindungi kafilah sekaligus menghancurkan kekuatan muslimin yang baru tumbuh di Madinah."]},
+  {h:"Jalannya pertempuran", p:["Kedua pasukan bertemu di sumur Badar, antara Makkah dan Madinah. Sebelum pertempuran, Nabi ﷺ berdoa sangat khusyuk memohon pertolongan Allah, hingga Abu Bakar menenangkannya karena kesungguhan doa tersebut. Pertempuran diawali duel satu lawan satu antar jagoan kedua pihak, dilanjutkan pertempuran umum; Allah menurunkan bantuan berupa ribuan malaikat sebagaimana disebutkan dalam Al-Qur'an (QS. Al-Anfal 8:9-12)."]},
+  {h:"Hasil & signifikansi", p:["Meski kalah jumlah lebih dari tiga kali lipat, kaum muslimin meraih kemenangan gemilang: banyak pemuka Quraisy yang paling keras memusuhi Islam tewas, termasuk Abu Jahal, sementara jumlah korban di pihak muslimin sangat sedikit (14 orang syahid). Kemenangan ini menjadi titik balik besar yang meneguhkan eksistensi negara Islam di Madinah, sebagaimana ditegaskan Al-Qur'an: 'Sungguh Allah telah menolong kamu dalam Perang Badar, padahal kamu adalah (ketika itu) orang-orang yang lemah' (QS. Ali 'Imran 3:123)."]}],
+  sources:["quran","sirah"], related:["sirah","dakwah-makkah","perang-uhud"], tags:["sirah","perang"]});
 addEntry({id:"perang-uhud", menu:8, material:"perang", type:"event-article", title:"Perang Uhud", summary:"Syawal 3 H — ujian besar bagi kaum muslimin; paman Nabi ﷺ gugur.",
-  body:[{h:"Ringkasan", list:["Lokasi: bukit Uhud, utara Madinah.","Awalnya kaum muslimin unggul; kekalahan terjadi setelah para pemanah meninggalkan posisi.","Hamzah bin Abdul Muththalib gugur dalam perang ini.","Dalil: QS. Ali 'Imran 3:152 — \"...sampai ketika kamu gentar, berselisih dalam urusan itu, dan mendurhakai (Rasul)...\""]}],
-  sources:["quran","sirah"], related:["sirah","perang-badar"], tags:["sirah","perang"]});
+  body:[{h:"Latar belakang", p:["Setahun setelah kekalahan memalukan di Badar, Quraisy kembali dengan pasukan balas dendam berjumlah sekitar 3.000 orang menuju Uhud, sebuah bukit di utara Madinah. Nabi ﷺ memimpin sekitar 1.000 pasukan, namun sekitar 300 orang di bawah pimpinan Abdullah bin Ubay (tokoh munafik) menarik diri di tengah jalan, menyisakan ±700 pasukan muslimin."]},
+  {h:"Jalannya pertempuran", p:["Nabi ﷺ menempatkan 50 pemanah di atas Bukit Rumat dengan perintah tegas untuk tidak meninggalkan posisi apa pun yang terjadi. Pada fase awal, kaum muslimin unggul telak hingga pasukan Quraisy kocar-kacir; namun sebagian besar pemanah, mengira perang telah dimenangkan, turun dari posisi untuk mengumpulkan harta rampasan. Khalid bin Walid, yang saat itu masih memimpin pasukan berkuda Quraisy, memanfaatkan celah ini untuk menyerang balik dari belakang, membalikkan keadaan menjadi kekacauan besar di pihak muslimin."]},
+  {h:"Akibat & pelajaran", p:["Dalam kekacauan itu, Hamzah bin Abdul Muththalib (paman Nabi ﷺ) gugur syahid dan jasadnya dimutilasi Hindun binti Utbah untuk membalas dendam kematian ayah dan pamannya di Badar; Nabi ﷺ sendiri terluka dan sempat tersebar kabar bohong bahwa beliau telah wafat. Allah menegaskan dalam Al-Qur'an bahwa kekalahan ini terjadi akibat perselisihan dan ketidaktaatan sebagian pasukan: '...sampai ketika kamu gentar, berselisih dalam urusan itu, dan mendurhakai (perintah Rasul), setelah Allah memperlihatkan kepadamu apa yang kamu sukai' (QS. Ali 'Imran 3:152), menjadi pelajaran abadi tentang pentingnya ketaatan penuh pada perintah pemimpin dalam kondisi apa pun."]}],
+  sources:["quran","sirah"], related:["sirah","perang-badar","hamzah-bin-abdul-muththalib"], tags:["sirah","perang"]});
 addEntry({id:"perang-khandaq", menu:8, material:"perang", type:"event-article", title:"Perang Khandaq (Ahzab)", summary:"Syawal 5 H — Madinah dikepung sekutu; pertahanan dengan parit.",
-  body:[{h:"Ringkasan", list:["Atas usul Salman al-Farisi, kaum muslimin menggali parit (khandaq) mengelilingi Madinah.","Sekutu (Ahzab) gagal menembus; Allah mengirim angin dan pasukan tak terlihat.","Dalil: QS. Al-Ahzab 33:9-27 — \"...Allah menghalau orang-orang kafir itu dalam keadaan marah...\""]}],
-  sources:["quran","sirah"], related:["sirah","periode-madinah"], tags:["sirah","perang"]});
+  body:[{h:"Latar belakang", p:["Sejumlah suku Yahudi yang diusir dari Madinah (Bani Nadhir) bersekongkol dengan Quraisy dan suku-suku Arab lain, membentuk koalisi besar (Al-Ahzab, 'golongan bersekutu') berjumlah sekitar 10.000 pasukan untuk menghabisi kaum muslimin sekaligus, jumlah terbesar yang pernah dihadapi Madinah."]},
+  {h:"Strategi parit", p:["Menghadapi kekuatan sebesar itu, Salman al-Farisi—sahabat berlatar belakang Persia yang mengenal taktik pertahanan di negerinya—mengusulkan strategi yang belum pernah dikenal bangsa Arab: menggali parit besar (khandaq) mengelilingi sisi Madinah yang terbuka terhadap serangan, sebuah usul yang langsung disetujui dan dikerjakan bersama oleh seluruh kaum muslimin termasuk Nabi ﷺ sendiri selama enam hari."]},
+  {h:"Pengepungan & kemenangan", p:["Pengepungan berlangsung sekitar sebulan; pasukan sekutu gagal total menembus parit tersebut karena taktik yang tak dikenal ini, sementara perbekalan mereka menipis dan perselisihan internal koalisi mulai muncul. Allah kemudian mengirimkan angin topan yang sangat dingin pada malam hari yang memporak-porandakan perkemahan mereka, memaksa seluruh pasukan sekutu mundur tanpa hasil, sebagaimana difirmankan: 'Wahai orang-orang yang beriman, ingatlah nikmat Allah kepadamu ketika datang kepadamu tentara-tentara, lalu Kami kirimkan kepada mereka angin topan dan tentara yang tidak dapat kamu lihat' (QS. Al-Ahzab 33:9). Setelah perang ini, Nabi ﷺ bersabda bahwa Quraisy tidak akan lagi mampu menyerang Madinah, dan kaum musliminlah yang akan berbalik menyerang mereka (HR. Bukhari no. 4110)."]}],
+  sources:["quran","sirah","bukhari"], related:["sirah","periode-madinah","salman-al-farisi","bani-quraizhah"], tags:["sirah","perang"]});
 
 /* --- Menu 9 · Tokoh --- */
 const P2 = [
@@ -4064,6 +4128,73 @@ PERSONS2.forEach(p=>{
   });
 });
 
+/* ---------- MENU 09 — SAHABAT TAMBAHAN (melengkapi 10 Asyarah Mubasysyarin & tokoh kunci sirah) ---------- */
+const SAHABAT_MORE = [
+  {id:"thalhah-bin-ubaidillah", mat:"sahabat-tabiin", name:"Thalhah bin Ubaidillah", alt:"Thalhah al-Khair, \"Burung yang Selalu Terbang\"", birth:"±594 M", death:"36 H / 656 M", loc:"Makkah → Bashrah", kontribusi:"Salah satu Asyarah Mubasysyarin (10 sahabat dijamin surga); dikenal sangat dermawan dan pemberani.", bio:"Termasuk golongan as-sabiqun al-awwalun yang masuk Islam melalui ajakan Abu Bakar. Pada Perang Uhud, ia melindungi Rasulullah ﷺ dengan tubuhnya sendiri hingga tangannya lumpuh terkena panah dan pedang, sebuah pengorbanan yang membuat Nabi ﷺ bersabda bahwa surga menjadi wajib baginya (HR. Tirmidzi no. 3739). Ia dikenal sangat dermawan, sering membagikan seluruh hasil dagangnya kepada yang membutuhkan hingga dijuluki 'burung yang selalu terbang' karena tak pernah berhenti berbuat kebaikan. Ia gugur dalam Perang Jamal (36 H) setelah dipanah oleh Marwan bin Hakam saat berusaha mendamaikan perselisihan sesama muslim, sebuah akhir yang disesalinya sendiri karena tidak menginginkan pertumpahan darah antar-muslim."},
+  {id:"zubair-bin-awwam", mat:"sahabat-tabiin", name:"Zubair bin Awwam", alt:"Al-Hawari (Pembela Setia Rasulullah ﷺ)", birth:"±594 M", death:"36 H / 656 M", loc:"Makkah → Madinah", kontribusi:"Sepupu Nabi ﷺ dan suami Asma binti Abu Bakar; salah satu Asyarah Mubasysyarin.", bio:"Masuk Islam pada usia sangat muda, salah satu golongan as-sabiqun al-awwalun. Ia dijuluki 'Al-Hawari' (pembela setia) karena Nabi ﷺ bersabda setiap nabi memiliki pembela setia dan pembela setianya adalah Zubair (HR. Bukhari no. 3719). Ikut serta dalam hampir seluruh peperangan bersama Rasulullah ﷺ, termasuk Badar dan Uhud, dikenal sebagai penunggang kuda yang gagah berani. Ia gugur syahid dalam Perang Jamal setelah mengundurkan diri dari pertempuran karena tidak ingin memerangi sesama muslim, dibunuh secara licik saat sedang shalat oleh Amru bin Jurmuz."},
+  {id:"abdurrahman-bin-auf", mat:"sahabat-tabiin", name:"Abdurrahman bin Auf", alt:"Saudagar Kaya nan Dermawan", birth:"±581 M", death:"32 H / 652 M", loc:"Makkah → Madinah", kontribusi:"Salah satu Asyarah Mubasysyarin; anggota dewan syura pemilihan khalifah pasca-Umar; pedagang sukses yang sangat dermawan.", bio:"Ketika hijrah ke Madinah tanpa membawa harta, ia dipersaudarakan dengan Sa'ad bin Rabi' dari kaum Anshar yang menawarkan setengah hartanya; Abdurrahman menolak dengan halus dan hanya meminta ditunjukkan letak pasar (HR. Bukhari no. 2048), lalu berdagang hingga menjadi salah satu sahabat terkaya. Meski kaya raya, ia dikenal sangat wara' dan gemar berinfak besar-besaran di jalan Allah, termasuk pernah menyedekahkan 700 unta muatan penuh barang dagangan sekaligus. Umar bin Khattab menunjuknya sebagai salah satu dari enam anggota dewan syura untuk memilih khalifah setelah wafatnya, dan dialah yang akhirnya mengusulkan serta membaiat Utsman bin Affan sebagai khalifah ketiga."},
+  {id:"saad-bin-abi-waqqash", mat:"sahabat-tabiin", name:"Sa'ad bin Abi Waqqash", alt:"Panglima Penakluk Persia", birth:"±595 M", death:"55 H / 675 M", loc:"Makkah → Madinah/Kufah", kontribusi:"Salah satu Asyarah Mubasysyarin; panglima yang memimpin kemenangan besar atas Persia dalam Perang Qadisiyah.", bio:"Termasuk golongan awal yang masuk Islam dan disebut sebagai orang pertama yang melepaskan anak panah di jalan Allah (HR. Bukhari no. 3726). Rasulullah ﷺ pernah bersabda kepadanya, 'Berdoalah, karena doamu mustajab' — sebuah keutamaan yang jarang disebutkan khusus untuk sahabat lain. Ia memimpin pasukan muslimin meraih kemenangan gemilang atas kekaisaran Persia dalam Perang Qadisiyah (15 H), yang membuka jalan penaklukan wilayah Irak dan Persia, serta kelak mendirikan kota Kufah sebagai pusat pemerintahan baru."},
+  {id:"said-bin-zaid", mat:"sahabat-tabiin", name:"Sa'id bin Zaid", alt:"Suami Fatimah binti Khattab", birth:"±594 M", death:"51 H / 671 M", loc:"Makkah → Madinah", kontribusi:"Salah satu Asyarah Mubasysyarin; termasuk as-sabiqun al-awwalun.", bio:"Masuk Islam sejak sangat awal bersama istrinya, Fatimah binti Khattab (adik kandung Umar bin Khattab). Rumah keduanya menjadi tempat Umar mendengar bacaan Al-Qur'an untuk pertama kalinya sebelum ia sendiri masuk Islam, sebuah peristiwa penting dalam sejarah dakwah di Makkah. Sa'id ikut dalam hampir seluruh peperangan bersama Rasulullah ﷺ kecuali Perang Badar, karena saat itu ia sedang ditugaskan mengintai pergerakan kafilah Quraisy, namun ia tetap mendapat bagian ghanimah dan pahala penuh sebagaimana yang ikut bertempur."},
+  {id:"abu-ubaidah-bin-jarrah", mat:"sahabat-tabiin", name:"Abu Ubaidah bin Jarrah", alt:"Aminul Ummah (Kepercayaan Umat)", birth:"±583 M", death:"18 H / 639 M", loc:"Makkah → Syam", kontribusi:"Salah satu Asyarah Mubasysyarin; panglima penaklukan Syam; dijuluki Nabi ﷺ sebagai 'kepercayaan umat ini'.", bio:"Rasulullah ﷺ secara khusus menjulukinya 'Aminul Ummah' (kepercayaan umat ini) karena kejujuran dan keteguhannya (HR. Bukhari no. 4382). Ia memimpin penaklukan wilayah Syam (Suriah, Palestina, Yordania) dengan bijaksana, dikenal berlaku adil dan lembut terhadap penduduk yang ditaklukkan, termasuk menjamin keamanan penduduk Damaskus. Ia wafat dalam wabah Tha'un Amwas (18 H) yang melanda Syam, bersama ribuan pasukan muslimin lainnya, saat berusaha menenangkan dan merawat korban wabah hingga akhir hayatnya."},
+  {id:"khalid-bin-walid", mat:"sahabat-tabiin", name:"Khalid bin Walid", alt:"Saifullah al-Maslul (Pedang Allah yang Terhunus)", birth:"±592 M", death:"21 H / 642 M", loc:"Makkah → Himsh, Syam", kontribusi:"Panglima perang jenius yang tak pernah kalah dalam pertempuran; memimpin penaklukan Persia dan Syam.", bio:"Sebelum masuk Islam, Khalid adalah panglima pasukan berkuda Quraisy yang memimpin kemenangan atas kaum muslimin di Perang Uhud. Ia masuk Islam setelah Perjanjian Hudaibiyah (6 H), dan sejak itu kejeniusan strateginya diabdikan sepenuhnya untuk Islam. Dalam Perang Mu'tah, ia mengambil alih komando setelah tiga panglima gugur berturut-turut dan berhasil menarik mundur pasukan muslimin dengan selamat dari kepungan pasukan Romawi yang jauh lebih besar, sehingga Nabi ﷺ menjulukinya 'Saifullah' (pedang Allah) (HR. Bukhari no. 4266). Ia kemudian memimpin penaklukan Persia dan Syam dengan rentetan kemenangan tanpa kekalahan, namun wafat secara wajar di atas ranjang—suatu hal yang justru disedihkannya karena ia sangat mengharapkan mati syahid di medan perang."},
+  {id:"abdullah-bin-masud", mat:"sahabat-tabiin", name:"Abdullah bin Mas'ud", alt:"Penggembala yang Menjadi Qari Besar", birth:"±594 M", death:"32 H / 653 M", loc:"Makkah → Kufah", kontribusi:"Salah satu sahabat paling ahli Al-Qur'an dan fikih; guru besar bagi generasi tabi'in Kufah.", bio:"Awalnya seorang penggembala kambing miskin di Makkah sebelum masuk Islam pada masa-masa awal dakwah, termasuk golongan yang berhijrah dua kali (ke Habasyah dan Madinah). Nabi ﷺ memujinya sebagai salah satu dari empat sahabat yang paling dianjurkan diambil bacaan Al-Qur'annya (HR. Bukhari no. 3760), dan ia mempelajari langsung lebih dari 70 surah dari lisan Rasulullah ﷺ. Sepeninggal Nabi ﷺ, ia diutus ke Kufah sebagai guru dan hakim, mendidik generasi besar tabi'in dalam ilmu Al-Qur'an, tafsir, dan fikih, sehingga mazhab fikih Kufah (yang kelak memengaruhi Imam Abu Hanifah) banyak berakar dari ajarannya."},
+  {id:"musab-bin-umair", mat:"sahabat-tabiin", name:"Mus'ab bin Umair", alt:"Duta Islam Pertama ke Madinah", birth:"±594 M", death:"3 H / 625 M", loc:"Makkah → Madinah → Uhud", kontribusi:"Pemuda Quraisy terpandang yang meninggalkan kemewahan demi Islam; diutus sebagai duta dakwah pertama ke Madinah.", bio:"Sebelum Islam, Mus'ab dikenal sebagai pemuda Quraisy tertampan dan terkaya yang selalu berpakaian mewah. Setelah masuk Islam secara sembunyi-sembunyi, ia rela kehilangan seluruh kemewahan dan dukungan keluarganya, hingga suatu ketika Nabi ﷺ menitikkan air mata melihat pakaiannya yang lusuh, mengenang kemewahannya dahulu (HR. Tirmidzi no. 2477). Ia diutus Rasulullah ﷺ sebagai duta dakwah pertama ke Madinah sebelum peristiwa hijrah, mengajarkan Al-Qur'an dan berhasil mengislamkan banyak tokoh penting Anshar, termasuk melalui dakwahnya yang lembut dan sabar kepada Sa'ad bin Mu'adz. Ia gugur syahid dalam Perang Uhud saat membawa panji kaum muslimin, bertahan memegangnya dengan kedua tangan hingga keduanya terputus satu demi satu oleh musuh."},
+  {id:"jafar-bin-abi-thalib", mat:"sahabat-tabiin", name:"Ja'far bin Abi Thalib", alt:"Ja'far at-Thayyar (yang Terbang di Surga)", birth:"±590 M", death:"8 H / 629 M", loc:"Makkah → Habasyah → Mu'tah", kontribusi:"Sepupu Nabi ﷺ; pemimpin rombongan Muhajirin ke Habasyah; orator ulung dan syahid Perang Mu'tah.", bio:"Kakak kandung Ali bin Abi Thalib ini memimpin rombongan Muhajirin yang berhijrah ke Habasyah untuk menghindari penyiksaan Quraisy. Di hadapan Raja Najasyi, Ja'far menyampaikan pidato yang menggambarkan keindahan ajaran Islam dan membacakan ayat-ayat Surah Maryam, sehingga sang raja beserta pendetanya menangis terharu dan menolak menyerahkan kaum muslimin kepada utusan Quraisy. Dalam Perang Mu'tah, ia mengambil alih panji setelah panglima pertama, Zaid bin Haritsah, gugur; ia terus maju memegang bendera hingga kedua tangannya putus satu per satu, dan tetap mendekapnya dengan lengan hingga gugur syahid. Rasulullah ﷺ mengabarkan bahwa Allah menggantikan kedua tangannya dengan dua sayap untuk terbang di surga, sehingga ia dijuluki 'Ja'far at-Thayyar' (HR. Ahmad, dinilai sahih oleh sebagian ulama hadis)."},
+  {id:"hamzah-bin-abdul-muththalib", mat:"sahabat-tabiin", name:"Hamzah bin Abdul Muththalib", alt:"Asadullah, Sayyidusy Syuhada (Penghulu Para Syuhada)", birth:"±568 M", death:"3 H / 625 M", loc:"Makkah → Uhud", kontribusi:"Paman Rasulullah ﷺ; pahlawan pemberani yang gugur syahid membela Islam di Perang Uhud.", bio:"Hamzah masuk Islam setelah mendengar Abu Jahal menghina dan menyakiti Nabi ﷺ; dengan darah mendidih ia langsung mendatangi Abu Jahal dan memukulnya, lalu menyatakan keislamannya di hadapan seluruh Quraisy sebagai bentuk pembelaan kepada keponakannya. Keberanian dan kekuatannya membuat Quraisy segan, sehingga masuknya Hamzah ke dalam Islam memperkuat posisi kaum muslimin yang masih tertindas di Makkah. Ia gugur syahid dalam Perang Uhud, dibunuh oleh Wahsyi (budak yang diperintah Hindun binti Utbah, istri Abu Sufyan, untuk membalas dendam kematian ayah dan pamannya di Badar), dan jasadnya dimutilasi secara keji oleh Hindun. Rasulullah ﷺ sangat berduka melihat jasad pamannya dan menjulukinya 'Sayyidusy Syuhada' (penghulu para syuhada) (HR. Al-Hakim)."},
+  {id:"zaid-bin-haritsah", mat:"sahabat-tabiin", name:"Zaid bin Haritsah", alt:"Anak Angkat Rasulullah ﷺ", birth:"±581 M", death:"8 H / 629 M", loc:"Madinah → Mu'tah", kontribusi:"Satu-satunya sahabat yang namanya disebut langsung dalam Al-Qur'an (QS. Al-Ahzab 33:37); panglima pertama Perang Mu'tah.", bio:"Zaid pada awalnya adalah budak yang dihadiahkan kepada Khadijah, lalu diberikan kepada Nabi ﷺ, yang kemudian memerdekakan dan mengangkatnya sebagai anak sebelum kenabian. Ketika ayah kandungnya datang menawarkan tebusan untuk membawanya pulang, Zaid memilih tetap bersama Rasulullah ﷺ karena kasih sayang yang diterimanya, sebuah kisah yang menggambarkan kemuliaan akhlak Nabi ﷺ terhadap budak. Namanya disebut langsung dalam Al-Qur'an terkait pernikahan mantan istrinya, Zainab binti Jahsy, dengan Nabi ﷺ setelah perceraian—peristiwa yang sekaligus membatalkan tradisi jahiliyah yang menyamakan anak angkat dengan anak kandung dalam hukum waris dan pernikahan (QS. Al-Ahzab 33:37,40). Ia ditunjuk sebagai panglima pertama pasukan muslimin dalam Perang Mu'tah dan gugur syahid di awal pertempuran, disusul Ja'far bin Abi Thalib dan Abdullah bin Rawahah yang meneruskan komando."},
+  {id:"abu-hurairah", mat:"sahabat-tabiin", name:"Abu Hurairah", alt:"Sahabat Paling Banyak Meriwayatkan Hadis", birth:"±598 M", death:"57 H / 678 M", loc:"Yaman → Madinah", kontribusi:"Perawi hadis terbanyak sepanjang sejarah Islam (lebih dari 5.300 hadis).", bio:"Masuk Islam pada tahun ke-7 Hijriah, sekitar masa Perang Khaibar, sehingga masa kebersamaannya dengan Rasulullah ﷺ relatif singkat (±3-4 tahun) dibanding sahabat senior lainnya. Meski demikian, ia senantiasa menyertai Nabi ﷺ ke mana pun beliau pergi karena tidak memiliki kesibukan berdagang atau bertani seperti sahabat lain, sembari terus menghafal setiap yang didengarnya. Ia pernah meminta Nabi ﷺ mendoakannya agar tidak pernah lupa apa yang didengarnya, dan doa itu dikabulkan Allah sehingga daya ingatnya menjadi sangat kuat (HR. Bukhari no. 119). Karena riwayat hadisnya yang sangat banyak, sebagian orang munafik di zamannya bahkan meragukannya, namun para ulama hadis menegaskan kevalidan metodenya dalam menjaga dan menyampaikan hadis Nabi ﷺ."},
+  {id:"sumayyah-binti-khayyat", mat:"tokoh-perempuan", name:"Sumayyah binti Khayyath", alt:"Syahidah Pertama dalam Islam", birth:"—", death:"±615 M (masa awal dakwah Makkah)", loc:"Makkah", kontribusi:"Wanita pertama yang gugur syahid dalam sejarah Islam karena mempertahankan akidahnya.", bio:"Sumayyah adalah ibu dari Ammar bin Yasir, seorang budak yang masuk Islam pada masa-masa paling awal dan paling berbahaya di Makkah. Bersama suaminya, Yasir, dan putranya, Ammar, mereka disiksa secara kejam oleh Abu Jahal dan kaum Quraisy karena menolak murtad dari Islam, sementara Rasulullah ﷺ yang melihat penderitaan mereka hanya dapat menghibur dengan sabda, 'Bersabarlah wahai keluarga Yasir, sesungguhnya tempat kalian adalah surga' (HR. Al-Hakim, dinilai sahih sanadnya). Sumayyah tetap teguh menolak melepaskan keimanannya meski disiksa hingga akhirnya dibunuh secara keji oleh Abu Jahal dengan tombak, menjadikannya syahidah (martir perempuan) pertama dalam sejarah Islam, teladan keteguhan akidah yang tak tergoyahkan oleh ancaman maut sekalipun."},
+  {id:"ummu-salamah", mat:"tokoh-perempuan", name:"Ummu Salamah", alt:"Hindun binti Abi Umayyah, Ummul Mu'minin", birth:"±580 M", death:"61 H / 680 M", loc:"Makkah → Habasyah → Madinah", kontribusi:"Istri Rasulullah ﷺ yang dikenal cerdas dan bijaksana; nasihatnya berperan penting dalam Perjanjian Hudaibiyah.", bio:"Ummu Salamah berhijrah bersama suami pertamanya, Abu Salamah, ke Habasyah lalu ke Madinah; setelah suaminya wafat akibat luka Perang Uhud, ia dinikahi Rasulullah ﷺ. Ia dikenal sebagai wanita yang cerdas dan berwawasan luas, sehingga sering dimintai pandangan oleh Nabi ﷺ dalam berbagai persoalan penting. Ketika Perjanjian Hudaibiyah selesai disepakati dan para sahabat merasa berat hati mematuhi sebagian isinya, mereka enggan mencukur rambut dan menyembelih hewan sebagaimana diperintahkan Nabi ﷺ; atas saran Ummu Salamah, Nabi ﷺ mencontohkannya sendiri lebih dulu tanpa berkata-kata, dan seketika seluruh sahabat mengikutinya (HR. Bukhari no. 2731-2732), sebuah nasihat yang menyelesaikan kebuntuan besar dalam sejarah dakwah."}
+];
+SAHABAT_MORE.forEach(p=>addEntry({
+  id:p.id, menu:9, material:p.mat, type:"person", title:p.name, summary:p.kontribusi,
+  person:{name:p.name, alt:p.alt, birth:p.birth, death:p.death, loc:p.loc},
+  body:[
+    {h:"Biografi", p:[p.bio]},
+    {h:"Kontribusi", p:[p.kontribusi]},
+    {h:"Periode & tempat", p:["Lahir: "+p.birth+" · Wafat: "+p.death+" · "+p.loc]}
+  ],
+  sources:["sirah","bukhari","muslim","tirmidzi"], related:["tokoh","asyarah-mubasysyarin"], tags:["tokoh","sahabat","biografi"]
+}));
+
+/* ---------- MENU 09 — ULAMA TAMBAHAN (melengkapi Kutubus Sittah & mufasir besar) ---------- */
+const ULAMA_MORE = [
+  {id:"imam-abu-dawud", mat:"ulama", name:"Imam Abu Dawud", alt:"Sulaiman bin al-Asy'ats as-Sijistani", birth:"202 H", death:"275 H / 889 M", loc:"Sijistan → Bashrah", kontribusi:"Penyusun Sunan Abu Dawud — salah satu kitab Kutubus Sittah yang berfokus pada hadis-hadis hukum (ahkam).", bio:"Mengumpulkan sekitar 500.000 hadis dalam perjalanan keilmuannya, lalu menyeleksi ±4.800 hadis yang berkaitan langsung dengan hukum fikih untuk disusun dalam Sunan Abu Dawud. Ia menjelaskan sendiri metodenya dalam sebuah surat kepada penduduk Makkah, menegaskan bahwa hadis yang sangat lemah akan ia jelaskan kelemahannya, sehingga kitabnya menjadi rujukan penting bagi para fuqaha lintas mazhab."},
+  {id:"imam-tirmidzi", mat:"ulama", name:"Imam At-Tirmidzi", alt:"Muhammad bin Isa at-Tirmidzi", birth:"209 H", death:"279 H / 892 M", loc:"Termez (Asia Tengah)", kontribusi:"Penyusun Jami' at-Tirmidzi (Sunan at-Tirmidzi) — salah satu kitab Kutubus Sittah; pelopor istilah hadis hasan.", bio:"Murid dekat Imam Bukhari yang menyusun kitabnya dengan ciri khas mencantumkan penilaian derajat setiap hadis (sahih, hasan, atau daif) serta perbedaan pendapat mazhab fikih terkait hadis tersebut. Ia dikenal sebagai ulama yang mempopulerkan istilah 'hasan' sebagai kategori derajat hadis di antara sahih dan daif, sebuah kontribusi metodologis penting dalam ilmu hadis."},
+  {id:"imam-nasai", mat:"ulama", name:"Imam An-Nasa'i", alt:"Ahmad bin Syu'aib an-Nasa'i", birth:"215 H", death:"303 H / 915 M", loc:"Nasa (Khurasan) → Mesir", kontribusi:"Penyusun As-Sunan al-Kubra dan ringkasannya Al-Mujtaba (Sunan an-Nasa'i) — salah satu kitab Kutubus Sittah dengan kriteria kesahihan paling ketat setelah Bukhari-Muslim.", bio:"Dikenal sangat teliti dan berhati-hati dalam menyeleksi perawi hadis, sehingga kitabnya dianggap oleh sebagian ulama hadis memiliki tingkat kesahihan yang mendekati Shahih Bukhari dan Shahih Muslim. Dari kitab besarnya As-Sunan al-Kubra, ia menyusun ringkasan Al-Mujtaba yang lebih terseleksi dan menjadi rujukan utama."},
+  {id:"imam-ibnu-majah", mat:"ulama", name:"Imam Ibnu Majah", alt:"Muhammad bin Yazid Ibnu Majah al-Qazwini", birth:"209 H", death:"273 H / 887 M", loc:"Qazwin, Persia", kontribusi:"Penyusun Sunan Ibnu Majah — kitab keenam yang melengkapi Kutubus Sittah.", bio:"Menyusun kitab hadis yang mencakup berbagai bab fikih secara sistematis, melengkapi lima kitab hadis besar lainnya (Bukhari, Muslim, Abu Dawud, Tirmidzi, Nasa'i) hingga dikenal sebagai Kutubus Sittah (enam kitab hadis utama). Sebagian hadis dalam kitabnya bersifat gharib (unik, hanya diriwayatkan olehnya), sehingga para ulama hadis memberi perhatian khusus dalam menilai derajatnya."},
+  {id:"imam-nawawi", mat:"ulama", name:"Imam An-Nawawi", alt:"Yahya bin Syaraf an-Nawawi", birth:"631 H", death:"676 H / 1277 M", loc:"Nawa, Damaskus", kontribusi:"Ulama besar mazhab Syafi'i; penulis Riyadhus Shalihin, Al-Arba'in an-Nawawiyah, dan Syarah Shahih Muslim.", bio:"Dikenal sangat zuhud, hidup sederhana, dan mendedikasikan seluruh waktunya untuk ilmu meski usianya relatif singkat (wafat di usia 45 tahun). Karya-karyanya seperti Riyadhus Shalihin (kumpulan hadis akhlak dan adab) dan Al-Arba'in an-Nawawiyah (40 hadis pokok ajaran Islam) menjadi kitab yang paling luas dipelajari di pesantren dan lembaga pendidikan Islam di seluruh dunia hingga kini, termasuk di Nusantara."},
+  {id:"ibnu-katsir", mat:"ulama", name:"Ibnu Katsir", alt:"Isma'il bin Umar Ibnu Katsir", birth:"701 H", death:"774 H / 1373 M", loc:"Bashrah → Damaskus", kontribusi:"Mufasir dan sejarawan; penulis Tafsir Ibnu Katsir dan Al-Bidayah wan Nihayah.", bio:"Murid Ibnu Taimiyyah yang menulis salah satu kitab tafsir paling populer sepanjang masa, Tafsir Al-Qur'an al-'Azhim (dikenal sebagai Tafsir Ibnu Katsir), yang menafsirkan Al-Qur'an dengan Al-Qur'an, hadis, dan pendapat sahabat secara sistematis. Ia juga menulis Al-Bidayah wan Nihayah, kitab sejarah besar yang mencakup kisah para nabi hingga peristiwa pada masanya sendiri."},
+  {id:"ibnu-taimiyyah", mat:"ulama", name:"Ibnu Taimiyyah", alt:"Taqiyuddin Ahmad bin Taimiyyah", birth:"661 H", death:"728 H / 1328 M", loc:"Harran → Damaskus", kontribusi:"Ulama besar bidang akidah, tafsir, dan fikih; penulis ratusan karya yang berpengaruh luas dalam pemikiran Islam.", bio:"Hidup pada masa penuh gejolak (invasi Mongol dan perpecahan internal umat), ia dikenal sangat berani menyuarakan pendapatnya dan gigih membela pemurnian akidah tauhid, hingga beberapa kali dipenjara oleh penguasa karena perbedaan pandangan dengan sebagian ulama sezamannya. Karya-karyanya yang berjumlah ratusan, dibukukan dalam Majmu' Fatawa, membahas berbagai bidang ilmu keislaman dan tetap dikaji luas hingga saat ini meski juga menuai perbedaan pandangan di kalangan ulama."}
+];
+ULAMA_MORE.forEach(p=>addEntry({
+  id:p.id, menu:9, material:p.mat, type:"person", title:p.name, summary:p.kontribusi,
+  person:{name:p.name, alt:p.alt, birth:p.birth, death:p.death, loc:p.loc},
+  body:[
+    {h:"Biografi", p:[p.bio]},
+    {h:"Kontribusi", p:[p.kontribusi]},
+    {h:"Periode & tempat", p:["Lahir: "+p.birth+" · Wafat: "+p.death+" · "+p.loc]}
+  ],
+  sources:["sirah","app"], related:["tokoh","imam-bukhari","imam-muslim"], tags:["tokoh","ulama","biografi"]
+}));
+
+/* ---------- MENU 09 — TOKOH NUSANTARA TAMBAHAN ---------- */
+const NUSANTARA_MORE = [
+  {id:"ahmad-dahlan", mat:"nusantara", name:"KH. Ahmad Dahlan", alt:"Muhammad Darwis", birth:"1285 H / 1868 M", death:"1341 H / 1923 M", loc:"Yogyakarta", kontribusi:"Pendiri organisasi Muhammadiyah (1912) dan Pahlawan Nasional Indonesia.", bio:"Mendirikan Muhammadiyah pada 18 November 1912 di Yogyakarta sebagai gerakan pembaruan Islam yang menekankan pemurnian akidah sekaligus modernisasi pendidikan dan kesejahteraan sosial (mendirikan sekolah, klinik, dan panti asuhan). Pendekatannya yang menggabungkan dakwah dengan aksi sosial nyata menjadikan Muhammadiyah salah satu organisasi Islam terbesar di Indonesia hingga kini. Ditetapkan sebagai Pahlawan Nasional pada 1961."},
+  {id:"sunan-ampel", mat:"nusantara", name:"Sunan Ampel", alt:"Raden Rahmat", birth:"±1401 M", death:"±1481 M", loc:"Surabaya, Jawa Timur", kontribusi:"Salah satu Wali Songo tertua; mendirikan pesantren Ampeldenta yang mendidik banyak wali lainnya.", bio:"Keturunan ulama dari Champa (kini wilayah Vietnam/Kamboja) yang datang ke Jawa untuk berdakwah. Ia mendirikan pesantren di Ampeldenta, Surabaya, yang menjadi pusat pendidikan Islam terkemuka dan mendidik banyak tokoh yang kelak menjadi wali lainnya, termasuk Sunan Giri dan Sunan Bonang (putranya sendiri). Dikenal dengan ajaran 'Moh Limo' (menolak lima perbuatan tercela: mabuk, berjudi, mencuri, berzina, dan menggunakan narkotika) sebagai metode dakwah yang membumi bagi masyarakat Jawa saat itu."},
+  {id:"sunan-gunung-jati", mat:"nusantara", name:"Sunan Gunung Jati", alt:"Syarif Hidayatullah", birth:"±1448 M", death:"±1568 M", loc:"Cirebon, Jawa Barat", kontribusi:"Salah satu Wali Songo; pendiri Kesultanan Cirebon dan berperan besar dalam penyebaran Islam di Jawa Barat dan Banten.", bio:"Keturunan ulama dari Mesir/Arab melalui jalur ibunya, seorang putri Kerajaan Pajajaran, yang membuatnya memiliki posisi unik menjembatani dakwah Islam dengan struktur kekuasaan lokal. Ia mendirikan Kesultanan Cirebon sebagai basis dakwah dan kekuasaan politik, kemudian turut memperluas pengaruh Islam ke wilayah Banten yang kelak dikembangkan oleh keturunannya menjadi Kesultanan Banten yang berjaya dalam perdagangan maritim."}
+];
+NUSANTARA_MORE.forEach(p=>addEntry({
+  id:p.id, menu:9, material:p.mat, type:"person", title:p.name, summary:p.kontribusi,
+  person:{name:p.name, alt:p.alt, birth:p.birth, death:p.death, loc:p.loc},
+  body:[
+    {h:"Biografi", p:[p.bio]},
+    {h:"Kontribusi", p:[p.kontribusi]},
+    {h:"Periode & tempat", p:["Lahir: "+p.birth+" · Wafat: "+p.death+" · "+p.loc]}
+  ],
+  sources:["sirah","app"], related:["tokoh","sunan-kalijaga","hasyim-asyari"], tags:["tokoh","nusantara","biografi"]
+}));
+
 /* ---------- MENU 12 — BAHASA ARAB: SHARAF ---------- */
 addEntry({id:"wazan-fiil", menu:12, material:"sharaf", type:"article", title:"Wazan Fi'il Tsulasi Mujarrad", summary:"Enam pola dasar perubahan kata kerja tiga huruf asli dalam bahasa Arab.",
   body:[
@@ -4457,47 +4588,51 @@ addEntry({id:"bani-quraizhah", menu:8, material:"perang", type:"event-article", 
   body:[
     {h:"Latar belakang", p:["Bani Quraizhah adalah salah satu suku Yahudi Madinah yang sebelumnya terikat perjanjian damai dengan kaum Muslimin, namun melanggarnya dengan berpihak kepada pasukan koalisi musuh (Ahzab) saat Perang Khandaq berlangsung, membahayakan posisi Madinah dari dalam."]},
     {h:"Penyelesaian", p:["Setelah Perang Khandaq usai, kaum Muslimin mengepung benteng Bani Quraizhah. Mereka akhirnya menyerah dan bersedia diputuskan hukumannya oleh Sa'ad bin Mu'adz, tokoh yang mereka pilih sendiri sebagai hakim (sesuai kesepakatan mereka) berdasarkan hukum Taurat yang berlaku bagi pengkhianatan dalam peperangan pada masa itu."]},
-    {h:"Catatan", p:["Peristiwa ini dicatat sejarawan sebagai penyelesaian atas pelanggaran perjanjian saat perang berlangsung, bukan tindakan terhadap kelompok agama secara umum — sejumlah suku dan individu Yahudi lain di Madinah tetap hidup damai di bawah Piagam Madinah."]}
+    {h:"Catatan", p:["Peristiwa ini dicatat sejarawan sebagai penyelesaian atas pelanggaran perjanjian saat perang berlangsung, bukan tindakan terhadap kelompok agama secara umum — sejumlah suku dan individu Yahudi lain di Madinah tetap hidup damai di bawah Piagam Madinah, dan Bani Quraizhah sendiri sebelumnya telah dua kali diberi kesempatan berdamai sebagaimana suku Yahudi lain (Bani Qainuqa' dan Bani Nadhir) yang hanya diusir, bukan diperangi, atas pelanggaran serupa."]}
   ],
   sources:["sirah"], related:["perang-khandaq","piagam-madinah"], tags:["sejarah","sirah","perang"]});
 addEntry({id:"perang-khaibar", menu:8, material:"perang", type:"event-article", title:"Perang Khaibar", summary:"7 H — penaklukan benteng-benteng Khaibar, basis sejumlah pihak yang terus memusuhi kaum Muslimin.",
   body:[
-    {h:"Latar belakang", p:["Khaibar merupakan kawasan dengan benteng-benteng kuat yang menjadi basis pengumpulan kekuatan pihak-pihak yang terus berupaya menyerang kaum Muslimin di Madinah."]},
-    {h:"Peristiwa", p:["Setelah pengepungan dan beberapa pertempuran benteng, Khaibar akhirnya ditaklukkan. Ali bin Abi Thalib dikenal berperan besar dalam pertempuran ini. Penduduk yang menyerah diizinkan tetap mengelola lahan pertanian dengan sistem bagi hasil."]}
+    {h:"Latar belakang", p:["Khaibar, kawasan subur bertembok kokoh sekitar 150 km utara Madinah, menjadi basis suku Yahudi Bani Nadhir yang sebelumnya diusir dari Madinah karena berkhianat. Dari sanalah mereka terus menghasut dan mendanai suku-suku Arab untuk menyerang kaum Muslimin, termasuk berperan dalam terbentuknya koalisi Perang Khandaq."]},
+    {h:"Jalannya penaklukan", p:["Nabi ﷺ memimpin sekitar 1.600 pasukan mengepung benteng-benteng Khaibar satu demi satu. Setelah beberapa hari tanpa hasil di bawah panglima lain, Nabi ﷺ menyerahkan panji kepada Ali bin Abi Thalib seraya bersabda akan memberikannya kepada orang yang mencintai Allah dan Rasul-Nya serta dicintai keduanya (HR. Bukhari no. 3701, Muslim no. 2406); Ali berhasil menaklukkan benteng terkuat, Qamush, keesokan harinya."]},
+    {h:"Penyelesaian", p:["Setelah menyerah, penduduk Yahudi Khaibar diizinkan tetap tinggal dan mengelola kebun kurma mereka dengan sistem bagi hasil (muzara'ah) bersama kaum Muslimin, sebuah kebijakan yang menunjukkan sikap adil terhadap penduduk yang telah menyerah dan tidak lagi mengangkat senjata."]}
   ],
-  sources:["sirah"], related:["bani-quraizhah","perang-khandaq"], tags:["sejarah","sirah","perang"]});
+  sources:["sirah","bukhari","muslim"], related:["bani-quraizhah","perang-khandaq","ali"], tags:["sejarah","sirah","perang"]});
 addEntry({id:"perang-mutah", menu:8, material:"perang", type:"event-article", title:"Perang Mu'tah", summary:"8 H — pertempuran di perbatasan Syam melawan pasukan Romawi (Bizantium) yang jauh lebih besar jumlahnya.",
   body:[
-    {h:"Latar belakang", p:["Dipicu terbunuhnya utusan Nabi ﷺ oleh pihak Ghassaniyah (sekutu Romawi). Nabi ﷺ mengirim ±3.000 pasukan menghadapi puluhan ribu pasukan Romawi dan sekutunya."]},
-    {h:"Jalannya perang", p:["Tiga panglima gugur berturut-turut (Zaid bin Haritsah, Ja'far bin Abi Thalib, Abdullah bin Rawahah) sesuai wasiat Nabi ﷺ, hingga akhirnya Khalid bin Walid mengambil alih komando dan berhasil menarik mundur pasukan Muslimin secara taktis tanpa kekalahan telak."]}
+    {h:"Latar belakang", p:["Perang ini dipicu terbunuhnya Al-Harits bin Umair, utusan Nabi ﷺ yang membawa surat dakwah kepada penguasa Bushra, oleh Syurahbil bin Amr al-Ghassani, gubernur wilayah Mu'tah yang tunduk kepada Romawi—sebuah pelanggaran serius terhadap kekebalan diplomatik yang dijunjung tinggi dalam tradisi Arab. Nabi ﷺ mengirim sekitar 3.000 pasukan menuju perbatasan Syam untuk menuntut keadilan atas pembunuhan tersebut."]},
+    {h:"Jalannya perang", p:["Pasukan muslimin yang berjumlah kecil ini harus menghadapi pasukan Romawi dan sekutu Arabnya yang diperkirakan berjumlah puluhan ribu hingga ratusan ribu orang. Nabi ﷺ sebelumnya telah menetapkan urutan tiga panglima secara berjenjang bila yang sebelumnya gugur: Zaid bin Haritsah gugur terlebih dahulu, disusul Ja'far bin Abi Thalib yang terus bertempur meski kedua tangannya terputus, lalu Abdullah bin Rawahah yang juga gugur syahid."]},
+    {h:"Penarikan taktis", p:["Melihat pasukan tanpa komando di tengah kepungan pasukan raksasa, para sahabat mengangkat Khalid bin Walid sebagai panglima darurat. Dengan kecerdikan taktiknya, Khalid berhasil menarik mundur seluruh pasukan muslimin dengan selamat tanpa kekalahan telak, sebuah manuver yang membuat Nabi ﷺ menjulukinya 'Saifullah' (pedang Allah) (HR. Bukhari no. 4266)."]}
   ],
-  sources:["sirah"], related:["perang-tabuk"], tags:["sejarah","sirah","perang"]});
+  sources:["sirah","bukhari"], related:["perang-tabuk","khalid-bin-walid","zaid-bin-haritsah","jafar-bin-abi-thalib"], tags:["sejarah","sirah","perang"]});
 addEntry({id:"perang-hunain", menu:8, material:"perang", type:"event-article", title:"Perang Hunain", summary:"8 H — pertempuran melawan suku Hawazin dan Tsaqif tak lama setelah Fathu Makkah.",
   body:[
-    {h:"Latar belakang", p:["Suku Hawazin dan Tsaqif mengumpulkan kekuatan besar untuk menyerang kaum Muslimin, khawatir dengan meluasnya kekuatan Islam setelah penaklukan Makkah."]},
-    {h:"Jalannya perang", p:["Pasukan Muslimin sempat terdesak di awal pertempuran karena serangan mendadak dari lembah sempit, namun berkat keteguhan Nabi ﷺ dan sejumlah sahabat, pasukan berhasil bertahan dan akhirnya meraih kemenangan (QS. At-Taubah 9:25-26)."]}
+    {h:"Latar belakang", p:["Hanya berselang sekitar dua pekan setelah pembebasan Makkah, suku Hawazin dan Tsaqif di bawah pimpinan Malik bin Auf mengumpulkan kekuatan besar untuk menyerang kaum Muslimin lebih dulu, khawatir kekuatan Islam yang baru menaklukkan Makkah akan berbalik mengancam wilayah mereka."]},
+    {h:"Jalannya perang", p:["Nabi ﷺ memimpin pasukan gabungan sekitar 12.000 orang (termasuk penduduk Makkah yang baru masuk Islam), jumlah terbesar yang pernah dipimpinnya, sehingga sebagian sahabat sempat merasa yakin pasti menang karena besarnya jumlah. Namun di Lembah Hunain, pasukan Hawazin yang telah bersembunyi di celah-celah bukit menyerang mendadak dengan hujan anak panah, membuat barisan depan muslimin kocar-kacir dan lari kalang kabut."]},
+    {h:"Titik balik & kemenangan", p:["Di tengah kekacauan itu, Nabi ﷺ tetap teguh di tempatnya bersama segelintir sahabat termasuk Abbas bin Abdul Muththalib, yang atas perintah beliau berseru memanggil kembali pasukan yang lari. Seruan itu berhasil mengumpulkan kembali barisan muslimin yang kemudian membalikkan keadaan dan meraih kemenangan telak, sebagaimana diabadikan Al-Qur'an: '...dan (ingatlah) Perang Hunain, ketika kamu menjadi congkak karena banyaknya jumlahmu, maka jumlah yang banyak itu tidak memberi manfaat kepadamu sedikit pun...kemudian Allah menurunkan ketenangan kepada Rasul-Nya dan kepada orang-orang yang beriman' (QS. At-Taubah 9:25-26), menjadi pelajaran bahwa kemenangan datang dari pertolongan Allah, bukan semata jumlah pasukan."]}
   ],
   sources:["sirah","quran"], related:["fathu-makkah","perang-thaif"], tags:["sejarah","sirah","perang"]});
 addEntry({id:"perang-thaif", menu:8, material:"perang", type:"event-article", title:"Pengepungan Thaif", summary:"8 H — pengepungan kota Thaif menyusul Perang Hunain, tempat sisa pasukan Tsaqif bertahan.",
   body:[
-    {h:"Peristiwa", p:["Setelah kemenangan di Hunain, pasukan Muslimin mengejar sisa pasukan Tsaqif yang berlindung di balik benteng kokoh kota Thaif. Pengepungan berlangsung sekitar dua pekan tanpa berhasil menembus benteng, sehingga Nabi ﷺ memutuskan menarik pasukan."]},
-    {h:"Pelajaran", p:["Tidak semua upaya dakwah/militer berhasil seketika; Thaif sendiri akhirnya masuk Islam secara damai tidak lama setelahnya, tanpa perlu penaklukan paksa."]}
+    {h:"Peristiwa", p:["Setelah kemenangan di Hunain, pasukan Muslimin mengejar sisa pasukan Tsaqif yang mundur dan berlindung di balik benteng kokoh kota Thaif, tempat yang sama di mana belasan tahun sebelumnya Nabi ﷺ pernah diusir dan dilempari batu ketika berdakwah seorang diri kepada penduduknya. Pengepungan berlangsung sekitar dua pekan menggunakan alat pelontar batu (manjaniq), namun benteng Thaif yang sangat kokoh tidak berhasil ditembus."]},
+    {h:"Penarikan & pelajaran", p:["Nabi ﷺ akhirnya memutuskan menarik pasukan karena mempertimbangkan bahwa peperangan berlarut-larut tidak sepadan manfaatnya, seraya berdoa agar penduduk Thaif diberi hidayah. Tidak lama setelahnya, penduduk Thaif justru datang sendiri ke Madinah dan memeluk Islam secara damai tanpa perlu penaklukan paksa—pelajaran bahwa tidak semua upaya dakwah maupun militer harus berhasil seketika, dan kesabaran sering berbuah hasil yang lebih baik di kemudian hari."]}
   ],
   sources:["sirah"], related:["perang-hunain"], tags:["sejarah","sirah","perang"]});
 addEntry({id:"perang-tabuk", menu:8, material:"perang", type:"event-article", title:"Perang Tabuk", summary:"9 H — ekspedisi besar terakhir Nabi ﷺ, mengantisipasi ancaman pasukan Romawi di perbatasan utara.",
   body:[
-    {h:"Latar belakang", p:["Tersiar kabar pasukan besar Romawi tengah bersiap menyerang dari utara. Nabi ﷺ mengerahkan pasukan besar (±30.000 orang) dalam kondisi cuaca sangat panas dan paceklik — dikenal sebagai 'pasukan masa sulit' (Jaisyul 'Usrah)."]},
-    {h:"Hasil", p:["Sesampainya di Tabuk, pasukan Romawi ternyata tidak jadi menyerang. Ekspedisi ini tetap bernilai besar karena menunjukkan kekuatan dan kesiapan kaum Muslimin, serta membuka jalan perjanjian damai dengan sejumlah suku di perbatasan Syam."]}
+    {h:"Latar belakang", p:["Tersiar kabar bahwa Kekaisaran Romawi (Bizantium) tengah menghimpun pasukan besar di utara untuk menyerang, sebagai respons atas kekalahan sekutu mereka dalam Perang Mu'tah setahun sebelumnya. Nabi ﷺ menyerukan mobilisasi umum di tengah musim yang sangat panas dan masa paceklik, sehingga pasukan yang berangkat dijuluki 'Jaisyul 'Usrah' (pasukan masa sulit)."]},
+    {h:"Persiapan luar biasa", p:["Seruan ini disambut pengorbanan besar para sahabat: Utsman bin Affan membiayai sepertiga lebih perbekalan pasukan dari hartanya sendiri, sementara sebagian sahabat yang tidak mampu menangis karena tidak memiliki kendaraan untuk ikut berjihad (QS. At-Taubah 9:92). Sebaliknya, sejumlah orang munafik mencari-cari alasan untuk tidak ikut serta, termasuk tiga sahabat yang jujur mengakui kelalaiannya dan baru diampuni Allah lima puluh hari kemudian (QS. At-Taubah 9:118)."]},
+    {h:"Hasil", p:["Dengan sekitar 30.000 pasukan—jumlah terbesar yang pernah dikerahkan Nabi ﷺ—rombongan tiba di Tabuk, namun pasukan Romawi ternyata tidak jadi menyerang dan mundur lebih dulu. Ekspedisi ini tetap bernilai strategis besar karena menunjukkan kekuatan dan kesiapan penuh kaum Muslimin kepada dunia luar, sekaligus membuka jalan perjanjian damai dengan sejumlah suku dan kerajaan kecil di perbatasan Syam tanpa pertempuran."]}
   ],
-  sources:["sirah"], related:["perang-mutah"], tags:["sejarah","sirah","perang"]});
+  sources:["sirah","quran"], related:["perang-mutah"], tags:["sejarah","sirah","perang"]});
 
 /* ---------- MENU 08 — SAHABAT: 10 Sahabat Dijamin Surga ---------- */
 addEntry({id:"asyarah-mubasysyarin", menu:8, material:"sahabat", type:"article", title:"Asyarah Mubasysyarin (10 Sahabat Dijamin Surga)", summary:"Sepuluh sahabat yang secara khusus diberitakan Nabi ﷺ dijamin masuk surga semasa hidupnya.",
   body:[
-    {h:"Daftar", list:["Abu Bakar ash-Shiddiq","Umar bin al-Khattab","Utsman bin Affan","Ali bin Abi Thalib","Thalhah bin Ubaidillah","Zubair bin al-Awwam","Abdurrahman bin Auf","Sa'ad bin Abi Waqqash","Sa'id bin Zaid","Abu Ubaidah bin al-Jarrah"]},
+    {h:"Daftar (ketuk nama untuk biografi lengkap)", list:["Abu Bakar ash-Shiddiq","Umar bin al-Khattab","Utsman bin Affan","Ali bin Abi Thalib","Thalhah bin Ubaidillah","Zubair bin al-Awwam","Abdurrahman bin Auf","Sa'ad bin Abi Waqqash","Sa'id bin Zaid","Abu Ubaidah bin al-Jarrah"]},
     {h:"Dalil", p:["Diriwayatkan dari hadis Sa'id bin Zaid yang menyebutkan kesepuluh nama ini secara berurutan sebagai ahli surga (HR. Abu Dawud no. 4649, Tirmidzi no. 3747 — hasan sahih)."]}
   ],
-  sources:["abudawud","tirmidzi"], related:["abu-bakar","as-sabiqun-awwalun"], tags:["sejarah","sirah","sahabat"]});
+  sources:["abudawud","tirmidzi"], related:["abu-bakar","umar","utsman","ali","thalhah-bin-ubaidillah","zubair-bin-awwam","abdurrahman-bin-auf","saad-bin-abi-waqqash","said-bin-zaid","abu-ubaidah-bin-jarrah"], tags:["sejarah","sirah","sahabat"]});
 
 /* ---------- MENU 09 — ULAMA: Imam Abu Hanifah ---------- */
 addEntry({id:"imam-abu-hanifah", menu:9, material:"ulama", type:"person", title:"Imam Abu Hanifah", summary:"Pendiri mazhab Hanafi, mazhab fiqih tertua di antara empat mazhab besar Ahlus Sunnah.",
@@ -5866,18 +6001,63 @@ function zakatResultView(type, inp){
 
 /* ========== ASMAUL HUSNA ========== */
 function asmaulView(){
-  const list = DB.ENTRIES.filter(e=>e.type==="asmaul");
+  const list = DB.ENTRIES.filter(e=>e.type==="asmaul").sort((a,b)=>(+a.id.split("-")[1])-(+b.id.split("-")[1]));
   let h = '<div class="page">'+crumbs([{label:"Home",href:"#/home"},{label:"Rukun Iman",href:"#/menu/2"},{label:"Asmaul Husna"}])
     + '<h1 class="h1">Asmaul Husna</h1>'
-    + '<p class="muted" style="margin-top:4px">99 nama Allah — setiap nama adalah entri tersendiri dengan Arab, makna, dalil, dan suara.</p>'
-    + '<div class="chips" style="margin:10px 0"><button class="chip active" data-action="asmaul-tts">'+icon("audio",14)+' Putar semua nama (suara perangkat)</button></div>'
-    + '<div class="card-grid">';
+    + '<p class="muted" style="margin-top:4px">99 nama Allah — ketuk kartu untuk melihat arti, keterangan, dan dalil lengkap.</p>'
+    + '<div class="asma-grid" style="margin-top:14px">';
   list.forEach(e=>{
-    h += '<div class="card menu-card tappable" data-nav="#/entry/'+e.id+'">'
-      + '<div class="mc-top"><span class="menu-icon" style="background:var(--accent-soft)"><span dir="rtl" lang="ar" style="font-family:var(--font-ar);font-size:17px">'+esc(e.arabic.text)+'</span></span><span class="mc-count">#'+e.id.split("-")[1]+'</span></div>'
-      + '<h3>'+esc(e.title)+'</h3><p>'+esc(e.arabic.arti)+'</p></div>';
+    const num = e.id.split("-")[1];
+    h += '<div class="asma-card tappable" data-nav="#/entry/'+e.id+'">'
+      + '<div class="asma-card-top">'
+      + '<span class="asma-num">'+String(num).padStart(2,"0")+'</span>'
+      + '<span class="asma-bookmark-ic" data-action="bookmark" data-id="'+e.id+'" onclick="event.stopPropagation()">'+(inCollection(e.id)?icon("bookmarkFill",18):icon("bookmark",18))+'</span>'
+      + '<span dir="rtl" lang="ar" class="asma-ar">'+esc(e.arabic.text)+'</span>'
+      + '</div>'
+      + '<div class="asma-card-name">'+esc(e.arabic.translit||e.title)+'</div>'
+      + '</div>';
   });
-  h += '</div></div>';
+  h += '</div></div>'
+    + '<button class="asma-fab" data-action="asmaul-tts" aria-label="Putar semua nama (suara perangkat)">'+icon("play",22)+'</button>';
+  return h;
+}
+function secText(e, heading){
+  const s = (e.body||[]).find(b=>b.h===heading);
+  return s && s.p && s.p[0] ? s.p[0] : "";
+}
+function asmaEntryView(e){
+  addRecent(e.id);
+  const num = e.id.split("-")[1];
+  const keterangan = secText(e,"Makna") || e.summary || "";
+  const manfaat = secText(e,"Pengamalan") || "";
+  const intro = getEntry("asmaul-husna");
+  const dalilLengkap = (intro && secText(intro,"Dalil")) || e.arabic.source || "—";
+  let h = '<div class="page asma-detail">'
+    + '<div class="asma-top-bar">'
+    + '<button class="icon-btn" data-action="back" data-fallback="#/asmaul-husna" aria-label="Kembali">'+icon("back",22)+'</button>'
+    + '<div class="asma-top-actions">'
+    + '<button class="icon-btn" data-action="bookmark" data-id="'+e.id+'" aria-label="Simpan">'+(inCollection(e.id)?icon("bookmarkFill",20):icon("bookmark",20))+'</button>'
+    + '<button class="icon-btn" data-action="share" data-id="'+e.id+'" aria-label="Bagikan">'+icon("share",20)+'</button>'
+    + '</div></div>'
+    + '<div class="asma-detail-hero">'
+    + '<span class="asma-detail-num">'+String(num).padStart(2,"0")+'</span>'
+    + '<div class="asma-detail-arabic" dir="rtl" lang="ar">'+esc(e.arabic.text)+'</div>'
+    + '<div class="asma-detail-name">'+esc(e.arabic.translit||e.title)+'</div>'
+    + '</div>'
+    + '<div class="asma-panel">'
+    + '<div class="asma-panel-head"><div><div class="asma-panel-title">Arti</div>'
+    + '<div class="asma-panel-arti">'+esc(e.arabic.arti)+'</div></div>'
+    + '<button class="asma-dalil-btn" data-action="asma-dalil" data-target="asma-dalil-'+e.id+'">'+icon("info",20)+'<span>Lihat Dalil</span></button>'
+    + '</div></div>'
+    + '<div class="asma-block" id="asma-dalil-'+e.id+'" style="display:none">'
+    + '<div class="asma-block-title">Dalil</div><div>'+arabicize(esc(dalilLengkap))+'</div></div>'
+    + '<div class="asma-block"><div class="asma-block-title">Keterangan</div><div>'+arabicize(esc(keterangan))+'</div></div>'
+    + '<div class="asma-manfaat-row"><span class="asma-manfaat-title">Manfaat Membaca</span>'
+    + '<label class="switch"><input type="checkbox" data-toggle-target="asma-manfaat-'+e.id+'"><i></i></label></div>'
+    + '<div class="asma-manfaat-content" id="asma-manfaat-'+e.id+'">'+arabicize(esc(manfaat))+'</div>'
+    + sourcesBlock(e) + relatedBlock(e)
+    + '</div>'
+    + '<button class="asma-fab" data-action="asma-audio-fab" data-id="'+e.id+'" aria-label="Putar suara">'+icon("play",22)+'</button>';
   return h;
 }
 
@@ -6056,7 +6236,7 @@ const AM = {
     this._cancelTTS();
     this._sync();
   },
-  tts(text, btn){
+  tts(text, btn, voiceURI){
     if(typeof window==="undefined" || !("speechSynthesis" in window)){ toast("Perangkat tidak mendukung suara (TTS)", true); return; }
     const synth = window.speechSynthesis;
     if(this._ttsRunning && this._ttsBtn===btn){
@@ -6070,8 +6250,9 @@ const AM = {
     u.lang = "ar-SA"; u.rate = 0.85;
     try{
       const voices = synth.getVoices();
-      const ar = voices.find(v=>/^ar/i.test(v.lang));
-      if(ar) u.voice = ar;
+      let v = voiceURI ? voices.find(vv=>vv.voiceURI===voiceURI) : null;
+      if(!v) v = voices.find(vv=>/^ar/i.test(vv.lang));
+      if(v) u.voice = v;
     }catch(e){}
     u.onend = ()=>{ this._ttsRunning=false; this._ttsBtn=null; if(btn){ btn.classList.remove("playing"); btn.innerHTML = icon("audio",15); } };
     u.onerror = ()=>{ this._ttsRunning=false; this._ttsBtn=null; if(btn){ btn.classList.remove("playing"); btn.innerHTML = icon("audio",15); } };
@@ -6168,6 +6349,7 @@ function sourcesBlock(e){
 function entryView(id){
   const e = getEntry(id);
   if(!e) return errorView("Entri tidak ditemukan.");
+  if(e.type==="asmaul") return asmaEntryView(e);
   addRecent(e.id);
   const menu = DB.MENUS.find(m=>m.id===e.menu);
   const mat = menu ? menu.materials.find(m=>m.id===e.material) : null;
@@ -6271,7 +6453,7 @@ function menuView(menuId){
   if(!menu) return errorView("Menu tidak ditemukan.");
   // Menu khusus: Al-Qur'an (tab materi) & Kalender (halaman khusus)
   if(menu.id===3) return quranView("");
-  if(menu.id===10) return kalenderView(new Date());
+  if(menu.id===10) return kalenderView(CAL_CURSOR);
 
   let h = '<div class="page">'+crumbs([{label:"Home",href:"#/home"},{label:menu.name}])
     + '<h1 class="h1">'+icon(menu.icon,22)+' '+esc(menu.name)+'</h1>'
@@ -6300,7 +6482,7 @@ function materialView(menuId, matId){
     const tabs = {mushaf:"", juz:"juz", "juz-amma":"juzamma", iqra:"iqra", tajwid:"tajwid", tafsir:"tafsir"};
     return quranView(tabs[matId]||"", mat.name);
   }
-  if(menu.id===10) return kalenderView(new Date());
+  if(menu.id===10) return kalenderView(CAL_CURSOR);
 
   let entries = DB.ENTRIES.filter(e=>e.menu===+menuId && e.material===matId).sort(byOrder);
   // Entry pendahuluan "Rukun Iman" tidak ditampilkan di dalam materi Iman kepada Allah
@@ -6341,16 +6523,12 @@ function subView(menuId, matId, sub, tag){
   const menu = DB.MENUS.find(m=>m.id===+menuId);
   const mat = menu ? menu.materials.find(x=>x.id===matId) : null;
   if(!menu || !mat) return errorView("Submateri tidak ditemukan.");
+  if(sub==="asmaul-husna") return asmaulView();
   let entries = DB.ENTRIES.filter(e=>e.menu===+menuId && e.material===matId && e.sub===sub).sort(byOrder);
   const label = subName(mat, sub);
   let h = '<div class="page">'+crumbs([{label:"Home",href:"#/home"},{label:menu.name,href:"#/menu/"+menu.id},{label:mat.name,href:"#/material/"+menu.id+"/"+mat.id},{label:label}])
     + '<button class="btn btn-ghost" style="margin-bottom:10px" data-action="back" data-fallback="#/material/'+menu.id+'/'+mat.id+'">'+icon("back",15)+' Kembali ke '+esc(mat.name)+'</button>'
     + '<h1 class="h1">'+esc(label)+'</h1>';
-
-  /* Tombol putar semua — khusus submateri Asmaul Husna (putar satu per satu tetap ada di tiap kartu) */
-  if(sub==="asmaul-husna"){
-    h += '<div class="chips" style="margin:10px 0"><button class="chip active" data-action="asmaul-tts">'+icon("audio",14)+' Putar semua nama (suara perangkat)</button></div>';
-  }
 
   /* Filter TEMA (tag) — khusus koleksi hadis; tema adalah filter, bukan menu */
   if(+menuId===4 && matId==="hadis"){
@@ -8787,6 +8965,9 @@ function bindActions(){
   document.querySelectorAll("[data-tts]").forEach(b=>{
     b.onclick = e => { e.stopPropagation(); AM.tts(b.dataset.tts, b); };
   });
+  document.querySelectorAll("[data-toggle-target]").forEach(el=>{
+    el.onchange = () => { const t = $(el.dataset.toggleTarget); if(t) t.classList.toggle("open", el.checked); };
+  });
   document.querySelectorAll("[data-action]").forEach(el=>{
     el.onclick = e => {
       const act = el.dataset.action;
@@ -8829,7 +9010,17 @@ function bindActions(){
       }
       else if(act==="asmaul-tts"){
         const names = DB.ENTRIES.filter(e=>e.type==="asmaul").map(e=>e.arabic ? e.arabic.text : "").filter(Boolean);
-        AM.tts(names.join("، "), el);
+        AM.tts(names.join("، "), el, SETTINGS.asmaVoiceURI);
+      }
+      else if(act==="asma-dalil"){
+        const box = $(el.dataset.target); if(box) box.style.display = box.style.display==="none" ? "block" : "none";
+      }
+      else if(act==="asma-audio-fab"){
+        const id = el.dataset.id;
+        if(SETTINGS.asmaVoiceRemember){
+          const e = getEntry(id);
+          if(e && e.arabic && e.arabic.text) AM.tts(e.arabic.text, null, SETTINGS.asmaVoiceURI);
+        } else { openAsmaAudioPicker(id); }
       }
       else if(act==="surah-audio"){
         const n = el.dataset.surah;
@@ -8878,6 +9069,44 @@ function toggleBookmark(id, btn){
   saveCollection();
   if(btn) btn.innerHTML = inCollection(id)?icon("bookmarkFill",16)+" Tersimpan":icon("bookmark",16)+" Simpan";
 }
+/* ---------- Modal generik ---------- */
+function openModal(html, onReady){
+  closeModal();
+  const wrap = document.createElement("div");
+  wrap.className = "modal-backdrop"; wrap.id = "app-modal";
+  wrap.innerHTML = '<div class="modal-box">'+html+'</div>';
+  wrap.addEventListener("click", e=>{ if(e.target===wrap) closeModal(); });
+  document.body.appendChild(wrap);
+  if(onReady) onReady(wrap);
+}
+function closeModal(){ const m = $("app-modal"); if(m) m.remove(); }
+/* ---------- Pemilih suara Asmaul Husna (suara perangkat/TTS) ---------- */
+function openAsmaAudioPicker(id){
+  let voices = [];
+  try{ voices = window.speechSynthesis.getVoices().filter(v=>/^ar/i.test(v.lang)); }catch(err){}
+  const saved = SETTINGS.asmaVoiceURI || (voices[0] && voices[0].voiceURI) || "";
+  const optsHtml = voices.length
+    ? voices.map(v=>'<label class="modal-option"><input type="radio" name="asma-voice" value="'+esc(v.voiceURI)+'" '+(v.voiceURI===saved?"checked":"")+'><span>'+esc(v.name)+'</span></label>').join("")
+    : '<label class="modal-option"><input type="radio" name="asma-voice" value="" checked><span>Suara perangkat (bawaan)</span></label>'
+      + '<div class="muted small" style="margin-top:4px">Perangkat ini belum mendeteksi suara berbahasa Arab tambahan; audio memakai suara TTS bawaan sistem.</div>';
+  openModal(
+    '<div class="modal-title">Pilih Suara</div>' + optsHtml
+    + '<label class="modal-check"><input type="checkbox" id="asma-voice-remember"><span>Jangan tanya lagi</span></label>'
+    + '<div class="modal-actions"><button data-role="cancel">BATAL</button><button data-role="ok">OK</button></div>',
+    wrap=>{
+      wrap.querySelector('[data-role="cancel"]').onclick = closeModal;
+      wrap.querySelector('[data-role="ok"]').onclick = ()=>{
+        const sel = wrap.querySelector('input[name="asma-voice"]:checked');
+        const remember = wrap.querySelector('#asma-voice-remember').checked;
+        const voiceURI = sel ? sel.value : "";
+        SETTINGS.asmaVoiceURI = voiceURI; SETTINGS.asmaVoiceRemember = remember; saveSettings();
+        closeModal();
+        const e = getEntry(id);
+        if(e && e.arabic && e.arabic.text) AM.tts(e.arabic.text, null, voiceURI);
+      };
+    }
+  );
+}
 function shareEntry(id, btn){
   const e = getEntry(id);
   const title = e ? e.title : (btn && btn.dataset.title ? btn.dataset.title : id);
@@ -8911,8 +9140,9 @@ function afterRender(r){
     timerId = setInterval(up, 1000); up();
     initCarousel();
   }
-  if(r.name==="kalender"){
-    const keys=["cal-prev","cal-next"]; keys.forEach(k=>{ const b=$(k); if(b) b.onclick=()=>{ CAL_CURSOR = CALC.shiftHijriMonth(CAL_CURSOR, k==="cal-prev"?-1:1); router(); }; });
+  const calPrev=$("cal-prev"), calNext=$("cal-next");
+  if(calPrev || calNext){
+    [["cal-prev",-1],["cal-next",1]].forEach(([k,dir])=>{ const b=$(k); if(b) b.onclick=()=>{ CAL_CURSOR = CALC.shiftHijriMonth(CAL_CURSOR, dir); router(); }; });
   }
   if(r.name==="iqra"){
     // swipe untuk membalik halaman Iqra
