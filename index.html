@@ -625,11 +625,11 @@ html[data-theme="dark"] .cal-cell.today .dot{background:#062B1A}
 /* ---------- Asmaul Husna: grid & halaman detail ---------- */
 .asma-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .asma-card{position:relative;background:var(--surface-2);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--border)}
-.asma-card-top{position:relative;min-height:150px;display:flex;align-items:center;justify-content:center;padding:18px 10px}
-.asma-num{position:absolute;top:10px;left:10px;background:var(--accent);color:#04231d;font-weight:800;font-size:calc(11.5px * var(--font-scale));padding:3px 8px;border-radius:6px}
-.asma-bookmark-ic{position:absolute;top:10px;right:10px;color:var(--text-3);display:flex}
-.asma-card-top .asma-ar{font-family:var(--font-ar);font-size:34px;color:var(--text);text-align:center;line-height:1.3}
-.asma-card-name{text-align:center;font-weight:800;font-size:calc(14px * var(--font-scale));padding:10px 6px 14px;color:var(--text)}
+.asma-card-top{position:relative;min-height:104px;display:flex;align-items:center;justify-content:center;padding:14px 10px}
+.asma-num{position:absolute;top:8px;left:8px;background:var(--accent);color:#04231d;font-weight:800;font-size:calc(11px * var(--font-scale));padding:2px 7px;border-radius:6px}
+.asma-bookmark-ic{position:absolute;top:8px;right:8px;color:var(--text-3);display:flex}
+.asma-card-top .asma-ar{font-family:var(--font-ar);font-size:26px;color:var(--text);text-align:center;line-height:1.2}
+.asma-card-name{text-align:center;font-weight:800;font-size:calc(13px * var(--font-scale));padding:8px 6px 10px;color:var(--text)}
 .asma-fab{position:fixed;right:18px;bottom:calc(var(--bn-h) + 18px);width:56px;height:56px;border-radius:50%;background:var(--accent);color:#04231d;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);z-index:150;border:none;cursor:pointer}
 @media (min-width:1024px){.asma-fab{bottom:22px}}
 .asma-detail{position:relative;padding-bottom:70px}
@@ -661,6 +661,12 @@ html[data-theme="dark"] .cal-cell.today .dot{background:#062B1A}
 .modal-check{display:flex;align-items:center;gap:10px;padding:10px 0;color:var(--text-3);font-size:calc(12.5px * var(--font-scale))}
 .modal-actions{display:flex;justify-content:flex-end;gap:18px;margin-top:14px}
 .modal-actions button{background:none;border:none;color:var(--accent);font-weight:800;font-size:calc(13px * var(--font-scale));cursor:pointer}
+
+/* ---------- Grid Kategori (Doa & Dzikir) ---------- */
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cat-card{background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:16px 8px 12px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;min-height:118px;justify-content:center}
+.cat-ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.cat-label{font-size:calc(12px * var(--font-scale));font-weight:700;line-height:1.25;color:var(--text)}
 
 /* ---------- Tabs ---------- */
 .tabs{display:flex;gap:4px;background:var(--surface-2);padding:3px;border-radius:10px;margin-bottom:12px;overflow-x:auto}
@@ -997,8 +1003,8 @@ DB.MENUS = [
   {id:6, num:"06", name:"Doa & Dzikir", icon:"doa", short:"Doa harian & dzikir",
    desc:"Doa harian, doa ibadah, dzikir pagi-petang, dan dzikir setelah shalat.",
    materials:[
-     {id:"doa", name:"Doa", subs:[["harian","Doa Harian"],["tidur","Doa Tidur"],["makan","Doa Makan"],["belajar","Doa Belajar"],["perjalanan","Doa Perjalanan"],["keluarga","Doa Keluarga"],["perlindungan","Doa Perlindungan"],["masjid","Doa Masjid"],["kesulitan","Doa Kesulitan & Kesehatan"],["setelah-shalat","Doa setelah Shalat"],["ramadan","Doa Ramadan"]]},
-     {id:"dzikir", name:"Dzikir", subs:[["pagi","Dzikir Pagi"],["petang","Dzikir Petang"],["setelah-shalat","Dzikir setelah Shalat"],["tidur","Dzikir sebelum Tidur"]]}]},
+     {id:"doa", name:"Doa", subs:[["harian","Doa Harian"],["tidur","Doa Tidur & Bangun"],["makan","Doa Makan & Minum"],["toilet","Doa ke Kamar Mandi"],["wudhu","Doa Wudhu"],["masjid","Doa Masjid"],["setelah-shalat","Doa setelah Shalat"],["perjalanan","Doa Bermusafir"],["rumah","Doa Rumah"],["pakaian","Doa Berpakaian"],["cuaca","Doa Hujan & Angin"],["perlindungan","Doa Perlindungan"],["kesulitan","Doa Sakit & Musibah"],["kesedihan","Doa Kesedihan Hati"],["rezeki","Doa Rezeki & Hutang"],["taubat","Doa Ampunan & Taubat"],["istikharah","Doa Keputusan (Istikharah)"],["belajar","Doa Menuntut Ilmu"],["ramadan","Doa Ramadan & Puasa"],["quran","Doa dari Al-Qur'an"],["haji","Doa Haji & Umrah"],["kematian","Doa Kematian & Takziah"],["keluarga","Doa untuk Keluarga"],["tawakkal","Doa Tawakal & Syukur"]]},
+     {id:"dzikir", name:"Dzikir", subs:[["pagi","Dzikir Pagi"],["petang","Dzikir Petang"],["setelah-shalat","Dzikir setelah Shalat"],["tidur","Dzikir sebelum Tidur"],["fitur","Tasbih Digital"]]}]},
   {id:7, num:"07", name:"Akhlak, Adab & Tazkiyah", icon:"akhlak", short:"Akhlak & jiwa",
    desc:"Akhlak mulia, adab keseharian, dan penyucian jiwa (tazkiyah).",
    materials:[
@@ -2082,105 +2088,105 @@ addEntry({id:"ikhtiar-tawakal", menu:2, material:"iman-kepada-qada-qadar", type:
 
 /* ========== ASMAUL HUSNA (99 NAMA) ========== */
 const ASMA = [
-["الرَّحْمَنُ","Ar-Rahman","Yang Maha Pengasih"],
-["الرَّحِيمُ","Ar-Rahim","Yang Maha Penyayang"],
-["الْمَلِكُ","Al-Malik","Yang Maha Merajai"],
-["الْقُدُّوسُ","Al-Quddus","Yang Maha Suci"],
-["السَّلَامُ","As-Salam","Yang Maha Sejahtera"],
-["الْمُؤْمِنُ","Al-Mu'min","Yang Maha Memberi Keamanan"],
-["الْمُهَيْمِنُ","Al-Muhaimin","Yang Maha Memelihara"],
-["الْعَزِيزُ","Al-'Aziz","Yang Maha Perkasa"],
-["الْجَبَّارُ","Al-Jabbar","Yang Maha Berkehendak"],
-["الْمُتَكَبِّرُ","Al-Mutakabbir","Yang Maha Besar"],
-["الْخَالِقُ","Al-Khaliq","Yang Maha Pencipta"],
-["الْبَارِئُ","Al-Bari'","Yang Maha Mengadakan"],
-["الْمُصَوِّرُ","Al-Mushawwir","Yang Maha Membentuk Rupa"],
-["الْغَفَّارُ","Al-Ghaffar","Yang Maha Pengampun"],
-["الْقَهَّارُ","Al-Qahhar","Yang Maha Menundukkan"],
-["الْوَهَّابُ","Al-Wahhab","Yang Maha Pemberi"],
-["الرَّزَّاقُ","Ar-Razzaq","Yang Maha Pemberi Rezeki"],
-["الْفَتَّاحُ","Al-Fattah","Yang Maha Pembuka"],
-["الْعَلِيمُ","Al-'Alim","Yang Maha Mengetahui"],
-["الْقَابِضُ","Al-Qabidh","Yang Maha Menyempitkan"],
-["الْبَاسِطُ","Al-Basith","Yang Maha Melapangkan"],
-["الْخَافِضُ","Al-Khafidh","Yang Maha Merendahkan"],
-["الرَّافِعُ","Ar-Rafi'","Yang Maha Meninggikan"],
-["الْمُعِزُّ","Al-Mu'izz","Yang Maha Memuliakan"],
-["الْمُذِلُّ","Al-Mudzill","Yang Maha Menghinakan"],
-["السَّمِيعُ","As-Sami'","Yang Maha Mendengar"],
-["الْبَصِيرُ","Al-Bashir","Yang Maha Melihat"],
-["الْحَكَمُ","Al-Hakam","Yang Maha Menetapkan"],
-["الْعَدْلُ","Al-'Adl","Yang Maha Adil"],
-["اللَّطِيفُ","Al-Lathif","Yang Maha Lembut"],
-["الْخَبِيرُ","Al-Khabir","Yang Maha Mengenal"],
-["الْحَلِيمُ","Al-Halim","Yang Maha Penyantun"],
-["الْعَظِيمُ","Al-'Azhim","Yang Maha Agung"],
-["الْغَفُورُ","Al-Ghafur","Yang Maha Pengampun"],
-["الشَّكُورُ","Asy-Syakur","Yang Maha Mensyukuri"],
-["الْعَلِيُّ","Al-'Aliyy","Yang Maha Tinggi"],
-["الْكَبِيرُ","Al-Kabir","Yang Maha Besar"],
-["الْحَفِيظُ","Al-Hafizh","Yang Maha Menjaga"],
-["الْمُقِيتُ","Al-Muqit","Yang Maha Memberi Kecukupan"],
-["الْحَسِيبُ","Al-Hasib","Yang Maha Membuat Perhitungan"],
-["الْجَلِيلُ","Al-Jalil","Yang Maha Mulia"],
-["الْكَرِيمُ","Al-Karim","Yang Maha Pemurah"],
-["الرَّقِيبُ","Ar-Raqib","Yang Maha Mengawasi"],
-["الْمُجِيبُ","Al-Mujib","Yang Maha Mengabulkan"],
-["الْوَاسِعُ","Al-Wasi'","Yang Maha Luas"],
-["الْحَكِيمُ","Al-Hakim","Yang Maha Bijaksana"],
-["الْوَدُودُ","Al-Wadud","Yang Maha Mencintai"],
-["الْمَجِيدُ","Al-Majid","Yang Maha Mulia"],
-["الْبَاعِثُ","Al-Ba'its","Yang Maha Membangkitkan"],
-["الشَّهِيدُ","Asy-Syahid","Yang Maha Menyaksikan"],
-["الْحَقُّ","Al-Haqq","Yang Maha Benar"],
-["الْوَكِيلُ","Al-Wakil","Yang Maha Memelihara"],
-["الْقَوِيُّ","Al-Qawiyyu","Yang Maha Kuat"],
-["الْمَتِينُ","Al-Matin","Yang Maha Kokoh"],
-["الْوَلِيُّ","Al-Waliyy","Yang Maha Melindungi"],
-["الْحَمِيدُ","Al-Hamid","Yang Maha Terpuji"],
-["الْمُحْصِي","Al-Muhshi","Yang Maha Menghitung"],
-["الْمُبْدِئُ","Al-Mubdi'","Yang Maha Memulai"],
-["الْمُعِيدُ","Al-Mu'id","Yang Maha Mengembalikan"],
-["الْمُحْيِي","Al-Muhyi","Yang Maha Menghidupkan"],
-["الْمُمِيتُ","Al-Mumit","Yang Maha Mematikan"],
-["الْحَيُّ","Al-Hayy","Yang Maha Hidup"],
-["الْقَيُّومُ","Al-Qayyum","Yang Maha Berdiri Sendiri"],
-["الْوَاجِدُ","Al-Wajid","Yang Maha Menemukan"],
-["الْمَاجِدُ","Al-Majiid","Yang Maha Mulia"],
-["الْوَاحِدُ","Al-Wahid","Yang Maha Esa"],
-["الْأَحَدُ","Al-Ahad","Yang Maha Tunggal"],
-["الصَّمَدُ","Ash-Shamad","Yang Maha Dibutuhkan"],
-["الْقَادِرُ","Al-Qadir","Yang Maha Menentukan"],
-["الْمُقْتَدِرُ","Al-Muqtadir","Yang Maha Berkuasa"],
-["الْمُقَدِّمُ","Al-Muqaddim","Yang Maha Mendahulukan"],
-["الْمُؤَخِّرُ","Al-Mu'akhkhir","Yang Maha Mengakhirkan"],
-["الْأَوَّلُ","Al-Awwal","Yang Maha Awal"],
-["الْآخِرُ","Al-Akhir","Yang Maha Akhir"],
-["الظَّاهِرُ","Azh-Zhahir","Yang Maha Nyata"],
-["الْبَاطِنُ","Al-Bathin","Yang Maha Tersembunyi"],
-["الْوَالِي","Al-Wali","Yang Maha Memerintah"],
-["الْمُتَعَالِي","Al-Muta'ali","Yang Maha Tinggi"],
-["الْبَرُّ","Al-Barr","Yang Maha Baik"],
-["التَّوَّابُ","At-Tawwab","Yang Maha Penerima Taubat"],
-["الْمُنْتَقِمُ","Al-Muntaqim","Yang Maha Pembalas"],
-["الْعَفُوُّ","Al-'Afuww","Yang Maha Pemaaf"],
-["الرَّءُوفُ","Ar-Ra'uf","Yang Maha Pengasih"],
-["مَالِكُ الْمُلْكِ","Malikul-Mulk","Yang Maha Pemilik Kerajaan"],
-["ذُو الْجَلَالِ وَالْإِكْرَامِ","Dzul-Jalali wal-Ikram","Yang Maha Pemilik Kebesaran dan Kemuliaan"],
-["الْمُقْسِطُ","Al-Muqsith","Yang Maha Adil"],
-["الْجَامِعُ","Al-Jami'","Yang Maha Mengumpulkan"],
-["الْغَنِيُّ","Al-Ghaniyy","Yang Maha Kaya"],
-["الْمُغْنِي","Al-Mughni","Yang Maha Mencukupi"],
-["الْمَانِعُ","Al-Mani'","Yang Maha Mencegah"],
-["الضَّارُّ","Adh-Dharr","Yang Maha Memberi Mudharat"],
-["النَّافِعُ","An-Nafi'","Yang Maha Memberi Manfaat"],
-["النُّورُ","An-Nur","Yang Maha Bercahaya"],
-["الْهَادِي","Al-Hadi","Yang Maha Pemberi Petunjuk"],
-["الْبَدِيعُ","Al-Badi'","Yang Maha Pencipta"],
-["الْبَاقِي","Al-Baqi","Yang Maha Kekal"],
-["الْوَارِثُ","Al-Warits","Yang Maha Mewarisi"],
-["الرَّشِيدُ","Ar-Rasyid","Yang Maha Pandai"],
-["الصَّبُورُ","Ash-Shabur","Yang Maha Sabar"]
+["الرَّحْمَنُ","Ar-Rahman","Yang Maha Pengasih","Kasih sayang Allah meliputi seluruh makhluk tanpa terkecuali, mukmin maupun kafir, selama hidup di dunia ini.","Diucapkan mengawali setiap perbuatan baik (basmalah) sebagai pengakuan bahwa segala kebaikan berasal dari kasih sayang-Nya yang luas.","QS. Al-Fatihah 1:3; QS. Ar-Rahman 55:1-2"],
+["الرَّحِيمُ","Ar-Rahim","Yang Maha Penyayang","Kasih sayang Allah yang khusus diperuntukkan bagi orang-orang beriman kelak di akhirat.","Dipanjatkan dalam doa memohon rahmat khusus atas ketaatan dan keistiqamahan dalam iman.","QS. Al-Ahzab 33:43"],
+["الْمَلِكُ","Al-Malik","Yang Maha Merajai","Pemilik dan penguasa mutlak atas seluruh alam semesta, tiada sekutu dan tiada yang menandingi kekuasaan-Nya.","Diingat ketika merasa lemah di hadapan penguasa dunia, untuk menyadari bahwa kekuasaan sejati hanya milik Allah.","QS. Al-Mu'minun 23:116; QS. Al-Hasyr 59:23"],
+["الْقُدُّوسُ","Al-Quddus","Yang Maha Suci","Allah suci dari segala kekurangan, sekutu, dan sifat yang tidak layak bagi kesempurnaan-Nya.","Diucapkan dalam tasbih (subhanallah) untuk menyucikan Allah dari segala persangkaan buruk atau penyerupaan dengan makhluk.","QS. Al-Hasyr 59:23; QS. Al-Jumu'ah 62:1"],
+["السَّلَامُ","As-Salam","Yang Maha Sejahtera","Allah adalah sumber keselamatan, bebas dari segala cela dan kekurangan, serta pemberi keselamatan bagi hamba-Nya.","Dimohon ketika mendambakan keselamatan dunia dan akhirat, sebagaimana ucapan salam yang menjadi doa keselamatan antar-sesama muslim.","QS. Al-Hasyr 59:23"],
+["الْمُؤْمِنُ","Al-Mu'min","Yang Maha Memberi Keamanan","Allah memberi rasa aman bagi hamba-Nya yang beriman dan menjadi saksi kebenaran atas diri-Nya sendiri.","Dimohon ketika dilanda rasa takut atau cemas, memohon rasa aman yang hakiki hanya dari Allah.","QS. Al-Hasyr 59:23"],
+["الْمُهَيْمِنُ","Al-Muhaimin","Yang Maha Memelihara","Allah mengawasi, menyaksikan, dan memelihara seluruh makhluk-Nya tanpa lalai sedikit pun.","Menumbuhkan kesadaran bahwa setiap perbuatan senantiasa diawasi Allah (muraqabah), mendorong sikap ihsan dalam ibadah.","QS. Al-Hasyr 59:23"],
+["الْعَزِيزُ","Al-'Aziz","Yang Maha Perkasa","Keperkasaan Allah tidak terkalahkan oleh apa pun, mutlak dan sempurna.","Dimohon ketika menghadapi musuh atau kesulitan besar, memohon kekuatan dan kemenangan dari Yang Mahaperkasa.","QS. Al-Hasyr 59:23-24"],
+["الْجَبَّارُ","Al-Jabbar","Yang Maha Berkehendak","Allah mampu memaksakan kehendak-Nya atas seluruh makhluk dan memperbaiki keadaan hamba-Nya yang lemah.","Dimohon ketika hati terasa keras atau retak, memohon Allah memperbaiki keadaan diri menuju kebaikan.","QS. Al-Hasyr 59:23"],
+["الْمُتَكَبِّرُ","Al-Mutakabbir","Yang Maha Besar","Hanya Allah yang berhak atas kebesaran mutlak; kesombongan makhluk terhadap sesama adalah dosa besar.","Mengingatkan diri untuk senantiasa rendah hati (tawadhu) di hadapan manusia karena kebesaran sejati hanya milik Allah.","QS. Al-Hasyr 59:23"],
+["الْخَالِقُ","Al-Khaliq","Yang Maha Pencipta","Allah menciptakan segala sesuatu dari tiada menjadi ada, tanpa bahan dan tanpa contoh sebelumnya.","Direnungkan saat mentadaburi ciptaan alam semesta untuk menguatkan keimanan akan kebesaran Sang Pencipta.","QS. Ar-Ra'd 13:16; QS. Al-Hasyr 59:24"],
+["الْبَارِئُ","Al-Bari'","Yang Maha Mengadakan","Allah mewujudkan ciptaan sesuai rancangan yang sempurna dan seimbang, tanpa cacat.","Dimohon ketika memulai suatu usaha baru, memohon agar hasil yang diwujudkan berjalan baik dan seimbang.","QS. Al-Hasyr 59:24"],
+["الْمُصَوِّرُ","Al-Mushawwir","Yang Maha Membentuk Rupa","Allah membentuk rupa setiap makhluk dengan bentuk yang berbeda-beda dan unik, penuh keindahan.","Direnungkan untuk mensyukuri bentuk fisik yang telah dianugerahkan Allah kepada diri sendiri.","QS. Al-Hasyr 59:24; QS. Al-Infithar 82:8"],
+["الْغَفَّارُ","Al-Ghaffar","Yang Maha Pengampun","Allah senantiasa mengampuni dosa hamba-Nya yang bertaubat, berulang kali tanpa batas selama hamba itu kembali kepada-Nya.","Dipanjatkan dalam istighfar berulang-ulang, terutama setelah melakukan dosa yang sama berkali-kali.","QS. Thaha 20:82"],
+["الْقَهَّارُ","Al-Qahhar","Yang Maha Menundukkan","Allah menundukkan segala sesuatu di alam semesta dengan kekuasaan-Nya yang mutlak, tidak ada yang dapat melawan-Nya.","Dimohon ketika merasa tertindas kezaliman, memohon Allah menundukkan pihak yang berbuat zalim.","QS. Ar-Ra'd 13:16; QS. Yusuf 12:39"],
+["الْوَهَّابُ","Al-Wahhab","Yang Maha Pemberi","Allah memberi karunia secara cuma-cuma kepada siapa pun yang dikehendaki-Nya, tanpa mengharap balasan.","Dipanjatkan ketika memohon karunia besar tanpa merasa berhak menerimanya, murni mengharap kemurahan Allah.","QS. Shad 38:9, 35"],
+["الرَّزَّاقُ","Ar-Razzaq","Yang Maha Pemberi Rezeki","Allah menjamin rezeki setiap makhluk yang bernyawa di bumi, sesuai ketentuan-Nya yang bijaksana.","Dipanjatkan dalam doa memohon kelapangan rezeki dan keberkahan dalam usaha.","QS. Adz-Dzariyat 51:58"],
+["الْفَتَّاحُ","Al-Fattah","Yang Maha Pembuka","Allah membuka pintu rahmat, rezeki, dan solusi bagi hamba-Nya, serta memutuskan perkara dengan seadil-adilnya.","Dimohon ketika menghadapi jalan buntu, memohon Allah membukakan jalan keluar dan kemudahan.","QS. Saba' 34:26"],
+["الْعَلِيمُ","Al-'Alim","Yang Maha Mengetahui","Ilmu Allah meliputi segala sesuatu, yang tampak maupun tersembunyi, masa lalu, kini, dan mendatang.","Menumbuhkan kejujuran dan rasa malu berbuat maksiat karena menyadari Allah mengetahui segalanya.","QS. Al-Baqarah 2:29; QS. Al-Hujurat 49:16"],
+["الْقَابِضُ","Al-Qabidh","Yang Maha Menyempitkan","Allah berkuasa menyempitkan rezeki, jiwa, atau keadaan seorang hamba sesuai hikmah-Nya.","Menumbuhkan kesabaran ketika rezeki terasa sempit, meyakini itu bagian dari hikmah dan ujian Allah.",""],
+["الْبَاسِطُ","Al-Basith","Yang Maha Melapangkan","Allah berkuasa melapangkan rezeki dan kelegaan hati bagi siapa yang dikehendaki-Nya.","Dipanjatkan dalam doa memohon kelapangan hati dan rezeki di saat sempit.","QS. Al-Baqarah 2:245"],
+["الْخَافِضُ","Al-Khafidh","Yang Maha Merendahkan","Allah merendahkan derajat orang-orang yang sombong dan durhaka kepada-Nya.","Direnungkan sebagai peringatan agar tidak bersikap sombong, karena Allah mampu merendahkan siapa saja.",""],
+["الرَّافِعُ","Ar-Rafi'","Yang Maha Meninggikan","Allah meninggikan derajat hamba-Nya yang beriman dan bertakwa, di dunia maupun akhirat.","Dipanjatkan dalam doa memohon derajat yang mulia di sisi Allah dan di tengah manusia.","QS. Al-Mujadilah 58:11; QS. Al-An'am 6:83"],
+["الْمُعِزُّ","Al-Mu'izz","Yang Maha Memuliakan","Allah memberikan kemuliaan dan kehormatan kepada siapa yang Dia kehendaki.","Dipanjatkan ketika memohon kemuliaan atas suatu urusan atau kedudukan yang dihadapi.","QS. Ali 'Imran 3:26"],
+["الْمُذِلُّ","Al-Mudzill","Yang Maha Menghinakan","Allah dapat mencabut kemuliaan dan menghinakan siapa pun yang dikehendaki-Nya, sebagai balasan atas kesombongan atau kekufuran.","Direnungkan sebagai peringatan agar senantiasa bergantung dan bersyukur kepada Allah, bukan kepada kedudukan duniawi.","QS. Ali 'Imran 3:26"],
+["السَّمِيعُ","As-Sami'","Yang Maha Mendengar","Allah mendengar segala sesuatu, sekecil apa pun bisikan hati hamba-Nya, tanpa ada yang terlewat.","Menumbuhkan keyakinan bahwa setiap doa dan keluh kesah pasti didengar Allah, sekalipun diucapkan dalam hati.","QS. Al-Baqarah 2:127; QS. Al-Mujadilah 58:1"],
+["الْبَصِيرُ","Al-Bashir","Yang Maha Melihat","Allah melihat segala perbuatan hamba-Nya, baik yang tampak maupun tersembunyi.","Menumbuhkan sikap ihsan dalam beramal, seolah-olah selalu diawasi Allah dalam setiap tindakan.","QS. Al-Hujurat 49:18; QS. Asy-Syura 42:11"],
+["الْحَكَمُ","Al-Hakam","Yang Maha Menetapkan","Allah adalah pemutus dan penetap hukum yang paling adil atas segala perkara.","Dimohon ketika menghadapi perselisihan, memohon Allah menetapkan keputusan yang paling adil.","QS. Al-An'am 6:114"],
+["الْعَدْلُ","Al-'Adl","Yang Maha Adil","Keadilan Allah sempurna, tidak pernah menzalimi hamba-Nya sedikit pun.","Menumbuhkan ketenangan hati menerima ketentuan Allah, meyakini semuanya adil meski belum tampak hikmahnya.","QS. An-Nisa' 4:40; QS. Yunus 10:44"],
+["اللَّطِيفُ","Al-Lathif","Yang Maha Lembut","Allah Mahalembut dalam memberi kebaikan kepada hamba-Nya dengan cara yang halus, bahkan yang tak terduga.","Dipanjatkan ketika memohon kemudahan yang lembut dalam urusan yang tampak berat dan rumit.","QS. Al-An'am 6:103; QS. Al-Mulk 67:14"],
+["الْخَبِيرُ","Al-Khabir","Yang Maha Mengenal","Allah mengetahui secara mendalam hakikat batin segala sesuatu, melampaui sekadar ilmu lahiriah.","Menumbuhkan kesadaran bahwa Allah mengenal isi hati, mendorong keikhlasan dalam beramal.","QS. Al-An'am 6:103; QS. Luqman 31:34"],
+["الْحَلِيمُ","Al-Halim","Yang Maha Penyantun","Allah tidak segera menghukum hamba-Nya yang berbuat dosa, memberi kesempatan untuk bertaubat.","Dipanjatkan agar diberi kesabaran dan tidak tergesa-gesa marah dalam menghadapi kesalahan orang lain.","QS. Al-Baqarah 2:225, 235"],
+["الْعَظِيمُ","Al-'Azhim","Yang Maha Agung","Keagungan Allah tidak terbatas, meliputi seluruh sifat kesempurnaan-Nya.","Diucapkan dalam tasbih \"Subhanallahil-'Azhim\" untuk mengagungkan Allah dalam ruku' shalat.","QS. Al-Baqarah 2:255; QS. Al-Waqi'ah 56:96"],
+["الْغَفُورُ","Al-Ghafur","Yang Maha Pengampun","Allah senantiasa memberi ampunan yang luas bagi hamba-Nya yang bertaubat dengan sungguh-sungguh.","Dipanjatkan dalam istighfar harian sebagai permohonan ampun atas dosa yang telah lalu.","QS. Al-Baqarah 2:173; QS. Az-Zumar 39:53"],
+["الشَّكُورُ","Asy-Syakur","Yang Maha Mensyukuri","Allah memberi balasan berlipat ganda atas amal kebaikan sekecil apa pun yang dilakukan hamba-Nya.","Menumbuhkan semangat beramal meski kecil, meyakini Allah akan menghargainya dengan pahala besar.","QS. Fathir 35:30, 34"],
+["الْعَلِيُّ","Al-'Aliyy","Yang Maha Tinggi","Allah memiliki keagungan dan kedudukan yang tertinggi, di atas segala sesuatu, baik secara zat maupun kekuasaan.","Diucapkan dalam tasbih sujud \"Subhana Rabbiyal-A'la\" sebagai pengagungan kepada Allah Yang Mahatinggi.","QS. Al-Baqarah 2:255; QS. An-Nisa' 4:34"],
+["الْكَبِيرُ","Al-Kabir","Yang Maha Besar","Kebesaran Allah melampaui segala sesuatu, tiada yang lebih besar dari-Nya dalam segala hal.","Diucapkan dalam takbir \"Allahu Akbar\" sebagai pengakuan bahwa Allah lebih besar dari segala urusan dunia.","QS. Ar-Ra'd 13:9; QS. Saba' 34:23"],
+["الْحَفِيظُ","Al-Hafizh","Yang Maha Menjaga","Allah menjaga langit, bumi, dan seluruh makhluk-Nya dari kehancuran serta menjaga catatan amal setiap hamba.","Dipanjatkan memohon perlindungan dan penjagaan diri, keluarga, serta amal dari kerusakan.","QS. Hud 11:57; QS. Yusuf 12:64"],
+["الْمُقِيتُ","Al-Muqit","Yang Maha Memberi Kecukupan","Allah memberi kecukupan pangan dan kebutuhan bagi setiap makhluk yang diciptakan-Nya.","Dipanjatkan memohon kecukupan atas kebutuhan hidup sehari-hari.","QS. An-Nisa' 4:85"],
+["الْحَسِيبُ","Al-Hasib","Yang Maha Membuat Perhitungan","Allah mencukupkan segala kebutuhan hamba-Nya dan memperhitungkan setiap amal dengan teliti.","Menumbuhkan sikap muhasabah (introspeksi diri) sebelum kelak dihisab oleh Allah di akhirat.","QS. An-Nisa' 4:6, 86"],
+["الْجَلِيلُ","Al-Jalil","Yang Maha Mulia","Allah memiliki keagungan sifat dan kesempurnaan yang tiada tara.","Direnungkan untuk menumbuhkan kekaguman dan kecintaan mendalam kepada Allah atas keagungan-Nya.","QS. Ar-Rahman 55:27 (Dzul Jalal wal Ikram)"],
+["الْكَرِيمُ","Al-Karim","Yang Maha Pemurah","Allah memberi kebaikan yang melimpah kepada hamba-Nya tanpa diminta, dan memaafkan dengan mulia.","Dipanjatkan dalam doa memohon karunia dan kemurahan-Nya yang luas.","QS. An-Naml 27:40; QS. Al-Infithar 82:6"],
+["الرَّقِيبُ","Ar-Raqib","Yang Maha Mengawasi","Allah senantiasa mengawasi setiap gerak-gerik hamba-Nya tanpa pernah lengah.","Menumbuhkan kehati-hatian dalam bertindak, menyadari diri selalu dalam pengawasan Allah.","QS. An-Nisa' 4:1; QS. Al-Ahzab 33:52"],
+["الْمُجِيبُ","Al-Mujib","Yang Maha Mengabulkan","Allah mengabulkan doa hamba-Nya yang berdoa dengan tulus dan penuh harap.","Menumbuhkan keyakinan penuh (husnuzhan) saat berdoa bahwa Allah pasti mengabulkan dengan cara terbaik.","QS. Hud 11:61; QS. Al-Baqarah 2:186"],
+["الْوَاسِعُ","Al-Wasi'","Yang Maha Luas","Keluasan rahmat, ilmu, dan karunia Allah tidak terbatas oleh apa pun.","Dipanjatkan memohon keluasan rezeki dan ilmu yang melimpah dari Allah.","QS. Al-Baqarah 2:115, 268"],
+["الْحَكِيمُ","Al-Hakim","Yang Maha Bijaksana","Setiap ketetapan dan perbuatan Allah mengandung hikmah yang sempurna, tiada yang sia-sia.","Menumbuhkan ketenangan menerima takdir, meyakini ada hikmah di balik setiap kejadian.","QS. Al-Baqarah 2:129; QS. Luqman 31:27"],
+["الْوَدُودُ","Al-Wadud","Yang Maha Mencintai","Allah mencintai hamba-hamba-Nya yang saleh dan mencintai kebaikan yang mereka perbuat.","Dipanjatkan memohon dicintai Allah dan dijadikan hati mencintai kebaikan.","QS. Hud 11:90; QS. Al-Buruj 85:14"],
+["الْمَجِيدُ","Al-Majid","Yang Maha Mulia","Kemuliaan Allah sempurna, meliputi keagungan sifat dan kedermawanan-Nya sekaligus.","Diucapkan dalam shalawat Ibrahimiyah: \"...kama barakta 'ala Ibrahima, innaka Hamidun Majid\".","QS. Hud 11:73"],
+["الْبَاعِثُ","Al-Ba'its","Yang Maha Membangkitkan","Allah membangkitkan seluruh manusia dari kematian pada hari kiamat untuk dihisab.","Menumbuhkan kesadaran akan hari kebangkitan sehingga senantiasa mempersiapkan bekal amal.","QS. Al-Hajj 22:7"],
+["الشَّهِيدُ","Asy-Syahid","Yang Maha Menyaksikan","Allah menyaksikan segala perbuatan hamba-Nya secara langsung, tiada satu pun luput dari-Nya.","Menumbuhkan kejujuran karena menyadari Allah menjadi saksi atas setiap ucapan dan perbuatan.","QS. Al-Hajj 22:17; QS. Ali 'Imran 3:98"],
+["الْحَقُّ","Al-Haqq","Yang Maha Benar","Allah adalah kebenaran mutlak; segala firman dan janji-Nya pasti benar adanya.","Menumbuhkan keyakinan teguh terhadap janji Allah, tidak ragu terhadap kebenaran ajaran-Nya.","QS. Al-Hajj 22:6; QS. Thaha 20:114"],
+["الْوَكِيلُ","Al-Wakil","Yang Maha Memelihara","Allah adalah sebaik-baik pelindung dan penjamin urusan hamba-Nya yang bertawakal.","Diucapkan \"Hasbunallahu wa ni'mal wakil\" ketika menyerahkan segala urusan sepenuhnya kepada Allah.","QS. Ali 'Imran 3:173; QS. Al-Ahzab 33:3"],
+["الْقَوِيُّ","Al-Qawiyyu","Yang Maha Kuat","Kekuatan Allah tidak terbatas dan tidak pernah melemah dalam menolong hamba-Nya.","Dipanjatkan memohon kekuatan menghadapi kesulitan besar yang terasa di luar kemampuan diri.","QS. Al-Hajj 22:40; QS. Al-Anfal 8:52"],
+["الْمَتِينُ","Al-Matin","Yang Maha Kokoh","Kekuatan dan keteguhan Allah tidak tergoyahkan oleh apa pun.","Menumbuhkan keteguhan hati dalam mempertahankan iman meski dihadapkan berbagai godaan dan tekanan.","QS. Adz-Dzariyat 51:58"],
+["الْوَلِيُّ","Al-Waliyy","Yang Maha Melindungi","Allah adalah pelindung dan penolong utama bagi hamba-hamba-Nya yang beriman.","Dipanjatkan memohon perlindungan dan pertolongan Allah di atas segala bentuk perlindungan lainnya.","QS. Asy-Syura 42:28; QS. Al-Baqarah 2:257"],
+["الْحَمِيدُ","Al-Hamid","Yang Maha Terpuji","Seluruh pujian yang hakiki hanya layak ditujukan kepada Allah atas kesempurnaan-Nya.","Diucapkan dalam tahmid \"Alhamdulillah\" atas setiap nikmat yang diterima.","QS. Ibrahim 14:1, 8"],
+["الْمُحْصِي","Al-Muhshi","Yang Maha Menghitung","Allah menghitung dan mencatat segala sesuatu secara terperinci, tiada satu pun terlewat.","Menumbuhkan kesadaran bahwa setiap amal, sekecil apa pun, tercatat rapi di sisi Allah.","QS. Maryam 19:94; QS. Al-Jinn 72:28"],
+["الْمُبْدِئُ","Al-Mubdi'","Yang Maha Memulai","Allah memulai penciptaan makhluk dari tiada tanpa contoh sebelumnya.","Direnungkan sebagai bukti kekuasaan Allah untuk memulai kembali penciptaan pada hari kebangkitan.","QS. Al-Buruj 85:13; QS. Al-'Ankabut 29:19"],
+["الْمُعِيدُ","Al-Mu'id","Yang Maha Mengembalikan","Allah berkuasa mengembalikan atau mengulang ciptaan-Nya, sebagaimana Dia membangkitkan manusia setelah mati.","Menguatkan keyakinan terhadap hari kebangkitan, bahwa Allah mampu menghidupkan kembali yang telah tiada.","QS. Al-Buruj 85:13; QS. Ar-Rum 30:27"],
+["الْمُحْيِي","Al-Muhyi","Yang Maha Menghidupkan","Allah memberi kehidupan kepada makhluk yang tadinya tiada, termasuk kelak membangkitkan yang telah mati.","Direnungkan ketika melihat tanda kehidupan di alam (tumbuhnya tanaman, kelahiran) sebagai bukti kekuasaan Allah.","QS. Ar-Rum 30:50; QS. Fushshilat 41:39"],
+["الْمُمِيتُ","Al-Mumit","Yang Maha Mematikan","Allah menetapkan ajal kematian bagi setiap makhluk yang bernyawa, tiada yang dapat menghindarinya.","Menumbuhkan kesadaran akan kematian (dzikrul maut) sehingga senantiasa mempersiapkan amal terbaik.","QS. Al-Mu'minun 23:80; QS. Ghafir 40:68"],
+["الْحَيُّ","Al-Hayy","Yang Maha Hidup","Kehidupan Allah kekal abadi, tidak pernah mati dan tidak bergantung pada apa pun.","Dipanjatkan bersama Al-Qayyum dalam Ayat Kursi sebagai permohonan pertolongan atas nama kehidupan-Nya yang kekal.","QS. Al-Baqarah 2:255; QS. Ghafir 40:65"],
+["الْقَيُّومُ","Al-Qayyum","Yang Maha Berdiri Sendiri","Allah mengurus dan menegakkan seluruh alam semesta tanpa bergantung kepada siapa pun, sedangkan seluruh makhluk bergantung kepada-Nya.","Dipanjatkan dalam doa-doa besar seperti Ayat Kursi dan doa \"Ya Hayyu ya Qayyum\".","QS. Al-Baqarah 2:255; QS. Ali 'Imran 3:2"],
+["الْوَاجِدُ","Al-Wajid","Yang Maha Menemukan","Allah tidak pernah kehilangan apa pun yang Dia kehendaki, Mahakaya tanpa kebutuhan.","Menumbuhkan rasa cukup (qana'ah), meyakini Allah tidak pernah kekurangan untuk memberi kepada hamba-Nya.",""],
+["الْمَاجِدُ","Al-Majiid","Yang Maha Mulia","Kemuliaan Allah meliputi keluasan karunia dan keagungan sifat-Nya sekaligus.","Direnungkan bersama makna Al-Majid dalam shalawat sebagai pengakuan kemuliaan Allah dan Rasul-Nya.","QS. Hud 11:73"],
+["الْوَاحِدُ","Al-Wahid","Yang Maha Esa","Allah esa dalam mencipta, mengatur, dan menguasai alam semesta tanpa sekutu dalam perbuatan-Nya.","Menguatkan tauhid rububiyah, meyakini tiada pengatur alam semesta selain Allah.","QS. Ar-Ra'd 13:16; QS. Az-Zumar 39:4"],
+["الْأَحَدُ","Al-Ahad","Yang Maha Tunggal","Allah tunggal dalam zat-Nya, tidak tersusun dari bagian dan tidak ada yang menyerupai-Nya.","Diucapkan dalam Surah Al-Ikhlas sebagai inti tauhid yang paling murni.","QS. Al-Ikhlas 112:1"],
+["الصَّمَدُ","Ash-Shamad","Yang Maha Dibutuhkan","Seluruh makhluk bergantung dan membutuhkan Allah, sementara Dia tidak membutuhkan siapa pun.","Dipanjatkan ketika menyadari kebergantungan total kepada Allah dalam setiap urusan.","QS. Al-Ikhlas 112:2"],
+["الْقَادِرُ","Al-Qadir","Yang Maha Menentukan","Allah berkuasa penuh mewujudkan atau mencegah segala sesuatu sesuai kehendak-Nya.","Dipanjatkan dalam doa memohon sesuatu yang tampak mustahil bagi manusia namun mudah bagi Allah.","QS. Al-Baqarah 2:20, 106"],
+["الْمُقْتَدِرُ","Al-Muqtadir","Yang Maha Berkuasa","Kekuasaan Allah sempurna dan tak terbatas atas segala sesuatu di alam semesta.","Direnungkan ketika menyaksikan kejadian besar di luar kendali manusia, sebagai bukti kekuasaan mutlak Allah.","QS. Al-Qamar 54:42, 55"],
+["الْمُقَدِّمُ","Al-Muqaddim","Yang Maha Mendahulukan","Allah mendahulukan siapa yang dikehendaki-Nya dalam kebaikan, kedudukan, atau amal saleh.","Dipanjatkan memohon didahulukan dalam kebaikan dan amal saleh dibanding keburukan.",""],
+["الْمُؤَخِّرُ","Al-Mu'akhkhir","Yang Maha Mengakhirkan","Allah mengakhirkan atau menunda sesuatu sesuai hikmah-Nya, termasuk menangguhkan azab bagi yang durhaka.","Menumbuhkan kesabaran menunggu ketetapan Allah yang mungkin tertunda namun pasti tiba pada waktunya.","QS. Ibrahim 14:42"],
+["الْأَوَّلُ","Al-Awwal","Yang Maha Awal","Allah telah ada sebelum segala sesuatu diciptakan, tanpa permulaan.","Direnungkan untuk menyadari bahwa Allah mendahului segala sesuatu, termasuk waktu dan ruang.","QS. Al-Hadid 57:3"],
+["الْآخِرُ","Al-Akhir","Yang Maha Akhir","Allah akan tetap ada setelah seluruh makhluk musnah, tiada akhir bagi keberadaan-Nya.","Menguatkan keyakinan bahwa hanya Allah yang kekal, sementara segala sesuatu selain-Nya akan binasa.","QS. Al-Hadid 57:3"],
+["الظَّاهِرُ","Azh-Zhahir","Yang Maha Nyata","Keberadaan Allah nyata dibuktikan oleh tanda-tanda kekuasaan-Nya yang tampak di seluruh alam semesta.","Direnungkan melalui tafakur terhadap ciptaan sebagai bukti nyata keberadaan dan kekuasaan Allah.","QS. Al-Hadid 57:3"],
+["الْبَاطِنُ","Al-Bathin","Yang Maha Tersembunyi","Hakikat zat Allah tidak dapat dijangkau indra dan akal manusia, tersembunyi dari penglihatan makhluk di dunia.","Menumbuhkan kerendahan hati bahwa akal manusia terbatas dalam memahami hakikat Allah sepenuhnya.","QS. Al-Hadid 57:3"],
+["الْوَالِي","Al-Wali","Yang Maha Memerintah","Allah menguasai dan mengatur seluruh urusan makhluk-Nya sebagai pemilik dan pelindung sejati.","Dipanjatkan memohon agar segala urusan diserahkan dan diatur sepenuhnya di bawah pengaturan Allah.","QS. Ar-Ra'd 13:11"],
+["الْمُتَعَالِي","Al-Muta'ali","Yang Maha Tinggi","Allah Mahatinggi, jauh dari segala kekurangan dan penyerupaan dengan makhluk-Nya.","Direnungkan untuk membersihkan hati dari segala prasangka yang menyamakan Allah dengan makhluk.","QS. Ar-Ra'd 13:9"],
+["الْبَرُّ","Al-Barr","Yang Maha Baik","Kebaikan dan kelembutan Allah kepada hamba-Nya sangat luas, melampaui apa yang layak diterima hamba.","Dipanjatkan mensyukuri kebaikan Allah yang terus mengalir meski hamba banyak berbuat dosa.","QS. Ath-Thur 52:28"],
+["التَّوَّابُ","At-Tawwab","Yang Maha Penerima Taubat","Allah senantiasa membuka pintu taubat dan menerima kembali hamba-Nya yang kembali kepada-Nya.","Dipanjatkan setiap kali bertaubat, meyakini Allah pasti menerima taubat yang tulus.","QS. An-Nisa' 4:16; QS. At-Taubah 9:104"],
+["الْمُنْتَقِمُ","Al-Muntaqim","Yang Maha Pembalas","Allah membalas kezaliman dan kejahatan pelakunya yang tidak bertaubat dengan balasan yang setimpal.","Direnungkan sebagai peringatan agar berhenti dari kezaliman sebelum datang balasan Allah.","QS. As-Sajdah 32:22; QS. Ibrahim 14:47"],
+["الْعَفُوُّ","Al-'Afuww","Yang Maha Pemaaf","Allah menghapuskan dosa hamba-Nya tanpa bekas, bahkan tanpa perlu mengungkitnya kembali.","Diamalkan lewat doa yang diajarkan kepada Aisyah untuk malam Lailatul Qadar: \"Allahumma innaka 'afuwwun tuhibbul-'afwa fa'fu 'anni\" (HR. Tirmidzi no. 3513).","QS. An-Nisa' 4:99, 149"],
+["الرَّءُوفُ","Ar-Ra'uf","Yang Maha Pengasih","Kelembutan dan belas kasih Allah kepada hamba-Nya sangat mendalam, melebihi kasih sayang makhluk mana pun.","Dipanjatkan memohon belas kasih Allah di saat-saat sulit dan penuh keputusasaan.","QS. Al-Baqarah 2:143; QS. At-Taubah 9:117"],
+["مَالِكُ الْمُلْكِ","Malikul-Mulk","Yang Maha Pemilik Kerajaan","Allah pemilik mutlak seluruh kerajaan alam semesta, memberikan dan mencabut kekuasaan sekehendak-Nya.","Direnungkan agar tidak silau terhadap kekuasaan duniawi, karena semuanya di tangan Allah.","QS. Ali 'Imran 3:26"],
+["ذُو الْجَلَالِ وَالْإِكْرَامِ","Dzul-Jalali wal-Ikram","Yang Maha Pemilik Kebesaran dan Kemuliaan","Allah memiliki keagungan sekaligus kemuliaan yang sempurna, layak diagungkan dan dicintai sekaligus.","Dianjurkan memperbanyak menyebutnya, sebagaimana anjuran Nabi ﷺ mengulang-ulang nama ini dalam doa (HR. Tirmidzi no. 3524).","QS. Ar-Rahman 55:27, 78"],
+["الْمُقْسِطُ","Al-Muqsith","Yang Maha Adil","Allah memutuskan setiap perkara dengan keadilan yang sempurna, tanpa condong sedikit pun.","Menumbuhkan ketenangan menerima keputusan Allah, meyakini tidak ada kezaliman sedikit pun di dalamnya.","QS. Yunus 10:4, 47"],
+["الْجَامِعُ","Al-Jami'","Yang Maha Mengumpulkan","Allah mengumpulkan seluruh manusia pada hari kiamat untuk dihisab, serta menyatukan hal-hal yang serupa maupun berbeda sesuai kehendak-Nya.","Dipanjatkan memohon dikumpulkan kembali dengan orang-orang tercinta dalam kebaikan, di dunia maupun di surga kelak.","QS. Ali 'Imran 3:9"],
+["الْغَنِيُّ","Al-Ghaniyy","Yang Maha Kaya","Allah tidak membutuhkan apa pun dari makhluk-Nya, Mahakaya secara mutlak tanpa kekurangan sedikit pun.","Menumbuhkan rasa cukup dan tidak berharap kepada manusia, karena kekayaan sejati hanya milik dan dari Allah.","QS. Al-Baqarah 2:263; QS. Fathir 35:15"],
+["الْمُغْنِي","Al-Mughni","Yang Maha Mencukupi","Allah mencukupkan kebutuhan hamba-Nya dan memberi kekayaan kepada siapa yang dikehendaki-Nya.","Dipanjatkan memohon kecukupan dari harta yang halal agar terhindar dari meminta-minta kepada manusia.",""],
+["الْمَانِعُ","Al-Mani'","Yang Maha Mencegah","Allah mencegah datangnya keburukan atau musibah kepada hamba yang dikehendaki-Nya, atas hikmah tertentu.","Dipanjatkan memohon perlindungan agar dicegah dari bahaya dan keburukan yang mengancam, sebagaimana doa setelah shalat: \"...wa la mu'thiya lima mana'ta\" (HR. Bukhari no. 844).",""],
+["الضَّارُّ","Adh-Dharr","Yang Maha Memberi Mudarat","Segala mudarat yang menimpa makhluk terjadi atas izin dan ketentuan Allah, bukan kebetulan semata.","Menumbuhkan kesabaran menerima ujian, meyakini semuanya dalam kendali dan hikmah Allah.",""],
+["النَّافِعُ","An-Nafi'","Yang Maha Memberi Manfaat","Segala manfaat dan kebaikan yang diterima makhluk bersumber dari kehendak dan pemberian Allah semata.","Dipanjatkan memohon agar ilmu, harta, dan amal yang dimiliki mendatangkan manfaat bagi diri dan orang lain.",""],
+["النُّورُ","An-Nur","Yang Maha Bercahaya","Allah adalah cahaya langit dan bumi, sumber petunjuk yang menerangi hati dari kegelapan kebodohan dan kesesatan.","Dipanjatkan dalam doa memohon cahaya dalam hati, penglihatan, pendengaran, dan seluruh aspek kehidupan, sebagaimana doa Nabi ﷺ: \"Allahummaj'al fi qalbi nura...\" (HR. Bukhari no. 6316, Muslim no. 763).","QS. An-Nur 24:35"],
+["الْهَادِي","Al-Hadi","Yang Maha Pemberi Petunjuk","Allah membimbing hamba-Nya menuju kebenaran dan jalan yang lurus, baik petunjuk umum maupun taufik khusus bagi yang beriman.","Dipanjatkan dalam Al-Fatihah setiap shalat: \"Ihdinash-shiratal-mustaqim\" (tunjukilah kami jalan yang lurus).","QS. Al-Furqan 25:31; QS. Al-Hajj 22:54"],
+["الْبَدِيعُ","Al-Badi'","Yang Maha Pencipta","Allah menciptakan langit dan bumi dengan cara yang belum pernah ada contohnya sebelumnya, penuh keajaiban.","Direnungkan melalui kekaguman terhadap keajaiban ciptaan Allah yang tiada duanya di alam semesta.","QS. Al-Baqarah 2:117; QS. Al-An'am 6:101"],
+["الْبَاقِي","Al-Baqi","Yang Maha Kekal","Allah kekal selamanya, tidak akan pernah musnah, berbeda dengan seluruh makhluk yang fana.","Menumbuhkan kesadaran bahwa hanya kebaikan yang dilakukan karena Allah yang akan bernilai kekal di sisi-Nya.","QS. Ar-Rahman 55:26-27"],
+["الْوَارِثُ","Al-Warits","Yang Maha Mewarisi","Allah mewarisi seluruh alam semesta setelah binasanya segala makhluk, sebagai pemilik hakiki segala sesuatu.","Menumbuhkan kesadaran bahwa harta dan kepemilikan dunia hanyalah titipan sementara yang akan kembali kepada Allah.","QS. Al-Hijr 15:23"],
+["الرَّشِيدُ","Ar-Rasyid","Yang Maha Pandai","Allah membimbing seluruh urusan makhluk-Nya menuju kesempurnaan dengan bimbingan yang lurus dan tepat.","Dipanjatkan memohon bimbingan yang tepat dalam mengambil setiap keputusan penting dalam hidup.",""],
+["الصَّبُورُ","Ash-Shabur","Yang Maha Sabar","Allah tidak tergesa-gesa menghukum hamba-Nya yang durhaka, memberikan tenggang waktu yang panjang untuk kembali kepada-Nya.","Dipanjatkan memohon kesabaran seluas dan seteguh sifat sabar Allah dalam menghadapi ujian hidup.","HR. Bukhari no. 6099, Muslim no. 2804 (\"Tidak ada yang lebih sabar menghadapi gangguan daripada Allah\")"]
 ];
 // Disambiguasi judul: dua nama berbeda dapat memiliki transliterasi sama (mis. Al-Majid)
 const asmaCounts = {};
@@ -2190,10 +2196,10 @@ ASMA.forEach((a,i)=>{
   addEntry({
     id:"asma-"+(i+1), menu:2, material:"iman-kepada-allah", sub:"asmaul-husna", type:"asmaul", order:i+1,
     title:a[1]+(dupe?" ("+a[0]+")":""), summary:a[2]+" — nama Allah yang ke-"+(i+1),
-    arabic:{text:a[0], translit:a[1], arti:a[2], audio:"", audio_src:"", source:"QS. Thaha 20:8, HR. Bukhari no. 2736"},
+    arabic:{text:a[0], translit:a[1], arti:a[2], audio:"", audio_src:"", source:a[5]||"QS. Al-A'raf 7:180; HR. Bukhari no. 2736"},
     body:[
-      {h:"Makna", p:["Allah adalah "+a[2].toLowerCase()+". Mengimani nama ini berarti menetapkan kesempurnaan Allah sesuai maknanya, tanpa menyerupakan-Nya dengan makhluk."]},
-      {h:"Pengamalan", p:["Menyebut dan berdoa dengan nama ini sesuai konteksnya — \"Dan Allah memiliki Asmaul Husna (nama-nama yang terbaik), maka bermohonlah kepada-Nya dengan menyebutnya.\" (QS. Al-A'raf 7:180)."]}
+      {h:"Makna", p:[a[3]]},
+      {h:"Pengamalan", p:[a[4]]}
     ],
     sources:["quran","bukhari"], related:["asmaul-husna","asma-wa-sifat"], tags:["asmaul husna","akidah"]
   });
@@ -3922,7 +3928,7 @@ addEntry({id:"sujud-sahwi", menu:5, material:"fiqih-ibadah", type:"article", tit
   sources:["bukhari","muslim","fiqihsunnah"], related:["wajib-shalat","shalat"], tags:["fiqih","shalat"]});
 
 /* ================= 7) DOA ================= */
-addEntry({id:"doa-masuk-toilet", menu:6, material:"doa", sub:"harian", type:"doa", category:"Harian", title:"Doa Masuk Toilet",
+addEntry({id:"doa-masuk-toilet", menu:6, material:"doa", sub:"toilet", type:"doa", category:"Harian", title:"Doa Masuk Toilet",
   arabic:{text:"بِسْمِ اللَّهِ، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ",translit:"Bismillah, Allahumma inni a'udzu bika minal-khubutsi wal-khaba'its",arti:"Dengan nama Allah. Ya Allah, aku berlindung kepada-Mu dari setan laki-laki dan setan perempuan.",audio:"",audio_src:"",source:"HR. Bukhari no. 142, Muslim no. 375"},
   body:[{h:"Keterangan", p:["Dibaca saat hendak masuk toilet; dianjurkan mendahulukan kaki kiri. Keluar toilet: \"Ghufranaka\" (HR. Abu Dawud no. 30)."]}],
   sources:["bukhari","muslim","abudawud"], related:["doa","thaharah"], tags:["doa","harian"]});
@@ -4672,7 +4678,7 @@ addEntry({id:"isra-miraj", menu:8, material:"sirah-nabi", type:"event-article", 
   sources:["quran","sirah"], related:["shalat","masa-makkah"], tags:["sejarah","sirah"]});
 
 /* ---------- MENU 06 — DOA & DZIKIR ---------- */
-addEntry({id:"doa-rezeki", menu:6, material:"doa", sub:"kesulitan", type:"doa", title:"Doa Memohon Rezeki",
+addEntry({id:"doa-rezeki", menu:6, material:"doa", sub:"rezeki", type:"doa", title:"Doa Memohon Rezeki",
   arabic:{text:"اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ، وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ", translit:"Allahumma-kfini bihalalika 'an haramika wa aghnini bifadhlika 'amman siwak", arti:"Ya Allah, cukupkanlah aku dengan yang halal dari-Mu sehingga aku terhindar dari yang haram, dan cukupkanlah aku dengan karunia-Mu sehingga aku tidak butuh kepada selain-Mu.", audio:"", audio_src:"", source:"HR. Tirmidzi no. 3563"},
   summary:"Doa memohon kecukupan rezeki yang halal dan berkah dari Allah.",
   body:[
@@ -6031,7 +6037,7 @@ function asmaEntryView(e){
   const keterangan = secText(e,"Makna") || e.summary || "";
   const manfaat = secText(e,"Pengamalan") || "";
   const intro = getEntry("asmaul-husna");
-  const dalilLengkap = (intro && secText(intro,"Dalil")) || e.arabic.source || "—";
+  const dalilLengkap = e.arabic.source || (intro && secText(intro,"Dalil")) || "—";
   let h = '<div class="page asma-detail">'
     + '<div class="asma-top-bar">'
     + '<button class="icon-btn" data-action="back" data-fallback="#/asmaul-husna" aria-label="Kembali">'+icon("back",22)+'</button>'
@@ -6170,7 +6176,25 @@ const I = {
   arrowL:'<path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>',
   arrowR:'<path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>',
   home:'<path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
-  external:'<path d="M14 4h6v6M20 4l-9 9M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+  external:'<path d="M14 4h6v6M20 4l-9 9M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+  bed:'<path d="M3 18v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5M3 18h18M3 15h7a2 2 0 0 0 2-2v-1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+  plate:'<circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 5v4M5 5c-1.2 0-1.2 4 0 4M20 5v14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+  toilet:'<path d="M8 3h8v6a4 4 0 0 1-4 4 4 4 0 0 1-4-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7 21c0-3 2-5 5-5s5 2 5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 3H6M18 3h-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  droplet:'<path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+  prayerKneel:'<circle cx="12" cy="4.5" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 6.5v4l-4 3M12 10.5l4 3M8 20h8M9 17l-1 3M15 17l1 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
+  planePaper:'<path d="M3 12l18-8-8 18-2-7-8-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+  shirt:'<path d="M8 3l4 2 4-2 4 4-3 3v10a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10L4 7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>',
+  cloudRain:'<path d="M7 16a4 4 0 0 1 .5-8 5.5 5.5 0 0 1 10.5 1.8A3.5 3.5 0 0 1 17 16H7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 19l-1 2M12 19l-1 2M16 19l-1 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  shieldCheck:'<path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+  bandage:'<g transform="rotate(-30 12 12)"><rect x="3" y="9" width="18" height="6" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="12" r="1.3" fill="currentColor"/><circle cx="15" cy="12" r="1.3" fill="currentColor"/></g>',
+  sad:'<circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 10h.01M15.5 10h.01M8.5 16c1-1.5 2.3-2 3.5-2s2.5.5 3.5 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  coin:'<circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v10M9.5 9.4c0-1.2 1.1-2.1 2.5-2.1s2.5.7 2.5 1.9c0 2.4-5 1.7-5 4.1 0 1.2 1.1 2.1 2.5 2.1s2.5-.9 2.5-2.1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>',
+  handsPray:'<path d="M4 13c0-4 3.5-8 8-8s8 4 8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 13c0 4.5 3.5 7 8 7M20 13c0 4.5-3.5 7-8 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 5v3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  compass:'<circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.2 8.8l-2.1 5.6-5.6 2.1 2.1-5.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>',
+  kaaba:'<path d="M4 8l8-4 8 4v10l-8 4-8-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4 8l8 4 8-4M12 12v10" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 11.3h16" stroke="currentColor" stroke-width="1.8"/>',
+  leafGrave:'<path d="M12 21V9M8 13c0-3 1.5-5 4-6 2.5 1 4 3 4 6-2 1-6 1-8 0z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 21h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+  family:'<circle cx="8" cy="7" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="16" cy="7" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12.5" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c.5-3 2.5-4.5 5-4.5s4 1.3 4.5 3M21 20c-.5-3-2.5-4.5-5-4.5s-4 1.3-4.5 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+  handshakeHeart:'<path d="M12 20s-6.5-4-6.5-9A4 4 0 0 1 12 8a4 4 0 0 1 6.5 3c0 5-6.5 9-6.5 9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 8V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>'
 };
 function icon(name, size){
   const s = size||20;
@@ -6474,6 +6498,35 @@ function matIcon(menuId, matId){
   const m = DB.MENUS.find(x=>x.id===+menuId);
   return m? m.icon : "book";
 }
+/* ---------- Halaman kategori Doa & Dzikir (grid ikon berwarna, gaya Dhikr & Dua) ---------- */
+const DOA_CAT_META = {
+  harian:{icon:"doa", color:"#10b981"}, tidur:{icon:"bed", color:"#6366f1"}, makan:{icon:"plate", color:"#f59e0b"},
+  toilet:{icon:"toilet", color:"#38bdf8"}, wudhu:{icon:"droplet", color:"#06b6d4"}, masjid:{icon:"pillar", color:"#14b8a6"},
+  "setelah-shalat":{icon:"prayerKneel", color:"#22c55e"}, perjalanan:{icon:"planePaper", color:"#0ea5e9"}, rumah:{icon:"home", color:"#84cc16"},
+  pakaian:{icon:"shirt", color:"#a855f7"}, cuaca:{icon:"cloudRain", color:"#64748b"}, perlindungan:{icon:"shieldCheck", color:"#ef4444"},
+  kesulitan:{icon:"bandage", color:"#f43f5e"}, kesedihan:{icon:"sad", color:"#eab308"}, rezeki:{icon:"coin", color:"#f97316"},
+  taubat:{icon:"handsPray", color:"#8b5cf6"}, istikharah:{icon:"compass", color:"#0891b2"}, belajar:{icon:"pendidikan", color:"#d97706"},
+  ramadan:{icon:"kalender", color:"#7c3aed"}, quran:{icon:"quran", color:"#059669"}, haji:{icon:"kaaba", color:"#78716c"},
+  kematian:{icon:"leafGrave", color:"#57534e"}, keluarga:{icon:"family", color:"#ec4899"}, tawakkal:{icon:"handshakeHeart", color:"#f472b6"},
+  pagi:{icon:"star", color:"#f59e0b"}, petang:{icon:"clock", color:"#6366f1"}, fitur:{icon:"layers", color:"#94a3b8"}
+};
+function doaCategoryView(menuId, matId, mat){
+  const menu = DB.MENUS.find(m=>m.id===+menuId);
+  let h = '<div class="page">'+crumbs([{label:"Home",href:"#/home"},{label:menu?menu.name:"",href:"#/menu/"+menuId},{label:mat.name}])
+    + '<h1 class="h1">'+esc(mat.name)+'</h1>'
+    + '<p class="muted" style="margin-top:4px">Pilih kategori untuk melihat kumpulan doa & dzikirnya.</p>'
+    + '<div class="cat-grid" style="margin-top:14px">';
+  (mat.subs||[]).forEach(([key,label])=>{
+    const count = DB.ENTRIES.filter(e=>e.menu===+menuId && e.material===matId && e.sub===key).length;
+    if(!count) return;
+    const meta = DOA_CAT_META[key] || {icon:"doa", color:"#10b981"};
+    h += '<div class="cat-card tappable" data-nav="#/sub/'+menuId+'/'+matId+'/'+key+'">'
+      + '<span class="cat-ic" style="background:'+meta.color+'22;color:'+meta.color+'">'+icon(meta.icon,22)+'</span>'
+      + '<span class="cat-label">'+esc(label)+'</span></div>';
+  });
+  h += '</div></div>';
+  return h;
+}
 function materialView(menuId, matId){
   const menu = DB.MENUS.find(m=>m.id===+menuId);
   const mat = menu ? menu.materials.find(x=>x.id===matId) : null;
@@ -6483,6 +6536,7 @@ function materialView(menuId, matId){
     return quranView(tabs[matId]||"", mat.name);
   }
   if(menu.id===10) return kalenderView(CAL_CURSOR);
+  if(matId==="doa" || matId==="dzikir") return doaCategoryView(menuId, matId, mat);
 
   let entries = DB.ENTRIES.filter(e=>e.menu===+menuId && e.material===matId).sort(byOrder);
   // Entry pendahuluan "Rukun Iman" tidak ditampilkan di dalam materi Iman kepada Allah
@@ -7357,7 +7411,7 @@ addEntry({id:"doa-akhir-tasyahud", menu:1, material:"shalat", sub:"bacaan", type
    SILMIKAFFAH — BATCH 5B: PERLUASAN DOA & DZIKIR + PERDALAM SEJARAH
    ============================================================ */
 
-addEntry({id:"doa-setelah-wudhu", menu:6, material:"doa", sub:"ibadah", type:"doa", title:"Doa Setelah Wudhu",
+addEntry({id:"doa-setelah-wudhu", menu:6, material:"doa", sub:"wudhu", type:"doa", title:"Doa Setelah Wudhu",
   arabic:{text:"أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ، اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ", translit:"Asyhadu an la ilaha illallahu wahdahu la syarika lah, wa asyhadu anna Muhammadan 'abduhu wa rasuluh. Allahummaj'alni minat-tawwabina waj'alni minal-mutathahhirin", arti:"Aku bersaksi tiada tuhan selain Allah semata, tiada sekutu bagi-Nya, dan aku bersaksi bahwa Muhammad adalah hamba dan utusan-Nya. Ya Allah, jadikanlah aku termasuk orang-orang yang bertobat dan jadikanlah aku termasuk orang-orang yang mensucikan diri.", audio:"", audio_src:"", source:"HR. Muslim no. 234, Tirmidzi no. 55"},
   summary:"Dibaca setelah selesai berwudu; disebutkan dibukakan delapan pintu surga bagi yang membacanya.",
   body:[{h:"Keutamaan", p:["Rasulullah ﷺ bersabda: barang siapa berwudu dengan sempurna lalu membaca doa ini, akan dibukakan baginya delapan pintu surga, ia bisa masuk dari pintu mana saja yang ia kehendaki (HR. Muslim no. 234)."]}],
@@ -7377,22 +7431,22 @@ addEntry({id:"doa-bercermin", menu:6, material:"doa", sub:"harian", type:"doa", 
   summary:"Dibaca ketika bercermin — memohon keindahan fisik disertai keindahan akhlak.",
   body:[{h:"Makna", p:["Doa ini mengajarkan bahwa syukur atas rupa fisik yang baik hendaknya diiringi permohonan akhlak yang baik pula, karena kecantikan sejati seorang mukmin terletak pada akhlaknya."]}],
   sources:["app"], related:["akhlak"], tags:["doa","harian"]});
-addEntry({id:"doa-hujan-turun", menu:6, material:"doa", sub:"harian", type:"doa", title:"Doa Ketika Hujan Turun",
+addEntry({id:"doa-hujan-turun", menu:6, material:"doa", sub:"cuaca", type:"doa", title:"Doa Ketika Hujan Turun",
   arabic:{text:"اللَّهُمَّ صَيِّبًا نَافِعًا", translit:"Allahumma shayyiban nafi'a", arti:"Ya Allah, jadikanlah hujan ini hujan yang bermanfaat.", audio:"", audio_src:"", source:"HR. Bukhari no. 1032"},
   summary:"Dibaca saat hujan mulai turun, memohon keberkahan dan manfaat dari hujan tersebut.",
   body:[{h:"Keterangan", p:["Waktu turun hujan termasuk salah satu waktu mustajabnya doa, sehingga dianjurkan memperbanyak doa apa saja saat itu, selain doa khusus ini."]}],
   sources:["bukhari"], related:["doa"], tags:["doa","hujan"]});
-addEntry({id:"doa-petir", menu:6, material:"doa", sub:"harian", type:"doa", title:"Doa Mendengar Petir/Guntur",
+addEntry({id:"doa-petir", menu:6, material:"doa", sub:"cuaca", type:"doa", title:"Doa Mendengar Petir/Guntur",
   arabic:{text:"سُبْحَانَ الَّذِي يُسَبِّحُ الرَّعْدُ بِحَمْدِهِ وَالْمَلَائِكَةُ مِنْ خِيفَتِهِ", translit:"Subhanal-ladzi yusabbihur-ra'du bihamdihi wal-mala'ikatu min khifatih", arti:"Mahasuci Allah yang guntur bertasbih memuji-Nya, begitu pula para malaikat karena takut kepada-Nya.", audio:"", audio_src:"", source:"Riwayat dari Abdullah bin Zubair, dinukil Imam Malik dalam Al-Muwatta'"},
   summary:"Dibaca ketika mendengar suara guntur/petir, sebagai bentuk mengagungkan Allah.",
   body:[{h:"Keterangan", p:["Mengingatkan bahwa fenomena alam sedahsyat petir pun tunduk bertasbih kepada Allah, mendorong seorang mukmin untuk turut mengagungkan-Nya, bukan sekadar merasa takut secara alami."]}],
   sources:["app"], related:["doa"], tags:["doa","alam"]});
-addEntry({id:"doa-angin-kencang", menu:6, material:"doa", sub:"harian", type:"doa", title:"Doa Ketika Angin Kencang",
+addEntry({id:"doa-angin-kencang", menu:6, material:"doa", sub:"cuaca", type:"doa", title:"Doa Ketika Angin Kencang",
   arabic:{text:"اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا وَخَيْرَ مَا فِيهَا وَخَيْرَ مَا أُرْسِلَتْ بِهِ، وَأَعُوذُ بِكَ مِنْ شَرِّهَا وَشَرِّ مَا فِيهَا وَشَرِّ مَا أُرْسِلَتْ بِهِ", translit:"Allahumma inni as'aluka khairaha wa khaira ma fiha wa khaira ma ursilat bih, wa a'udzu bika min syarriha wa syarri ma fiha wa syarri ma ursilat bih", arti:"Ya Allah, aku memohon kepada-Mu kebaikannya, kebaikan yang ada padanya, dan kebaikan yang dibawanya, dan aku berlindung kepada-Mu dari keburukannya, keburukan yang ada padanya, dan keburukan yang dibawanya.", audio:"", audio_src:"", source:"HR. Muslim no. 899"},
   summary:"Dibaca saat angin bertiup kencang, memohon perlindungan dari kemungkinan bencana.",
   body:[{h:"Keterangan", p:["Nabi ﷺ menunjukkan sikap waspada namun tetap tenang saat angin kencang bertiup, karena angin bisa membawa rahmat (hujan) atau azab, sehingga dianjurkan memohon yang terbaik darinya."]}],
   sources:["muslim"], related:["doa-petir","doa-hujan-turun"], tags:["doa","alam"]});
-addEntry({id:"doa-sedih-gundah", menu:6, material:"doa", sub:"kesulitan", type:"doa", title:"Doa Ketika Sedih & Gundah",
+addEntry({id:"doa-sedih-gundah", menu:6, material:"doa", sub:"kesedihan", type:"doa", title:"Doa Ketika Sedih & Gundah",
   arabic:{text:"اللَّهُمَّ إِنِّي عَبْدُكَ ابْنُ عَبْدِكَ ابْنُ أَمَتِكَ، نَاصِيَتِي بِيَدِكَ، مَاضٍ فِيَّ حُكْمُكَ، عَدْلٌ فِيَّ قَضَاؤُكَ، أَسْأَلُكَ بِكُلِّ اسْمٍ هُوَ لَكَ سَمَّيْتَ بِهِ نَفْسَكَ... أَنْ تَجْعَلَ الْقُرْآنَ رَبِيعَ قَلْبِي وَنُورَ صَدْرِي وَجَلَاءَ حُزْنِي وَذَهَابَ هَمِّي", translit:"Allahumma inni 'abduka ibnu 'abdika ibnu amatik, nashiyati biyadik, madhin fiyya hukmuk, 'adlun fiyya qadha'uk. As'aluka bikulli ismin huwa lak... an taj'alal-Qur'ana rabi'a qalbi wa nura shadri wa jala'a huzni wa dzahaba hammi", arti:"Ya Allah, sesungguhnya aku hamba-Mu, anak dari hamba-Mu (ayah) dan hamba perempuan-Mu (ibu), ubun-ubunku di tangan-Mu, berlaku padaku hukum-Mu, adil bagiku ketetapan-Mu... agar Engkau jadikan Al-Qur'an sebagai penyejuk hatiku, cahaya dadaku, penghilang kesedihanku, dan pengusir kegundahanku.", audio:"", audio_src:"", source:"HR. Ahmad no. 3712, dinilai sahih oleh Al-Albani"},
   summary:"Doa yang diajarkan Nabi ﷺ untuk mengatasi kesedihan dan kegundahan hati.",
   body:[{h:"Keutamaan", p:["Nabi ﷺ mengabarkan siapa yang membaca doa ini saat gundah/sedih, Allah akan menghilangkan kesedihan dan gundahnya, serta menggantinya dengan kegembiraan (HR. Ahmad no. 3712)."]}],
@@ -7402,7 +7456,7 @@ addEntry({id:"doa-musibah", menu:6, material:"doa", sub:"kesulitan", type:"doa",
   summary:"Diucapkan ketika tertimpa musibah apa pun, sebagai bentuk kesabaran dan penyerahan diri kepada Allah.",
   body:[{h:"Keutamaan", p:["Ummu Salamah radhiyallahu 'anha meriwayatkan bahwa Nabi ﷺ mengajarkan siapa yang membaca doa ini saat musibah, Allah akan memberinya pahala dan menggantikan yang lebih baik (HR. Muslim no. 918) — Ummu Salamah sendiri mengalaminya setelah suaminya, Abu Salamah, wafat."]}],
   sources:["muslim"], related:["doa-kesulitan","sabar"], tags:["doa","musibah"]});
-addEntry({id:"doa-hutang", menu:6, material:"doa", sub:"kesulitan", type:"doa", title:"Doa Melunasi Hutang",
+addEntry({id:"doa-hutang", menu:6, material:"doa", sub:"rezeki", type:"doa", title:"Doa Melunasi Hutang",
   arabic:{text:"اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ، وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ", translit:"Allahumma-kfini bihalalika 'an haramika wa aghnini bifadhlika 'amman siwak", arti:"Ya Allah, cukupkanlah aku dengan yang halal dari-Mu sehingga terhindar dari yang haram, dan cukupkanlah aku dengan karunia-Mu sehingga aku tidak butuh kepada selain-Mu.", audio:"", audio_src:"", source:"HR. Tirmidzi no. 3563"},
   summary:"Dibaca untuk memohon kemudahan melunasi hutang dan kecukupan rezeki halal.",
   body:[{h:"Keterangan", p:["Nabi ﷺ mengajarkan doa ini kepada seorang budak yang kesulitan melunasi tebusan kemerdekaannya. Doa ini juga sama dengan Doa Memohon Rezeki yang telah dibahas di materi lain."]}],
@@ -8856,7 +8910,7 @@ addEntry({id:"doa-perlindungan-umum", menu:6, material:"doa", sub:"perlindungan"
     {h:"Cakupan perlindungan lain", p:["Untuk perlindungan spesifik, lihat juga: Ayat Kursi & Al-Mu'awwidzatain (Tafsir), Doa Perlindungan Sebelum Salam (empat perkara — Menu Shalat), dan Hasbunallah wa Ni'mal Wakil."]}
   ],
   sources:["muslim"], related:["tafsir-muawwidzatain","doa-akhir-tasyahud","hasbunallah"], tags:["doa","perlindungan"]});
-addEntry({id:"doa-takziah", menu:6, material:"doa", sub:"kesulitan", type:"doa", title:"Ucapan Takziah",
+addEntry({id:"doa-takziah", menu:6, material:"doa", sub:"kematian", type:"doa", title:"Ucapan Takziah",
   arabic:{text:"إِنَّ لِلَّهِ مَا أَخَذَ وَلَهُ مَا أَعْطَى، وَكُلُّ شَيْءٍ عِنْدَهُ بِأَجَلٍ مُسَمًّى، فَلْتَصْبِرْ وَلْتَحْتَسِبْ", translit:"Inna lillahi ma akhadza wa lahu ma a'tha, wa kullu syai'in 'indahu bi'ajalin musamma, faltashbir waltahtasib", arti:"Sesungguhnya milik Allah apa yang Dia ambil dan milik-Nya apa yang Dia berikan, segala sesuatu di sisi-Nya memiliki batas waktu yang telah ditentukan, maka bersabarlah dan mengharaplah pahala.", audio:"", audio_src:"", source:"HR. Bukhari no. 1284, Muslim no. 923"},
   summary:"Ucapan yang diajarkan Nabi ﷺ untuk menghibur keluarga yang berduka atas kematian.",
   body:[
@@ -8864,6 +8918,115 @@ addEntry({id:"doa-takziah", menu:6, material:"doa", sub:"kesulitan", type:"doa",
     {h:"Penerapan", p:["Digunakan sebagai kalimat penghibur saat melayat (takziah) — lihat juga materi Takziyah di menu Fiqih untuk pembahasan adab lengkapnya."]}
   ],
   sources:["bukhari","muslim"], related:["takziyah","doa-musibah"], tags:["doa","jenazah"]});
+
+/* ---------- Melengkapi kategori Doa yang sebelumnya kosong/belum ada ---------- */
+addEntry({id:"doa-keluar-toilet", menu:6, material:"doa", sub:"toilet", type:"doa", title:"Doa Keluar Toilet",
+  arabic:{text:"غُفْرَانَكَ", translit:"Ghufranaka", arti:"Aku memohon ampunan-Mu.", audio:"", audio_src:"", source:"HR. Abu Dawud no. 30, Tirmidzi no. 7, dishahihkan Al-Albani"},
+  summary:"Dibaca begitu keluar dari toilet, sebagai bentuk syukur atas nikmat mengeluarkan kotoran dari tubuh.",
+  body:[{h:"Keterangan", p:["Doa yang sangat singkat namun penuh makna ini diriwayatkan Aisyah radhiyallahu 'anha, menggambarkan kebiasaan Nabi ﷺ setiap keluar dari tempat buang hajat. Sebagian ulama menjelaskan permohonan ampun di sini karena selama di dalam, seorang hamba tidak dapat berdzikir menyebut nama Allah sebagaimana biasanya."]}],
+  sources:["abudawud","tirmidzi"], related:["doa-masuk-toilet"], tags:["doa","harian"]});
+addEntry({id:"doa-bangun-tidur", menu:6, material:"doa", sub:"tidur", type:"doa", title:"Doa Bangun Tidur",
+  arabic:{text:"الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ", translit:"Alhamdu lillahilladzi ahyana ba'da ma amatana wa ilaihin-nusyur", arti:"Segala puji bagi Allah yang telah menghidupkan kami setelah mematikan kami (tidur), dan kepada-Nya kami kembali.", audio:"", audio_src:"", source:"HR. Bukhari no. 6312"},
+  summary:"Dibaca begitu terbangun dari tidur, mengingat bahwa tidur adalah kematian kecil.",
+  body:[{h:"Keterangan", p:["Tidur diibaratkan sebagai kematian kecil karena kesadaran seseorang terputus sementara; bangun kembali adalah nikmat kehidupan yang patut disyukuri. Untuk kelengkapan dzikir sebelum tidur, lihat entri Dzikir Sebelum Tidur pada materi Dzikir."]}],
+  sources:["bukhari"], related:["dzikir-sebelum-tidur"], tags:["doa","harian","tidur"]});
+addEntry({id:"doa-sebelum-makan", menu:6, material:"doa", sub:"makan", type:"doa", title:"Doa Sebelum Makan",
+  arabic:{text:"بِسْمِ اللَّهِ", translit:"Bismillah", arti:"Dengan nama Allah.", audio:"", audio_src:"", source:"HR. Abu Dawud no. 3767, Tirmidzi no. 1858"},
+  summary:"Membaca basmalah sebelum makan agar setan tidak turut menikmati makanan bersama kita.",
+  body:[{h:"Keterangan", list:[
+    "Jika lupa membaca di awal, dianjurkan membaca \"Bismillahi awwalahu wa akhirah\" (dengan nama Allah, di awal dan di akhirnya) begitu teringat (HR. Abu Dawud no. 3767, Tirmidzi no. 1858).",
+    "Nabi ﷺ bersabda: \"Apabila salah seorang di antara kalian makan, hendaklah menyebut nama Allah; jika lupa menyebutnya di awal, ucapkanlah 'Bismillahi awwalahu wa akhirah'\" (HR. Abu Dawud, Tirmidzi, hasan sahih)."]}],
+  sources:["abudawud","tirmidzi"], related:["doa-setelah-makan"], tags:["doa","harian","makan"]});
+addEntry({id:"doa-setelah-makan", menu:6, material:"doa", sub:"makan", type:"doa", title:"Doa Setelah Makan",
+  arabic:{text:"الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ", translit:"Alhamdu lillahilladzi ath'amani hadza wa razaqanihi min ghairi haulin minni wa la quwwah", arti:"Segala puji bagi Allah yang telah memberiku makan ini dan memberiku rezeki tanpa daya dan kekuatan dariku.", audio:"", audio_src:"", source:"HR. Abu Dawud no. 4023, Tirmidzi no. 3458"},
+  summary:"Dibaca setelah selesai makan sebagai ungkapan syukur.",
+  body:[{h:"Keutamaan", p:["Nabi ﷺ bersabda barang siapa membaca doa ini setelah makan, akan diampuni dosa-dosanya yang telah lalu (HR. Abu Dawud no. 4023, Tirmidzi no. 3458, dihasankan sebagian ulama hadis)."]}],
+  sources:["abudawud","tirmidzi"], related:["doa-sebelum-makan"], tags:["doa","harian","makan"]});
+addEntry({id:"doa-masuk-masjid", menu:6, material:"doa", sub:"masjid", type:"doa", title:"Doa Masuk Masjid",
+  arabic:{text:"اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ", translit:"Allahummaftah li abwaba rahmatik", arti:"Ya Allah, bukakanlah untukku pintu-pintu rahmat-Mu.", audio:"", audio_src:"", source:"HR. Muslim no. 713"},
+  summary:"Dibaca sambil melangkahkan kaki kanan ketika memasuki masjid.",
+  body:[{h:"Keterangan", p:["Dianjurkan mendahulukan kaki kanan saat memasuki masjid sebagai adab memasuki tempat yang mulia, sebagaimana kebiasaan Nabi ﷺ mendahulukan yang kanan untuk perkara-perkara baik."]}],
+  sources:["muslim"], related:["doa-keluar-masjid"], tags:["doa","masjid"]});
+addEntry({id:"doa-keluar-masjid", menu:6, material:"doa", sub:"masjid", type:"doa", title:"Doa Keluar Masjid",
+  arabic:{text:"اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ", translit:"Allahumma inni as'aluka min fadhlik", arti:"Ya Allah, sesungguhnya aku memohon kepada-Mu sebagian dari karunia-Mu.", audio:"", audio_src:"", source:"HR. Muslim no. 713"},
+  summary:"Dibaca sambil melangkahkan kaki kiri ketika keluar dari masjid.",
+  body:[{h:"Keterangan", p:["Berbeda dengan saat masuk (memohon rahmat, mendahulukan kaki kanan), saat keluar disunnahkan mendahulukan kaki kiri sambil memohon karunia Allah berupa rezeki di luar masjid."]}],
+  sources:["muslim"], related:["doa-masuk-masjid"], tags:["doa","masjid"]});
+addEntry({id:"doa-masuk-rumah", menu:6, material:"doa", sub:"rumah", type:"doa", title:"Doa Masuk Rumah",
+  arabic:{text:"بِسْمِ اللَّهِ وَلَجْنَا وَبِسْمِ اللَّهِ خَرَجْنَا وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا", translit:"Bismillahi walajna wa bismillahi kharajna wa 'alallahi rabbina tawakkalna", arti:"Dengan nama Allah kami masuk, dengan nama Allah kami keluar, dan kepada Allah Tuhan kami, kami bertawakal.", audio:"", audio_src:"", source:"HR. Abu Dawud no. 5096"},
+  summary:"Dibaca ketika memasuki rumah, dilanjutkan mengucapkan salam kepada penghuni di dalamnya.",
+  body:[{h:"Keterangan", p:["Setelah membaca doa ini, dianjurkan mengucapkan salam kepada keluarga yang ada di dalam rumah, sebagaimana firman Allah: \"...maka apabila kamu memasuki rumah-rumah, hendaklah kamu memberi salam kepada penghuninya\" (QS. An-Nur 24:61). Rasulullah ﷺ juga bersabda bahwa setan akan terhalang masuk rumah yang dimasuki penghuninya dengan membaca basmalah (HR. Muslim no. 2018)."]}],
+  sources:["quran","muslim","abudawud"], related:["doa-keluar-rumah"], tags:["doa","rumah"]});
+addEntry({id:"doa-keluar-rumah", menu:6, material:"doa", sub:"rumah", type:"doa", title:"Doa Keluar Rumah",
+  arabic:{text:"بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", translit:"Bismillahi tawakkaltu 'alallah, wa la haula wa la quwwata illa billah", arti:"Dengan nama Allah, aku bertawakal kepada Allah, tiada daya dan kekuatan kecuali dengan pertolongan Allah.", audio:"", audio_src:"", source:"HR. Abu Dawud no. 5095, Tirmidzi no. 3426"},
+  summary:"Dibaca ketika hendak keluar rumah.",
+  body:[{h:"Keutamaan", p:["Nabi ﷺ bersabda bahwa siapa yang membaca doa ini ketika keluar rumah, akan dikatakan kepadanya 'Engkau telah diberi petunjuk, dicukupi, dan dilindungi', sehingga setan pun menjauh darinya (HR. Abu Dawud no. 5095, Tirmidzi no. 3426, dishahihkan Al-Albani)."]}],
+  sources:["abudawud","tirmidzi"], related:["doa-masuk-rumah"], tags:["doa","rumah"]});
+addEntry({id:"doa-pakaian-baru", menu:6, material:"doa", sub:"pakaian", type:"doa", title:"Doa Memakai Pakaian Baru",
+  arabic:{text:"اللَّهُمَّ لَكَ الْحَمْدُ أَنْتَ كَسَوْتَنِيهِ، أَسْأَلُكَ مِنْ خَيْرِهِ وَخَيْرِ مَا صُنِعَ لَهُ، وَأَعُوذُ بِكَ مِنْ شَرِّهِ وَشَرِّ مَا صُنِعَ لَهُ", translit:"Allahumma lakal-hamdu anta kasautanih, as'aluka min khairihi wa khairi ma shuni'a lah, wa a'udzu bika min syarrihi wa syarri ma shuni'a lah", arti:"Ya Allah, bagi-Mu segala puji, Engkau yang memberiku pakaian ini; aku memohon kepada-Mu kebaikannya dan kebaikan tujuan dibuatnya, dan aku berlindung kepada-Mu dari keburukannya dan keburukan tujuan dibuatnya.", audio:"", audio_src:"", source:"HR. Abu Dawud no. 4020, Tirmidzi no. 1767"},
+  summary:"Dibaca ketika mengenakan pakaian baru, memohon manfaat dan keberkahan darinya.",
+  body:[{h:"Keterangan", p:["Doa ini mengajarkan agar setiap kenikmatan duniawi, sekecil apa pun (termasuk pakaian baru), disertai kesadaran bahwa itu adalah pemberian Allah dan disertai permohonan agar dijauhkan dari keburukan yang mungkin menyertainya (seperti kesombongan atau riya)."]}],
+  sources:["abudawud","tirmidzi"], related:["doa-bercermin"], tags:["doa","pakaian"]});
+addEntry({id:"doa-ampunan-taubat", menu:6, material:"doa", sub:"taubat", type:"doa", title:"Doa Ampunan (Rabbanaghfirlana)",
+  arabic:{text:"رَبَّنَا اغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِي أَمْرِنَا وَثَبِّتْ أَقْدَامَنَا وَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ", translit:"Rabbanaghfir lana dzunubana wa israfana fi amrina wa tsabbit aqdamana wanshurna 'alal-qaumil-kafirin", arti:"Ya Tuhan kami, ampunilah dosa-dosa kami dan tindakan kami yang berlebihan dalam urusan kami, teguhkanlah pendirian kami, dan tolonglah kami terhadap orang-orang kafir.", audio:"", audio_src:"", source:"QS. Ali 'Imran 3:147"},
+  summary:"Doa memohon ampunan yang diajarkan Al-Qur'an, dipanjatkan para nabi dan pengikutnya yang teguh dalam kebenaran.",
+  body:[{h:"Konteks ayat", p:["Doa ini diabadikan Al-Qur'an sebagai ucapan para pengikut nabi terdahulu yang tetap teguh berjuang di jalan Allah meski menghadapi kesulitan besar, tidak menjadi lemah, tidak lesu, dan tidak menyerah (QS. Ali 'Imran 3:146-148). Lihat pula doa istighfar harian (Sayyidul Istighfar) pada materi Dzikir untuk permohonan ampun yang lebih lengkap."]}],
+  sources:["quran"], related:["sayyidul-istighfar-dzikir"], tags:["doa","taubat","istighfar"]});
+addEntry({id:"doa-istikharah", menu:6, material:"doa", sub:"istikharah", type:"doa", title:"Doa Istikharah (Meminta Pilihan Terbaik)",
+  arabic:{text:"اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ", translit:"Allahumma inni astakhiruka bi'ilmika, wa astaqdiruka biqudratika", arti:"Ya Allah, sesungguhnya aku memohon pilihan kepada-Mu dengan ilmu-Mu, aku memohon kemampuan kepada-Mu dengan kekuasaan-Mu (doa lengkap dibaca setelah shalat sunnah dua rakaat).", audio:"", audio_src:"", source:"HR. Bukhari no. 1166"},
+  summary:"Dibaca ketika hendak memutuskan sebuah perkara yang tidak jelas mana yang lebih baik, setelah shalat sunnah istikharah dua rakaat.",
+  body:[{h:"Keterangan", p:["Doa lengkap beserta tata cara shalat istikharah dua rakaat dibahas lebih rinci pada entri Istikharah di materi Shalat Sunnah — di sana dijelaskan lanjutan doa yang menyebutkan hajat yang sedang dipertimbangkan."]}],
+  sources:["bukhari"], related:["istikharah"], tags:["doa","keputusan","istikharah"]});
+addEntry({id:"doa-haji-talbiyah", menu:6, material:"doa", sub:"haji", type:"doa", title:"Talbiyah",
+  arabic:{text:"لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَكَ", translit:"Labbaikallahumma labbaik, labbaika la syarika laka labbaik, innal-hamda wan-ni'mata laka wal-mulk, la syarika lak", arti:"Aku penuhi panggilan-Mu ya Allah, aku penuhi panggilan-Mu. Aku penuhi panggilan-Mu, tiada sekutu bagi-Mu, aku penuhi panggilan-Mu. Sesungguhnya segala puji, nikmat, dan kerajaan adalah milik-Mu, tiada sekutu bagi-Mu.", audio:"", audio_src:"", source:"HR. Bukhari no. 1549, Muslim no. 1184"},
+  summary:"Kalimat yang diucapkan berulang-ulang sejak mengenakan ihram hingga memulai thawaf saat haji atau umrah.",
+  body:[{h:"Keterangan", p:["Talbiyah adalah simbol jawaban penuh ketaatan seorang hamba yang memenuhi panggilan Allah untuk berhaji, terus diperdengarkan dengan suara lantang oleh jamaah laki-laki sepanjang perjalanan menuju Makkah hingga mulai thawaf di Ka'bah."]}],
+  sources:["bukhari","muslim"], related:["haji"], tags:["doa","haji","umrah"]});
+addEntry({id:"doa-ziarah-kubur", menu:6, material:"doa", sub:"kematian", type:"doa", title:"Doa Ziarah Kubur",
+  arabic:{text:"السَّلَامُ عَلَيْكُمْ أَهْلَ الدِّيَارِ مِنَ الْمُؤْمِنِينَ وَالْمُسْلِمِينَ، وَإِنَّا إِنْ شَاءَ اللَّهُ بِكُمْ لَاحِقُونَ، أَسْأَلُ اللَّهَ لَنَا وَلَكُمُ الْعَافِيَةَ", translit:"Assalamu 'alaikum ahlad-diyari minal-mu'minina wal-muslimin, wa inna insya Allahu bikum lahiqun, as'alullaha lana wa lakumul-'afiyah", arti:"Semoga keselamatan tercurah bagi kalian wahai penghuni kubur dari kalangan mukmin dan muslim; sesungguhnya kami insya Allah akan menyusul kalian; aku memohon keselamatan bagi kami dan kalian kepada Allah.", audio:"", audio_src:"", source:"HR. Muslim no. 975"},
+  summary:"Salam yang diajarkan Nabi ﷺ untuk diucapkan ketika berziarah ke pemakaman.",
+  body:[{h:"Keterangan", p:["Ziarah kubur dianjurkan untuk mengingatkan peziarah akan kematian dan akhirat, disertai doa memohonkan ampun bagi yang telah wafat, bukan untuk meminta sesuatu kepada penghuni kubur."]}],
+  sources:["muslim"], related:["doa-takziah"], tags:["doa","kematian"]});
+addEntry({id:"doa-orang-tua", menu:6, material:"doa", sub:"keluarga", type:"doa", title:"Doa untuk Kedua Orang Tua",
+  arabic:{text:"رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا", translit:"Rabbirhamhuma kama rabbayani shaghira", arti:"Ya Tuhanku, sayangilah keduanya sebagaimana mereka telah mendidikku sewaktu kecil.", audio:"", audio_src:"", source:"QS. Al-Isra' 17:24"},
+  summary:"Doa yang diajarkan Al-Qur'an untuk dipanjatkan bagi kedua orang tua, baik yang masih hidup maupun yang telah wafat.",
+  body:[{h:"Konteks ayat", p:["Doa ini terangkai dengan perintah berbakti kepada orang tua dan larangan berkata kasar sedikit pun kepada mereka (QS. Al-Isra' 17:23-24), menegaskan bahwa mendoakan orang tua adalah bagian tak terpisahkan dari birrul walidain (berbakti kepada orang tua)."]}],
+  sources:["quran"], related:["doa-anak-keturunan"], tags:["doa","keluarga","orang tua"]});
+addEntry({id:"doa-anak-keturunan", menu:6, material:"doa", sub:"keluarga", type:"doa", title:"Doa untuk Anak & Keturunan",
+  arabic:{text:"رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا", translit:"Rabbana hab lana min azwajina wa dzurriyyatina qurrata a'yuniw waj'alna lil-muttaqina imama", arti:"Ya Tuhan kami, anugerahkanlah kepada kami pasangan dan keturunan kami sebagai penyejuk mata (hati), dan jadikanlah kami pemimpin bagi orang-orang yang bertakwa.", audio:"", audio_src:"", source:"QS. Al-Furqan 25:74"},
+  summary:"Doa memohon keturunan yang saleh dan menjadi penyejuk hati, diajarkan Al-Qur'an sebagai sifat hamba Ar-Rahman.",
+  body:[{h:"Konteks ayat", p:["Doa ini disebutkan sebagai salah satu ciri 'ibadurrahman (hamba-hamba Allah Yang Maha Pengasih) dalam penutup Surah Al-Furqan (QS. Al-Furqan 25:63-77), menunjukkan bahwa mendambakan keluarga yang saleh adalah bagian dari kesalehan seorang mukmin."]}],
+  sources:["quran"], related:["doa-orang-tua"], tags:["doa","keluarga","anak"]});
+addEntry({id:"doa-tawakal-hasbunallah", menu:6, material:"doa", sub:"tawakkal", type:"doa", title:"Doa Tawakal (Hasbunallahu wa Ni'mal Wakil)",
+  arabic:{text:"حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ", translit:"Hasbunallahu wa ni'mal wakil", arti:"Cukuplah Allah bagi kami, dan Dialah sebaik-baik pelindung.", audio:"", audio_src:"", source:"QS. Ali 'Imran 3:173"},
+  summary:"Kalimat tawakal yang diucapkan Nabi Ibrahim ketika dilemparkan ke dalam api, dan oleh Nabi Muhammad ﷺ beserta para sahabat menjelang Perang Uhud.",
+  body:[{h:"Konteks", p:["Al-Qur'an mengisahkan kalimat ini diucapkan hamba-hamba Allah yang beriman ketika dihadapkan pada ancaman besar, sebagai bentuk penyerahan diri penuh kepada Allah setelah berusaha semaksimal mungkin — bukan sikap pasrah tanpa ikhtiar. Untuk bacaan lengkap dzikir pagi-petang yang memuat kalimat ini, lihat entri Dzikir Pagi/Petang pada materi Dzikir."]}],
+  sources:["quran"], related:["hasbunallah-dzikir"], tags:["doa","tawakal"]});
+addEntry({id:"doa-syukur-nikmat", menu:6, material:"doa", sub:"tawakkal", type:"doa", title:"Doa Bersyukur atas Nikmat",
+  arabic:{text:"الْحَمْدُ لِلَّهِ الَّذِي بِنِعْمَتِهِ تَتِمُّ الصَّالِحَاتُ", translit:"Alhamdulillahilladzi bini'matihi tatimmush-shalihat", arti:"Segala puji bagi Allah yang dengan nikmat-Nya sempurnalah segala kebaikan.", audio:"", audio_src:"", source:"HR. Ibnu Majah no. 3803, dihasankan Al-Albani"},
+  summary:"Diucapkan ketika mendapati atau mendengar suatu kebaikan/nikmat, sebagai bentuk syukur bahwa semua kebaikan datang dari Allah.",
+  body:[{h:"Keterangan", p:["Mengucapkan hamdalah atas setiap kenikmatan, sekecil apa pun, adalah bentuk syukur yang diajarkan Nabi ﷺ dan menjadi sebab bertambahnya nikmat, sebagaimana firman Allah: \"Jika kamu bersyukur, pasti Aku akan menambah (nikmat) kepadamu\" (QS. Ibrahim 14:7)."]}],
+  sources:["quran","ibnumajah"], related:["doa-tawakal-hasbunallah"], tags:["doa","syukur"]});
+addEntry({id:"doa-belajar-mulai", menu:6, material:"doa", sub:"belajar", type:"doa", title:"Doa Sebelum Belajar (Rabbi Zidni 'Ilma)",
+  arabic:{text:"رَبِّ زِدْنِي عِلْمًا", translit:"Rabbi zidni 'ilma", arti:"Ya Tuhanku, tambahkanlah ilmu kepadaku.", audio:"", audio_src:"", source:"QS. Thaha 20:114"},
+  summary:"Doa singkat yang diperintahkan Allah agar dipanjatkan Nabi ﷺ, cocok dibaca sebelum memulai belajar atau menuntut ilmu.",
+  body:[{h:"Konteks ayat", p:["Allah memerintahkan Nabi ﷺ secara khusus untuk senantiasa memohon tambahan ilmu, menunjukkan bahwa menuntut ilmu adalah proses yang tidak pernah selesai dan harus terus dimohonkan pertolongan Allah di dalamnya."]}],
+  sources:["quran"], related:["doa-setelah-belajar"], tags:["doa","ilmu"]});
+addEntry({id:"doa-niat-puasa", menu:6, material:"doa", sub:"ramadan", type:"doa", title:"Niat Puasa Ramadan",
+  arabic:{text:"نَوَيْتُ صَوْمَ غَدٍ عَنْ أَدَاءِ فَرْضِ شَهْرِ رَمَضَانَ هَذِهِ السَّنَةِ لِلَّهِ تَعَالَى", translit:"Nawaitu shauma ghadin 'an adaa'i fardhi syahri ramadhana hadzihis-sanati lillahi ta'ala", arti:"Aku berniat puasa esok hari untuk menunaikan kewajiban bulan Ramadan tahun ini karena Allah Ta'ala.", audio:"", audio_src:"", source:"HR. Abu Dawud no. 2454, Tirmidzi no. 730 (tentang wajibnya niat puasa wajib di malam hari)"},
+  summary:"Niat puasa Ramadan yang cukup diucapkan dalam hati sebelum terbit fajar; lafaz ini adalah bentuk lisan yang umum diamalkan sebagai penguat.",
+  body:[{h:"Keterangan", p:["Yang menjadi rukun adalah niat di dalam hati sebelum fajar untuk berpuasa esok hari karena Allah; melafalkannya dengan lisan bukan syarat sah, namun umum diamalkan sebagai bentuk kehati-hatian dan penguat kesungguhan niat."]}],
+  sources:["abudawud","tirmidzi"], related:["doa-berbuka-puasa"], tags:["doa","ramadan","puasa"]});
+addEntry({id:"doa-safar-naik-kendaraan", menu:6, material:"doa", sub:"perjalanan", type:"doa", title:"Doa Naik Kendaraan (Memulai Safar)",
+  arabic:{text:"سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ", translit:"Subhanalladzi sakhkhara lana hadza wa ma kunna lahu muqrinin, wa inna ila rabbina lamunqalibun", arti:"Mahasuci (Allah) yang telah menundukkan (kendaraan) ini bagi kami, padahal kami sebelumnya tidak mampu menguasainya, dan sesungguhnya kami akan kembali kepada Tuhan kami.", audio:"", audio_src:"", source:"QS. Az-Zukhruf 43:13-14; HR. Muslim no. 1342"},
+  summary:"Dibaca ketika baru menaiki kendaraan untuk memulai perjalanan (safar).",
+  body:[{h:"Keterangan", p:["Doa ini mengingatkan bahwa kemampuan mengendarai dan menguasai kendaraan—betapa pun canggihnya—adalah karunia Allah yang menundukkannya bagi manusia, dan setiap perjalanan dunia pada akhirnya bermuara pada kembalinya manusia kepada Allah."]}],
+  sources:["quran","muslim"], related:["doa-perjalanan-kembali"], tags:["doa","perjalanan","safar"]});
+addEntry({id:"doa-perlindungan-jin-sihir", menu:6, material:"doa", sub:"perlindungan", type:"doa", title:"Doa Perlindungan dari Gangguan Jin & Sihir",
+  arabic:{text:"أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ", translit:"A'udzu bikalimatillahit-tammati min syarri ma khalaq", arti:"Aku berlindung dengan kalimat-kalimat Allah yang sempurna dari keburukan makhluk yang Dia ciptakan.", audio:"", audio_src:"", source:"HR. Muslim no. 2708"},
+  summary:"Dibaca untuk memohon perlindungan dari gangguan jin, sihir, 'ain (pandangan mata dengki), dan makhluk jahat lainnya.",
+  body:[{h:"Keutamaan", p:["Rasulullah ﷺ mengajarkan bahwa siapa yang membaca doa ini ketika singgah di suatu tempat, tidak ada sesuatu pun yang akan membahayakannya hingga ia meninggalkan tempat itu (HR. Muslim no. 2708). Untuk perlindungan harian yang lebih lengkap, lihat pula Al-Mu'awwidzatain (Al-Falaq dan An-Nas) pada Dzikir Pagi/Petang."]}],
+  sources:["muslim"], related:["doa-perlindungan-umum","dzikir-pagi-tiga-qul-pagi"], tags:["doa","perlindungan","sihir"]});
 
 /* ---------- Lengkapi doa nyata pada shalat sunnah & jenazah yang sebelumnya belum ada lafaz doanya ---------- */
 patch("istikharah", e=>{
