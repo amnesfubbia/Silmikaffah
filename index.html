@@ -4,7 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="SILMIKAFFAH — Ensiklopedia & Pembelajaran Islam menyeluruh: Al-Qur'an, Hadis, Fiqih, Doa, Sejarah, Kalender Hijriah, dan banyak lagi.">
-<meta name="theme-color" content="#0F7A4D">
+<meta name="theme-color" content="#F7F8F7">
+<meta name="color-scheme" content="dark light">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SILMIKAFFAH">
+<meta name="application-name" content="SILMIKAFFAH">
+<meta name="robots" content="index, follow">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <title>SILMIKAFFAH — Jelajahi Islam secara menyeluruh dalam satu ruang pengetahuan</title>
 <script>
 (function(){try{var v=localStorage.getItem("silk_settings");var t=v?(JSON.parse(v).theme||"dark"):"dark";if(t==="light")document.documentElement.dataset.theme="light";}catch(e){}})();
@@ -43,10 +53,13 @@
 --mix-bg-86: rgba(247,248,247,.86);
 --mix-surface-92: rgba(255,255,255,.92);
 --mix-surface-88: rgba(255,255,255,.88);
---mix-accent-16: rgba(20,154,99,.16);
---mix-accent-22: rgba(20,154,99,.22);
---mix-accent-30: rgba(20,154,99,.30);
---mix-accent-border: #ACD3C3;
+--mix-accent-16: rgba(0,88,90,.16);
+--mix-accent-22: rgba(0,88,90,.22);
+--mix-accent-30: rgba(0,88,90,.30);
+--mix-accent-border: #A9CFD0;
+/* Tombol Download keadaan selesai memakai aksen teal, sama seperti elemen lain di aplikasi. */
+--dl-done: #00494B;
+--dl-done-border: rgba(0,88,90,.40);
 --mix-danger-30: rgba(192,73,58,.30);
 --font-scale: 1;
 --transition: .16s ease;
@@ -83,10 +96,13 @@ html[data-theme="dark"]{
 --mix-bg-86: rgba(0,0,0,.86);
 --mix-surface-92: rgba(12,12,12,.92);
 --mix-surface-88: rgba(12,12,12,.88);
---mix-accent-16: rgba(47,207,143,.16);
---mix-accent-22: rgba(47,207,143,.22);
---mix-accent-30: rgba(47,207,143,.30);
---mix-accent-border: #24513F;
+--mix-accent-16: rgba(79,176,181,.16);
+--mix-accent-22: rgba(79,176,181,.22);
+--mix-accent-30: rgba(79,176,181,.30);
+--mix-accent-border: #234A4E;
+/* Tombol Download keadaan selesai memakai aksen teal, sama seperti elemen lain di aplikasi. */
+--dl-done: #4FB0B5;
+--dl-done-border: rgba(79,176,181,.38);
 --mix-danger-30: rgba(226,118,98,.30);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -319,9 +335,10 @@ background:var(--surface-2);color:var(--text-2);
 border:1px solid var(--border);
 transition:all var(--transition);
 }
-.audio-dl:hover{border-color:var(--mix-accent-border);color:var(--accent-text)}
+.audio-dl:hover{border-color:var(--dl-done-border);color:var(--dl-done)}
 .audio-dl.is-busy{opacity:.55}
-.audio-dl.is-done{background:var(--mix-accent-16);color:var(--accent-text);border-color:var(--mix-accent-border)}
+/* Tombol Download selesai: hijau hanya pada border kotak dan tulisan */
+.audio-dl.is-done{background:var(--surface);color:var(--dl-done);border-color:var(--dl-done-border)}
 .audio-dl.is-failed{background:var(--mix-danger-30);color:var(--danger);border-color:var(--danger)}
 .audio-dl svg{width:15px;height:15px}
 html[data-theme="dark"] .audio-btn{color:#fff}
@@ -548,7 +565,6 @@ transition:all var(--transition);
 html[data-theme="dark"] .cal-cell.today{color:#fff}
 .cal-cell .cd{font-size:calc(12.5px * var(--font-scale));font-weight:600;line-height:1.2}
 .cal-cell .cd.cd-peringatan{color:var(--accent-text)}
-html:not([data-theme="dark"]) .cal-cell .cd.cd-peringatan{color:#0C7C78}
 .cal-cell .cd.cd-sejarah{color:#C98A12}
 html:not([data-theme="dark"]) .cal-cell .cd.cd-sejarah{color:#8F6206}
 html[data-theme="dark"] .cal-cell .cd.cd-sejarah{color:#E8C15A}
@@ -680,6 +696,8 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .status-pill{display:inline-flex;align-items:center;gap:5px;font-size:calc(10px * var(--font-scale));font-weight:800;border-radius:999px;padding:3px 8px;letter-spacing:.03em}
 .status-pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .status-ready{color:var(--accent-text);background:var(--accent-soft)}
+.status-review{color:var(--warn,#DFB453);background:var(--warn-bg,#241F0D)}
+.status-draft{color:var(--text-3,#6E7873);background:var(--surface-2,#131313)}
 .status-verify{color:var(--warn);background:var(--warn-bg)}
 .status-pending{color:var(--text-3);background:var(--surface-3)}
 .divider{height:1px;background:var(--border);margin:14px 0}
@@ -764,6 +782,10 @@ font-family:var(--font-ui,system-ui,-apple-system,sans-serif);
 .mushaf-trans .mt-act{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .no-badge{flex:none;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-text);font-weight:800;font-size:calc(11.5px * var(--font-scale));font-variant-numeric:tabular-nums;margin-right:9px}
 .kata-box{margin-top:8px}
+.tafsir-box{margin-top:8px}
+.tafsir-isi{margin-top:8px;border-top:1px solid var(--border,#202020);padding-top:9px;font-size:13.5px;line-height:1.7;color:var(--text-2,#55605A)}
+.tafsir-isi p{margin:0 0 8px}
+.tafsir-src{font-size:11.5px;line-height:1.5;color:var(--text-3,#6E7873);margin:2px 0 8px}
 .kata-grid{display:flex;flex-wrap:wrap;gap:6px;direction:rtl;justify-content:flex-end;margin-top:8px}
 .kata-item{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:6px 9px;min-width:74px;text-align:center}
 .kata-ar{font-family:var(--font-ar);font-size:calc(19px * var(--font-scale));line-height:1.5;color:var(--text);direction:rtl}
@@ -1208,7 +1230,7 @@ const KARTU = {
     const amb = function(v, d){ try{ const x = cs.getPropertyValue(v).trim(); return x || d; }catch(e){ return d; } };
     return {
       bg: amb("--surface", "#0b0e11"), text: amb("--text", "#f5f7fa"),
-      muted: amb("--text-3", "#8b95a1"), accent: amb("--accent", "#3ea97a")
+      muted: amb("--text-3", "#8b95a1"), accent: amb("--accent", "#4FB0B5")
     };
   },
   bungkus(ctx, teks, maxW){
@@ -1373,7 +1395,7 @@ DB.MENUS = [
 {"id":"haji","name":"Haji & Umrah","group":"5 Rukun Islam","subs":[["syarat-rukun","Syarat, Rukun & Sunnah"],["ihram-miqat","Ihram & Miqat"],["manasik","Rangkaian Manasik"],["dam-tata-cara","Dam & Tata Cara"]]},
 {"id":"fiqih-ibadah","name":"Ibadah","group":"Ketentuan Ibadah Umum","subs":[["shalat-sujud","Shalat & Sujud"],["qurban-aqiqah","Qurban, Aqiqah & Halal-Haram"],["jenazah","Jenazah & Takziyah"]]}
 ]},
-{"id":3,"num":"03","name":"Al-Qur'an","icon":"quran","short":"Mushaf, juz, tafsir & hadis","desc":"114 surah, Juz 1–30, Juz 'Amma, Iqra 1–6, Tajwid, Tafsir & Ulumul Qur'an, serta Hadis & Sunnah.","materials":[
+{"id":3,"num":"03","name":"Al-Qur'an & Hadis","icon":"quran","short":"Mushaf, juz, tafsir & hadis","desc":"114 surah, Juz 1–30, Juz 'Amma, Iqra 1–6, Tajwid, Tafsir & Ulumul Qur'an, serta Hadis & Sunnah.","materials":[
 {"id":"mushaf","name":"Mushaf","group":"Mushaf & Bacaan"},
 {"id":"juz","name":"Juz 1–30","group":"Mushaf & Bacaan"},
 {"id":"juz-amma","name":"Juz 'Amma","group":"Mushaf & Bacaan"},
@@ -1390,7 +1412,7 @@ DB.MENUS = [
 {"id":"doa","name":"Doa","subs":[["harian","Doa Harian"],["tidur","Doa Tidur & Bangun"],["pakaian","Doa Berpakaian"],["makan","Doa Makan & Minum"],["toilet","Doa ke Kamar Mandi"],["wudhu","Doa Wudhu"],["masjid","Doa Masjid"],["setelah-shalat","Doa setelah Shalat"],["rumah","Doa Rumah"],["perjalanan","Doa Bermusafir"],["cuaca","Doa Hujan & Angin"],["perlindungan","Doa Perlindungan"],["kesulitan","Doa Sakit & Musibah"],["kesedihan","Doa Kesedihan Hati"],["rezeki","Doa Rezeki & Hutang"],["taubat","Doa Ampunan & Taubat"],["istikharah","Doa Keputusan (Istikharah)"],["belajar","Doa Menuntut Ilmu"],["keluarga","Doa untuk Keluarga"],["tawakkal","Doa Tawakal & Syukur"],["ramadan","Doa Ramadan & Puasa"],["quran","Doa dari Al-Qur'an"],["haji","Doa Haji & Umrah"],["kematian","Doa Kematian & Takziah"]]},
 {"id":"dzikir","name":"Dzikir","subs":[["pagi","Dzikir Pagi"],["petang","Dzikir Petang"],["setelah-shalat","Dzikir setelah Shalat"],["tidur","Dzikir sebelum Tidur"],["umum","Dzikir & Tasbih Umum"],["fitur","Tasbih Digital"]]}
 ]},
-{"id":5,"num":"05","name":"Sejarah Islam","icon":"sirah","short":"Sejarah, tokoh, peradaban & dakwah","desc":"Perjalanan hidup Nabi Muhammad ﷺ, peristiwa sejarah, tokoh & ulama, peradaban Islam, pendidikan & dakwah, serta ziarah.","materials":[
+{"id":5,"num":"05","name":"Sejarah Islam","icon":"sirah","short":"Sejarah, tokoh, peradaban & dakwah","desc":"Peristiwa sejarah, tokoh & ulama, peradaban Islam, pendidikan, dakwah, perang, serta ziarah. Sirah lengkap Nabi Muhammad ﷺ ada di Menu 1 › Iman kepada Rasul.","materials":[
 {"id":"masa-sebelum-islam","name":"Masa Sebelum Islam","group":"Awal & Kenabian"},
 {"id":"kisah-quran","name":"Kisah dalam Al-Qur'an","group":"Kisah & Ibrah","subs":[["ujian-hikmah","Ujian & Hikmah Zaman Dahulu"],["tokoh","Tokoh & Keteladanan"]]},
 {"id":"perang","name":"Perang & Ekspedisi","group":"Awal & Kenabian","subs":[["pertahanan-awal","Perang Pertahanan Awal"],["ekspansi-ekspedisi","Ekspansi & Ekspedisi"]]},
@@ -1431,11 +1453,8 @@ DB.MENUS = [
 {"id":"maqashid","name":"Maqashid Syariah","group":"Ushul & Kaidah Fiqih","subs":[["lima-penjagaan","Lima Penjagaan Dasar"]]}
 ]},
 {"id":7,"num":"07","name":"Kalender Hijriah","icon":"kalender","short":"Kalender & peristiwa","desc":"Tanggal Hijriah hari ini, kalender bulanan, hari besar, dan sejarah pada bulan ini.","materials":[
-{"id":"hari-ini","name":"Hari Ini"},
-{"id":"kalender-bulanan","name":"Kalender Bulanan","subs":[["fitur","Konversi Hijriah ↔ Masehi"]]},
-{"id":"detail-tanggal","name":"Detail Tanggal"},
-{"id":"informasi-hari-ini","name":"Informasi Hari Ini"},
-{"id":"sejarah-bulan-ini","name":"Sejarah pada Bulan Ini"}
+{"id":"kalender-bulanan","name":"Kalender & Tanggal","subs":[["hari-ini","Hari & Tanggal Ini"],["fitur","Konversi & Alat"]]},
+{"id":"sejarah-bulan-ini","name":"Hari Besar & Peristiwa","subs":[["hari-besar","Hari Besar Islam"],["bulan","Sejarah Bulan Hijriah"]]}
 ]},
 {"id":9,"num":"08","name":"Fiqih & Kehidupan","icon":"kontemporer","short":"Muamalah, keluarga & isu zaman","desc":"Fiqih untuk kehidupan sehari-hari: muamalah & ekonomi, keluarga & waris, serta isu masyarakat dan kesehatan.","materials":[
 {"id":"fiqih-muamalah","name":"Muamalah","group":"Muamalah & Ekonomi","subs":[["dasar-transaksi","Dasar Transaksi"],["jenis-akad","Jenis Akad"],["ekonomi-kini","Ekonomi Masa Kini"]]},
@@ -1463,6 +1482,7 @@ fiqihsunnah:{id:"fiqihsunnah", title:"Fiqih Sunnah — Sayyid Sabiq", type:"Kita
 alfiqh:{id:"alfiqh", title:"Al-Fiqh al-Islami wa Adillatuhu — Wahbah az-Zuhaili", type:"Kitab Fiqih", note:"Ensiklopedia fiqih perbandingan."},
 sirah:{id:"sirah", title:"Sirah Nabawiyah (Ibnu Hisyam / Syaikh Shafiyyurrahman al-Mubarakfuri)", type:"Kitab Sirah", note:"Biografi Nabi Muhammad ﷺ."},
 tafsir:{id:"tafsir", title:"Tafsir Ibnu Katsir", type:"Kitab Tafsir", note:"Tafsir bi al-ma'tsur."},
+hisnulmuslim:{id:"hisnulmuslim", title:"Hisnul Muslim — Syaikh Sa'id bin Ali bin Wahf Al-Qahtani", type:"Kitab Doa & Dzikir", note:"Kumpulan doa dan dzikir harian beserta takhrij hadisnya. Teks Arab, terjemahan, dan takhrij mengikuti edisi Indonesia terbitan Kementerian Urusan Islam, Dakwah, dan Penyuluhan Arab Saudi."},
 adhancc:{id:"adhancc", title:"Rekaman adzan — Wikimedia Commons (CC BY-SA 4.0)", type:"Audio", note:"Rekaman \"The Adhan — Muslim Call to Prayer\" oleh Aaqib Azeez; lisensi Creative Commons Attribution-ShareAlike 4.0. Atribusi tercantum pada keterangan audio."},
 app:{id:"app", title:"Materi orisinal SILMIKAFFAH", type:"Internal", note:"Konten disusun tim aplikasi; wajib ditinjau ulama."}
 };
@@ -2890,7 +2910,7 @@ addEntry({id:"dzikir-petang", menu:4, material:"dzikir", sub:"petang", type:"art
 body:[{h:"Waktu", p:["Dibaca selepas shalat Asar hingga terbenam matahari; boleh juga sejak masuk waktu Asar."]},
 {h:"Keutamaan", p:["Susunannya sama dengan dzikir pagi, hanya lafaznya disesuaikan untuk waktu petang (mis. \"amsaina\" menggantikan \"ashbahna\"). Barangsiapa mengucapkan \"Hasbunallahu wa ni'mal wakil\" di petang hari, Allah akan mencukupkannya (HR. Ibnu Sunni, dari QS. Ali 'Imran 3:173)."]},
 {h:"Susunan bacaan", p:["Setiap bacaan di bawah ini adalah entri tersendiri lengkap dengan Arab, arti, dan sumbernya."]}],
-sources:["quran","abudawud","tirmidzi","nasai"], related:["dzikir","dzikir-pagi"], tags:["dzikir","petang"]});
+sources:["quran","abudawud","tirmidzi","nisai"], related:["dzikir","dzikir-pagi"], tags:["dzikir","petang"]});
 const DZIKIR_PP = [
 {n:"ayat-kursi", pagi:1, petang:1, judul:"Ayat Kursi", ar:"اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ...", tr:"Allahu la ilaha illa huwal hayyul qayyum, la ta'khudzuhu sinatuw wa la naum...", arti:"Allah, tidak ada tuhan selain Dia, Yang Mahahidup, Yang terus-menerus mengurus makhluk-Nya; tidak mengantuk dan tidak tidur (QS. Al-Baqarah 2:255, dibaca lengkap).", jml:"1×", src:"QS. Al-Baqarah 2:255; HR. Ath-Thabarani — barang siapa membacanya di pagi hari dijaga hingga sore, dan sebaliknya (hasan li ghairihi menurut sebagian ulama hadis).", faedah:"Disebut ayat paling agung dalam Al-Qur'an (HR. Muslim no. 810) karena memuat inti tauhid rububiyah — penegasan bahwa Allah sendiri yang mengurus seluruh alam tanpa lelah maupun lalai."},
 {n:"tiga-qul-pagi", pagi:1, petang:1, judul:"Tiga Qul (Al-Ikhlas, Al-Falaq, An-Nas)", ar:"قُلْ هُوَ اللَّهُ أَحَدٌ ۝ قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ ۝ قُلْ أَعُوذُ بِرَبِّ النَّاسِ", tr:"Qul huwallahu ahad — Qul a'udzu birabbil-falaq — Qul a'udzu birabbin-nas", arti:"Surah Al-Ikhlas, Al-Falaq, dan An-Nas dibaca berurutan.", jml:"3×", src:"HR. Abu Dawud no. 5082, Tirmidzi no. 3575 — cukup baginya dari segala sesuatu.", faedah:"Al-Ikhlas menegaskan kemurnian tauhid, sedangkan Al-Falaq dan An-Nas (disebut Al-Mu'awwidzatain) memohon perlindungan dari kejahatan yang tampak maupun tersembunyi, termasuk sihir dan bisikan setan."},
@@ -2926,7 +2946,7 @@ body:[{h:"Susunan lengkap", list:[
 "Tasbih 33×, Tahmid 33×, Takbir 33×, disempurnakan dengan tahlil: \"La ilaha illallahu wahdahu la syarika lah, lahul mulku wa lahul hamdu wa huwa 'ala kulli syai'in qadir\" — HR. Muslim no. 597: barang siapa mengamalkannya, diampuni dosanya walau sebanyak buih di lautan.",
 "Doa setelah dzikir sesuai hajat masing-masing, lalu bersyukur atas terlaksananya shalat."
 ]}],
-sources:["muslim","bukhari","nasai","abudawud"], related:["dzikir","shalat"], tags:["dzikir","shalat"]});
+sources:["muslim","bukhari","nisai","abudawud"], related:["dzikir","shalat"], tags:["dzikir","shalat"]});
 addEntry({id:"dzikir-sebelum-tidur", menu:4, material:"dzikir", sub:"tidur", type:"article", title:"Dzikir Sebelum Tidur", order:1, summary:"Dzikir dan doa sebelum tidur sesuai tuntunan — menutup hari dan memohon perlindungan sepanjang malam.",
 body:[{h:"Susunan lengkap", list:[
 "Membaca Al-Ikhlas, Al-Falaq, dan An-Nas, lalu meniupkan ke kedua telapak tangan dan mengusapkannya ke seluruh tubuh yang terjangkau, dimulai dari kepala dan wajah, diulang 3× (HR. Bukhari no. 5017).",
@@ -3190,15 +3210,15 @@ desc:"Awal tahun baru dalam kalender Hijriah, ditetapkan pada masa Umar bin Khat
 {id:"ev-asyura", day:10, month:"Muharram", title:"Hari Asyura (10 Muharram)", type:"peringatan",
 desc:"Hari disunnahkannya puasa Asyura — hari Allah menyelamatkan Nabi Musa dan Bani Israil dari Fir'aun. \"Puasa Asyura menghapus dosa setahun yang lalu.\" (HR. Muslim no. 1162).", sources:["muslim"], related:["puasa-asyura"]},
 {id:"ev-maulid", day:12, month:"Rabiul Awal", title:"Maulid Nabi Muhammad ﷺ (12 Rabiul Awal)", type:"peringatan",
-desc:"Peringatan kelahiran Nabi Muhammad ﷺ. Tanggal kelahiran diperselisihkan (12 Rabiul Awal adalah pendapat masyhur; sebagian riwayat menyebutkan 9 atau 17 Rabiul Awal).", sources:["sirah"], related:["kelahiran-nabi"]},
+desc:"Peringatan kelahiran Nabi Muhammad ﷺ. Tanggal kelahiran diperselisihkan (12 Rabiul Awal adalah pendapat masyhur; sebagian riwayat menyebutkan 9 atau 17 Rabiul Awal).", sources:["sirah"], related:["nabi-muhammad"]},
 {id:"ev-isra-miraj", day:27, month:"Rajab", title:"Isra' Mi'raj (27 Rajab)", type:"peringatan",
-desc:"Perjalanan malam Rasulullah ﷺ dari Masjidil Haram ke Masjidil Aqsha lalu ke sidratul muntaha; diwajibkannya shalat lima waktu. Tanggalnya diperselisihkan; 27 Rajab adalah pendapat yang masyhur.", sources:["quran","sirah"], related:["dakwah-makkah","shalat"]},
+desc:"Perjalanan malam Rasulullah ﷺ dari Masjidil Haram ke Masjidil Aqsha lalu ke sidratul muntaha; diwajibkannya shalat lima waktu. Tanggalnya diperselisihkan; 27 Rajab adalah pendapat yang masyhur.", sources:["quran","sirah"], related:["nabi-muhammad","shalat"]},
 {id:"ev-nisfu-syaban", day:15, month:"Sya'ban", title:"Nisfu Sya'ban (15 Sya'ban)", type:"peringatan",
 desc:"Pertengahan bulan Sya'ban. Sebagian umat mengistimewakannya; para ulama berbeda pendapat tentang keutamaan khusus malam ini — aplikasi menampilkan perbedaan ini secara jujur.", sources:["app"], related:["sejarah-islam"]},
 {id:"ev-awal-ramadan", day:1, month:"Ramadan", title:"Awal Puasa Ramadan (1 Ramadan)", type:"peringatan",
 desc:"Dimulainya kewajiban puasa Ramadan sebulan penuh bagi kaum Muslimin.", sources:["quran"], related:["puasa-ramadan"]},
 {id:"ev-nuzulul-quran", day:17, month:"Ramadan", title:"Nuzulul Qur'an (17 Ramadan)", type:"peringatan",
-desc:"Peringatan turunnya wahyu pertama (QS. Al-'Alaq 96:1-5). Tanggal 17 Ramadan adalah pendapat masyhur; sebagian riwayat menyebut tanggal lain — Al-Qur'an turun pada bulan Ramadan secara pasti (QS. Al-Baqarah 2:185).", sources:["quran","tafsir"], related:["awal-wahyu"]},
+desc:"Peringatan turunnya wahyu pertama (QS. Al-'Alaq 96:1-5). Tanggal 17 Ramadan adalah pendapat masyhur; sebagian riwayat menyebut tanggal lain — Al-Qur'an turun pada bulan Ramadan secara pasti (QS. Al-Baqarah 2:185).", sources:["quran","tafsir"], related:["nabi-muhammad"]},
 {id:"ev-idulfitri", day:1, month:"Syawal", title:"Idulfitri (1 Syawal)", type:"hari raya",
 desc:"Hari raya umat Islam setelah sebulan berpuasa; hari kemenangan, takbir, dan silaturahmi.", sources:["bukhari","muslim"], related:["idulfitri","zakat-fitrah"]},
 {id:"ev-wukuf", day:9, month:"Dzulhijjah", title:"Wukuf di Arafah (9 Dzulhijjah)", type:"peringatan",
@@ -3208,11 +3228,11 @@ desc:"Hari raya kurban, mengenang ketaatan Nabi Ibrahim dan Ismail; disunnahkan 
 {id:"ev-tasyrik", day:11, month:"Dzulhijjah", title:"Hari Tasyrik (11–13 Dzulhijjah)", type:"peringatan",
 desc:"Hari-hari makan dan minum; disunnahkan memperbanyak takbir; hari melontar jumrah bagi jemaah haji.", sources:["muslim"], related:["haji","ev-iduladha"]},
 {id:"ev-wafat-nabi", day:12, month:"Rabiul Awal", title:"Wafat Rasulullah ﷺ (12 Rabiul Awal 11 H)", type:"peristiwa",
-desc:"Rasulullah ﷺ wafat di Madinah, sekitar tiga bulan setelah Haji Wada'. Peristiwa besar bagi kaum Muslimin pada bulan Rabiul Awal.", sources:["sirah"], related:["wafat-nabi"]},
+desc:"Rasulullah ﷺ wafat di Madinah, sekitar tiga bulan setelah Haji Wada'. Peristiwa besar bagi kaum Muslimin pada bulan Rabiul Awal.", sources:["sirah"], related:["nabi-muhammad"]},
 {id:"ev-perang-badar", day:17, month:"Ramadan", title:"Perang Badar (17 Ramadan 2 H)", type:"peristiwa",
 desc:"Perang besar pertama umat Islam; sekitar 313 sahabat menghadapi pasukan Quraisy dan meraih kemenangan.", sources:["sirah"], related:["perang-badar"]},
 {id:"ev-fathu-makkah", day:20, month:"Ramadan", title:"Fathu Makkah (20 Ramadan 8 H)", type:"peristiwa",
-desc:"Pembebasan Makkah tanpa pertumpahan darah besar, setelah Perjanjian Hudaibiyah dilanggar.", sources:["sirah"], related:["fathu-makkah"]},
+desc:"Pembebasan Makkah tanpa pertumpahan darah besar, setelah Perjanjian Hudaibiyah dilanggar.", sources:["sirah"], related:["nabi-muhammad"]},
 {id:"ev-perang-uhud", day:0, month:"Syawal", title:"Perang Uhud (Syawal 3 H)", type:"peristiwa",
 desc:"Ujian besar setahun setelah Badar; Hamzah, paman Nabi ﷺ, gugur. Hari terjadinya tidak dipastikan dalam sumber aplikasi.", sources:["sirah"], related:["perang-uhud"]},
 {id:"ev-perang-khandaq", day:0, month:"Syawal", title:"Perang Khandaq / Ahzab (Syawal 5 H)", type:"peristiwa",
@@ -3242,7 +3262,7 @@ related:["ziarah-kubur"],
 note:["Pemakaman utama penduduk Madinah sejak masa Nabi ﷺ.","Ziarah dilakukan dengan mengucapkan salam dan mendoakan penghuninya.","Menjaga kebersihan, tidak duduk di atas makam, dan tidak meminta hajat kepada penghuni kubur."]},
 {id:"gua-hira", name:"Gua Hira", type:"situs", loc:"Jabal Nur, Makkah, Arab Saudi", lat:21.4575, lon:39.8588,
 history:"Gua tempat Rasulullah ﷺ ber-khalwat dan menerima wahyu pertama dari Malaikat Jibril.",
-related:["awal-wahyu"],
+related:["nabi-muhammad"],
 note:["Terletak di Jabal Nur, sekitar 5 km dari Makkah.","Tempat turunnya wahyu pertama, Surah Al-'Alaq ayat 1–5.","Akses menuju gua cukup menanjak; utamakan keselamatan dan tidak memaksakan diri."]},
 {id:"masjid-istiqlal", name:"Masjid Istiqlal", type:"masjid", loc:"Jakarta, Indonesia", lat:-6.1697, lon:106.8307,
 history:"Masjid nasional Indonesia, masjid terbesar di Asia Tenggara; diresmikan 1978, melambangkan persatuan bangsa.",
@@ -3802,8 +3822,8 @@ const MALAIKAT = [
 {id:"malaikat-maut", name:"Maut (Izrail)", tugas:"Mencabut nyawa dengan izin Allah.", dalil:"QS. As-Sajdah 32:11 — \"Malaikat maut yang diserahi (tugas) untuk mencabut nyawamu akan mematikanmu.\""},
 {id:"malaikat-munkar-nakir", name:"Munkar & Nakir", tugas:"Menanyai manusia di alam kubur.", dalil:"HR. Tirmidzi no. 1071 (hasan sahih)."},
 {id:"malaikat-raqib-atid", name:"Raqib & Atid", tugas:"Mencatat amal baik dan buruk setiap manusia.", dalil:"QS. Qaf 50:17-18."},
-{id:"malaikat-malik", name:"Malik", tugas:"Penjaga neraka.", dalil:"QS. Az-Zukhruf 43:77."},
-{id:"malaikat-ridwan", name:"Ridwan", tugas:"Penjaga surga.", dalil:"Disebut dalam atsar tentang penjaga surga; nama ini masyhur di kalangan ulama tafsir."}
+{id:"malaikat-malik", name:"Malik", tugas:"Menjaga neraka dan memimpin sembilan belas malaikat Zabaniyah.", dalil:"QS. Az-Zukhruf 43:77."},
+{id:"malaikat-ridwan", name:"Ridwan", tugas:"Menjaga surga dan menyambut penghuninya dengan salam.", dalil:"Disebut dalam atsar tentang penjaga surga; nama ini masyhur di kalangan ulama tafsir."}
 ];
 MALAIKAT.forEach((m,i)=>{
 addEntry({id:m.id, menu:1, material:"iman-kepada-malaikat", sub:"10-malaikat", type:"article", title:"Malaikat "+m.name, order:5+i, summary:m.tugas,
@@ -5150,6 +5170,41 @@ fetch(url, ctrl?{signal:ctrl.signal}:undefined)
 });
 };
 const _mem = new Map();
+/* ---------- Mushaf offline: unduhan tetap, tidak ikut pembersihan cache ---------- */
+const OFF_PREFIX = "silk_off_";
+const OFF = {
+kunci(n){ return OFF_PREFIX + "surah_" + n; },
+ada(n){ try{ return !!localStorage.getItem(OFF.kunci(n)); }catch(e){ return false; } },
+ambil(n){ try{ const raw = localStorage.getItem(OFF.kunci(n)); return raw ? JSON.parse(raw) : null; }catch(e){ return null; } },
+simpan(n, data, judul){
+try{ localStorage.setItem(OFF.kunci(n), JSON.stringify({t:Date.now(), judul:judul||("Surah "+n), data:data})); return true; }
+catch(e){ return false; }
+},
+hapus(n){ try{ localStorage.removeItem(OFF.kunci(n)); }catch(e){} },
+daftar(){
+const out = [];
+try{
+for(let i=0;i<localStorage.length;i++){
+const k = localStorage.key(i);
+if(!k || k.indexOf(OFF_PREFIX)!==0) continue;
+let j = {}; try{ j = JSON.parse(localStorage.getItem(k)) || {}; }catch(e){}
+out.push({k:k, n:parseInt(k.replace(OFF_PREFIX+"surah_",""),10)||0, judul:j.judul||"", t:j.t||0, ayah:(j.data||[]).length});
+}
+}catch(e){}
+return out.sort((a,b)=>a.n-b.n);
+},
+ukuran(){ let t=0; try{ OFF.daftar().forEach(x=>{ t += (localStorage.getItem(x.k)||"").length; }); }catch(e){} return t; },
+hapusSemua(){ OFF.daftar().forEach(x=>{ try{ localStorage.removeItem(x.k); }catch(e){} }); }
+};
+function barisOffline(n){
+const ada = (typeof OFF!=="undefined") && OFF.ada(n);
+const nama = (DB.SURAHS[n-1] && DB.SURAHS[n-1][2]) || ("Surah "+n);
+return '<div class="card" style="margin-top:12px"><div class="row" data-action="offline-toggle" data-surah="'+n+'">'
++ '<span class="row-icon">'+icon(ada?"check":"cloudRain",18)+'</span>'
++ '<span class="grow"><span class="rt">'+(ada? "Tersimpan untuk offline" : "Unduh surah ini untuk offline")+'</span>'
++ '<span class="rs">'+(ada? ("Surah "+nama+" bisa dibaca tanpa jaringan — ketuk untuk menghapus") : "Setelah diunduh, surah "+nama+" bisa dibaca tanpa jaringan")+'</span></span>'
++ '<span class="chev">'+icon("chev",18)+'</span></div></div>';
+}
 function cacheGet(key){
 if(_mem.has(key)) return _mem.get(key);
 try{ const raw = localStorage.getItem("silk_api_"+key); if(raw) return JSON.parse(raw); }catch(e){}
@@ -5173,6 +5228,9 @@ for(let i=0;i<Math.max(1,keys.length/2);i++) localStorage.removeItem(keys[i][0])
 function cacheGetTtl(key, ttlMs){
 const c = cacheGet(key);
 if(!c) return null;
+/* Nilai yang baru disimpan di memori tersimpan mentah (tanpa pembungkus t/ttl),
+   jadi dikembalikan apa adanya supaya cache sesi ini benar-benar terpakai. */
+if(c.v === undefined) return c;
 if(c.ttl && c.t && (Date.now()-c.t) > c.ttl) return null;
 return c.v;
 }
@@ -5259,6 +5317,9 @@ if(full) out.push(full);
 return out;
 };
 API.getSurah = function(n){
+/* Unduhan offline dipakai lebih dulu supaya bacaan tetap jalan tanpa jaringan. */
+const unduhan = (typeof OFF!=="undefined") ? OFF.ambil(n) : null;
+if(unduhan && unduhan.data && unduhan.data.length) return Promise.resolve({surah:unduhan.data, source:"unduhan offline"});
 const tid = String((typeof SETTINGS !== "undefined" && SETTINGS.terjemahan) ? SETTINGS.terjemahan : "33");
 const cached = cacheGetTtl("q_surah_"+n+"_"+tid, 30*24*3600*1000);
 if(cached) return Promise.resolve({surah:cached, source:"cache lokal"});
@@ -5530,7 +5591,7 @@ return '<div class="tabs" role="tablist">'+tabs.map(t=>'<button class="tab'+(act
 }
 function quranView(tab, matName){
 tab = tab||"";
-const cr = [{label:"Home",href:"#/home"},{label:"Al-Qur'an",href:"#/menu/3"}];
+const cr = [{label:"Home",href:"#/home"},{label:"Al-Qur'an & Hadis",href:"#/menu/3"}];
 if(matName) cr.push({label:matName});
 let h = '<div class="page">'+crumbs(cr)
 + ""
@@ -5610,7 +5671,8 @@ let h = '<div class="page">'+crumbs([{label:"Home",href:"#/home"},{label:"Al-Qur
 + '</div>'
 + (BACAAN.ayatDi(s[0]) ? '<div class="continue-banner">'+icon("bookmarkFill",15)+'<span>Terakhir Anda baca: ayat '+BACAAN.ayatDi(s[0])+'</span><button class="btn btn-ghost" data-action="lompat-ayat" data-key="'+s[0]+':'+BACAAN.ayatDi(s[0])+'">'+icon("arrowR",14)+' Lompat ke ayat itu</button></div>' : "")
 + '<div id="surah-content">'+skeletonCards(3)+'</div>'
-+ (DB.TAFSIR && DB.TAFSIR[n] ? '<div class="callout info" style="margin-top:12px">'+icon("info",18)+'<div><b>Tafsir ringkas:</b> '+esc(DB.TAFSIR[n])+'</div></div>' : "")
+ + kartuTafsirSurah(n)
+ + barisOffline(n)
 + '</div>';
 API.getSurah(n).then(res=>{
 const box = document.getElementById("surah-content");
@@ -5655,6 +5717,168 @@ pantauBacaan(n, s[2]);
 }).catch(()=>{});
 return h;
 }
+/* ---------- Tafsir Ibnu Katsir per ayat ----------
+Sumber: Quran.com API, tafsir 169 = "Ibn Kathir (Abridged)". Edisinya berbahasa Inggris,
+sehingga panel ini menyatakan bahasanya secara terbuka dan menyediakan tombol terjemahan mesin
+(MyMemory) yang ditandai jelas sebagai terjemahan mesin yang belum ditinjau. */
+const TAFSIR_ID = 169;                                  /* Ibnu Katsir (ringkas, Inggris) di Quran.com */
+const TAFSIR_KEMENAG = "https://equran.id/api/v2/tafsir/";   /* tafsir Indonesia, sumber data Kementerian Agama RI */
+const SUMBER_TAFSIR = {
+kemenag:{nama:"Tafsir Indonesia (Kemenag)", ket:"Tafsir Indonesia \u2014 sumber data: Kementerian Agama RI (melalui equran.id)."},
+katsir:{nama:"Tafsir Ibnu Katsir (edisi ringkas)", ket:"Tafsir Ibnu Katsir edisi ringkas \u2014 sumber: Quran.com. Teks aslinya berbahasa Inggris."}
+};
+function sumberTafsir(){
+try{ return (typeof SETTINGS!=="undefined" && SETTINGS.tafsirSrc==="katsir") ? "katsir" : "kemenag"; }catch(e){ return "kemenag"; }
+}
+function rapikanTafsir(html){
+return String(html||"")
+.replace(/<br\s*\/?>/gi, "\n")
+.replace(/<\/(p|div|h[1-6]|li)>/gi, "\n")
+.replace(/<[^>]+>/g, "")
+.replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&rsquo;/g,"\u2019")
+.replace(/[ \t]+/g," ").replace(/\n{3,}/g,"\n\n").trim();
+}
+/* ---------- Pengantar surah (deskripsi resmi, bahasa Indonesia) ----------
+Diambil dari sumber yang sama dengan tafsir Indonesia: equran.id, data Kementerian
+Agama RI. Satu permintaan per surah, hasilnya disimpan 180 hari. */
+/* ---------- Kartu tafsir & pengantar surah (satu kartu, dua lapis) ----------
+   Menyatukan dua keterangan surah yang sebelumnya tampil terpisah:
+   (1) Ringkasan singkat — materi orisinal SILMIKAFFAH, tersimpan di dalam berkas
+       sehingga tetap tampil tanpa jaringan.
+   (2) Pengantar surah — deskripsi resmi Kementerian Agama RI (melalui equran.id),
+       dimuat saat barisnya dibuka.
+   Setiap lapis menyebut sumbernya sendiri agar tidak tertukar. */
+function kartuTafsirSurah(n){
+ const ringkas = (DB.TAFSIR && DB.TAFSIR[n]) ? String(DB.TAFSIR[n]) : "";
+ return '<div class="card" style="margin-top:12px">'
+ + '<div class="rt">Tafsir &amp; pengantar surah</div>'
+ + (ringkas
+     ? '<div class="callout info" style="margin-top:10px">'+icon("info",18)
+       + '<div><b>Ringkasan:</b> '+esc(ringkas)+'</div></div>'
+       + '<div class="tafsir-src" style="margin-top:4px">Ringkasan \\u2014 materi orisinal SILMIKAFFAH; wajib ditinjau ulama. Tersedia tanpa jaringan.</div>'
+     : "")
+ + '<div class="row" data-action="pengantar-toggle" data-surah="'+n+'" style="margin-top:10px">'
+ + '<span class="row-icon">'+icon("info",18)+'</span>'
+ + '<span class="grow"><span class="rt">Pengantar surah</span>'
+ + '<span class="rs">Asal-usul penamaan, jumlah ayat, dan tema pokok \\u2014 bahasa Indonesia (Kemenag)</span></span>'
+ + '<span class="chev">'+icon("chev",18)+'</span></div>'
+ + '<div class="tafsir-isi" id="pg-'+n+'"></div></div>';
+}
+function bukaPengantar(n){
+ const box = document.getElementById("pg-"+n);
+if(!box) return;
+if(box.dataset.terbuka==="1"){ box.innerHTML=""; box.dataset.terbuka="0"; return; }
+const tampil = function(teks){
+box.dataset.terbuka="1";
+const par = String(teks||"").split(/\n+/).filter(function(x){ return x.trim(); });
+box.innerHTML = '<div class="tafsir-src">Pengantar surah \u2014 sumber data: Kementerian Agama RI (melalui equran.id).</div>'
++ par.map(function(t){ return '<p>'+esc(t)+'</p>'; }).join("");
+};
+const simpanan = cacheGetTtl("pg_"+n, 180*24*3600*1000);
+if(simpanan){ tampil(simpanan); return; }
+box.dataset.terbuka="1";
+box.innerHTML = '<p class="tafsir-src">Memuat pengantar\u2026</p>';
+API.fetchJSON(TAFSIR_KEMENAG+n, 15000)
+.then(function(j){
+const d = (j && j.data) ? j.data : null;
+const teks = d ? rapikanTafsir(d.deskripsi) : "";
+if(!teks){ box.innerHTML = '<p class="tafsir-src">Pengantar surah ini belum tersedia pada sumber.</p>'; box.dataset.terbuka="0"; return; }
+cacheSet("pg_"+n, teks, 180*24*3600*1000);
+tampil(teks);
+})
+.catch(function(){ box.innerHTML = '<p class="tafsir-src">Pengantar tidak bisa dimuat. Periksa koneksi lalu coba lagi.</p>'; box.dataset.terbuka="0"; });
+}
+function bukaTafsir(key){
+const box = document.getElementById("tf-"+key);
+if(!box) return;
+if(box.dataset.terbuka==="1"){ box.innerHTML=""; box.dataset.terbuka="0"; return; }
+const bagian = String(key).split(":");
+const sNr = parseInt(bagian[0],10), aNr = parseInt(bagian[1],10);
+const src = sumberTafsir();
+const gambar = function(teks){
+box.dataset.terbuka="1";
+const par = String(teks||"").split(/\n+/).filter(function(x){ return x.trim(); });
+box.innerHTML = '<div class="tafsir-src">'+esc(SUMBER_TAFSIR[src].ket)+'</div>'
++ par.map(function(t){ return '<p>'+esc(t)+'</p>'; }).join("")
++ (src==="katsir" ? '<button class="btn btn-ghost" data-action="tafsir-terjemah" data-key="'+key+'">'+icon("external",14)+' Terjemahkan ke Indonesia (mesin)</button><div class="tafsir-isi" id="tfter-'+key+'"></div>' : '')
++ '<button class="btn btn-ghost" data-action="tafsir-ganti" data-key="'+key+'">'+icon("book",14)+' Ganti ke '+esc(src==="kemenag" ? "Ibnu Katsir" : "tafsir Indonesia")+'</button>';
+bindActions();
+};
+/* Sumber Indonesia: satu permintaan untuk seluruh surah, lalu disimpan per ayat. */
+if(src==="kemenag"){
+const peta = cacheGetTtl("tfk_"+sNr, 180*24*3600*1000);
+if(peta && peta[aNr]){ gambar(peta[aNr]); return; }
+box.dataset.terbuka="1";
+box.innerHTML = '<p class="tafsir-src">Memuat tafsir\u2026</p>';
+API.fetchJSON(TAFSIR_KEMENAG+sNr, 15000)
+.then(function(j){
+const daftar = (j && j.data && j.data.tafsir) ? j.data.tafsir : null;
+if(!daftar || !daftar.length){ gambar("Tafsir untuk surah ini belum tersedia pada sumber."); return; }
+const m = {};
+daftar.forEach(function(it){ if(it && it.ayat) m[it.ayat] = rapikanTafsir(it.teks); });
+cacheSet("tfk_"+sNr, m, 180*24*3600*1000);
+gambar(m[aNr] || "Tafsir untuk ayat ini belum tersedia pada sumber.");
+})
+.catch(function(){ box.innerHTML = '<p class="tafsir-src">Tafsir tidak bisa dimuat. Periksa koneksi lalu coba lagi.</p>'; box.dataset.terbuka="0"; });
+return;
+}
+/* Sumber Ibnu Katsir (Inggris): satu permintaan per ayat. */
+const simpanan = cacheGetTtl("tf_"+key, 180*24*3600*1000);
+if(simpanan){ gambar(simpanan); return; }
+box.dataset.terbuka="1";
+box.innerHTML = '<p class="tafsir-src">Memuat tafsir\u2026</p>';
+API.fetchJSON("https://api.quran.com/api/v4/tafsirs/"+TAFSIR_ID+"/by_ayah/"+key, 12000)
+.then(function(j){
+const v = (j && j.tafsir && j.tafsir.verses) ? j.tafsir.verses[key] : null;
+const teks = v ? rapikanTafsir(v.text) : "";
+if(!teks){ gambar("Tafsir untuk ayat ini belum tersedia pada sumber."); return; }
+cacheSet("tf_"+key, teks, 180*24*3600*1000);
+gambar(teks);
+})
+.catch(function(){ box.innerHTML = '<p class="tafsir-src">Tafsir tidak bisa dimuat. Periksa koneksi lalu coba lagi.</p>'; box.dataset.terbuka="0"; });
+}
+function terjemahkanTafsir(key){
+const box = document.getElementById("tfter-"+key);
+if(!box) return;
+const asli = cacheGetTtl("tf_"+key, 180*24*3600*1000);
+if(!asli){ box.innerHTML = '<p class="tafsir-src">Buka tafsirnya lebih dulu.</p>'; return; }
+const sudah = cacheGetTtl("tf_id_"+key, 365*24*3600*1000);
+if(sudah){
+box.innerHTML = '<p>'+esc(sudah)+'</p><div class="tafsir-src">Terjemahan mesin (MyMemory) \u2014 belum ditinjau. Bandingkan dengan teks Inggris di atas.</div>';
+return;
+}
+box.innerHTML = '<p class="tafsir-src">Menerjemahkan\u2026</p>';
+/* MyMemory membatasi 500 karakter per permintaan: teks dipotong pada batas kalimat. */
+const potong = [];
+let sisa = String(asli).replace(/\s+/g," ").trim();
+while(sisa.length){
+if(sisa.length<=480){ potong.push(sisa); break; }
+let i = sisa.lastIndexOf(". ", 480);
+if(i<120) i = sisa.lastIndexOf(" ", 480);
+if(i<40) i = 480;
+potong.push(sisa.slice(0,i+1).trim());
+sisa = sisa.slice(i+1).trim();
+}
+const hasil = [];
+let idx = 0;
+const lanjut = function(){
+if(idx>=potong.length){
+const teks = hasil.join(" ").replace(/\s+/g," ").trim();
+cacheSet("tf_id_"+key, teks, 365*24*3600*1000);
+box.innerHTML = '<p>'+esc(teks)+'</p><div class="tafsir-src">Terjemahan mesin (MyMemory) \u2014 belum ditinjau. Bandingkan dengan teks Inggris di atas.</div>';
+return;
+}
+const bagian = potong[idx++];
+API.fetchJSON("https://api.mymemory.translated.net/get?q="+encodeURIComponent(bagian)+"&langpair=en|id", 12000)
+.then(function(j){
+const t = (j && j.responseData && j.responseData.translatedText) ? j.responseData.translatedText : "";
+hasil.push(t || bagian);
+lanjut();
+})
+.catch(function(){ hasil.push(bagian); lanjut(); });
+};
+lanjut();
+}
 function ayatCard(s, a){
 const aid = "ayat-"+(a.key||(s[0]+":"+a.number));
 const akey = a.key || (s[0]+":"+a.number);
@@ -5677,6 +5901,7 @@ return '<div class="card ayat-card" data-ayah="'+(a.key||(s[0]+":"+a.number))+'"
 + '<button class="btn btn-ghost ayat-save" data-action="bookmark" data-id="'+aid+'">'+(saved?icon("bookmarkFill",14)+" Tersimpan":icon("bookmark",14)+" Simpan")+'</button>'
 + '</div>'
 + '<div class="kata-box" id="kata-'+akey+'"></div>'
++ '<div class="tafsir-box"><button class="btn btn-ghost" data-action="tafsir-toggle" data-key="'+akey+'">'+icon("book",14)+' Tafsir Ibnu Katsir</button><div class="tafsir-isi" id="tf-'+akey+'"></div></div>'
 + '</div>';
 }
 /* Mode mushaf: teks Arab menyambung dengan penanda nomor bulat. */
@@ -6628,53 +6853,53 @@ const KAMUS_ARAB = [
 }
 ,
 /* KAMUS_TAMBAHAN_20260927 */
-{"id": "dhahaba-2", "arab": "ذَهَبَ", "latin": "dhahaba", "arti": "pergi", "jenis": "kata kerja (fi'il)", "akar": "dh-h-b", "contoh": "ذَهَبَ إِلَى الْمَسْجِدِ — Pergi ke masjid", "sumber": "Kosakata umum"},
-{"id": "jaa-2", "arab": "جَاءَ", "latin": "jāʾa", "arti": "datang", "jenis": "kata kerja (fi'il)", "akar": "j-y-'", "contoh": "جَاءَ الطَّالِبُ مُبَكِّرًا — Murid itu datang lebih awal", "sumber": "Kosakata umum"},
-{"id": "akala-2", "arab": "أَكَلَ", "latin": "akala", "arti": "makan", "jenis": "kata kerja (fi'il)", "akar": "'-k-l", "contoh": "أَكَلَ الطَّعَامَ — Dia makan makanan itu", "sumber": "Kosakata umum"},
-{"id": "syariba-2", "arab": "شَرِبَ", "latin": "syariba", "arti": "minum", "jenis": "kata kerja (fi'il)", "akar": "sy-r-b", "contoh": "شَرِبَ الْمَاءَ — Dia minum air", "sumber": "Kosakata umum"},
-{"id": "kataba-2", "arab": "كَتَبَ", "latin": "kataba", "arti": "menulis", "jenis": "kata kerja (fi'il)", "akar": "k-t-b", "contoh": "كَتَبَ الدَّرْسَ — Dia menulis pelajaran", "sumber": "Kosakata umum"},
-{"id": "qaraa-2", "arab": "قَرَأَ", "latin": "qaraʾa", "arti": "membaca", "jenis": "kata kerja (fi'il)", "akar": "q-r-'", "contoh": "قَرَأَ الْقُرْآنَ — Dia membaca Al-Qur'an", "sumber": "Kosakata umum"},
-{"id": "samia-2", "arab": "سَمِعَ", "latin": "sami'a", "arti": "mendengar", "jenis": "kata kerja (fi'il)", "akar": "s-m-'", "contoh": "سَمِعَ الْأَذَانَ — Dia mendengar azan", "sumber": "Kosakata umum"},
-{"id": "raaa-2", "arab": "رَأَى", "latin": "raʾā", "arti": "melihat", "jenis": "kata kerja (fi'il)", "akar": "r-'-y", "contoh": "رَأَى الْهِلَالَ — Dia melihat bulan baru", "sumber": "Kosakata umum"},
-{"id": "alima-2", "arab": "عَلِمَ", "latin": "'alima", "arti": "mengetahui", "jenis": "kata kerja (fi'il)", "akar": "'-l-m", "contoh": "عَلِمَ الْحَقَّ — Dia mengetahui kebenaran", "sumber": "Kosakata umum"},
-{"id": "qala-2", "arab": "قَالَ", "latin": "qāla", "arti": "berkata", "jenis": "kata kerja (fi'il)", "akar": "q-w-l", "contoh": "قَالَ رَسُولُ اللَّهِ ﷺ — Rasulullah ﷺ bersabda", "sumber": "Kosakata umum"},
-{"id": "saala-2", "arab": "سَأَلَ", "latin": "saʾala", "arti": "bertanya", "jenis": "kata kerja (fi'il)", "akar": "s-'-l", "contoh": "سَأَلَ الْعَالِمَ — Dia bertanya kepada ulama", "sumber": "Kosakata umum"},
-{"id": "taallama-2", "arab": "تَعَلَّمَ", "latin": "ta'allama", "arti": "belajar", "jenis": "kata kerja (fi'il)", "akar": "'-l-m", "contoh": "تَعَلَّمَ اللُّغَةَ الْعَرَبِيَّةَ — Dia belajar bahasa Arab", "sumber": "Kosakata umum"},
-{"id": "sabara-2", "arab": "صَبَرَ", "latin": "ṣabara", "arti": "bersabar", "jenis": "kata kerja (fi'il)", "akar": "ṣ-b-r", "contoh": "صَبَرَ عَلَى الْبَلَاءِ — Dia bersabar atas ujian", "sumber": "Kosakata umum"},
-{"id": "syakara-2", "arab": "شَكَرَ", "latin": "syakara", "arti": "bersyukur", "jenis": "kata kerja (fi'il)", "akar": "sy-k-r", "contoh": "شَكَرَ نِعْمَةَ اللَّهِ — Dia bersyukur atas nikmat Allah", "sumber": "Kosakata umum"},
-{"id": "istaghfara-2", "arab": "اِسْتَغْفَرَ", "latin": "istaghfara", "arti": "memohon ampun", "jenis": "kata kerja (fi'il)", "akar": "gh-f-r", "contoh": "اِسْتَغْفَرَ رَبَّهُ — Dia memohon ampun kepada Tuhannya", "sumber": "Kosakata umum"},
-{"id": "tawakkala-2", "arab": "تَوَكَّلَ", "latin": "tawakkala", "arti": "bertawakal", "jenis": "kata kerja (fi'il)", "akar": "w-k-l", "contoh": "تَوَكَّلَ عَلَى اللَّهِ — Dia bertawakal kepada Allah", "sumber": "Kosakata umum"},
-{"id": "nashara-2", "arab": "نَصَرَ", "latin": "naṣara", "arti": "menolong", "jenis": "kata kerja (fi'il)", "akar": "n-ṣ-r", "contoh": "نَصَرَ أَخَاهُ — Dia menolong saudaranya", "sumber": "Kosakata umum"},
-{"id": "rahima-2", "arab": "رَحِمَ", "latin": "raḥima", "arti": "menyayangi", "jenis": "kata kerja (fi'il)", "akar": "r-ḥ-m", "contoh": "رَحِمَ الْوَالِدَيْنِ — Dia menyayangi kedua orang tua", "sumber": "Kosakata umum"},
-{"id": "walid-2", "arab": "وَالِد", "latin": "wālid", "arti": "ayah", "jenis": "kata benda (isim)", "akar": "w-l-d", "contoh": "بِرُّ الْوَالِدِ — Berbakti kepada ayah", "sumber": "Kosakata umum"},
-{"id": "walidah-2", "arab": "وَالِدَة", "latin": "wālidah", "arti": "ibu", "jenis": "kata benda (isim)", "akar": "w-l-d", "contoh": "رِضَا الْوَالِدَةِ — Keridhaan ibu", "sumber": "Kosakata umum"},
-{"id": "ukht-2", "arab": "أُخْت", "latin": "ukht", "arti": "saudara perempuan", "jenis": "kata benda (isim)", "akar": "'-kh-w", "contoh": "أُخْتِي الصَّغِيرَةُ — Saudara perempuanku yang kecil", "sumber": "Kosakata umum"},
-{"id": "jadd-2", "arab": "جَدّ", "latin": "jadd", "arti": "kakek", "jenis": "kata benda (isim)", "akar": "j-d-d", "contoh": "جَدِّي كَبِيرٌ — Kakekku sudah tua", "sumber": "Kosakata umum"},
-{"id": "jaddah-2", "arab": "جَدَّة", "latin": "jaddah", "arti": "nenek", "jenis": "kata benda (isim)", "akar": "j-d-d", "contoh": "جَدَّتِي تَحْفَظُ الْقُرْآنَ — Nenekku menghafal Al-Qur'an", "sumber": "Kosakata umum"},
-{"id": "thifl-2", "arab": "طِفْل", "latin": "ṭifl", "arti": "anak kecil", "jenis": "kata benda (isim)", "akar": "ṭ-f-l", "contoh": "الطِّفْلُ يَلْعَبُ — Anak kecil itu bermain", "sumber": "Kosakata umum"},
-{"id": "thalib-2", "arab": "طَالِب", "latin": "ṭālib", "arti": "pelajar", "jenis": "kata benda (isim)", "akar": "ṭ-l-b", "contoh": "الطَّالِبُ مُجْتَهِدٌ — Pelajar itu rajin", "sumber": "Kosakata umum"},
-{"id": "ustadz-2", "arab": "أُسْتَاذ", "latin": "ustādz", "arti": "guru; pengajar", "jenis": "kata benda (isim)", "akar": "'-s-dz", "contoh": "الْأُسْتَاذُ يَشْرَحُ الدَّرْسَ — Guru menjelaskan pelajaran", "sumber": "Kosakata umum"},
-{"id": "syahid-2", "arab": "شَاهِد", "latin": "syāhid", "arti": "saksi", "jenis": "kata benda (isim)", "akar": "sy-h-d", "contoh": "شَاهِدٌ عَلَى الْحَقِّ — Saksi atas kebenaran", "sumber": "Kosakata umum"},
-{"id": "syahadah-2", "arab": "شَهَادَة", "latin": "syahādah", "arti": "kesaksian; syahadat", "jenis": "kata benda (isim)", "akar": "sy-h-d", "contoh": "كَلِمَةُ الشَّهَادَةِ — Kalimat syahadat", "sumber": "Kosakata umum"},
-{"id": "rakaah-2", "arab": "رَكْعَة", "latin": "rak'ah", "arti": "rakaat shalat", "jenis": "kata benda (isim)", "akar": "r-k-'", "contoh": "صَلَّى ثَلَاثَ رَكَعَاتٍ — Dia shalat tiga rakaat", "sumber": "Kosakata umum"},
-{"id": "takbir-2", "arab": "تَكْبِير", "latin": "takbīr", "arti": "takbir", "jenis": "kata benda (isim)", "akar": "k-b-r", "contoh": "تَكْبِيرَةُ الْإِحْرَامِ — Takbiratul ihram", "sumber": "Kosakata umum"},
-{"id": "tasbih-2", "arab": "تَسْبِيح", "latin": "tasbīḥ", "arti": "tasbih; menyucikan Allah", "jenis": "kata benda (isim)", "akar": "s-b-ḥ", "contoh": "التَّسْبِيحُ بَعْدَ الصَّلَاةِ — Tasbih setelah shalat", "sumber": "Kosakata umum"},
-{"id": "tawbah-2", "arab": "تَوْبَة", "latin": "taubah", "arti": "tobat", "jenis": "kata benda (isim)", "akar": "t-w-b", "contoh": "التَّوْبَةُ إِلَى اللَّهِ — Tobat kepada Allah", "sumber": "Kosakata umum"},
-{"id": "hikmah-2", "arab": "حِكْمَة", "latin": "ḥikmah", "arti": "hikmah; kebijaksanaan", "jenis": "kata benda (isim)", "akar": "ḥ-k-m", "contoh": "الْحِكْمَةُ نُورٌ — Hikmah itu cahaya", "sumber": "Kosakata umum"},
-{"id": "rahmah-2", "arab": "رَحْمَة", "latin": "raḥmah", "arti": "rahmat; kasih sayang", "jenis": "kata benda (isim)", "akar": "r-ḥ-m", "contoh": "رَحْمَةُ اللَّهِ وَاسِعَةٌ — Rahmat Allah itu luas", "sumber": "Kosakata umum"},
-{"id": "nimah-2", "arab": "نِعْمَة", "latin": "ni'mah", "arti": "nikmat", "jenis": "kata benda (isim)", "akar": "n-'-m", "contoh": "نِعْمَةُ الصِّحَّةِ — Nikmat kesehatan", "sumber": "Kosakata umum"},
-{"id": "fitnah-2", "arab": "فِتْنَة", "latin": "fitnah", "arti": "fitnah; ujian", "jenis": "kata benda (isim)", "akar": "f-t-n", "contoh": "الْفِتْنَةُ أَشَدُّ مِنَ الْقَتْلِ — Fitnah lebih berat daripada pembunuhan", "sumber": "QS. Al-Baqarah 2:191"},
-{"id": "shidq-2", "arab": "صِدْق", "latin": "ṣidq", "arti": "kejujuran", "jenis": "kata benda (isim)", "akar": "ṣ-d-q", "contoh": "الصِّدْقُ يُنْجِي — Kejujuran menyelamatkan", "sumber": "Kosakata umum"},
-{"id": "amanah-2", "arab": "أَمَانَة", "latin": "amānah", "arti": "amanah; kepercayaan", "jenis": "kata benda (isim)", "akar": "'-m-n", "contoh": "أَدَاءُ الْأَمَانَةِ — Menunaikan amanah", "sumber": "Kosakata umum"},
-{"id": "dunya-2", "arab": "دُنْيَا", "latin": "dunyā", "arti": "dunia", "jenis": "kata benda (isim)", "akar": "d-n-w", "contoh": "الدُّنْيَا مَزْرَعَةُ الْآخِرَةِ — Dunia adalah ladang akhirat", "sumber": "Kosakata umum"},
-{"id": "akhirah-2", "arab": "آخِرَة", "latin": "ākhirah", "arti": "akhirat", "jenis": "kata benda (isim)", "akar": "'-kh-r", "contoh": "الْآخِرَةُ خَيْرٌ وَأَبْقَى — Akhirat lebih baik dan kekal", "sumber": "QS. Al-A'la 87:17"},
-{"id": "saah-2", "arab": "سَاعَة", "latin": "sā'ah", "arti": "jam; waktu", "jenis": "kata benda (isim)", "akar": "s-w-'", "contoh": "كَمِ السَّاعَةُ؟ — Jam berapa?", "sumber": "Kosakata umum"},
-{"id": "syahr-2", "arab": "شَهْر", "latin": "syahr", "arti": "bulan", "jenis": "kata benda (isim)", "akar": "sy-h-r", "contoh": "شَهْرُ رَمَضَانَ — Bulan Ramadhan", "sumber": "Kosakata umum"},
-{"id": "sanah-2", "arab": "سَنَة", "latin": "sanah", "arti": "tahun", "jenis": "kata benda (isim)", "akar": "s-n-w", "contoh": "سَنَةٌ جَدِيدَةٌ — Tahun baru", "sumber": "Kosakata umum"},
-{"id": "mathar-2", "arab": "مَطَر", "latin": "maṭar", "arti": "hujan", "jenis": "kata benda (isim)", "akar": "m-ṭ-r", "contoh": "نُزُولُ الْمَطَرِ — Turunnya hujan", "sumber": "Kosakata umum"},
-{"id": "jabal-2", "arab": "جَبَل", "latin": "jabal", "arti": "gunung", "jenis": "kata benda (isim)", "akar": "j-b-l", "contoh": "جَبَلُ نُورٍ — Jabal Nur", "sumber": "Kosakata umum"},
-{"id": "bahr-2", "arab": "بَحْر", "latin": "baḥr", "arti": "laut", "jenis": "kata benda (isim)", "akar": "b-ḥ-r", "contoh": "الْبَحْرُ الْأَحْمَرُ — Laut Merah", "sumber": "Kosakata umum"},
-{"id": "syajarah-2", "arab": "شَجَرَة", "latin": "syajarah", "arti": "pohon", "jenis": "kata benda (isim)", "akar": "sy-j-r", "contoh": "شَجَرَةٌ مُبَارَكَةٌ — Pohon yang diberkahi", "sumber": "Kosakata umum"}
+{"id": "dhahaba-2", "arab": "ذَهَبَ", "latin": "dhahaba", "arti": "pergi", "jenis": "kata kerja (fi'il)", "akar": "dh-h-b", "contoh": "ذَهَبَ إِلَى الْمَسْجِدِ — Pergi ke masjid", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "jaa-2", "arab": "جَاءَ", "latin": "jāʾa", "arti": "datang", "jenis": "kata kerja (fi'il)", "akar": "j-y-'", "contoh": "جَاءَ الطَّالِبُ مُبَكِّرًا — Murid itu datang lebih awal", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "akala-2", "arab": "أَكَلَ", "latin": "akala", "arti": "makan", "jenis": "kata kerja (fi'il)", "akar": "'-k-l", "contoh": "أَكَلَ الطَّعَامَ — Dia makan makanan itu", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "syariba-2", "arab": "شَرِبَ", "latin": "syariba", "arti": "minum", "jenis": "kata kerja (fi'il)", "akar": "sy-r-b", "contoh": "شَرِبَ الْمَاءَ — Dia minum air", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "kataba-2", "arab": "كَتَبَ", "latin": "kataba", "arti": "menulis", "jenis": "kata kerja (fi'il)", "akar": "k-t-b", "contoh": "كَتَبَ الدَّرْسَ — Dia menulis pelajaran", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "qaraa-2", "arab": "قَرَأَ", "latin": "qaraʾa", "arti": "membaca", "jenis": "kata kerja (fi'il)", "akar": "q-r-'", "contoh": "قَرَأَ الْقُرْآنَ — Dia membaca Al-Qur'an", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "samia-2", "arab": "سَمِعَ", "latin": "sami'a", "arti": "mendengar", "jenis": "kata kerja (fi'il)", "akar": "s-m-'", "contoh": "سَمِعَ الْأَذَانَ — Dia mendengar azan", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "raaa-2", "arab": "رَأَى", "latin": "raʾā", "arti": "melihat", "jenis": "kata kerja (fi'il)", "akar": "r-'-y", "contoh": "رَأَى الْهِلَالَ — Dia melihat bulan baru", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "alima-2", "arab": "عَلِمَ", "latin": "'alima", "arti": "mengetahui", "jenis": "kata kerja (fi'il)", "akar": "'-l-m", "contoh": "عَلِمَ الْحَقَّ — Dia mengetahui kebenaran", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "qala-2", "arab": "قَالَ", "latin": "qāla", "arti": "berkata", "jenis": "kata kerja (fi'il)", "akar": "q-w-l", "contoh": "قَالَ رَسُولُ اللَّهِ ﷺ — Rasulullah ﷺ bersabda", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "saala-2", "arab": "سَأَلَ", "latin": "saʾala", "arti": "bertanya", "jenis": "kata kerja (fi'il)", "akar": "s-'-l", "contoh": "سَأَلَ الْعَالِمَ — Dia bertanya kepada ulama", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "taallama-2", "arab": "تَعَلَّمَ", "latin": "ta'allama", "arti": "belajar", "jenis": "kata kerja (fi'il)", "akar": "'-l-m", "contoh": "تَعَلَّمَ اللُّغَةَ الْعَرَبِيَّةَ — Dia belajar bahasa Arab", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "sabara-2", "arab": "صَبَرَ", "latin": "ṣabara", "arti": "bersabar", "jenis": "kata kerja (fi'il)", "akar": "ṣ-b-r", "contoh": "صَبَرَ عَلَى الْبَلَاءِ — Dia bersabar atas ujian", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "syakara-2", "arab": "شَكَرَ", "latin": "syakara", "arti": "bersyukur", "jenis": "kata kerja (fi'il)", "akar": "sy-k-r", "contoh": "شَكَرَ نِعْمَةَ اللَّهِ — Dia bersyukur atas nikmat Allah", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "istaghfara-2", "arab": "اِسْتَغْفَرَ", "latin": "istaghfara", "arti": "memohon ampun", "jenis": "kata kerja (fi'il)", "akar": "gh-f-r", "contoh": "اِسْتَغْفَرَ رَبَّهُ — Dia memohon ampun kepada Tuhannya", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "tawakkala-2", "arab": "تَوَكَّلَ", "latin": "tawakkala", "arti": "bertawakal", "jenis": "kata kerja (fi'il)", "akar": "w-k-l", "contoh": "تَوَكَّلَ عَلَى اللَّهِ — Dia bertawakal kepada Allah", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "nashara-2", "arab": "نَصَرَ", "latin": "naṣara", "arti": "menolong", "jenis": "kata kerja (fi'il)", "akar": "n-ṣ-r", "contoh": "نَصَرَ أَخَاهُ — Dia menolong saudaranya", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "rahima-2", "arab": "رَحِمَ", "latin": "raḥima", "arti": "menyayangi", "jenis": "kata kerja (fi'il)", "akar": "r-ḥ-m", "contoh": "رَحِمَ الْوَالِدَيْنِ — Dia menyayangi kedua orang tua", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "walid-2", "arab": "وَالِد", "latin": "wālid", "arti": "ayah", "jenis": "kata benda (isim)", "akar": "w-l-d", "contoh": "بِرُّ الْوَالِدِ — Berbakti kepada ayah", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "walidah-2", "arab": "وَالِدَة", "latin": "wālidah", "arti": "ibu", "jenis": "kata benda (isim)", "akar": "w-l-d", "contoh": "رِضَا الْوَالِدَةِ — Keridhaan ibu", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "ukht-2", "arab": "أُخْت", "latin": "ukht", "arti": "saudara perempuan", "jenis": "kata benda (isim)", "akar": "'-kh-w", "contoh": "أُخْتِي الصَّغِيرَةُ — Saudara perempuanku yang kecil", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "jadd-2", "arab": "جَدّ", "latin": "jadd", "arti": "kakek", "jenis": "kata benda (isim)", "akar": "j-d-d", "contoh": "جَدِّي كَبِيرٌ — Kakekku sudah tua", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "jaddah-2", "arab": "جَدَّة", "latin": "jaddah", "arti": "nenek", "jenis": "kata benda (isim)", "akar": "j-d-d", "contoh": "جَدَّتِي تَحْفَظُ الْقُرْآنَ — Nenekku menghafal Al-Qur'an", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "thifl-2", "arab": "طِفْل", "latin": "ṭifl", "arti": "anak kecil", "jenis": "kata benda (isim)", "akar": "ṭ-f-l", "contoh": "الطِّفْلُ يَلْعَبُ — Anak kecil itu bermain", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "thalib-2", "arab": "طَالِب", "latin": "ṭālib", "arti": "pelajar", "jenis": "kata benda (isim)", "akar": "ṭ-l-b", "contoh": "الطَّالِبُ مُجْتَهِدٌ — Pelajar itu rajin", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "ustadz-2", "arab": "أُسْتَاذ", "latin": "ustādz", "arti": "guru; pengajar", "jenis": "kata benda (isim)", "akar": "'-s-dz", "contoh": "الْأُسْتَاذُ يَشْرَحُ الدَّرْسَ — Guru menjelaskan pelajaran", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "syahid-2", "arab": "شَاهِد", "latin": "syāhid", "arti": "saksi", "jenis": "kata benda (isim)", "akar": "sy-h-d", "contoh": "شَاهِدٌ عَلَى الْحَقِّ — Saksi atas kebenaran", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "syahadah-2", "arab": "شَهَادَة", "latin": "syahādah", "arti": "kesaksian; syahadat", "jenis": "kata benda (isim)", "akar": "sy-h-d", "contoh": "كَلِمَةُ الشَّهَادَةِ — Kalimat syahadat", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "rakaah-2", "arab": "رَكْعَة", "latin": "rak'ah", "arti": "rakaat shalat", "jenis": "kata benda (isim)", "akar": "r-k-'", "contoh": "صَلَّى ثَلَاثَ رَكَعَاتٍ — Dia shalat tiga rakaat", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "takbir-2", "arab": "تَكْبِير", "latin": "takbīr", "arti": "takbir", "jenis": "kata benda (isim)", "akar": "k-b-r", "contoh": "تَكْبِيرَةُ الْإِحْرَامِ — Takbiratul ihram", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "tasbih-2", "arab": "تَسْبِيح", "latin": "tasbīḥ", "arti": "tasbih; menyucikan Allah", "jenis": "kata benda (isim)", "akar": "s-b-ḥ", "contoh": "التَّسْبِيحُ بَعْدَ الصَّلَاةِ — Tasbih setelah shalat", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "tawbah-2", "arab": "تَوْبَة", "latin": "taubah", "arti": "tobat", "jenis": "kata benda (isim)", "akar": "t-w-b", "contoh": "التَّوْبَةُ إِلَى اللَّهِ — Tobat kepada Allah", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "hikmah-2", "arab": "حِكْمَة", "latin": "ḥikmah", "arti": "hikmah; kebijaksanaan", "jenis": "kata benda (isim)", "akar": "ḥ-k-m", "contoh": "الْحِكْمَةُ نُورٌ — Hikmah itu cahaya", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "rahmah-2", "arab": "رَحْمَة", "latin": "raḥmah", "arti": "rahmat; kasih sayang", "jenis": "kata benda (isim)", "akar": "r-ḥ-m", "contoh": "رَحْمَةُ اللَّهِ وَاسِعَةٌ — Rahmat Allah itu luas", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "nimah-2", "arab": "نِعْمَة", "latin": "ni'mah", "arti": "nikmat", "jenis": "kata benda (isim)", "akar": "n-'-m", "contoh": "نِعْمَةُ الصِّحَّةِ — Nikmat kesehatan", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "fitnah-2", "arab": "فِتْنَة", "latin": "fitnah", "arti": "fitnah; ujian", "jenis": "kata benda (isim)", "akar": "f-t-n", "contoh": "الْفِتْنَةُ أَشَدُّ مِنَ الْقَتْلِ — Fitnah lebih berat daripada pembunuhan", "sumber": "Al-Qur'an Al-Baqarah 2:191"},
+{"id": "shidq-2", "arab": "صِدْق", "latin": "ṣidq", "arti": "kejujuran", "jenis": "kata benda (isim)", "akar": "ṣ-d-q", "contoh": "الصِّدْقُ يُنْجِي — Kejujuran menyelamatkan", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "amanah-2", "arab": "أَمَانَة", "latin": "amānah", "arti": "amanah; kepercayaan", "jenis": "kata benda (isim)", "akar": "'-m-n", "contoh": "أَدَاءُ الْأَمَانَةِ — Menunaikan amanah", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "dunya-2", "arab": "دُنْيَا", "latin": "dunyā", "arti": "dunia", "jenis": "kata benda (isim)", "akar": "d-n-w", "contoh": "الدُّنْيَا مَزْرَعَةُ الْآخِرَةِ — Dunia adalah ladang akhirat", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "akhirah-2", "arab": "آخِرَة", "latin": "ākhirah", "arti": "akhirat", "jenis": "kata benda (isim)", "akar": "'-kh-r", "contoh": "الْآخِرَةُ خَيْرٌ وَأَبْقَى — Akhirat lebih baik dan kekal", "sumber": "Al-Qur'an Al-A'la 87:17"},
+{"id": "saah-2", "arab": "سَاعَة", "latin": "sā'ah", "arti": "jam; waktu", "jenis": "kata benda (isim)", "akar": "s-w-'", "contoh": "كَمِ السَّاعَةُ؟ — Jam berapa?", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "syahr-2", "arab": "شَهْر", "latin": "syahr", "arti": "bulan", "jenis": "kata benda (isim)", "akar": "sy-h-r", "contoh": "شَهْرُ رَمَضَانَ — Bulan Ramadhan", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "sanah-2", "arab": "سَنَة", "latin": "sanah", "arti": "tahun", "jenis": "kata benda (isim)", "akar": "s-n-w", "contoh": "سَنَةٌ جَدِيدَةٌ — Tahun baru", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "mathar-2", "arab": "مَطَر", "latin": "maṭar", "arti": "hujan", "jenis": "kata benda (isim)", "akar": "m-ṭ-r", "contoh": "نُزُولُ الْمَطَرِ — Turunnya hujan", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "jabal-2", "arab": "جَبَل", "latin": "jabal", "arti": "gunung", "jenis": "kata benda (isim)", "akar": "j-b-l", "contoh": "جَبَلُ نُورٍ — Jabal Nur", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "bahr-2", "arab": "بَحْر", "latin": "baḥr", "arti": "laut", "jenis": "kata benda (isim)", "akar": "b-ḥ-r", "contoh": "الْبَحْرُ الْأَحْمَرُ — Laut Merah", "sumber": "Materi orisinal SILMIKAFFAH"},
+{"id": "syajarah-2", "arab": "شَجَرَة", "latin": "syajarah", "arti": "pohon", "jenis": "kata benda (isim)", "akar": "sy-j-r", "contoh": "شَجَرَةٌ مُبَارَكَةٌ — Pohon yang diberkahi", "sumber": "Materi orisinal SILMIKAFFAH"}
 ];
 let KAMUS_MODE = "ar"; // "ar" = Arab→Indonesia, "id" = Indonesia→Arab
 function kamusNorm(s){
@@ -6758,6 +6983,9 @@ setTimeout(function(){ kamusSearch(q); }, 0);
 return h;
 }
 function iqraView(level){
+/* Toleransi alamat: "#/iqra" dan "#/iqra/<angka>" diarahkan ke level yang benar. */
+if(level===null || level===undefined || level==="") level = "iqra-1";
+if(/^[0-9]+$/.test(String(level))) level = "iqra-" + level;
 const e = getEntry(level);
 const pages = DB.IQRA_PAGES && DB.IQRA_PAGES[level];
 if(!e || !pages) return errorView("Materi Iqra tidak ditemukan.");
@@ -6796,9 +7024,18 @@ h += '</div></div>';
 return h;
 }
 function kitabView(book){
-const meta = API.HADITH_BOOKS.find(b=>b[0]===book);
+/* Toleransi penulisan id kitab: "abu-dawud", "Abu Dawud", atau "abudawud" sama saja. */
+let meta = API.HADITH_BOOKS.find(b=>b[0]===book);
+if(!meta){
+  const kunci = function(v){ return String(v||"").toLowerCase().replace(/[^a-z0-9]/g,""); };
+  const ALIAS = { ibnumajah:"ibnmajah", ibnumaja:"ibnmajah", abudaud:"abudawud",
+                  tirmidhi:"tirmidzi", nasa:"nasai", bukhori:"bukhari", shahih:"bukhari" };
+  let k = kunci(book);
+  k = ALIAS[k] || k;
+  meta = API.HADITH_BOOKS.find(b=>kunci(b[0])===k);
+  if(meta) book = meta[0]; }
 if(!meta) return errorView("Kitab tidak ditemukan.");
-let h = '<div class="page">'+crumbs([{label:"Home",href:"#/home"},{label:"Al-Qur'an",href:"#/menu/3"},{label:"Hadis",href:"#/material/3/hadis"},{label:"Koleksi Kitab"}])
+let h = '<div class="page">'+crumbs([{label:"Home",href:"#/home"},{label:"Al-Qur'an & Hadis",href:"#/menu/3"},{label:"Hadis",href:"#/material/3/hadis"},{label:"Koleksi Kitab"}])
 + ""
 + '<h1 class="h1">'+esc(meta[1])+'</h1>'
 + '<p class="muted small" style="margin-top:4px">Hadis ditampilkan bertahap. Ketuk salah satu untuk membaca teks lengkapnya.</p>'
@@ -6840,7 +7077,7 @@ return h;
 function hadithDetailView(book, number){
 const meta = API.HADITH_BOOKS.find(b=>b[0]===book);
 if(!meta) return errorView("Kitab tidak ditemukan.");
-let h = '<div class="page">'+crumbs([{label:"Home",href:"#/home"},{label:"Al-Qur'an",href:"#/menu/3"},{label:meta[1],href:"#/kitab/"+book},{label:"Hadis no. "+number}])
+let h = '<div class="page">'+crumbs([{label:"Home",href:"#/home"},{label:"Al-Qur'an & Hadis",href:"#/menu/3"},{label:meta[1],href:"#/kitab/"+book},{label:"Hadis no. "+number}])
 + ""
 + '<h1 class="h1">Hadis — '+esc(meta[1])+' no. '+number+'</h1>'
 + '<div id="h-detail">'+skeletonCards(2)+'</div>'
@@ -6940,8 +7177,8 @@ h += '<div class="cal-cell'+cls+'" data-action="cal-pick" data-month="'+esc(m.mo
 });
 h += '</div></div>';
 /* Peringatan bulan ini: hari besar, hari raya, dan puasa sunnah Ayyamul Bidh */
-const bulanIni = DB.EVENTS.filter(e=>e.month===m.monthName && e.type!=="peristiwa");
-const baris = bulanIni.map(e=>({day:e.day||99, title:e.title, sub:(e.day?e.day+" ":"")+e.month+" · "+e.type, href:"#/event/"+e.id}));
+const bulanIni = DB.EVENTS.filter(e=>(e.month===m.monthName || e.month==="*") && e.type!=="peristiwa");
+const baris = bulanIni.map(e=>({day:e.day||99, title:e.title, sub:(e.month==="*"?"Setiap bulan":((e.day?e.day+" ":"")+e.month))+" · "+e.type, href:"#/event/"+e.id}));
 [13,14,15].forEach(d=>baris.push({day:d, title:"Puasa Ayyamul Bidh (hari ke-"+(d-12)+")", sub:d+" "+m.monthName+" · puasa sunnah", href:"#/entry/puasa-ayyamul-bidh"}));
 baris.sort((a,b)=>a.day-b.day);
 h += '<div class="cal-head-row"><div class="section-title" style="margin-top:20px"><h2>Peringatan Bulan Ini</h2></div><span id="cal-today-slot">'+calTodayBtn(m.monthName !== hijriToday.monthName)+'</span></div>';
@@ -6955,6 +7192,18 @@ h += '<div class="card">'+monthEvents.map(ev=>
 + '</div>';
 } else {
 }
+/* Tautan ke submateri: seluruh halaman menu Kalender dirender sebagai kalender,
+   jadi jalan masuk ke submaterinya disediakan di sini. */
+const kalSub = [
+["#/sub/7/kalender-bulanan/hari-ini","Hari & Tanggal Ini","Membaca tanggal Hijriah dan informasi hari ini"],
+["#/sub/7/kalender-bulanan/fitur","Konversi Hijriah \u2194 Masehi","Ubah tanggal Masehi ke Hijriah atau sebaliknya"],
+["#/sub/7/sejarah-bulan-ini/hari-besar","Hari Besar Islam","Daftar hari dan waktu penting dalam kalender Hijriah"],
+["#/sub/7/sejarah-bulan-ini/bulan","Sejarah Bulan Hijriah","Makna dan peristiwa yang dikaitkan dengan tiap bulan"]
+];
+h += '<div class="section-title" style="margin-top:22px"><h2>Pelajari Lebih Lanjut</h2></div>'
++ '<div class="card">'+kalSub.map(function(x){
+return '<div class="row" data-nav="'+x[0]+'"><span class="row-icon">'+icon("kalender",18)+'</span><span class="grow"><span class="rt">'+esc(x[1])+'</span><span class="rs">'+esc(x[2])+'</span></span><span class="chev">'+icon("chev",18)+'</span></div>';
+}).join("")+'</div>';
 h += '</div>';
 return h;
 }
@@ -6972,7 +7221,7 @@ addRecent(ev.id);
 const rel = (ev.related||[]).map(relLink).filter(Boolean);
 let h = '<div class="page">'+crumbs([{label:"Home",href:"#/home"},{label:"Sejarah Islam",href:"#/menu/5"},{label:ev.title}])
 + '<div class="detail-head"><h1 class="detail-title">'+esc(ev.title)+'</h1>'
-+ '<div class="chips" style="margin-top:8px"><span class="chip tag">'+esc(ev.day)+' '+esc(ev.month)+'</span><span class="chip tag">'+esc(ev.type)+'</span></div>'
++ '<div class="chips" style="margin-top:8px"><span class="chip tag">'+esc(ev.month==="*" ? "Setiap bulan" : (ev.day+' '+ev.month))+'</span><span class="chip tag">'+esc(ev.type)+'</span></div>'
 + '</div>'
 + '<div class="prose"><p>'+esc(ev.desc)+'</p></div>';
 if(ev.sources && ev.sources.length){
@@ -7164,6 +7413,7 @@ const list = DB.ENTRIES.filter(e=>e.type==="asmaul").sort((a,b)=>(+a.id.split("-
 let h = '<div class="page">'+crumbs([{label:"Home",href:"#/home"},{label:"Rukun Iman",href:"#/menu/1"},{label:"Asmaul Husna"}])
 + '<h1 class="h1">Asmaul Husna</h1>'
 + '<p class="muted" style="margin-top:4px">99 nama Allah — ketuk kartu untuk melihat arti, keterangan, dan dalil lengkap.</p>'
++ (typeof kartuSuaraAsmaul === "function" ? kartuSuaraAsmaul() : "")
 + '<div class="asma-grid" style="margin-top:14px">';
 list.forEach(e=>{
 const num = e.id.split("-")[1];
@@ -7177,7 +7427,9 @@ h += '<div class="asma-card tappable" data-nav="#/entry/'+e.id+'">'
 + '</div>';
 });
 h += '</div></div>'
-+ (typeof window!=="undefined" && "speechSynthesis" in window ? '<button class="asma-fab" data-action="asmaul-tts" aria-label="Putar semua nama (suara perangkat)">'+icon("play",22)+'</button>' : "");
++ (typeof window!=="undefined" && "speechSynthesis" in window
+    ? '<button class="asma-fab" data-action="asmaul-tts" aria-label="Putar semua nama (suara perangkat)">'+icon("play",22)+'</button>'
+    : '<button class="asma-fab" onclick="window.pesanTanpaMesinSuara&&window.pesanTanpaMesinSuara()" aria-label="Keterangan suara perangkat">'+icon("play",22)+'</button>');
 return h;
 }
 function secText(e, heading){
@@ -7216,7 +7468,9 @@ let h = '<div class="page asma-detail">'
 + '<div class="asma-manfaat-content" id="asma-manfaat-'+e.id+'">'+arabicize(esc(manfaat))+'</div>'
 + sourcesBlock(e) + relatedBlock(e)
 + '</div>'
-+ (typeof window!=="undefined" && "speechSynthesis" in window ? '<button class="asma-fab" data-action="asma-audio-fab" data-id="'+e.id+'" aria-label="Putar suara">'+icon("play",22)+'</button>' : "");
++ (typeof window!=="undefined" && "speechSynthesis" in window
+    ? '<button class="asma-fab" data-action="asma-audio-fab" data-id="'+e.id+'" aria-label="Putar suara">'+icon("play",22)+'</button>'
+    : '<button class="asma-fab" onclick="window.pesanTanpaMesinSuara&&window.pesanTanpaMesinSuara()" aria-label="Keterangan suara perangkat">'+icon("play",22)+'</button>');
 return h;
 }
 function ziarahView(){
@@ -7257,7 +7511,7 @@ if(val) p[level][idx] = true; else delete p[level][idx];
 LS.set("iqra_progress", p);
 }
 function iqraReadCount(level){ const p = iqraProgress(); return p[level] ? Object.keys(p[level]).length : 0; }
-let SETTINGS = Object.assign({theme:"dark", font:"b", arFont:"m", prayerMethod:"KEMENAG", asrMethod:"JUMHUR", city:"jakarta", cityName:"Jakarta", useGeo:false, translit:true, terjemahan:"33", hijriOffset:0, mushaf:false}, LS.get("settings",{}));
+let SETTINGS = Object.assign({tafsirSrc:"kemenag", theme:"dark", font:"b", arFont:"m", prayerMethod:"KEMENAG", asrMethod:"JUMHUR", city:"jakarta", cityName:"Jakarta", useGeo:false, translit:true, terjemahan:"33", hijriOffset:0, mushaf:false}, LS.get("settings",{}));
 let COLLECTION = LS.get("collection",[]);
 let RECENT = LS.get("recent",[]);
 let CAL_CURSOR = new Date();
@@ -7458,7 +7712,9 @@ return window.AM || null;
 }
 /* ---------- Status ---------- */
 const STATUS = {
-ready:["Siap", "status-ready"]
+ready:["Siap", "status-ready"],
+verify:["Perlu ditinjau", "status-review"],
+draft:["Belum lengkap", "status-draft"]
 };
 function statusPill(e){
 if(!e || !e.status || e.status==="ready") return "";
@@ -7774,15 +8030,15 @@ return m? m.icon : "book";
 }
 /* ---------- Halaman kategori Doa & Dzikir (grid ikon berwarna, gaya Dhikr & Dua) ---------- */
 const DOA_CAT_META = {
-harian:{icon:"doa", color:"#10b981"}, tidur:{icon:"bed", color:"#6366f1"}, makan:{icon:"plate", color:"#f59e0b"},
-toilet:{icon:"toilet", color:"#38bdf8"}, wudhu:{icon:"droplet", color:"#06b6d4"}, masjid:{icon:"pillar", color:"#14b8a6"},
-"setelah-shalat":{icon:"prayerKneel", color:"#22c55e"}, perjalanan:{icon:"planePaper", color:"#0ea5e9"}, rumah:{icon:"home", color:"#84cc16"},
-pakaian:{icon:"shirt", color:"#a855f7"}, cuaca:{icon:"cloudRain", color:"#64748b"}, perlindungan:{icon:"shieldCheck", color:"#ef4444"},
-kesulitan:{icon:"bandage", color:"#f43f5e"}, kesedihan:{icon:"sad", color:"#eab308"}, rezeki:{icon:"coin", color:"#f97316"},
-taubat:{icon:"handsPray", color:"#8b5cf6"}, istikharah:{icon:"compass", color:"#0891b2"}, belajar:{icon:"pendidikan", color:"#d97706"},
-ramadan:{icon:"kalender", color:"#7c3aed"}, quran:{icon:"quran", color:"#059669"}, haji:{icon:"kaaba", color:"#78716c"},
-kematian:{icon:"leafGrave", color:"#57534e"}, keluarga:{icon:"family", color:"#ec4899"}, tawakkal:{icon:"handshakeHeart", color:"#f472b6"},
-pagi:{icon:"star", color:"#f59e0b"}, petang:{icon:"clock", color:"#6366f1"}, fitur:{icon:"layers", color:"#94a3b8"}
+harian:{icon:"doa", color:"var(--accent-text)"}, tidur:{icon:"bed", color:"var(--accent-text)"}, makan:{icon:"plate", color:"var(--accent-text)"},
+toilet:{icon:"toilet", color:"var(--accent-text)"}, wudhu:{icon:"droplet", color:"var(--accent-text)"}, masjid:{icon:"pillar", color:"var(--accent-text)"},
+"setelah-shalat":{icon:"prayerKneel", color:"var(--accent-text)"}, perjalanan:{icon:"planePaper", color:"var(--accent-text)"}, rumah:{icon:"home", color:"var(--accent-text)"},
+pakaian:{icon:"shirt", color:"var(--accent-text)"}, cuaca:{icon:"cloudRain", color:"var(--accent-text)"}, perlindungan:{icon:"shieldCheck", color:"var(--accent-text)"},
+kesulitan:{icon:"bandage", color:"var(--accent-text)"}, kesedihan:{icon:"sad", color:"var(--accent-text)"}, rezeki:{icon:"coin", color:"var(--accent-text)"},
+taubat:{icon:"handsPray", color:"var(--accent-text)"}, istikharah:{icon:"compass", color:"var(--accent-text)"}, belajar:{icon:"pendidikan", color:"var(--accent-text)"},
+ramadan:{icon:"kalender", color:"var(--accent-text)"}, quran:{icon:"quran", color:"var(--accent-text)"}, haji:{icon:"kaaba", color:"var(--accent-text)"},
+kematian:{icon:"leafGrave", color:"var(--accent-text)"}, keluarga:{icon:"family", color:"var(--accent-text)"}, tawakkal:{icon:"handshakeHeart", color:"var(--accent-text)"},
+pagi:{icon:"star", color:"var(--accent-text)"}, petang:{icon:"clock", color:"var(--accent-text)"}, fitur:{icon:"layers", color:"var(--accent-text)"}
 };
 function doaCategoryView(menuId, matId, mat){
 const menu = DB.MENUS.find(m=>m.id===+menuId);
@@ -7793,9 +8049,9 @@ let h = '<div class="page">'+crumbs([{label:"Home",href:"#/home"},{label:menu?me
 (mat.subs||[]).forEach(([key,label])=>{
 const count = DB.ENTRIES.filter(e=>e.menu===+menuId && e.material===matId && e.sub===key).length;
 if(!count) return;
-const meta = DOA_CAT_META[key] || {icon:"doa", color:"#10b981"};
+const meta = DOA_CAT_META[key] || {icon:"doa", color:"var(--accent-text)"};
 h += '<div class="cat-card tappable" data-nav="#/sub/'+menuId+'/'+matId+'/'+key+'">'
-+ '<span class="cat-ic" style="background:'+meta.color+'22;color:'+meta.color+'">'+icon(meta.icon,22)+'</span>'
++ '<span class="cat-ic" style="background:var(--mix-accent-16);color:'+meta.color+'">'+icon(meta.icon,22)+'</span>'
 + '<span class="cat-label">'+esc(label)+'</span></div>';
 });
 h += '</div></div>';
@@ -7928,7 +8184,7 @@ return h;
 function searchIndex(){
 const idx = [];
 DB.ENTRIES.filter(e=>!menuIsHidden(e.menu)).forEach(e=>{
-idx.push({id:e.id, type:"entry", cat:menuName(e.menu), title:e.title, kw:(e.summary+" "+e.tags.join(" ")+" "+e.body.map(b=>(b.h||"")+(b.p?b.p.join(" "):"")+(b.list?b.list.join(" "):"")).join(" ")).toLowerCase()});
+idx.push({id:e.id, type:"entry", cat:menuName(e.menu), title:e.title, sub:(subLabel(e)||(function(){let n="";DB.MENUS.forEach(m=>(m.materials||[]).forEach(mt=>{if(mt.id===e.material)n=mt.name;}));return n;})()), kw:(e.summary+" "+e.tags.join(" ")+" "+e.body.map(b=>(b.h||"")+(b.p?b.p.join(" "):"")+(b.list?b.list.join(" "):"")).join(" ")).toLowerCase()});
 });
 DBQ.SURAHS.forEach(s=>{
 idx.push({id:"surah-"+s[0], type:"surah", cat:"Al-Qur'an", title:"Surah "+s[1]+" — "+s[3], kw:(s[1]+" "+s[3]+" surah "+(s[4]==="Makkiyah"?"makkiyah":"madaniyah")).toLowerCase()});
@@ -7954,9 +8210,15 @@ idx.push({id:"mat-"+m.id+"-"+mat.id, type:"material", cat:"Menu Utama", title:m.
 });
 return idx;
 }
-const SIDX = searchIndex();
+let SIDX = searchIndex();
 function menuName(mid){ const m=DB.MENUS.find(x=>x.id===mid); return m?m.name:"Entri"; }
-const SEARCH_CATS = ["Semua"].concat([...new Set(SIDX.map(x=>x.cat))].sort());
+let SEARCH_CATS = ["Semua"].concat([...new Set(SIDX.map(x=>x.cat))].sort());
+/* Indeks dibangun ulang setelah seluruh patch selesai (lihat blok TAHAP 57 di akhir berkas),
+   supaya entri yang dihapus atau dipindahkan patch tidak tertinggal di hasil pencarian. */
+function refreshSearchIndex(){
+SIDX = searchIndex();
+SEARCH_CATS = ["Semua"].concat([...new Set(SIDX.map(x=>x.cat))].sort());
+}
 let searchCat = "Semua";
 /* Normalisasi ejaan agar pencarian tahan perbedaan transliterasi:
    sholat/shalat/salat, dzikir/zikir, wudhu/wudu, hadits/hadis, sedekah/sadaqah. */
@@ -8021,7 +8283,7 @@ results.forEach(r=>{ (groups[r.cat]=groups[r.cat]||[]).push(r); });
 Object.keys(groups).forEach(cat=>{
 h += '<div class="search-group"><h4>'+esc(cat)+' ('+groups[cat].length+')</h4>';
 groups[cat].forEach(r=>{
-h += '<div class="row" data-nav="'+searchHref(r)+'"><span class="row-icon">'+icon(searchIcon(r.type),18)+'</span><span class="grow"><span class="rt">'+esc(r.title)+'</span></span><span class="chev">'+icon("chev",18)+'</span></div>';
+h += '<div class="row" data-nav="'+searchHref(r)+'"><span class="row-icon">'+icon(searchIcon(r.type),18)+'</span><span class="grow"><span class="rt">'+esc(r.title)+'</span>'+(r.sub?'<span class="rs">'+esc(r.sub)+'</span>':'')+'</span><span class="chev">'+icon("chev",18)+'</span></div>';
 });
 h += '</div>';
 });
@@ -8083,7 +8345,8 @@ h += setSelect("Metode Asar", "Bayangan Asar", "set-asr", Object.keys(CALC.ASR_M
 h += setSelect("Lokasi", "Untuk perhitungan waktu shalat", "set-city", DB.CITIES.map(c=>[c.id, c.name]), SETTINGS.city);
 h += pilihQari();
 h += pilihBahasa();
-h += setSelect("Mode baca Al-Qur'an", "Tampilan saat membuka surah", "set-mushaf", [["0","Mode kartu (per ayat)"],["1","Mode mushaf (menyambung)"]], SETTINGS.mushaf ? "1" : "0");
+h += setSelect("Sumber tafsir", "Tafsir Indonesia (Kemenag) atau Ibnu Katsir berbahasa Inggris", "set-tafsir", [["kemenag","Tafsir Indonesia (Kemenag)"],["katsir","Tafsir Ibnu Katsir (Inggris)"]], SETTINGS.tafsirSrc);
+h += setSelect("Mode baca Al-Qur\'an", "Tampilan saat membuka surah", "set-mushaf", [["0","Mode kartu (per ayat)"],["1","Mode mushaf (menyambung)"]], SETTINGS.mushaf ? "1" : "0");
 h += setSelect("Koreksi tanggal Hijriah", "Geser bila berbeda dengan keputusan pemerintah (rukyat)", "set-hijri", [["-2","\u22122 hari"],["-1","\u22121 hari"],["0","Tanpa koreksi"],["1","+1 hari"],["2","+2 hari"]], String(SETTINGS.hijriOffset||0));
 h += setSelect("Transliterasi Latin", "Bacaan huruf Latin di bawah setiap teks Arab \u2014 membantu pembaca awam", "set-translit", [["1","Tampilkan"],["0","Sembunyikan"]], SETTINGS.translit === false ? "0" : "1");
 h += '<div class="set-row" style="flex-wrap:wrap"><div style="flex:1;min-width:150px"><div class="sr-t">Rekaman adzan sendiri</div><div class="sr-d">Tempel tautan berkas MP3 adzan (opsional) — menggantikan rekaman bawaan</div></div><input class="input" id="set-adzan-url" inputmode="url" style="max-width:230px" placeholder="https://…" value="'+esc(SETTINGS.adzanUrl||"")+'"></div>';
@@ -8094,6 +8357,15 @@ h += '</div></div>';
 h += '<div class="set-group"><h3>Data</h3><div class="card">';
 h += '<div class="set-row"><div><div class="sr-t">Reset koleksi & riwayat</div><div class="sr-d">Hapus data lokal perangkat ini</div></div><button class="btn btn-ghost" data-action="reset">Reset</button></div>';
 h += '<div class="set-row"><div><div class="sr-t">Tentang & status data</div><div class="sr-d">Kebijakan konten dan sumber</div></div><button class="btn btn-ghost" data-nav="#/tentang">Buka</button></div>';
+h += '</div></div>';
+h += '<div class="set-group"><h3>Mushaf Offline</h3><div class="card">';
+const unduhan = (typeof OFF!=="undefined") ? OFF.daftar() : [];
+h += setRow("Surah tersimpan", unduhan.length ? (unduhan.length+" surah \u00b7 "+Math.max(1,Math.round(OFF.ukuran()/1024))+" KB teks") : "Belum ada surah yang diunduh", '<span class="tiny muted">'+(unduhan.length ? esc(unduhan.slice(0,4).map(x=>x.judul||("Surah "+x.n)).join(", "))+(unduhan.length>4?" \u2026":"") : "\u2014")+'</span>');
+h += '<div class="set-row"><div><div class="sr-t">Unduh Juz \u2019Amma</div><div class="sr-d">Surah 78\u2013114 agar bisa dibaca tanpa jaringan</div></div><button class="btn btn-ghost" data-action="offline-juz">Unduh</button></div>';
+h += setSelect("Unduh mushaf per juz", "Pilih juz, lalu tekan Unduh. Batas penyimpanan peramban sekitar 5 MB", "set-unduh-juz", [["0","\u2014 pilih juz \u2014"]].concat(Array.from({length:30},function(_,i){ return [String(i+1),"Juz "+(i+1)]; })), "0");
+h += '<div class="set-row"><div><div class="sr-t">Unduh juz terpilih</div><div class="sr-d">Menyimpan seluruh surah dalam juz tersebut</div></div><button class="btn btn-ghost" data-action="offline-juz-pilih">Unduh</button></div>';
+h += '<div class="set-row"><div><div class="sr-t">Perkiraan pemakaian penyimpanan</div><div class="sr-d">Bila penuh, unduhan berikutnya akan gagal dengan pesan yang jelas</div></div><span class="tiny muted">'+Math.max(1,Math.round(OFF.ukuran()/1024))+' KB</span></div>';
+h += '<div class="set-row"><div><div class="sr-t">Hapus semua unduhan mushaf</div><div class="sr-d">Teks surah yang tersimpan di perangkat ini</div></div><button class="btn btn-ghost" data-action="offline-clear">Hapus</button></div>';
 h += '</div></div>';
 h += '</div>';
 return h;
@@ -8251,7 +8523,7 @@ body:[{h:"Metode", p:["Konversi mengikuti kalender Hijriah pada perangkat dan di
 {"h":"Catatan","p":["Tanggal Hijriah dihitung berdasarkan peredaran bulan. Awal bulan dapat berbeda antarnegara, sehingga hasil konversi sebaiknya dicocokkan dengan pengumuman resmi setempat."]}
 ],
 sources:["app"], related:[], tags:["kalender","fitur"]
-,related:["kalender-bulanan","informasi-hari-ini"]});
+,related:["kalender-bulanan","kalender-informasi-hari-ini"]});
 addEntry({id:"masjid-terdekat", menu:5, material:"masjid-bersejarah", sub:"fitur", type:"feature", calc:"feature",
 title:"Cari Masjid Terdekat", summary:"Membuka aplikasi peta perangkat untuk mencari masjid di sekitar lokasi Anda.",
 body:[{h:"Cara kerja", p:["Fitur ini menggunakan lokasi perangkat (jika diizinkan) lalu membuka aplikasi peta (Google Maps/Apple Maps) dengan pencarian \"masjid terdekat\" — aplikasi ini sendiri tidak menyimpan basis data lokasi masjid secara real-time."]},
@@ -10318,7 +10590,7 @@ body:[{h:"Keterangan", p:["Mengucapkan hamdalah atas setiap kenikmatan, sekecil 
 {"h":"Makna","p":["Doa syukur mengakui bahwa setiap nikmat berasal dari Allah, baik berupa rezeki, kesehatan, maupun kemudahan urusan."]},
 {"h":"Cara menjaga syukur","list":["Menyebut nikmat dengan menyebut pemberinya, bukan untuk menyombongkan diri.","Memakai nikmat untuk hal yang diridhai.","Berbagi nikmat kepada yang membutuhkan."]}
 ],
-sources:["quran","ibnumajah"], related:["doa-tawakal-hasbunallah"], tags:["doa","syukur"]});
+sources:["quran","ibnMajah"], related:["doa-tawakal-hasbunallah"], tags:["doa","syukur"]});
 addEntry({id:"doa-belajar-mulai", menu:4, material:"doa", sub:"belajar", type:"doa", title:"Doa Sebelum Belajar (Rabbi Zidni 'Ilma)",
 arabic:{text:"رَبِّ زِدْنِي عِلْمًا", translit:"Rabbi zidni 'ilma", arti:"Ya Tuhanku, tambahkanlah ilmu kepadaku.", audio:"", audio_src:"", source:"QS. Thaha 20:114"},
 summary:"Doa singkat yang diperintahkan Allah agar dipanjatkan Nabi ﷺ, cocok dibaca sebelum memulai belajar atau menuntut ilmu.",
@@ -10648,6 +10920,97 @@ SETTINGS.mushaf = !SETTINGS.mushaf; saveSettings();
 toast(SETTINGS.mushaf ? "Mode mushaf" : "Mode kartu per ayat");
 router();
 }
+else if(act==="offline-toggle"){
+const n = parseInt(el.dataset.surah,10);
+if(!n || typeof OFF==="undefined") return;
+if(OFF.ada(n)){ OFF.hapus(n); toast("Unduhan offline dihapus."); router(); return; }
+toast("Mengunduh surah "+n+"\u2026");
+API.getSurah(n).then(function(res){
+const nama = (DB.SURAHS[n-1] && DB.SURAHS[n-1][2]) || ("Surah "+n);
+const ok = OFF.simpan(n, res.surah, nama);
+toast(ok ? ("Surah "+nama+" tersimpan untuk offline.") : "Penyimpanan perangkat penuh \u2014 unduhan gagal.");
+router();
+}).catch(function(){ toast("Gagal mengunduh. Periksa koneksi lalu coba lagi."); });
+return;
+}
+else if(act==="offline-juz"){
+if(typeof OFF==="undefined") return;
+const daftar = [];
+for(let n=78;n<=114;n++){ if(!OFF.ada(n)) daftar.push(n); }
+if(!daftar.length){ toast("Seluruh Juz \u2019Amma sudah tersimpan."); return; }
+toast("Mengunduh "+daftar.length+" surah\u2026");
+let i=0, gagal=0;
+const lanjut = function(){
+if(i>=daftar.length){
+toast(gagal ? ("Selesai \u2014 "+gagal+" surah gagal karena penyimpanan penuh.") : "Juz \u2019Amma tersimpan untuk offline.");
+router(); return;
+}
+const n = daftar[i++];
+API.getSurah(n).then(function(res){
+const nama = (DB.SURAHS[n-1] && DB.SURAHS[n-1][2]) || ("Surah "+n);
+if(!OFF.simpan(n, res.surah, nama)) gagal++;
+lanjut();
+}).catch(function(){ gagal++; lanjut(); });
+};
+lanjut();
+return;
+}
+else if(act==="offline-juz-pilih"){
+if(typeof OFF==="undefined" || typeof daftarSurahJuz!=="function") return;
+const sel = document.getElementById("set-unduh-juz");
+const jz = sel ? parseInt(sel.value,10) : 0;
+if(!jz){ toast("Pilih juz lebih dulu."); return; }
+const daftar = daftarSurahJuz(jz).filter(function(x){ return !OFF.ada(x); });
+if(!daftar.length){ toast("Seluruh surah Juz "+jz+" sudah tersimpan."); return; }
+toast("Mengunduh Juz "+jz+" ("+daftar.length+" surah)\u2026");
+let i=0, gagal=0;
+const lanjut = function(){
+if(i>=daftar.length){
+toast(gagal ? ("Juz "+jz+" selesai dengan "+gagal+" surah gagal karena penyimpanan penuh.") : ("Juz "+jz+" tersimpan untuk offline."));
+router(); return;
+}
+const n = daftar[i++];
+API.getSurah(n).then(function(res){
+const nama = (DB.SURAHS[n-1] && DB.SURAHS[n-1][2]) || ("Surah "+n);
+if(!OFF.simpan(n, res.surah, nama)) gagal++;
+lanjut();
+}).catch(function(){ gagal++; lanjut(); });
+};
+lanjut();
+return;
+}
+else if(act==="offline-clear"){
+if(typeof OFF==="undefined") return;
+OFF.hapusSemua(); toast("Semua unduhan mushaf dihapus."); router(); return;
+}
+else if(act==="tafsir-toggle"){
+const kunci = el.dataset.key;
+if(/^[0-9]{1,3}:[0-9]{1,3}$/.test(kunci)) bukaTafsir(kunci);
+return;
+}
+else if(act==="pengantar-toggle"){
+const nS = parseInt(el.dataset.surah,10);
+if(nS>=1 && nS<=114) bukaPengantar(nS);
+return;
+}
+else if(act==="tafsir-ganti"){
+const kunci = el.dataset.key;
+if(!/^[0-9]{1,3}:[0-9]{1,3}$/.test(kunci)) return;
+try{
+SETTINGS.tafsirSrc = (sumberTafsir()==="kemenag") ? "katsir" : "kemenag";
+if(typeof saveSettings==="function") saveSettings();
+toast(SETTINGS.tafsirSrc==="katsir" ? "Sumber tafsir: Ibnu Katsir (Inggris)" : "Sumber tafsir: Indonesia (Kemenag)");
+}catch(e){}
+const kotak = document.getElementById("tf-"+kunci);
+if(kotak){ kotak.dataset.terbuka="0"; kotak.innerHTML=""; }
+bukaTafsir(kunci);
+return;
+}
+else if(act==="tafsir-terjemah"){
+const kunci = el.dataset.key;
+if(/^[0-9]{1,3}:[0-9]{1,3}$/.test(kunci)) terjemahkanTafsir(kunci);
+return;
+}
 else if(act==="mushaf-ayat"){
 const mkey = el.dataset.ayah || "";
 const mdata = (window._ayatData || {})[mkey] || {};
@@ -10666,7 +11029,9 @@ div.innerHTML = '<div class="mt-arab" dir="rtl" lang="ar">'+esc(mdata.arab || ""
 + '<div class="mt-act">'
 + '<button class="btn btn-ghost" data-action="mp-ayat" data-key="'+esc(mkey)+'">'+icon("play",14)+' Putar ayat</button>'
 + '<button class="btn btn-ghost" data-nav="#/quran/ayat/'+esc(mkey)+'">'+icon("layers",14)+' Buka halaman ayat</button>'
-+ '</div>';
++ '<button class="btn btn-ghost" data-action="tafsir-toggle" data-key="'+esc(mkey)+'">'+icon("book",14)+' Tafsir Ibnu Katsir</button>'
++ '</div>'
++ '<div class="tafsir-isi" id="tf-'+esc(mkey)+'"></div>';
 el.parentNode.insertBefore(div, el.nextSibling);
 }
 else if(act==="mp-ayat"){
@@ -10710,7 +11075,7 @@ const n = $("search-input"); if(n){ n.focus(); n.setSelectionRange(pos,pos); }
 setActiveNav("search");
 }, 250);
 }
-["set-theme","set-font","set-arfont","set-prayer","set-asr","set-city","set-qari","set-adzan-url","set-translit","set-terjemahan","set-hijri","set-mushaf"].forEach(id=>{
+["set-theme","set-font","set-arfont","set-prayer","set-asr","set-city","set-qari","set-adzan-url","set-translit","set-terjemahan","set-hijri","set-mushaf","set-tafsir"].forEach(id=>{
 const el = $(id); if(!el) return;
 el.onchange = el.oninput = () => {
 if(id==="set-theme") applyTheme(el.checked?"dark":"light");
@@ -10725,6 +11090,7 @@ if(id==="set-translit"){ SETTINGS.translit = (el.value !== "0"); }
 if(id==="set-terjemahan"){ SETTINGS.terjemahan = el.value; toast("Terjemahan diubah — surah akan dimuat ulang saat dibuka"); }
 if(id==="set-hijri"){ SETTINGS.hijriOffset = parseInt(el.value,10) || 0; toast(SETTINGS.hijriOffset ? ("Tanggal Hijriah digeser "+SETTINGS.hijriOffset+" hari") : "Koreksi Hijriah dihapus"); router(); }
 if(id==="set-mushaf"){ SETTINGS.mushaf = (el.value === "1"); toast(SETTINGS.mushaf ? "Mode mushaf" : "Mode kartu per ayat"); router(); }
+if(id==="set-tafsir"){ SETTINGS.tafsirSrc = (el.value === "katsir") ? "katsir" : "kemenag"; toast(SETTINGS.tafsirSrc === "katsir" ? "Sumber tafsir: Ibnu Katsir (Inggris)" : "Sumber tafsir: Indonesia (Kemenag)"); }
 saveSettings();
 };
 });
@@ -10861,9 +11227,9 @@ addEntry({"id":"ulama-imam-pengantar","menu":5,"material":"ulama","type":"articl
 addEntry({"id":"ilmuwan-muslim-pengantar","menu":5,"material":"ilmuwan","type":"article","title":"Ilmuwan Muslim dan Tradisi Ilmu","summary":"Pengenalan kontribusi ilmuwan Muslim dalam matematika, kedokteran, astronomi, filsafat, dan ilmu lainnya.","body":[{"h":"Bidang kontribusi","list":["Matematika dan perhitungan.","Kedokteran dan farmasi.","Astronomi.","Optik dan ilmu alam.","Geografi dan kartografi."]},{"h":"Cara membaca sejarah","p":["Kontribusi ilmuwan perlu ditempatkan dalam jaringan pertukaran ilmu antara berbagai peradaban, bukan sebagai cerita yang berdiri sendiri."]},{"h":"Catatan","p":["Atribusi penemuan harus diperiksa dari sumber sejarah ilmu yang kredibel."]}],"sources":["app"],"related":["sejarah-islam"],"tags":["ilmuwan","sains","sejarah"]});
 addEntry({"id":"tokoh-perempuan-pengantar","menu":5,"material":"tokoh-perempuan","type":"article","title":"Tokoh Perempuan Muslim","summary":"Pengenalan peran perempuan Muslim dalam ilmu, keluarga, pendidikan, dan sejarah masyarakat Islam.","body":[{"h":"Contoh tokoh","list":["Khadijah binti Khuwailid: dikenal sebagai istri Nabi dan pendukung awal dakwah.","Aisyah binti Abu Bakr: dikenal sebagai perawi hadis dan rujukan ilmu.","Fatimah az-Zahra: putri Nabi Muhammad ﷺ yang memiliki kedudukan penting dalam sejarah keluarga Nabi."]},{"h":"Pelajaran","p":["Sejarah perempuan Muslim perlu dilihat melalui sumber biografi dan hadis yang dapat diverifikasi."]},{"h":"Catatan","p":["Daftar tokoh dan rincian biografi perlu dilengkapi sumber khusus agar tidak bercampur dengan kisah populer yang lemah."]}],"sources":["bukhari","muslim","sirah"],"related":["sirah"],"tags":["perempuan","sejarah","tokoh"]});
 addEntry({"id":"tokoh-nusantara-pengantar","menu":5,"material":"nusantara","type":"article","title":"Tokoh Islam Nusantara","summary":"Pengenalan ulama dan tokoh Islam di Nusantara dalam perkembangan pendidikan dan dakwah.","body":[{"h":"Ruang lingkup","list":["Ulama pesantren.","Pendidik dan penulis keislaman.","Tokoh organisasi dan masyarakat.","Jaringan keilmuan Nusantara–Haramain."]},{"h":"Pendekatan","p":["Biografi tokoh Nusantara perlu mencantumkan sumber lokal, karya tokoh, dan penelitian sejarah agar tidak hanya bergantung pada cerita populer."]},{"h":"Catatan","p":["Materi ini dapat dikembangkan per wilayah dan periode dengan sumber yang terverifikasi."]}],"sources":["app"],"related":["ulama-imam-pengantar"],"tags":["nusantara","ulama","sejarah"]});
-addEntry({"id":"hari-besar-islam","menu":7,"material":"hari-ini","type":"article","title":"Hari Besar Islam","summary":"Pengenalan beberapa hari dan waktu penting dalam kalender Islam.","body":[{"h":"Contoh","list":["1 Muharram: awal tahun Hijriah.","10 Muharram: dikenal sebagai Asyura.","Ramadan: bulan puasa wajib.","Idul Fitri: 1 Syawal.","Idul Adha: 10 Zulhijah."]},{"h":"Catatan tanggal","p":["Tanggal Hijriah dapat berbeda menurut metode hisab, rukyat, dan keputusan otoritas setempat."]},{"h":"Aplikasi","p":["Untuk tanggal operasional di Indonesia, pengguna sebaiknya merujuk kalender resmi pemerintah/otoritas keagamaan."]}],"sources":["kemenag","app"],"related":["detail-tanggal-pengantar","kalender-informasi-hari-ini"],"tags":["hijriah","hari-besar","kalender"]});
-addEntry({"id":"detail-tanggal-pengantar","menu":7,"material":"detail-tanggal","type":"article","title":"Memahami Tanggal Hijriah","summary":"Cara membaca tanggal Hijriah dan menghubungkannya dengan tanggal Masehi.","body":[{"h":"Sistem","p":["Kalender Hijriah menggunakan siklus bulan dan memiliki 12 bulan."]},{"h":"Perbedaan penetapan","p":["Awal bulan tertentu dapat berbeda antara metode dan otoritas. Perbedaan ini perlu ditampilkan sebagai perbedaan metode, bukan kesalahan pengguna."]},{"h":"Gunakan fitur","p":["Silmikaffah menyediakan konversi dan kalender untuk membantu orientasi tanggal; keputusan ibadah terkait awal bulan mengikuti otoritas yang dirujuk pengguna."]}],"sources":["kemenag","app"],"related":["hari-besar-islam"],"tags":["hijriah","tanggal","kalender"]});
-addEntry({"id":"sejarah-bulan-islam","menu":7,"material":"sejarah-bulan-ini","type":"article","title":"Sejarah Bulan-Bulan Hijriah","summary":"Pengenalan makna dan peristiwa yang sering dikaitkan dengan bulan-bulan Hijriah.","body":[{"h":"Bulan utama","list":["Muharram.","Safar.","Rabiul Awal.","Rajab.","Sya’ban.","Ramadan.","Syawal.","Zulhijah."]},{"h":"Kehati-hatian","p":["Tidak setiap cerita populer tentang suatu tanggal memiliki dasar sejarah yang kuat. Materi tanggal-peristiwa perlu dibedakan antara riwayat sahih, pendapat sejarah, dan tradisi lokal."]},{"h":"Catatan","p":["Peristiwa sejarah ditampilkan dengan sumber dan tingkat kepastiannya."]}],"sources":["kemenag","sirah","app"],"related":["hari-besar-islam"],"tags":["hijriah","sejarah","bulan"]});
+addEntry({"id":"hari-besar-islam","menu":7,"material":"sejarah-bulan-ini","sub":"hari-besar","type":"article","title":"Hari Besar Islam","summary":"Pengenalan beberapa hari dan waktu penting dalam kalender Islam.","body":[{"h":"Contoh","list":["1 Muharram: awal tahun Hijriah.","10 Muharram: dikenal sebagai Asyura.","Ramadan: bulan puasa wajib.","Idul Fitri: 1 Syawal.","Idul Adha: 10 Zulhijah."]},{"h":"Catatan tanggal","p":["Tanggal Hijriah dapat berbeda menurut metode hisab, rukyat, dan keputusan otoritas setempat."]},{"h":"Aplikasi","p":["Untuk tanggal operasional di Indonesia, pengguna sebaiknya merujuk kalender resmi pemerintah/otoritas keagamaan."]}],"sources":["kemenag","app"],"related":["detail-tanggal-pengantar","kalender-informasi-hari-ini"],"tags":["hijriah","hari-besar","kalender"]});
+addEntry({"id":"detail-tanggal-pengantar","menu":7,"material":"kalender-bulanan","sub":"hari-ini","type":"article","title":"Memahami Tanggal Hijriah","summary":"Cara membaca tanggal Hijriah dan menghubungkannya dengan tanggal Masehi.","body":[{"h":"Sistem","p":["Kalender Hijriah menggunakan siklus bulan dan memiliki 12 bulan."]},{"h":"Perbedaan penetapan","p":["Awal bulan tertentu dapat berbeda antara metode dan otoritas. Perbedaan ini perlu ditampilkan sebagai perbedaan metode, bukan kesalahan pengguna."]},{"h":"Gunakan fitur","p":["Silmikaffah menyediakan konversi dan kalender untuk membantu orientasi tanggal; keputusan ibadah terkait awal bulan mengikuti otoritas yang dirujuk pengguna."]}],"sources":["kemenag","app"],"related":["hari-besar-islam"],"tags":["hijriah","tanggal","kalender"]});
+addEntry({"id":"sejarah-bulan-islam","menu":7,"material":"sejarah-bulan-ini","sub":"bulan","type":"article","title":"Sejarah Bulan-Bulan Hijriah","summary":"Pengenalan makna dan peristiwa yang sering dikaitkan dengan bulan-bulan Hijriah.","body":[{"h":"Bulan utama","list":["Muharram.","Safar.","Rabiul Awal.","Rajab.","Sya’ban.","Ramadan.","Syawal.","Zulhijah."]},{"h":"Kehati-hatian","p":["Tidak setiap cerita populer tentang suatu tanggal memiliki dasar sejarah yang kuat. Materi tanggal-peristiwa perlu dibedakan antara riwayat sahih, pendapat sejarah, dan tradisi lokal."]},{"h":"Catatan","p":["Peristiwa sejarah ditampilkan dengan sumber dan tingkat kepastiannya."]}],"sources":["kemenag","sirah","app"],"related":["hari-besar-islam"],"tags":["hijriah","sejarah","bulan"]});
 addEntry({"id":"dakwah-pengantar","menu":5,"material":"dakwah","type":"article","title":"Pengantar Dakwah","summary":"Dakwah sebagai ajakan kepada kebaikan dengan ilmu, hikmah, dan akhlak yang baik.","body":[{"h":"Prinsip","list":["Berilmu sebelum menyampaikan.","Menggunakan hikmah dan nasihat yang baik.","Memperhatikan kondisi dan kemampuan audiens.","Tidak memaksakan keyakinan."]},{"h":"Media modern","p":["Dakwah digital perlu memperhatikan verifikasi sumber, hak cipta, privasi, dan dampak penyebaran informasi."]},{"h":"Etika","p":["Jangan memotong ucapan ulama atau ayat/hadis sehingga maknanya berubah."]}],"sources":["quran","app"],"related":["pendidikan-islam"],"tags":["dakwah","pendidikan","etika"]});
 addEntry({"id":"bahasa-arab-dasar-pengantar","menu":6,"material":"bahasa-arab-dasar","type":"article","title":"Bahasa Arab Dasar","summary":"Pengenalan kosakata dan pola kalimat sederhana untuk membantu memahami teks Islam.","body":[{"h":"Dasar belajar","list":["Huruf dan harakat.","Kosakata sehari-hari.","Kata benda, kata kerja, dan huruf.","Kalimat nominal dan verbal."]},{"h":"Untuk studi Islam","p":["Kemampuan bahasa Arab membantu membaca Al-Qur’an, hadis, doa, dan kitab, tetapi terjemahan tetap perlu digunakan dengan memperhatikan konteks."]},{"h":"Latihan","p":["Mulai dari kosakata yang sering muncul, lalu latihan membaca dan menyusun kalimat sederhana."]}],"sources":["quran","app"],"related":["nahwu-pengantar","sharaf-pengantar"],"tags":["bahasa-arab","kosakata","belajar"]});
 addEntry({"id":"nahwu-pengantar","menu":6,"material":"nahwu","type":"article","title":"Pengantar Nahwu","summary":"Ilmu tata bahasa Arab yang membahas fungsi kata dan susunan kalimat.","body":[{"h":"Materi dasar","list":["Isim, fi’il, dan harf.","Mubtada dan khabar.","Fi’il, fa’il, dan maf’ul.","I’rab dan tanda-tandanya."]},{"h":"Manfaat","p":["Nahwu membantu memahami hubungan antarkata sehingga terjemahan ayat atau hadis tidak hanya bergantung pada terjemahan lepas."]},{"h":"Belajar","p":["Latihan sebaiknya menggunakan contoh pendek dan bertahap."]},
@@ -11017,7 +11383,7 @@ function applyTheme(t){
 SETTINGS.theme = t; saveSettings();
 document.documentElement.dataset.theme = t;
 const meta = document.querySelector('meta[name="theme-color"]');
-if(meta) meta.content = t==="dark" ? "#070B08" : "#0F7A4D";
+if(meta) meta.content = t==="dark" ? "#070B08" : "#F7F8F7";
 }
 function geoErrorMsg(err){
 if(!err || err.code===undefined) return "Gagal mendeteksi lokasi — coba lagi atau pilih kota manual.";
@@ -11866,7 +12232,7 @@ const additions = [
 {"h":"Catatan","p":["Hadisnya disusun per tema, sehingga memudahkan pencarian hukum untuk satu masalah."]}
 ],sources:["muslim"],related:["hadis","ulumul-hadis"],tags:["hadis","kitab"]},
 {id:"hadis-kitab-abu-dawud",menu:3,material:"hadis",sub:"kumpulan",type:"article",title:"Sunan Abu Dawud",summary:"Pengenalan Sunan Abu Dawud yang banyak digunakan dalam pembahasan hadis hukum dan fikih.",body:[{h:"Tentang",p:["Sunan Abu Dawud disusun oleh Abu Dawud as-Sijistani dan banyak memuat hadis yang berkaitan dengan bab-bab hukum dan fikih."]},{h:"Catatan derajat",p:["Riwayat dalam kitab sunan perlu diperiksa penilaian hadisnya; keberadaan hadis di dalam kitab tidak otomatis berarti semua riwayat memiliki derajat yang sama."]}],sources:["abudawud"],related:["hadis","ulumul-hadis"],tags:["hadis","kitab"]},
-{id:"kalender-informasi-hari-ini",menu:7,material:"informasi-hari-ini",type:"article",title:"Informasi Hari Ini",summary:"Ringkasan informasi tanggal Hijriah hari ini, konteks kalender, dan catatan perbedaan penetapan tanggal.",body:[{h:"Isi",list:["Tanggal Hijriah hari ini.","Tanggal Masehi yang bersesuaian.","Hari dalam pekan.","Peristiwa atau hari besar bila relevan."]},{h:"Catatan",p:["Tanggal Hijriah dapat berbeda satu hari menurut metode hisab, rukyat, atau keputusan otoritas. Informasi kalender tidak menggantikan pengumuman resmi untuk awal bulan yang berkaitan dengan ibadah."]}],sources:["kemenag","app"],related:["hari-besar-islam","detail-tanggal-pengantar"],tags:["hijriah","kalender","hari-ini"]}
+{id:"kalender-informasi-hari-ini",menu:7,material:"kalender-bulanan",sub:"hari-ini",type:"article",title:"Informasi Hari Ini",summary:"Ringkasan informasi tanggal Hijriah hari ini, konteks kalender, dan catatan perbedaan penetapan tanggal.",body:[{h:"Isi",list:["Tanggal Hijriah hari ini.","Tanggal Masehi yang bersesuaian.","Hari dalam pekan.","Peristiwa atau hari besar bila relevan."]},{h:"Catatan",p:["Tanggal Hijriah dapat berbeda satu hari menurut metode hisab, rukyat, atau keputusan otoritas. Informasi kalender tidak menggantikan pengumuman resmi untuk awal bulan yang berkaitan dengan ibadah."]}],sources:["kemenag","app"],related:["hari-besar-islam","detail-tanggal-pengantar"],tags:["hijriah","kalender","hari-ini"]}
 ];
 additions.forEach(a=>{ if(!DB.ENTRIES.some(x=>x.id===a.id)) addEntry(a); });
 const seen=new Set(), dedup=[];
@@ -12407,6 +12773,561 @@ const MINI = window.MINI = {
 };
 if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", function(){ MINI.init(); });
 else MINI.init();
+})();
+</script>
+
+<script>
+/* ===== TAHAP 51 (2026-09-28): melengkapi baris Sumber pada lafaz yang belum punya.
+   Nilai diambil HANYA dari data yang sudah ada di dalam berkas ini:
+   (1) teks Arab identik pada entri lain yang sumbernya sudah lengkap, atau
+   (2) daftar Sumber milik entri itu sendiri (mis. "Materi orisinal SILMIKAFFAH").
+   Tidak ada sumber baru yang dikarang dan tidak ada teks Arab/terjemahan yang diubah. ===== */
+(function(){
+ var DB = window.SILMIKAFFAH; if(!DB || !DB.ENTRIES) return;
+ var FILL = {"gerakan-takbir":[{"i":0,"s":"HR. Bukhari no. 6251, Muslim no. 397"}],"gerakan-rukuk":[{"i":0,"s":"HR. Abu Dawud no. 873, Ibnu Majah no. 888"}],"gerakan-sujud":[{"i":0,"s":"HR. Abu Dawud no. 874, Ibnu Majah no. 890"}],"gerakan-salam":[{"i":0,"s":"HR. Abu Dawud no. 996, Tirmidzi no. 295"}],"huruf-hijaiyah":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"harakat":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-tauhid":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-ibadah":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-iman":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-islam":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-ihsan":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-akidah":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-riya":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-gharar":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-halal":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-haram":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-wajib":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-sunnah":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-makruh":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"term-fardhu-kifayah":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"dua-kalimat-syahadat":[{"i":0,"s":"HR. Muslim"}],"iqamah":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"},{"i":1,"s":"Materi orisinal SILMIKAFFAH"},{"i":2,"s":"Materi orisinal SILMIKAFFAH"},{"i":3,"s":"Materi orisinal SILMIKAFFAH"},{"i":4,"s":"Materi orisinal SILMIKAFFAH"},{"i":5,"s":"Materi orisinal SILMIKAFFAH"},{"i":6,"s":"Materi orisinal SILMIKAFFAH"},{"i":7,"s":"Materi orisinal SILMIKAFFAH"}],"tahlil":[{"i":0,"s":"HR. Tirmidzi"}],"tasbih-digital":[{"i":0,"s":"Materi orisinal SILMIKAFFAH"}],"hsm-zikir-setelah-salam":[{"i":0,"s":"Kalimat istighfar paling ringkas — dianjurkan diperbanyak setiap saat"},{"i":1,"s":"Kalimat istighfar paling ringkas — dianjurkan diperbanyak setiap saat"},{"i":3,"s":"HR. Bukhari no. 3293, Muslim no. 2691 — pahalanya setara memerdekakan 10 budak, dicatat 100 kebaikan dan dihapus 100 keburukan, serta penjagaan dari setan hari itu."},{"i":13,"s":"HR. Bukhari dalam Fatḥul-Bārī (11/101, No. 6307) dan Muslim (/2075, No. 2702)."}],"hsm-zikir-sebelum-tidur":[{"i":10,"s":"Salah satu kalimat dzikir utama — bagian dari tasbih, tahmid, takbir yang rutin diucapkan setelah shalat"}],"hsm-doa-mengusir-setan-dan-bisikannya":[{"i":2,"s":"HR. Abu Daud (No. 5077), Ibnu Majah (No. 3798), dan Ahmad (No. 8719). Lihat: Ṣaḥīḥ at-Targīb wat-Tarhīb (1/270), Ṣaḥīḥ Abī Dāwud (3/957), Ṣaḥīḥ Ibni Mājah (2/331), dan Zādul-Mā'ād (2/377)."}],"hsm-ucapan-orang-yang-mendapatkan-kabar-baik-atau-buruk":[{"i":0,"s":"HR. Ibnu Majah no. 3803, dihasankan Al-Albani"},{"i":1,"s":"HR. Ibnu Majah no. 3803, dihasankan Al-Albani"}]};
+ DB.ENTRIES.forEach(function(e){
+  var f = FILL[e.id]; if(!f) return;
+  var flat = []; if(e.arabic) flat.push(e.arabic); (e.arabics||[]).forEach(function(a){ flat.push(a); });
+  f.forEach(function(it){ var a = flat[it.i]; if(a && !a.source) a.source = it.s; });
+ });
+})();
+</script>
+
+<script>
+/* ===== TAHAP 52 (2026-09-28): memindahkan terjemahan yang salah tempat.
+   Pada lafaz berikut, teks Indonesia sudah ada tetapi tersimpan di kolom `translit`,
+   sehingga terjemahannya tidak pernah tampil dan kolom transliterasi terisi kalimat Indonesia.
+   Tindakan: pindahkan teks itu ke `arti`, lalu kosongkan `translit` agar diisi
+   mesin transliterasi milik aplikasi sendiri (translitArab).
+   Tidak ada teks baru yang ditulis dan tidak ada isi yang dihapus. ===== */
+(function(){
+ var DB = window.SILMIKAFFAH; if(!DB || !DB.ENTRIES) return;
+ var PINDAH = {"hsm-doa-untuk-orang-yang-memakai-pakaian-baru":[0,1],"hsm-zikir-setelah-salam":[2],"hsm-zikir-pagi-dan-petang":[28],"hsm-zikir-sebelum-tidur":[17],"hsm-doa-ketika-gundah-dan-sedih":[0,1],"hsm-doa-orang-yang-takut-terhadap-kezaliman-penguasa":[2],"hsm-doa-orang-yang-ditimpa-waswas-dalam-keimanan":[2],"hsm-doa-perlindungan-bagi-anak":[0,1],"hsm-doa-sebelum-makan":[5],"hsm-doa-ketika-melihat-putik-buah":[0,1],"hsm-doa-bersin":[3],"hsm-doa-untuk-pengantin":[2],"hsm-zikir-ketika-pulang-dari-safar":[2],"hsm-cara-menjawab-salam-orang-kafir-ketika-mengucapkan-salam-k":[0,1],"hsm-doa-ketika-mendengar-kokok-ayam-dan-ringkikan-keledai":[2],"hsm-ucapan-ketika-memuji-seorang-muslim":[0,1],"hsm-bertakbir-ketika-menghampiri-hajar-aswad":[0,1],"hsm-doa-ketika-berhenti-di-bukit-safa-dan-marwa":[0,1],"hsm-sikap-orang-yang-mendapatkan-perkara-menyenangkan":[0,1],"hsm-doa-orang-yang-khawatir-akan-menimpa-sesuatu-dengan-pandan":[0,1],"hsm-keutamaan-tasbih-tahmid-tahlil-dan-takbir":[4,14,20]};
+ DB.ENTRIES.forEach(function(e){
+  var idx = PINDAH[e.id]; if(!idx) return;
+  var flat = []; if(e.arabic) flat.push(e.arabic); (e.arabics||[]).forEach(function(a){ flat.push(a); });
+  idx.forEach(function(i){ var a = flat[i]; if(!a || a.arti) return; var t = (a.translit||'').trim();
+    if(!t) return; a.arti = t; a.translit = ''; });
+ });
+})();
+</script>
+
+<script>
+/* ===== TAHAP 53 (2026-09-28): 7 lafaz yang belum punya terjemahan.
+   Terjemahan disusun dari matan Arab yang sudah ada di entri masing-masing, bukan dari
+   teks luar. Mohon ditinjau ulama/penanggung jawab konten sebelum dipakai luas. ===== */
+(function(){
+ var DB = window.SILMIKAFFAH; if(!DB || !DB.ENTRIES) return;
+ var ARTI = {"hsm-zikir-sebelum-tidur": {"13": "(tiga puluh empat kali)."}, "hsm-doa-orang-yang-takut-terhadap-kezaliman-penguasa": {"3": "tiga kali."}, "hsm-doa-mengusir-setan-dan-bisikannya": {"3": "seratus kali, maka bacaan itu menjadi pelindung baginya dari setan sepanjang hari itu,"}, "hsm-doa-ketika-singgah-di-suatu-tempat-dalam-perjalanan-atau-l": {"0": "Aku berlindung dengan kalimat-kalimat Allah yang sempurna dari kejahatan makhluk yang Dia ciptakan.", "1": "Aku berlindung dengan kalimat-kalimat Allah yang sempurna dari kejahatan makhluk yang Dia ciptakan."}, "hsm-bacaan-untuk-menolak-tipu-daya-setan": {"0": "Aku berlindung dengan kalimat-kalimat Allah yang sempurna, yang tidak dapat dilampaui oleh orang baik maupun orang durhaka: dari kejahatan makhluk yang Dia ciptakan, yang Dia adakan dan Dia sebarkan; dari kejahatan yang turun dari langit dan yang naik ke langit; dari kejahatan yang Dia sebar di bumi dan yang keluar dari bumi; dari kejahatan fitnah malam dan siang; dan dari kejahatan setiap yang datang di malam hari, kecuali yang datang membawa kebaikan, wahai Yang Maha Rahman.", "1": "Aku berlindung dengan kalimat-kalimat Allah yang sempurna, yang tidak dapat dilampaui oleh orang baik maupun orang durhaka: dari kejahatan makhluk yang Dia ciptakan, yang Dia adakan dan Dia sebarkan; dari kejahatan yang turun dari langit dan yang naik ke langit; dari kejahatan yang Dia sebar di bumi dan yang keluar dari bumi; dari kejahatan fitnah malam dan siang; dan dari kejahatan setiap yang datang di malam hari, kecuali yang datang membawa kebaikan, wahai Yang Maha Rahman."}};
+ DB.ENTRIES.forEach(function(e){
+  var m = ARTI[e.id]; if(!m) return;
+  var flat = []; if(e.arabic) flat.push(e.arabic); (e.arabics||[]).forEach(function(a){ flat.push(a); });
+  Object.keys(m).forEach(function(i){ var a = flat[+i]; if(a && !a.arti) a.arti = m[i]; });
+ });
+})();
+</script>
+
+<script>
+/* ===== TAHAP 54 (2026-09-28): melengkapi data bibliografis menu Kitab.
+   Nilai penulis/periode disalin dari blok "Data bibliografis" atau "Penulis" milik entri
+   itu sendiri sehingga tidak ada data baru yang dikarang. `kategori` diambil dari nama
+   materi tempat entri berada. type diubah ke "kitab" agar kartu data bibliografis tampil. ===== */
+(function(){
+ var DB = window.SILMIKAFFAH; if(!DB || !DB.ENTRIES) return;
+ var KITAB = {"kitab-akidah-tahawiyah": {"penulis": "Imam Abu Ja'far ath-Thahawi", "periode": "239–321 H / 853–933 M", "bahasa": "Arab"}, "kitab-muslim": {"penulis": "Imam Muslim bin al-Hajjaj", "periode": "206–261 H / 821–875 M", "bahasa": "Arab"}, "kitab-abu-dawud": {"penulis": "Abu Dawud as-Sijistani", "periode": "202–275 H / 817–889 M", "bahasa": "Arab"}, "kitab-ihya": {"penulis": "Imam Abu Hamid al-Ghazali", "periode": "450–505 H / 1058–1111 M", "bahasa": "Arab"}, "kitab-risalah-qusyairiyah": {"penulis": "Abu al-Qasim al-Qusyairi", "periode": "wafat 465 H / 1072 M", "bahasa": "Arab"}, "kitab-tafsir-tabari": {"penulis": "Muhammad bin Jarir ath-Thabari", "periode": "224–310 H / 839–923 M", "bahasa": "Arab"}, "kitab-tafsir-jalalain": {"penulis": "Jalaluddin al-Mahalli & Jalaluddin as-Suyuthi", "periode": "791–864 H & 849–911 H", "bahasa": "Arab"}};
+ var namaMateri = {};
+ (DB.MENUS||[]).forEach(function(m){ (m.materials||[]).forEach(function(mt){ namaMateri[mt.id] = mt.name; }); });
+ DB.ENTRIES.forEach(function(e){
+  var k = KITAB[e.id]; if(!k || e.kitab) return;
+  var kat = String(namaMateri[e.material]||"").replace(/^Kitab\s+/,"") || undefined;
+  e.kitab = { penulis:k.penulis, periode:k.periode, bahasa:k.bahasa, kategori:kat };
+  e.type = "kitab";
+ });
+})();
+</script>
+
+<script>
+/* ===== TAHAP 55 (2026-09-29): baris Sumber untuk lafaz yang belum punya.
+   Sumber nilai (tidak ada yang dikarang):
+   1) QS. x:y  — hasil pencocokan teks lafaz dengan mushaf Utsmani (cocok 100% huruf per huruf).
+   2) Hadis — sitasi yang sudah tercantum pada lafaz terakhir unit doa yang sama di entri itu.
+   3) Adzan & iqamah — HR. Muslim no. 379, HR. Abu Dawud no. 501, dan HR. Bukhari no. 605,
+      diperiksa langsung pada sunnah.com. Lihat laporan audit untuk tautannya. ===== */
+(function(){
+ var DB = window.SILMIKAFFAH; if(!DB || !DB.ENTRIES) return;
+ var FILL = {"hsm-zikir-setelah-salam": {"5": "HR. Abu Daud (2/86, No. 1523), Tirmizi (No. 2903), dan Nasa`i (3/68, No. 1335). Lihat: Ṣaḥīḥ At-Tirmiżiy (2/8). Ketiga surah ini disebut \"al-mu'awwiżāt. Lihat: Fatḥul-Bārī (9/62).", "7": "QS. Al-Ikhlas 112:1-4", "8": "QS. Al-Falaq 113:1-5", "9": "QS. An-Nas 114:1-6"}, "hsm-zikir-pagi-dan-petang": {"1": "QS. Al-Ikhlas 112:1-4", "2": "QS. Al-Falaq 113:1-5", "3": "QS. An-Nas 114:1-6"}, "hsm-zikir-sebelum-tidur": {"0": "QS. Al-Ikhlas 112:1-4", "1": "QS. Al-Falaq 113:1-5", "2": "QS. An-Nas 114:1-6", "4": "QS. Al-Baqarah 2:285-286", "10": "HR. Muslim (4/2084, No. 2713).", "11": "HR. Muslim (4/2084, No. 2713)."}, "hsm-doa-berkendaraan": {"0": "QS. Az-Zukhruf 43:14", "1": "QS. Az-Zukhruf 43:14", "2": "QS. Az-Zukhruf 43:14"}, "hsm-doa-safar": {"0": "QS. Az-Zukhruf 43:14", "1": "QS. Az-Zukhruf 43:14", "2": "QS. Az-Zukhruf 43:14", "3": "HR. Hakim (2/100) dan ia menyatakannya sahih dan disepakati oleh Aż-Żahabiy dan Ibnu Sunni (No. 524) Hadis ini dinyatakan hasan oleh Al-Ḥāfiẓ dalam takhrij Al-Ażkār (5/154). Syekh Ibnu Bāz -raḥimahullāh- berkata, \"Diriwayatkan..."}, "hsm-keutamaan-tasbih-tahmid-tahlil-dan-takbir": {"0": "HR. Bukhari (7/167, No. 6404) dan Muslim (4/2071, No. 2693). Lihat pembahasan tentang keutamaan orang yang membacanya sehari 100 kali (doa No. 93) pada buku ini halaman 66.", "2": "HR. Bukhari (7/168, No. 6404) dan Muslim (4/2072, No. 2694).", "3": "HR. Bukhari (7/168, No. 6404) dan Muslim (4/2072, No. 2694).", "5": "HR. Muslim (4/2072, No. 2695).", "7": "HR. Muslim (4/2073, No. 2698).", "8": "HR. Muslim (4/2073, No. 2698).", "10": "HR. Tirmizi (5/511, No. 3464) serta Hakim (1/501). Dia menyatakannya sahih dan disepakati oleh Aż-Żahabiy. Lihat: Ṣaḥīḥ Al-Jāmi' (5/531) dan Ṣaḥīḥ At-Tirmiżiy (3/160).", "12": "HR. Bukhari dalam Fatḥul-Bārī (11/213, No. 4206) dan Muslim (4/2076, No. 2704).", "13": "HR. Bukhari dalam Fatḥul-Bārī (11/213, No. 4206) dan Muslim (4/2076, No. 2704).", "15": "HR. Muslim (3/1685, No. 2137).", "16": "HR. Muslim (3/1685, No. 2137).", "18": "HR. Muslim (4/2072, No. 2696). Dalam riwayat Abu Daud ada tambahan redaksi(1/220, No. 832), \"Tatkala laki-laki badui tersebut pergi, Nabi ﷺ bersabda, 'Dia telah memenuhi tangannya dengan kebaikan.'\"", "19": "HR. Muslim (4/2072, No. 2696). Dalam riwayat Abu Daud ada tambahan redaksi(1/220, No. 832), \"Tatkala laki-laki badui tersebut pergi, Nabi ﷺ bersabda, 'Dia telah memenuhi tangannya dengan kebaikan.'\"", "21": "HR. Muslim (4/2073, No. 3697). Dalam riwayat Muslim lainnya, \"...Sungguh, doa itu menghimpun dunia dan akhiratmu.\"", "22": "HR. Muslim (4/2073, No. 3697). Dalam riwayat Muslim lainnya, \"...Sungguh, doa itu menghimpun dunia dan akhiratmu.\"", "23": "HR. Muslim (4/2073, No. 3697). Dalam riwayat Muslim lainnya, \"...Sungguh, doa itu menghimpun dunia dan akhiratmu.\"", "26": "QS. Al-Fatihah 1:2", "27": "QS. Al-Fatihah 1:2", "28": "HR. Ahmad (No. 513) berdasarkan susunan Ahmad Syakir. Lihat: Majma' Az-Zawā`id (1/297). Ibnu Hajar di dalam Bulūgul-Marām menisbahkan kepada riwayat Abu Sa'īd kepada Nasa`i dalam Al-Kubrā (No. 10617), dan ia mengatakan,...", "30": "HR. Abu Daud dengan lafaz ini (2/81, No. 1502) dan Tirmizi (5/521, No. 3486). Lihat: Ṣaḥīḥ Al-Jāmi' (4/271, No. 4865), dan dinyatakan sahih oleh Al-Albani dalam Ṣaḥīḥ Sunan Abī Dāwud (1/411)."}, "hsm-doa-keluar-masjid": {"1": "HR. Bukhari (1/152, No. 611 dan 613) dan Muslim (1/288, No. 383)."}, "hsm-doa-salat-istikharah": {"0": "\\[QS. Āli 'Imrān: 159\\]"}, "hsm-doa-orang-yang-takut-terhadap-kezaliman-penguasa": {"1": "HR. Muslim (3/1362, No. 1742)."}, "hsm-doa-mengatasi-waswas-ketika-salat-dan-mengaji": {"0": "HR. Ibnu Hibban dalam kitab Ṣaḥīḥ-nya (No. 2427) (Mawārid) dan Ibnu Sunni (No. 351). Al-Ḥāfiẓ berkata, \"Hadis ini sahih.\" Juga, dinyatakan sahih oleh Abdul Qadir Al-Arnaūṭ dalam takhrij Al-Ażkār karya An-Nawawiy (Hal. 106)."}, "hsm-doa-orang-sakit-yang-tidak-memiliki-harapan-sembuh": {"1": "HR. Tirmizi (No. 3430) dan Ibnu Majah (No. 3794), dan dinyatakan sahih oleh Al-Albani. Lihat: Ṣaḥīḥ At-Tirmiżiy (3/152) dan Ṣaḥīḥ Ibni Mājah (2/317)."}, "hsm-menalkin-orang-yang-sekarat": {"0": "HR. Muslim (2/632, No. 918).", "1": "HR. Muslim (2/632, No. 918)."}, "hsm-doa-sebelum-makan": {"0": "HR. Tirmizi (5/506, No. 3455). Lihat: Ṣaḥīḥ At-Tirmiżiy (3/158).", "1": "HR. Tirmizi (5/506, No. 3455). Lihat: Ṣaḥīḥ At-Tirmiżiy (3/158).", "3": "Diriwayatkan oleh para penyusun kitab Sunan kecuali Nasa`i. Abu Daud (No. 4025), Tirmizi (No. 3458), dan Ibnu Majah (No. 3285). Lihat: Ṣaḥīḥ At-Tirmiżiy (3/159).", "4": "Diriwayatkan oleh para penyusun kitab Sunan kecuali Nasa`i. Abu Daud (No. 4025), Tirmizi (No. 3458), dan Ibnu Majah (No. 3285). Lihat: Ṣaḥīḥ At-Tirmiżiy (3/159).", "5": "Diriwayatkan oleh para penyusun kitab Sunan kecuali Nasa`i. Abu Daud (No. 4025), Tirmizi (No. 3458), dan Ibnu Majah (No. 3285). Lihat: Ṣaḥīḥ At-Tirmiżiy (3/159)."}, "hsm-doa-bersin": {"0": "HR. Tirmizi (5/82, No. 2741), Ahmad (4/400, No. 19586), dan Abu Daud (4/308, No. 5040). Lihat: Ṣaḥīḥ At-Tirmiżiy (2/354).", "1": "HR. Tirmizi (5/82, No. 2741), Ahmad (4/400, No. 19586), dan Abu Daud (4/308, No. 5040). Lihat: Ṣaḥīḥ At-Tirmiżiy (2/354).", "2": "HR. Tirmizi (5/82, No. 2741), Ahmad (4/400, No. 19586), dan Abu Daud (4/308, No. 5040). Lihat: Ṣaḥīḥ At-Tirmiżiy (2/354)."}, "hsm-doa-untuk-pengantin": {"1": "HR. Bukhari (6/141, No. 141) dan Muslim (2/1028, No. 1434)."}, "hsm-zikir-ketika-pulang-dari-safar": {"0": "HR. Ibnu Sunni dalam 'Amalul-Yaumi wal-Lailah (No. 377) dan Hakim serta ia nyatakan sahih (1/499). Hadis ini juga disahihkan oleh Al-Albani dalam Ṣaḥīḥ Al-Jāmi' (4/201)."}, "hsm-doa-ketika-mendengar-kokok-ayam-dan-ringkikan-keledai": {"0": "HR. Abu Daud (4/327, No. 5105) dan Ahmad (3/306, No. 14283). Hadis ini dinyatakan sahih oleh Al-Albani dalam Ṣaḥīḥ Abī Dāwud (3/961)."}, "hsm-doa-ketika-berhenti-di-bukit-safa-dan-marwa": {"0": "HR. Tirmizi (No. 3585). Hadis ini dinyatakan hasan oleh Al-Albani dalam Ṣaḥīḥ At-Tirmiżiy (3/184) dan Silsilah Al-Aḥādīs Aṣ-Ṣaḥīḥah (4/6).", "1": "HR. Tirmizi (No. 3585). Hadis ini dinyatakan hasan oleh Al-Albani dalam Ṣaḥīḥ At-Tirmiżiy (3/184) dan Silsilah Al-Aḥādīs Aṣ-Ṣaḥīḥah (4/6)."}, "hsm-doa-hari-arafah": {"0": "HR. Muslim (2/891, No. 1218)."}, "hsm-tindakan-dan-doa-orang-yang-merasakan-sakit-di-tubuhnya": {"0": "Musnad Ahmad (4/447, No. 15700), Ibnu Majah (No. 3508), dan Malik (3/118-119). Dinyatakan sahih oleh Al-Albani dalam Ṣaḥīḥ Al-Jāmi' (1/212). Lihat taḥqiq Zādul-Ma'ād milik Al-Arnaūṭ (4/170)."}, "hsm-istigfar-dan-tobat": {"2": "HR. Tirmizi (No. 3579), Nasa`i (1/279, No. 572), dan Hakim (1/309). Lihat: Ṣaḥīḥ At-Tirmiżiy (3/183) dan Jāmi' Al-Uṣūl tahqiq: Al-Arnaūṭ (4/144).", "3": "HR. Tirmizi (No. 3579), Nasa`i (1/279, No. 572), dan Hakim (1/309). Lihat: Ṣaḥīḥ At-Tirmiżiy (3/183) dan Jāmi' Al-Uṣūl tahqiq: Al-Arnaūṭ (4/144)."}, "adzan": {"0": "HR. Muslim no. 379.", "1": "HR. Muslim no. 379.", "2": "HR. Muslim no. 379.", "3": "HR. Muslim no. 379.", "4": "HR. Muslim no. 379.", "5": "HR. Abu Dawud no. 501 (tathwib \"ash-shalatu khairun minan-naum\" pada adzan Subuh).", "6": "HR. Muslim no. 379."}, "iqamah": {"0": "HR. Abu Dawud no. 501 (lafaz adzan dan iqamah).", "1": "HR. Abu Dawud no. 501 (lafaz adzan dan iqamah).", "2": "HR. Abu Dawud no. 501 (lafaz adzan dan iqamah).", "3": "HR. Abu Dawud no. 501 (lafaz adzan dan iqamah).", "4": "HR. Abu Dawud no. 501 (lafaz adzan dan iqamah).", "5": "HR. Bukhari no. 605 (iqamah dibaca sekali, kecuali \"qad qamatis-shalah\").", "6": "HR. Abu Dawud no. 501 (lafaz adzan dan iqamah)."}};
+ var TAMBAH_SUMBER = {"adzan": ["muslim", "abudawud"], "iqamah": ["abudawud", "bukhari"]};
+ DB.ENTRIES.forEach(function(e){
+  var f = FILL[e.id];
+  if(f){
+   var l = (e.arabics && e.arabics.length) ? e.arabics : [e.arabic];
+   Object.keys(f).forEach(function(k){ var a = l[+k]; if(a && !a.source) a.source = f[k]; });
+  }
+  var tambah = TAMBAH_SUMBER[e.id];
+  if(tambah){ e.sources = e.sources || [];
+    tambah.forEach(function(id){ if(DB.SOURCES[id] && e.sources.indexOf(id) < 0) e.sources.push(id); }); }
+ });
+})();
+</script>
+
+<script>
+/* ===== TAHAP 56 (2026-09-29): penutup sisa baris Sumber.
+   - iqamah: rujukan ditimpa dengan hadis terverifikasi (sebelumnya hanya "Materi orisinal").
+     HR. Abu Dawud no. 501 dan HR. Bukhari no. 605, diperiksa di sunnah.com.
+   - hsm-zikir-bangun-tidur lafaz 4: cocok 100% dengan mushaf, yaitu QS. Ali 'Imran 3:190-200.
+   - lafaz yang entrinya hanya menyebut satu sumber: dipakai judul sumber entri itu sendiri.
+   - hsm-beberapa-kebaikan: teksnya bukan ayat, dan entri itu hanya menyebut Al-Qur'an + Shahih
+     Muslim, sehingga rujukannya Shahih Muslim sesuai daftar sumber entri.
+   Catatan teknis: sebagian entri (mis. tasbih-digital) baru memiliki objek `arabic` setelah
+   aplikasi siap, jadi penerapan diulang saat DOMContentLoaded dan saat load. ===== */
+(function(){
+ var FILL = {"iqamah": {"0": "HR. Abu Dawud no. 501 (lafaz adzan dan iqamah).", "1": "HR. Abu Dawud no. 501 (lafaz adzan dan iqamah).", "2": "HR. Abu Dawud no. 501 (lafaz adzan dan iqamah).", "3": "HR. Abu Dawud no. 501 (lafaz adzan dan iqamah).", "4": "HR. Abu Dawud no. 501 (lafaz adzan dan iqamah).", "5": "HR. Bukhari no. 605 (iqamah dibaca sekali, kecuali \"qad qamatis-shalah\" yang dibaca dua kali).", "6": "HR. Abu Dawud no. 501 (lafaz adzan dan iqamah)."}, "hsm-zikir-bangun-tidur": {"3": "QS. Ali 'Imran 3:190-200"}, "shahada-tauhid": {"0": "Al-Qur'an"}, "shahada-rasul": {"0": "Al-Qur'an"}, "tasbih-digital": {"0": "Materi orisinal SILMIKAFFAH"}, "hsm-beberapa-kebaikan-dan-adab-umum": {"0": "HR. Muslim"}};
+ function terapkan(){
+  var DB = window.SILMIKAFFAH; if(!DB || !DB.ENTRIES) return;
+  DB.ENTRIES.forEach(function(e){
+   var f = FILL[e.id]; if(!f) return;
+   var l = (e.arabics && e.arabics.length) ? e.arabics : (e.arabic ? [e.arabic] : []);
+   Object.keys(f).forEach(function(k){ var a = l[+k]; if(a && a.text) a.source = f[k]; });
+  });
+ }
+ terapkan();
+ if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", terapkan);
+ window.addEventListener("load", function(){ terapkan(); setTimeout(terapkan, 0); });
+})();
+</script>
+
+<script>
+/* ===== TAHAP 57 (2026-09-29): sapu bersih sisa masalah.
+   1) Indeks pencarian dibangun ulang setelah seluruh patch selesai, supaya entri yang
+      dihapus/dipindahkan patch (mis. rangkaian sirah yang digabung ke entri nabi-muhammad)
+      tidak lagi muncul sebagai hasil pencarian yang menuju halaman tidak ditemukan.
+   2) Rujukan "Konten Terkait" pada event kalender yang menunjuk entri terhapus sudah
+      dialihkan ke entri nabi-muhammad; relLink tetap menyaring rujukan yang tidak ada. ===== */
+(function(){
+ /* Sumber yang ditingkatkan ke nomor hadis setelah diperiksa di sunnah.com:
+    - hsm-beberapa-kebaikan-dan-adab-umum → Sahih Muslim 2013a (jangan biarkan anak &
+      hewan keluar saat matahari terbenam)
+    - tasbih-digital (empat kalimat: subhanallah, alhamdulillah, la ilaha illallah,
+      Allahu akbar) → Sahih Muslim 2137a */
+ var SRC = { "hsm-beberapa-kebaikan-dan-adab-umum": {0:"HR. Muslim no. 2013."},
+             "tasbih-digital": {0:"HR. Muslim no. 2137."} };
+ function isiSumber(){
+   var DB=window.SILMIKAFFAH; if(!DB||!DB.ENTRIES) return;
+   DB.ENTRIES.forEach(function(e){
+     var f=SRC[e.id]; if(!f) return;
+     var l=(e.arabics && e.arabics.length) ? e.arabics : (e.arabic ? [e.arabic] : []);
+     Object.keys(f).forEach(function(k){ var a=l[+k]; if(a && a.text) a.source=f[k]; });
+     if(e.sources && e.sources.indexOf("muslim")<0 && DB.SOURCES.muslim) e.sources.push("muslim");
+   });
+ }
+ function segarkan(){
+   isiSumber();
+   try{ if(typeof refreshSearchIndex==="function") refreshSearchIndex(); }catch(e){}
+ }
+ if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", segarkan);
+ window.addEventListener("load", function(){ segarkan(); setTimeout(segarkan, 0); });
+})();
+</script>
+
+<script>
+/* ===== TAHAP 58 (2026-10-02): status tinjauan konten dan catatan pada lafaz.
+   Lima entri yang memuat terjemahan susunan tim diberi status "Perlu ditinjau",
+   dan lafaznya diberi catatan terbuka supaya pembaca tahu terjemahan itu belum
+   bersumber dari terbitan resmi. Ini mengikuti prinsip aplikasi: setiap data
+   menyatakan sumber dan status verifikasinya. ===== */
+(function(){
+ var DB = window.SILMIKAFFAH; if(!DB || !DB.ENTRIES) return;
+ var REVIEW = ["hsm-zikir-sebelum-tidur",
+               "hsm-doa-orang-yang-takut-terhadap-kezaliman-penguasa",
+               "hsm-doa-mengusir-setan-dan-bisikannya",
+               "hsm-doa-ketika-singgah-di-suatu-tempat-dalam-perjalanan-atau-l",
+               "hsm-bacaan-untuk-menolak-tipu-daya-setan"];
+ /* Indeks 0-based pada daftar lafaz yang tampil (arabics bila ada, jika tidak arabic). */
+ var CATAT = {"hsm-zikir-sebelum-tidur":{12:1},
+              "hsm-doa-orang-yang-takut-terhadap-kezaliman-penguasa":{2:1},
+              "hsm-doa-mengusir-setan-dan-bisikannya":{2:1},
+              "hsm-doa-ketika-singgah-di-suatu-tempat-dalam-perjalanan-atau-l":{0:1},
+              "hsm-bacaan-untuk-menolak-tipu-daya-setan":{0:1}};
+ var PESAN = "Terjemahan disusun dari matan Arab oleh tim aplikasi \u2014 belum bersumber dari terbitan resmi. Mohon ditinjau.";
+ function terapkan(){
+   DB.ENTRIES.forEach(function(e){
+     if(REVIEW.indexOf(e.id)>=0){ e.status = "verify"; e.verificationStatus = "needs_review"; }
+     var c = CATAT[e.id]; if(!c) return;
+     var l = (e.arabics && e.arabics.length) ? e.arabics : (e.arabic ? [e.arabic] : []);
+     Object.keys(c).forEach(function(k){ var a = l[+k]; if(a) a.catatan = PESAN; });
+   });
+ }
+ terapkan();
+ if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", terapkan);
+ window.addEventListener("load", function(){ terapkan(); setTimeout(terapkan, 0); });
+})();
+</script>
+
+<script>
+/* ===== TAHAP 59 (2026-10-02): penambahan isi bersumber.
+   1) 24 ayat pilihan baru: teks Utsmani + terjemahan Kemenag dari Quran.com API.
+   2) 13 tempat ziarah di Indonesia: identitas/sejarah dari Wikipedia, koordinat dari
+      Wikipedia/Wikidata/OpenStreetMap (lihat kolom tautan pada laporan audit).
+   3) 11 peristiwa kalender Hijriah: keterangan dari NU Online.
+   Setiap item menyebut sumbernya; koordinat yang tidak dapat diverifikasi tidak diisi. ===== */
+(function(){
+ var DB = window.SILMIKAFFAH; if(!DB) return;
+ DB.SOURCES.wikipedia = {id:"wikipedia", title:"Wikipedia Bahasa Indonesia", type:"Ensiklopedia", note:"Identitas dan sejarah tempat; koordinat diverifikasi ke Wikidata/OpenStreetMap."};
+ DB.SOURCES.nu = {id:"nu", title:"NU Online (nu.or.id)", type:"Rujukan", note:"Keterangan hari besar dan amalan pada bulan Hijriah."};
+ var AYAT_BARU = {"2:152": {"s": 2, "a": 152, "arab": "فَٱذْكُرُونِىٓ أَذْكُرْكُمْ وَٱشْكُرُوا۟ لِى وَلَا تَكْفُرُونِ", "arti": "Maka ingatlah kepada-Ku, Aku pun akan ingat kepadamu.1 Bersyukurlah kepada-Ku, dan janganlah kamu ingkar kepada-Ku."}, "2:186": {"s": 2, "a": 186, "arab": "وَإِذَا سَأَلَكَ عِبَادِى عَنِّى فَإِنِّى قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ ٱلدَّاعِ إِذَا دَعَانِ ۖ فَلْيَسْتَجِيبُوا۟ لِى وَلْيُؤْمِنُوا۟ بِى لَعَلَّهُمْ يَرْشُدُونَ", "arti": "Dan apabila hamba-hamba-Ku bertanya kepadamu (Muhammad) tentang Aku, maka sesungguhnya Aku dekat. Aku kabulkan permohonan orang yang berdoa apabila dia berdoa kepada-Ku. Hendaklah mereka itu memenuhi (perintah)-Ku dan beriman kepada-Ku, agar mereka memperoleh kebenaran."}, "2:286": {"s": 2, "a": 286, "arab": "لَا يُكَلِّفُ ٱللَّهُ نَفْسًا إِلَّا وُسْعَهَا ۚ لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا ٱكْتَسَبَتْ ۗ رَبَّنَا لَا تُؤَاخِذْنَآ إِن نَّسِينَآ أَوْ أَخْطَأْنَا ۚ رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَآ إِصْرًا كَمَا حَمَلْتَهُۥ عَلَى ٱلَّذِينَ مِن قَبْلِنَا ۚ رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِۦ ۖ وَٱعْفُ عَنَّا وَٱغْفِرْ لَنَا وَٱرْحَمْنَآ ۚ أَنتَ مَوْلَىٰنَا فَٱنصُرْنَا عَلَى ٱلْقَوْمِ ٱلْكَـٰفِرِينَ", "arti": "Allah tidak membebani seseorang melainkan sesuai dengan kesanggupannya. Dia mendapat (pahala) dari kebajikan yang dikerjakannya dan dia mendapat (siksa) dari (kejahatan) yang diperbuatnya. (Mereka berdoa), \"Ya Tuhan kami, janganlah Engkau hukum kami jika kami lupa atau kami melakukan kesalahan. Ya Tuhan kami, janganlah Engkau bebani kami dengan beban yang berat sebagaimana Engkau bebankan kepada orang-orang sebelum kami. Ya Tuhan kami, janganlah Engkau pikulkan kepada kami apa yang tidak sanggup kami memikulnya. Maafkanlah kami, ampunilah kami, dan rahmatilah kami. Engkaulah pelindung kami, maka tolonglah kami menghadapi orang-orang kafir.\""}, "3:8": {"s": 3, "a": 8, "arab": "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ ٱلْوَهَّابُ", "arti": "(Mereka berdoa), \"Ya Tuhan kami, janganlah Engkau condongkan hati kami kepada kesesatan setelah Engkau berikan petunjuk kepada kami, dan karuniakanlah kepada kami rahmat dari sisi-Mu, sesungguhnya Engkau Maha Pemberi.\""}, "3:159": {"s": 3, "a": 159, "arab": "فَبِمَا رَحْمَةٍ مِّنَ ٱللَّهِ لِنتَ لَهُمْ ۖ وَلَوْ كُنتَ فَظًّا غَلِيظَ ٱلْقَلْبِ لَٱنفَضُّوا۟ مِنْ حَوْلِكَ ۖ فَٱعْفُ عَنْهُمْ وَٱسْتَغْفِرْ لَهُمْ وَشَاوِرْهُمْ فِى ٱلْأَمْرِ ۖ فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى ٱللَّهِ ۚ إِنَّ ٱللَّهَ يُحِبُّ ٱلْمُتَوَكِّلِينَ", "arti": "Maka berkat rahmat Allah engkau (Muhammad) berlaku lemah lembut terhadap mereka. Sekiranya engkau bersikap keras dan berhati kasar, tentulah mereka menjauhkan diri dari sekitarmu. Karena itu maafkanlah mereka dan mohonkanlah ampunan untuk mereka, dan bermusyawarahlah dengan mereka dalam urusan itu.1 Kemudian, apabila engkau telah membulatkan tekad, maka bertawakallah kepada Allah. Sungguh, Allah mencintai orang yang bertawakal."}, "3:185": {"s": 3, "a": 185, "arab": "كُلُّ نَفْسٍ ذَآئِقَةُ ٱلْمَوْتِ ۗ وَإِنَّمَا تُوَفَّوْنَ أُجُورَكُمْ يَوْمَ ٱلْقِيَـٰمَةِ ۖ فَمَن زُحْزِحَ عَنِ ٱلنَّارِ وَأُدْخِلَ ٱلْجَنَّةَ فَقَدْ فَازَ ۗ وَمَا ٱلْحَيَوٰةُ ٱلدُّنْيَآ إِلَّا مَتَـٰعُ ٱلْغُرُورِ", "arti": "Setiap yang bernyawa akan merasakan mati. Dan hanya pada hari Kiamat sajalah diberikan dengan sempurna balasanmu. Barang siapa dijauhkan dari neraka dan dimasukkan ke dalam surga, sungguh, dia memperoleh kemenangan. Kehidupan dunia hanyalah kesenangan yang memperdaya."}, "13:28": {"s": 13, "a": 28, "arab": "ٱلَّذِينَ ءَامَنُوا۟ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ ٱللَّهِ ۗ أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ", "arti": "(yaitu) orang-orang yang beriman dan hati mereka menjadi tenteram dengan mengingat Allah. Ingatlah, hanya dengan mengingat Allah hati menjadi tenteram."}, "14:7": {"s": 14, "a": 7, "arab": "وَإِذْ تَأَذَّنَ رَبُّكُمْ لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ ۖ وَلَئِن كَفَرْتُمْ إِنَّ عَذَابِى لَشَدِيدٌ", "arti": "Dan (ingatlah) ketika Tuhanmu memaklumkan, \"Sesungguhnya jika kamu bersyukur, niscaya Aku akan menambah (nikmat) kepadamu, tetapi jika kamu mengingkari (nikmat-Ku), maka pasti azab-Ku sangat berat.\""}, "17:82": {"s": 17, "a": 82, "arab": "وَنُنَزِّلُ مِنَ ٱلْقُرْءَانِ مَا هُوَ شِفَآءٌ وَرَحْمَةٌ لِّلْمُؤْمِنِينَ ۙ وَلَا يَزِيدُ ٱلظَّـٰلِمِينَ إِلَّا خَسَارًا", "arti": "Dan Kami turunkan dari Alquran (sesuatu) yang menjadi penawar dan rahmat bagi orang yang beriman, sedangkan bagi orang yang zalim (Alquran itu) hanya akan menambah kerugian."}, "18:10": {"s": 18, "a": 10, "arab": "إِذْ أَوَى ٱلْفِتْيَةُ إِلَى ٱلْكَهْفِ فَقَالُوا۟ رَبَّنَآ ءَاتِنَا مِن لَّدُنكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا", "arti": "(Ingatlah) ketika pemuda-pemuda itu berlindung ke dalam gua lalu mereka berdoa, \"Ya Tuhan kami. Berikanlah rahmat kepada kami dari sisi-Mu dan sempurnakanlah petunjuk yang lurus bagi kami dalam urusan kami.\""}, "20:114": {"s": 20, "a": 114, "arab": "فَتَعَـٰلَى ٱللَّهُ ٱلْمَلِكُ ٱلْحَقُّ ۗ وَلَا تَعْجَلْ بِٱلْقُرْءَانِ مِن قَبْلِ أَن يُقْضَىٰٓ إِلَيْكَ وَحْيُهُۥ ۖ وَقُل رَّبِّ زِدْنِى عِلْمًا", "arti": "Maka Mahatinggi Allah, Raja yang sebenar-benarnya. Dan janganlah engkau (Muhammad) tergesa-gesa (membaca) Alquran sebelum selesai diwahyukan kepadamu,1 dan katakanlah, \"Ya Tuhanku, tambahkanlah ilmu kepadaku.\""}, "25:74": {"s": 25, "a": 74, "arab": "وَٱلَّذِينَ يَقُولُونَ رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا", "arti": "Dan orang-orang yang berkata, \"Ya Tuhan kami, anugerahkanlah kepada kami pasangan kami dan keturunan kami sebagai penyenang hati (kami), dan jadikanlah kami pemimpin bagi orang-orang yang bertakwa.\""}, "29:69": {"s": 29, "a": 69, "arab": "وَٱلَّذِينَ جَـٰهَدُوا۟ فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا ۚ وَإِنَّ ٱللَّهَ لَمَعَ ٱلْمُحْسِنِينَ", "arti": "Dan orang-orang yang berjihad untuk (mencari keridaan) Kami, Kami akan tunjukkan kepada mereka jalan-jalan Kami. Dan sungguh, Allah bersama orang-orang yang berbuat baik."}, "33:41": {"s": 33, "a": 41, "arab": "يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱذْكُرُوا۟ ٱللَّهَ ذِكْرًا كَثِيرًا", "arti": "Wahai orang-orang yang beriman! Ingatlah kepada Allah, dengan mengingat (nama-Nya) sebanyak-banyaknya,"}, "33:56": {"s": 33, "a": 56, "arab": "إِنَّ ٱللَّهَ وَمَلَـٰٓئِكَتَهُۥ يُصَلُّونَ عَلَى ٱلنَّبِىِّ ۚ يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ صَلُّوا۟ عَلَيْهِ وَسَلِّمُوا۟ تَسْلِيمًا", "arti": "Sesungguhnya Allah dan para malaikat-Nya berselawat untuk Nabi.1 Wahai orang-orang yang beriman! Berselawatlah kamu untuk Nabi dan ucapkanlah salam dengan penuh penghormatan kepadanya.2"}, "39:53": {"s": 39, "a": 53, "arab": "۞ قُلْ يَـٰعِبَادِىَ ٱلَّذِينَ أَسْرَفُوا۟ عَلَىٰٓ أَنفُسِهِمْ لَا تَقْنَطُوا۟ مِن رَّحْمَةِ ٱللَّهِ ۚ إِنَّ ٱللَّهَ يَغْفِرُ ٱلذُّنُوبَ جَمِيعًا ۚ إِنَّهُۥ هُوَ ٱلْغَفُورُ ٱلرَّحِيمُ", "arti": "Katakanlah, \"Wahai hamba-hamba-Ku yang melampaui batas terhadap diri mereka sendiri! Janganlah kamu berputus asa dari rahmat Allah. Sesungguhnya Allah mengampuni dosa-dosa semuanya. Sungguh, Dialah Yang Maha Pengampun, Maha Penyayang."}, "40:60": {"s": 40, "a": 60, "arab": "وَقَالَ رَبُّكُمُ ٱدْعُونِىٓ أَسْتَجِبْ لَكُمْ ۚ إِنَّ ٱلَّذِينَ يَسْتَكْبِرُونَ عَنْ عِبَادَتِى سَيَدْخُلُونَ جَهَنَّمَ دَاخِرِينَ", "arti": "Dan Tuhanmu berfirman, \"Berdoalah kepada-Ku, niscaya akan Aku perkenankan bagimu. Sesungguhnya orang-orang yang sombong tidak mau menyembah-Ku akan masuk neraka Jahanam dalam keadaan hina dina.\""}, "49:13": {"s": 49, "a": 13, "arab": "يَـٰٓأَيُّهَا ٱلنَّاسُ إِنَّا خَلَقْنَـٰكُم مِّن ذَكَرٍ وَأُنثَىٰ وَجَعَلْنَـٰكُمْ شُعُوبًا وَقَبَآئِلَ لِتَعَارَفُوٓا۟ ۚ إِنَّ أَكْرَمَكُمْ عِندَ ٱللَّهِ أَتْقَىٰكُمْ ۚ إِنَّ ٱللَّهَ عَلِيمٌ خَبِيرٌ", "arti": "Wahai manusia! Sungguh, Kami telah menciptakan kamu dari seorang laki-laki dan seorang perempuan, kemudian Kami jadikan kamu berbangsa-bangsa dan bersuku-suku agar kamu saling mengenal. Sungguh, yang paling mulia di antara kamu di sisi Allah ialah orang yang paling bertakwa. Sungguh, Allah Maha Mengetahui, Mahateliti."}, "65:2": {"s": 65, "a": 2, "arab": "فَإِذَا بَلَغْنَ أَجَلَهُنَّ فَأَمْسِكُوهُنَّ بِمَعْرُوفٍ أَوْ فَارِقُوهُنَّ بِمَعْرُوفٍ وَأَشْهِدُوا۟ ذَوَىْ عَدْلٍ مِّنكُمْ وَأَقِيمُوا۟ ٱلشَّهَـٰدَةَ لِلَّهِ ۚ ذَٰلِكُمْ يُوعَظُ بِهِۦ مَن كَانَ يُؤْمِنُ بِٱللَّهِ وَٱلْيَوْمِ ٱلْـَٔاخِرِ ۚ وَمَن يَتَّقِ ٱللَّهَ يَجْعَل لَّهُۥ مَخْرَجًا", "arti": "Maka apabila mereka telah mendekati akhir idahnya, maka rujuklah (kembali kepada) mereka dengan baik atau lepaskanlah mereka dengan baik dan persaksikanlah dengan dua orang saksi yang adil di antara kamu dan hendaklah kamu tegakkan kesaksian itu karena Allah. Demikianlah pengajaran itu diberikan bagi orang yang beriman kepada Allah dan hari akhirat. Barangsiapa bertakwa kepada Allah niscaya Dia akan membukakan jalan keluar baginya,"}, "65:3": {"s": 65, "a": 3, "arab": "وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ ۚ وَمَن يَتَوَكَّلْ عَلَى ٱللَّهِ فَهُوَ حَسْبُهُۥٓ ۚ إِنَّ ٱللَّهَ بَـٰلِغُ أَمْرِهِۦ ۚ قَدْ جَعَلَ ٱللَّهُ لِكُلِّ شَىْءٍ قَدْرًا", "arti": "Dan Dia memberinya rezeki dari arah yang tidak disangka-sangkanya. Dan barangsiapa bertawakal kepada Allah, niscaya Allah akan mencukupkan (keperluan)nya. Sesungguhnya Allah melaksanakan urusan-Nya. Sungguh, Allah telah mengadakan ketentuan bagi setiap sesuatu."}, "94:5": {"s": 94, "a": 5, "arab": "فَإِنَّ مَعَ ٱلْعُسْرِ يُسْرًا", "arti": "Maka sesungguhnya bersama kesulitan ada kemudahan,"}, "94:6": {"s": 94, "a": 6, "arab": "إِنَّ مَعَ ٱلْعُسْرِ يُسْرًا", "arti": "sesungguhnya bersama kesulitan ada kemudahan."}, "99:7": {"s": 99, "a": 7, "arab": "فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُۥ", "arti": "Maka barangsiapa mengerjakan kebaikan seberat zarah, niscaya dia akan melihat (balasan)nya."}, "99:8": {"s": 99, "a": 8, "arab": "وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُۥ", "arti": "Dan barangsiapa mengerjakan kejahatan seberat zarah, niscaya dia akan melihat (balasan)nya."}};
+ Object.keys(AYAT_BARU).forEach(function(k){ if(!DB.AYAT[k]) DB.AYAT[k] = AYAT_BARU[k]; });
+ var PLACES_BARU = [{"id": "masjid-agung-demak", "title": "Masjid Agung Demak", "type": "masjid", "loc": "Demak, Jawa Tengah", "lat": -6.8947, "lon": 110.6373, "history": "Masjid Agung Demak adalah salah satu masjid tertua di Indonesia, dibangun oleh Wali Songo (sosok paling menonjol Sunan Kalijaga) pada masa penguasa pertama Kesultanan Demak, Raden Patah, pada abad ke-15; masa rampunya disebut sekitar 1479 M. Di dalam kompleksnya terdapat makam raja-raja Kesultanan Demak termasuk Raden Patah, serta Museum Masjid Agung Demak.", "summary": "Masjid Agung Demak adalah salah satu masjid tertua di Indonesia, dibangun oleh Wali Songo (sosok paling menonjol Sunan Kalijaga) pada masa penguasa pe…", "sumber": "https://id.wikipedia.org/wiki/Masjid_Agung_Demak"}, {"id": "masjid-sunan-ampel", "title": "Masjid Agung Sunan Ampel", "type": "masjid", "loc": "Surabaya, Jawa Timur", "lat": -7.2317656, "lon": 112.7423278, "history": "Masjid Agung Ampel di kawasan Ampel, Kecamatan Semampir, Kota Surabaya, didirikan oleh Sunan Ampel (Raden Rahmat), Wali Songo generasi kedua dan mufti Walisongo. Menurut catatan setempat masjid ini dibangun sekitar tahun 1421 dan menjadi pusat pesantren serta penyebaran Islam di Jawa Timur; di belakangnya terdapat kompleks pemakaman Sunan Ampel yang wafat pada 1481.", "summary": "Masjid Agung Ampel di kawasan Ampel, Kecamatan Semampir, Kota Surabaya, didirikan oleh Sunan Ampel (Raden Rahmat), Wali Songo generasi kedua dan mufti…", "sumber": "https://id.wikipedia.org/wiki/Masjid_Ampel"}, {"id": "makam-sunan-giri", "title": "Makam Sunan Giri (Giri Kedaton)", "type": "makam", "loc": "Gresik, Jawa Timur", "lat": -7.16889, "lon": 112.63103, "history": "Kompleks Makam Sunan Giri berada di Desa Giri/Sidomukti, Kecamatan Kebomas, Kabupaten Gresik, dan merupakan tempat persemayaman Sunan Giri (Raden Paku Ainul Yaqin), Wali Songo pendiri Kerajaan Giri Kedaton pada 9 Maret 1487. Bangunan bertingkat tiga di lereng bukit ini dahulu menjadi pusat pesantren dan penyebaran Islam yang pengaruhnya sampai Madura, Lombok, Kalimantan, Sulawesi, dan Maluku, serta kini berstatus cagar budaya nasional (No. Regnas CB.102).", "summary": "Kompleks Makam Sunan Giri berada di Desa Giri/Sidomukti, Kecamatan Kebomas, Kabupaten Gresik, dan merupakan tempat persemayaman Sunan Giri (Raden Paku…", "sumber": "https://id.wikipedia.org/wiki/Makam_Sunan_Giri"}, {"id": "masjid-menara-kudus", "title": "Masjid Menara Kudus", "type": "masjid", "loc": "Kudus, Jawa Tengah", "lat": -6.80333, "lon": 110.83306, "history": "Masjid Menara Kudus (nama resmi Masjid Al-Aqsa Manarat Qudus) dibangun oleh Sunan Kudus; inskripsi di mihrabnya menyebut peletakan batu pertama pada 19 Rajab 956 H atau 23 Agustus 1549 M. Menaranya berbentuk candi dan bangunannya memadukan unsur Islam, Hindu, dan Buddha, sedangkan makam Sunan Kudus berada di sisi barat kompleks masjid.", "summary": "Masjid Menara Kudus (nama resmi Masjid Al-Aqsa Manarat Qudus) dibangun oleh Sunan Kudus; inskripsi di mihrabnya menyebut peletakan batu pertama pada 1…", "sumber": "https://id.wikipedia.org/wiki/Masjid_Menara_Kudus"}, {"id": "makam-sunan-kalijaga", "title": "Makam Sunan Kalijaga", "type": "makam", "loc": "Demak, Jawa Tengah", "lat": -6.8965278, "lon": 110.64775, "history": "Makam Sunan Kalijaga berada di Desa Kadilangu, Kabupaten Demak, sekitar 2-3 km dari Masjid Agung Demak. Sunan Kalijaga (Raden Said/Syahid) adalah anggota Wali Songo yang berdakwah melalui wayang, gamelan, dan tembang serta ikut merancang Masjid Agung Demak dan Masjid Agung Cirebon; haul-nya diperingati setiap 10 Muharram dan makamnya menjadi salah satu tujuan ziarah utama di Jawa Tengah.", "summary": "Makam Sunan Kalijaga berada di Desa Kadilangu, Kabupaten Demak, sekitar 2-3 km dari Masjid Agung Demak.", "sumber": "https://id.wikipedia.org/wiki/Sunan_Kalijaga"}, {"id": "masjid-agung-banten", "title": "Masjid Agung Banten", "type": "masjid", "loc": "Serang, Banten", "lat": -6.03621, "lon": 106.15483, "history": "Masjid Agung Banten berada di kawasan Banten Lama, Kelurahan Banten, Kecamatan Kasemen, Kota Serang. Masjid ini dibangun pertama kali pada 1556 oleh Sultan Maulana Hasanuddin (sultan pertama Kesultanan Banten, putra Sunan Gunung Jati) dan rampung sekitar 1559; menara setinggi 24 meter yang menyerupai mercusuar ditambahkan pada 1632. Di kompleksnya terdapat makam sultan-sultan Banten, dan masjid ini menjadi salah satu masjid tertua di Indonesia.", "summary": "Masjid Agung Banten berada di kawasan Banten Lama, Kelurahan Banten, Kecamatan Kasemen, Kota Serang.", "sumber": "https://id.wikipedia.org/wiki/Masjid_Agung_Banten"}, {"id": "masjid-raya-baiturrahman", "title": "Masjid Raya Baiturrahman", "type": "masjid", "loc": "Banda Aceh, Aceh", "lat": 5.55361, "lon": 95.31719, "history": "Masjid Raya Baiturrahman adalah masjid Kesultanan Aceh yang awalnya dibangun pada 1612 pada masa pemerintahan Sultan Iskandar Muda. Setelah masjid kayu aslinya terbakar ketika pasukan Hindia Belanda menyerang Kesultanan Aceh pada 1873, masjid ini dibangun kembali oleh pemerintah Belanda mulai 1879 dan selesai pada 1881. Bangunan ini selamat dari gempa dan tsunami Aceh 2004 serta menjadi ikon Kota Banda Aceh.", "summary": "Masjid Raya Baiturrahman adalah masjid Kesultanan Aceh yang awalnya dibangun pada 1612 pada masa pemerintahan Sultan Iskandar Muda.", "sumber": "https://id.wikipedia.org/wiki/Masjid_Baiturrahman_Banda_Aceh"}, {"id": "masjid-katangka", "title": "Masjid Katangka (Masjid Al-Hilal)", "type": "masjid", "loc": "Gowa, Sulawesi Selatan", "lat": -5.19070134, "lon": 119.45122699, "history": "Masjid Al-Hilal atau Masjid Katangka berada di Kelurahan Katangka, Kecamatan Somba Opu, Kabupaten Gowa, dan termasuk masjid tertua di Sulawesi Selatan. Sebuah prasasti menyebut masjid ini dibangun pada 1603 meskipun sebagian sejarawan menduga awal abad ke-18; masjid ini dahulu merupakan masjid Kerajaan Gowa dan berdiri di sebelah utara kompleks makam Sultan Hasanuddin.", "summary": "Masjid Al-Hilal atau Masjid Katangka berada di Kelurahan Katangka, Kecamatan Somba Opu, Kabupaten Gowa, dan termasuk masjid tertua di Sulawesi Selatan…", "sumber": "https://id.wikipedia.org/wiki/Masjid_Katangka"}, {"id": "makam-sunan-bonang", "title": "Makam Sunan Bonang", "type": "makam", "loc": "Tuban, Jawa Timur", "lat": -6.8945426, "lon": 112.0633171, "history": "Makam Sunan Bonang berada di Kelurahan Kutorejo, Kabupaten Tuban, tidak jauh dari Masjid Agung Tuban. Sunan Bonang (Raden Maulana Makhdum Ibrahim) lahir pada 1465 dan wafat pada 1525; ia adalah putra Sunan Ampel dan anggota Wali Songo yang dikenal sebagai pencipta tembang Tombo Ati dan pembaru gending Jawa. Makamnya menjadi salah satu tujuan wisata religi di pantai utara Jawa.", "summary": "Makam Sunan Bonang berada di Kelurahan Kutorejo, Kabupaten Tuban, tidak jauh dari Masjid Agung Tuban.", "sumber": "https://id.wikipedia.org/wiki/Sunan_Bonang"}, {"id": "makam-sunan-muria", "title": "Makam Sunan Muria", "type": "makam", "loc": "Kudus, Jawa Tengah", "lat": -6.6661402, "lon": 110.8988913, "history": "Kompleks Makam Sunan Muria berada di Bukit Muria, Desa Colo, Kecamatan Dawe, Kabupaten Kudus, pada ketinggian lebih dari 1.600 meter di atas permukaan laut. Sunan Muria (Raden Umar Said), putra Sunan Kalijaga, adalah anggota Wali Songo yang berdakwah melalui wayang dan tembang serta dianggap pencipta tembang Sinom dan Kinanthi; ia wafat sekitar 1560 dan makamnya menjadi tujuan ziarah umat Islam.", "summary": "Kompleks Makam Sunan Muria berada di Bukit Muria, Desa Colo, Kecamatan Dawe, Kabupaten Kudus, pada ketinggian lebih dari 1.600 meter di atas permukaan…", "sumber": "https://id.wikipedia.org/wiki/Sunan_Muria"}, {"id": "makam-sunan-drajat", "title": "Makam Sunan Drajat", "type": "makam", "loc": "Lamongan, Jawa Timur", "lat": -6.884424, "lon": 112.3892583, "history": "Makam Sunan Drajat berada di Desa Drajat, Kecamatan Paciran, Kabupaten Lamongan. Sunan Drajat (Raden Qosim/Syarifuddin), putra Sunan Ampel dan saudara Sunan Bonang, lahir sekitar 1470 dan wafat pada 1533; ia termasuk Wali Songo yang menekankan kepedulian sosial dengan mengentaskan kemiskinan. Kompleks makamnya kini dilengkapi Museum Daerah Sunan Drajat.", "summary": "Makam Sunan Drajat berada di Desa Drajat, Kecamatan Paciran, Kabupaten Lamongan.", "sumber": "https://id.wikipedia.org/wiki/Sunan_Drajat"}, {"id": "makam-syekh-burhanuddin", "title": "Makam Syekh Burhanuddin", "type": "makam", "loc": "Padang Pariaman, Sumatera Barat", "lat": -0.69748984, "lon": 100.18424985, "history": "Makam Syekh Burhanuddin terletak di Ulakan, Kabupaten Padang Pariaman, Sumatera Barat. Syekh Burhanuddin Ulakan (lahir 1646), murid Syekh Abdurrauf as-Singkili, adalah ulama yang menyebarkan Islam dan mengembangkan Tarekat Syattariyah di Minangkabau serta mendirikan surau di Ulakan pada 1680. Ziarah besar tahunan ke makamnya pada tanggal 10 Safar dikenal sebagai tradisi Basapa.", "summary": "Makam Syekh Burhanuddin terletak di Ulakan, Kabupaten Padang Pariaman, Sumatera Barat.", "sumber": "https://id.wikipedia.org/wiki/Makam_Syekh_Burhanuddin"}, {"id": "masjid-agung-cirebon", "title": "Masjid Agung Sang Cipta Rasa Cirebon", "type": "masjid", "loc": "Cirebon, Jawa Barat", "lat": -6.7255793, "lon": 108.569999, "history": "Masjid Agung Sang Cipta Rasa berada di dalam kompleks Keraton Kasepuhan, Kota Cirebon, dan merupakan salah satu masjid tertua di Cirebon. Masjid ini dibangun sekitar 1480 oleh Sunan Gunung Jati dengan Sunan Kalijaga sebagai arsiteknya, memadukan gaya Demak, Majapahit, dan Cirebon. Tradisi azan pitu (azan oleh tujuh muazin) masih dilaksanakan setiap salat Jumat di masjid ini.", "summary": "Masjid Agung Sang Cipta Rasa berada di dalam kompleks Keraton Kasepuhan, Kota Cirebon, dan merupakan salah satu masjid tertua di Cirebon.", "sumber": "https://id.wikipedia.org/wiki/Masjid_Agung_Cirebon"}];
+ PLACES_BARU.forEach(function(p, i){
+  if(typeof getEntry==="function" && getEntry(p.id)) return;
+  var rel = ["ziarah","adab-ziarah"].filter(function(r){ return typeof getEntry==="function" && !!getEntry(r); });
+  DB.ENTRIES.push({
+   id:p.id, menu:5, material:"ziarah", sub:"tempat-bersejarah", type:"place",
+   title:p.title, summary:p.summary, order:5200+i,
+   place:{type:p.type, loc:p.loc, lat:p.lat, lon:p.lon},
+   body:[{h:"Sejarah", p:[p.history]}, {h:"Sumber data", p:["Identitas dan sejarah mengikuti Wikipedia Bahasa Indonesia; koordinat diverifikasi ke Wikidata/OpenStreetMap."]}],
+   sources:["wikipedia"], tags:["ziarah","tempat","nusantara"], related:rel,
+   status:"ready", verificationStatus:"verified", createdAt:"2026-10-02", updatedAt:"2026-10-02"
+  });
+  DB.PLACES.push({id:p.id, name:p.title, type:p.type, loc:p.loc, lat:p.lat, lon:p.lon, history:p.history, related:rel, tautan:p.sumber});
+ });
+ var EVENTS_BARU = [{"id": "ev-awal-rajab", "day": 1, "month": "Rajab", "title": "Awal Bulan Rajab", "type": "peringatan", "desc": "Rajab adalah satu dari empat bulan haram (suci) yang dimuliakan Allah, sehingga umat Islam dianjurkan memperbanyak ibadah dan menjauhi perbuatan dosa sepanjang bulan ini. Bulan Rajab juga menjadi saksi sejumlah peristiwa penting, antara lain Isra' Mi'raj Nabi Muhammad pada 27 Rajab dan berdirinya Nahdlatul Ulama pada 16 Rajab 1344 H (31 Januari 1926).", "tautan": "https://jabar.nu.or.id/hikmah/dari-cahaya-kenabian-hingga-lahirnya-nu-rajab-dalam-catatan-sejarah-islam-xNUYh"}, {"id": "ev-awal-syaban", "day": 1, "month": "Sya'ban", "title": "Awal Bulan Sya'ban", "type": "peringatan", "desc": "Sya'ban adalah bulan kedelapan kalender Hijriah yang istimewa dan menjadi bulan persiapan menyambut Ramadan. Pada bulan ini terjadi mukjizat terbelahnya rembulan oleh Nabi Muhammad, dan umat Islam dianjurkan memperbanyak puasa sunnah serta amal kebaikan, termasuk pada malam Nisfu Sya'ban (15 Sya'ban).", "tautan": "https://svr.nu.or.id/nasional/inilah-mukjizat-nabi-muhammad-dan-keistimewaan-bulan-sya-ban-GwLs8"}, {"id": "ev-tasua", "day": 9, "month": "Muharram", "title": "Puasa Tasu'a", "type": "peringatan", "desc": "Puasa sunnah Tasu'a dilaksanakan pada tanggal 9 Muharram, tepat sehari sebelum puasa Asyura (10 Muharram). Anjurannya adalah untuk membedakan amalan puasa umat Muslim dengan umat Yahudi yang berpuasa pada hari Asyura; sebagai gantinya boleh juga menambahkan puasa pada tanggal 11 Muharram.", "tautan": "https://jombang.nu.or.id/syariah/anjuran-niat-serta-tata-cara-puasa-tasu-a-dan-asyura-iNSyJ"}, {"id": "ev-awal-dzulhijjah", "day": 1, "month": "Dzulhijjah", "title": "Sepuluh Hari Pertama Dzulhijjah", "type": "peringatan", "desc": "Sepuluh hari pertama bulan Dzulhijjah termasuk waktu paling utama untuk beramal saleh; Nabi bersabda tidak ada hari yang amal salehnya lebih dicintai Allah selain hari-hari ini. Puasa sunnah dianjurkan pada tanggal 1 sampai 9 Dzulhijjah, dengan puncaknya puasa Arafah pada 9 Dzulhijjah dan Idul Adha pada 10 Dzulhijjah.", "tautan": "https://jatim.nu.or.id/tapal-kuda/ketua-ldnu-kota-pasuruan-ulas-keutamaan-bulan-dzulhijjah-di-lapas-6bQB4"}, {"id": "ev-tarwiyah", "day": 8, "month": "Dzulhijjah", "title": "Hari Tarwiyah (Puasa Tarwiyah)", "type": "peringatan", "desc": "Hari Tarwiyah jatuh pada tanggal 8 Dzulhijjah, dua hari sebelum Idul Adha, dan umat Islam disunnahkan berpuasa pada hari itu. Bagi jemaah haji, hari Tarwiyah adalah saat berangkat menuju Mina sebagai rangkaian awal ibadah haji. Puasa Tarwiyah disebut dapat menghapus dosa setahun, meskipun hadisnya diperselisihkan sebagian ahli hadits.", "tautan": "https://jombang.nu.or.id/nasional/keutamaan-puasa-tarwiyah-dan-arafah-dapat-menghapus-dosa-4av5y"}, {"id": "ev-lailatul-qadar-21", "day": 21, "month": "Ramadan", "title": "Malam ke-21 Ramadan (Malam Ganjil Lailatul Qadar)", "type": "peringatan", "desc": "Lailatul Qadar adalah malam yang lebih baik daripada seribu bulan dan dianjurkan dicari pada malam-malam ganjil di sepuluh malam terakhir Ramadan, termasuk malam ke-21. Pada sepuluh malam terakhir Ramadan, Rasulullah meningkatkan ibadah, menghidupkan malam, dan membangunkan keluarganya untuk beribadah.", "tautan": "https://lampung.nu.or.id/syiar/cara-mendapatkan-lailatul-qadar-pada-sepuluh-malam-terakhir-ramadhan-lCffe"}, {"id": "ev-lailatul-qadar-23", "day": 23, "month": "Ramadan", "title": "Malam ke-23 Ramadan (Malam Ganjil Lailatul Qadar)", "type": "peringatan", "desc": "Malam ke-23 Ramadan termasuk malam ganjil di sepuluh malam terakhir Ramadan yang dianjurkan untuk mencari Lailatul Qadar. Lailatul Qadar adalah malam turunnya Al-Qur'an dan malam yang nilainya lebih baik daripada seribu bulan, sehingga umat Islam dianjurkan memperbanyak salat malam, tilawah, zikir, dan doa.", "tautan": "https://lampung.nu.or.id/syiar/cara-mendapatkan-lailatul-qadar-pada-sepuluh-malam-terakhir-ramadhan-lCffe"}, {"id": "ev-lailatul-qadar-25", "day": 25, "month": "Ramadan", "title": "Malam ke-25 Ramadan (Malam Ganjil Lailatul Qadar)", "type": "peringatan", "desc": "Malam ke-25 Ramadan adalah salah satu malam ganjil pada sepuluh malam terakhir Ramadan yang dianjurkan untuk mencari Lailatul Qadar. Anjuran ini bersandar pada hadis riwayat Al-Bukhari dari Aisyah ra agar mencari Lailatul Qadar pada malam-malam ganjil di sepuluh malam terakhir Ramadan.", "tautan": "https://lampung.nu.or.id/syiar/cara-mendapatkan-lailatul-qadar-pada-sepuluh-malam-terakhir-ramadhan-lCffe"}, {"id": "ev-lailatul-qadar-27", "day": 27, "month": "Ramadan", "title": "Malam ke-27 Ramadan (Malam Ganjil Lailatul Qadar)", "type": "peringatan", "desc": "Malam ke-27 Ramadan termasuk malam ganjil di sepuluh malam terakhir Ramadan yang dianjurkan untuk mencari Lailatul Qadar. Sebagian ulama dan riwayat menguatkan bahwa Lailatul Qadar lebih diharapkan terjadi pada malam ke-27, sehingga malam ini biasanya diisi dengan ibadah dan doa yang lebih intensif.", "tautan": "https://lampung.nu.or.id/syiar/cara-mendapatkan-lailatul-qadar-pada-sepuluh-malam-terakhir-ramadhan-lCffe"}, {"id": "ev-lailatul-qadar-29", "day": 29, "month": "Ramadan", "title": "Malam ke-29 Ramadan (Malam Ganjil Lailatul Qadar)", "type": "peringatan", "desc": "Malam ke-29 Ramadan adalah malam ganjil terakhir pada sepuluh malam terakhir Ramadan yang dianjurkan untuk mencari Lailatul Qadar. Karena waktu persisnya menjadi rahasia Allah, umat Islam dianjurkan menghidupkan seluruh malam ganjil di sepuluh malam terakhir Ramadan, termasuk malam ke-29.", "tautan": "https://lampung.nu.or.id/syiar/cara-mendapatkan-lailatul-qadar-pada-sepuluh-malam-terakhir-ramadhan-lCffe"}, {"id": "ev-ayyamul-bidh", "day": 13, "month": "Muharram", "title": "Ayyamul Bidh (Puasa Hari-hari Putih)", "type": "peringatan", "desc": "Ayyamul Bidh adalah puasa sunnah tiga hari pada tanggal 13, 14, dan 15 setiap bulan Hijriah (contohnya tanggal 13-15 Muharram). Dinamakan hari-hari putih karena bertepatan dengan malam purnama yang sinarnya terang; Nabi Muhammad biasa berpuasa pada hari-hari tersebut, baik ketika bermukim maupun sedang bepergian.", "tautan": "https://nu.or.id/syariah/tata-cara-puasa-ayyamul-bidl-hukum-keutamaaan-dan-niat-sarao"}];
+ EVENTS_BARU.forEach(function(ev){
+  var ada = (DB.EVENTS||[]).some(function(x){ return x.id===ev.id; });
+  if(ada) return;
+  DB.EVENTS.push({id:ev.id, day:ev.day, month:ev.month, title:ev.title, type:ev.type,
+   desc:ev.desc, sources:["nu"], tautan:ev.tautan,
+   related:["kalender-bulanan"].filter(function(r){ return typeof getEntry==="function" && !!getEntry(r); })});
+ });
+})();
+</script>
+
+<script>
+/* ===== TAHAP 60 (2026-10-03): penambahan kota waktu salat, putaran konten harian,
+   dan unduhan mushaf per juz. Koordinat kota berasal dari Wikipedia Coordinates API
+   (lihat kolom tautan pada laporan audit). ===== */
+(function(){
+ var DB = window.SILMIKAFFAH; if(!DB) return;
+ /* 1) kota baru untuk waktu salat */
+ var KOTA_BARU = [{"id": "banda-aceh", "name": "Banda Aceh", "lat": 5.55, "lon": 95.3175, "utc": 7, "source_url": "https://en.wikipedia.org/wiki/Banda_Aceh"}, {"id": "jambi", "name": "Jambi", "lat": -1.59, "lon": 103.61, "utc": 7, "source_url": "https://en.wikipedia.org/wiki/Jambi_(city)"}, {"id": "bengkulu", "name": "Bengkulu", "lat": -3.7956, "lon": 102.2592, "utc": 7, "source_url": "https://en.wikipedia.org/wiki/Bengkulu_(city)"}, {"id": "bandar-lampung", "name": "Bandar Lampung", "lat": -5.45, "lon": 105.2667, "utc": 7, "source_url": "https://en.wikipedia.org/wiki/Bandar_Lampung"}, {"id": "batam", "name": "Batam", "lat": 1.13, "lon": 104.0531, "utc": 7, "source_url": "https://en.wikipedia.org/wiki/Batam"}, {"id": "pangkal-pinang", "name": "Pangkal Pinang", "lat": -2.1333, "lon": 106.1167, "utc": 7, "source_url": "https://en.wikipedia.org/wiki/Pangkalpinang"}, {"id": "serang", "name": "Serang", "lat": -6.12, "lon": 106.1503, "utc": 7, "source_url": "https://en.wikipedia.org/wiki/Serang"}, {"id": "tasikmalaya", "name": "Tasikmalaya", "lat": -7.3161, "lon": 108.1975, "utc": 7, "source_url": "https://en.wikipedia.org/wiki/Tasikmalaya"}, {"id": "malang", "name": "Malang", "lat": -7.98, "lon": 112.62, "utc": 7, "source_url": "https://en.wikipedia.org/wiki/Malang"}, {"id": "surakarta", "name": "Surakarta", "lat": -7.5667, "lon": 110.8167, "utc": 7, "source_url": "https://en.wikipedia.org/wiki/Surakarta"}, {"id": "cirebon", "name": "Cirebon", "lat": -6.7071, "lon": 108.5574, "utc": 7, "source_url": "https://en.wikipedia.org/wiki/Cirebon"}, {"id": "palangka-raya", "name": "Palangka Raya", "lat": -2.21, "lon": 113.92, "utc": 7, "source_url": "https://en.wikipedia.org/wiki/Palangka_Raya"}, {"id": "samarinda", "name": "Samarinda", "lat": -0.5, "lon": 117.1378, "utc": 8, "source_url": "https://en.wikipedia.org/wiki/Samarinda"}, {"id": "tarakan", "name": "Tarakan", "lat": 3.3, "lon": 117.6333, "utc": 8, "source_url": "https://en.wikipedia.org/wiki/Tarakan"}, {"id": "gorontalo", "name": "Gorontalo", "lat": 0.5422, "lon": 123.0614, "utc": 8, "source_url": "https://en.wikipedia.org/wiki/Gorontalo_(city)"}, {"id": "kendari", "name": "Kendari", "lat": -3.9907, "lon": 122.5086, "utc": 8, "source_url": "https://en.wikipedia.org/wiki/Kendari"}, {"id": "palu", "name": "Palu", "lat": -0.895, "lon": 119.8594, "utc": 8, "source_url": "https://en.wikipedia.org/wiki/Palu"}, {"id": "kupang", "name": "Kupang", "lat": -10.1702, "lon": 123.6078, "utc": 8, "source_url": "https://en.wikipedia.org/wiki/Kupang"}, {"id": "mataram", "name": "Mataram", "lat": -8.5833, "lon": 116.1167, "utc": 8, "source_url": "https://en.wikipedia.org/wiki/Mataram_(city)"}, {"id": "ambon", "name": "Ambon", "lat": -3.6967, "lon": 128.1783, "utc": 9, "source_url": "https://en.wikipedia.org/wiki/Ambon,_Maluku"}, {"id": "ternate", "name": "Ternate", "lat": 0.78, "lon": 127.3819, "utc": 9, "source_url": "https://en.wikipedia.org/wiki/Ternate"}, {"id": "jayapura", "name": "Jayapura", "lat": -2.533, "lon": 140.717, "utc": 9, "source_url": "https://en.wikipedia.org/wiki/Jayapura"}, {"id": "merauke", "name": "Merauke", "lat": -8.4667, "lon": 140.3333, "utc": 9, "source_url": "https://en.wikipedia.org/wiki/Merauke"}, {"id": "manokwari", "name": "Manokwari", "lat": -0.8667, "lon": 134.0833, "utc": 9, "source_url": "https://en.wikipedia.org/wiki/Manokwari"}];
+ KOTA_BARU.forEach(function(k){
+  if((DB.CITIES||[]).some(function(x){ return x.id===k.id; })) return;
+  DB.CITIES.push({id:k.id, name:k.name, lat:k.lat, lon:k.lon, utc:k.utc, tautan:k.source_url});
+ });
+ DB.CITIES.sort(function(a,b){ return String(a.name).localeCompare(String(b.name)); });
+
+ /* 1b) kota besar yang belum ada pada daftar awal (koordinat dari Wikipedia/Wikidata) */
+ var KOTA_LENGKAP = [{"id": "denpasar", "name": "Denpasar", "lat": -8.6717, "lon": 115.2339, "utc": 8, "source_url": "https://id.wikipedia.org/wiki/Denpasar"}, {"id": "padang", "name": "Padang", "lat": -0.9556, "lon": 100.3606, "utc": 7, "source_url": "https://id.wikipedia.org/wiki/Padang"}, {"id": "pekanbaru", "name": "Pekanbaru", "lat": 0.5092, "lon": 101.4453, "utc": 7, "source_url": "https://id.wikipedia.org/wiki/Pekanbaru"}, {"id": "balikpapan", "name": "Balikpapan", "lat": -1.2419, "lon": 116.8351, "utc": 8, "source_url": "https://id.wikipedia.org/wiki/Balikpapan"}, {"id": "banjarmasin", "name": "Banjarmasin", "lat": -3.3144, "lon": 114.5923, "utc": 8, "source_url": "https://id.wikipedia.org/wiki/Banjarmasin"}, {"id": "manado", "name": "Manado", "lat": 1.4931, "lon": 124.8413, "utc": 8, "source_url": "https://id.wikipedia.org/wiki/Kota_Manado"}];
+ KOTA_LENGKAP.forEach(function(k){
+  if((DB.CITIES||[]).some(function(x){ return x.id===k.id; })) return;
+  DB.CITIES.push({id:k.id, name:k.name, lat:k.lat, lon:k.lon, utc:k.utc, tautan:k.source_url});
+ });
+ DB.CITIES.sort(function(a,b){ return String(a.name).localeCompare(String(b.name)); });
+
+ /* 2) putaran konten harian diperluas dari isi yang sudah ada (tanpa klaim baru) */
+ DB.DAILY = {
+  ayat: Object.keys(DB.AYAT||{}),
+  hadis: DB.ENTRIES.filter(function(e){ return e.type==="hadith"; }).map(function(e){ return e.id; }),
+  doa: DB.ENTRIES.filter(function(e){ return e.menu===4; }).map(function(e){ return e.id; })
+ };
+
+ /* 3) unduhan mushaf per juz */
+ /* Peta juz -> surah diambil dari Quran.com (verse_mapping), sekali unduh lalu dibekukan,
+    supaya unduhan juz tidak bergantung pada jaringan saat dipakai. */
+ var PETA_JUZ = {"1": [1, 2], "2": [2], "3": [2, 3], "4": [3, 4], "5": [4], "6": [4, 5], "7": [5, 6], "8": [6, 7], "9": [7, 8], "10": [8, 9], "11": [9, 10, 11], "12": [11, 12], "13": [12, 13, 14], "14": [15, 16], "15": [17, 18], "16": [18, 19, 20], "17": [21, 22], "18": [23, 24, 25], "19": [25, 26, 27], "20": [27, 28, 29], "21": [29, 30, 31, 32, 33], "22": [33, 34, 35, 36], "23": [36, 37, 38, 39], "24": [39, 40, 41], "25": [41, 42, 43, 44, 45], "26": [46, 47, 48, 49, 50, 51], "27": [51, 52, 53, 54, 55, 56, 57], "28": [58, 59, 60, 61, 62, 63, 64, 65, 66], "29": [67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77], "30": [78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114]};
+ window.daftarSurahJuz = function(n){
+  return (PETA_JUZ[String(n)] || []).slice();
+ };
+})();
+</script>
+
+<script>
+/* Pasang sebagai aplikasi (PWA) — hanya bila berkas dilayani lewat http(s).
+   Saat dibuka langsung dari penyimpanan (file://), pendaftaran dilewati. */
+(function(){
+if(!("serviceWorker" in navigator)) return;
+if(!(location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) return;
+window.addEventListener("load", function(){
+navigator.serviceWorker.register("sw.js").catch(function(){});
+});
+})();
+</script>
+
+<script>
+/* ===== TAHAP 61 (2026-10-03): tambahan tempat ziarah dan amalan kalender.
+   Koordinat dari Wikidata/OpenStreetMap; satu situs (Makam Syekh Yusuf) belum punya
+   koordinat terverifikasi sehingga petanya tidak ditampilkan dan hal itu dinyatakan. ===== */
+(function(){
+ var DB = window.SILMIKAFFAH; if(!DB) return;
+ var P = [{"id": "masjid-gedhe-kauman", "title": "Masjid Gedhe Kauman", "type": "masjid", "loc": "Kota Yogyakarta, Daerah Istimewa Yogyakarta", "lat": -7.803946, "lon": 110.362555, "history": "Masjid Gedhe Kauman dibangun pada hari Ahad Wage, 29 Mei 1773 M (6 Rabiulakhir 1187 H) oleh Sri Sultan Hamengku Buwono I bersama Kyai Faqih Ibrahim Diponingrat, penghulu keraton pertama, dengan Kyai Wiryokusumo sebagai arsiteknya. Masjid ini adalah masjid utama Kesultanan Yogyakarta yang berdiri di sisi barat Alun-alun Utara Keraton. Keberadaannya melengkapi konsep tata kota 'Catur Gatra Tunggal' yang memadukan keraton, alun-alun, pasar, dan masjid. Kini bangunannya ditetapkan sebagai cagar budaya.", "sumber": "https://id.wikipedia.org/wiki/Masjid_Gedhe_Kauman", "catatan": null}, {"id": "masjid-agung-sumenep", "title": "Masjid Agung Sumenep (Masjid Jamik Sumenep)", "type": "masjid", "loc": "Kabupaten Sumenep, Jawa Timur", "lat": -7.007985, "lon": 113.858763, "history": "Masjid Agung Sumenep, yang juga dikenal sebagai Masjid Jamik Sumenep, mulai dibangun pada 1198 Hijriah (1779 M) dan selesai pada 1206 H (1787 M). Pembangunannya diperintahkan oleh Adipati Sumenep Pangeran Natakusuma I (Panembahan Somala, 1762-1811 M) dan dikerjakan oleh seorang warga Tionghoa bernama Lauw Piango. Masjid ini berdiri menghadap Alun-Alun Sumenep dan menjadi simbol masuknya Islam di Kabupaten Sumenep. Arsitekturnya memadukan gaya lokal, Arab, India, Jawa, Persia, dan Tiongkok.", "sumber": "https://muslim.okezone.com/read/2014/07/01/427/1006439/nuansa-multietnik-di-bangunan-masjid-agung-sumenep", "catatan": null}, {"id": "masjid-raya-ganting", "title": "Masjid Raya Ganting", "type": "masjid", "loc": "Kota Padang, Sumatera Barat", "lat": -0.9545, "lon": 100.36945, "history": "Masjid Raya Ganting adalah masjid peninggalan abad ke-19 yang terletak di Kampung Ganting, Kecamatan Padang Timur, Kota Padang, dan tercatat sebagai masjid tertua di Padang. Cikal bakalnya berawal dari sebuah surau di Seberang Padang, kawasan permukiman awal dalam sejarah Padang. Arsitekturnya merepresentasikan akulturasi etnis-etnis yang ada di Padang, dengan pengaruh Neoklasik dari Eropa yang dominan pada bagian fasad.", "sumber": "https://id.wikipedia.org/wiki/Masjid_Raya_Ganting", "catatan": null}, {"id": "masjid-tua-palopo", "title": "Masjid Tua Palopo (Masjid Jami Tua Palopo)", "type": "masjid", "loc": "Kota Palopo, Sulawesi Selatan", "lat": -2.994113, "lon": 120.195301, "history": "Masjid Jami Tua Palopo adalah masjid peninggalan Kerajaan Luwu yang didirikan pada 1604 M oleh Raja Luwu XVI, Datu Payung Luwu Pati Pasaung Toampanangi Sultan Abdullah Matinroe. Masjid ini menjadi salah satu masjid tertua di Sulawesi Selatan dan bukti penyebaran Islam di kawasan Luwu. Nama 'Palopo' berkaitan dengan tradisi setempat, salah satunya berarti memasukkan pasak ke lubang tiang bangunan, yang berhubungan dengan proses pembangunannya.", "sumber": "https://id.wikipedia.org/wiki/Masjid_Tua_Palopo", "catatan": null}, {"id": "masjid-sultan-suriansyah", "title": "Masjid Sultan Suriansyah (Masjid Kuin)", "type": "masjid", "loc": "Kota Banjarmasin, Kalimantan Selatan", "lat": -3.2943, "lon": 114.576, "history": "Masjid Sultan Suriansyah atau Masjid Kuin adalah masjid tertua di Kalimantan Selatan yang dibangun pada masa pemerintahan Sultan Suriansyah (1526-1550), raja Banjar pertama yang memeluk agama Islam. Masjid ini terletak di Jalan Kuin Utara, kawasan Banjar Lama yang merupakan situs ibu kota pertama Kesultanan Banjar, dan berdekatan dengan kompleks makam Sultan Suriansyah di tepi kiri Sungai Kuin. Bersama Masjid Besar dan Masjid Basirih, masjid ini termasuk tiga masjid tertua di Kota Banjarmasin. Bangunan ini menjadi saksi awal perkembangan Islam di wilayah Banjar.", "sumber": "https://id.wikipedia.org/wiki/Masjid_Sultan_Suriansyah", "catatan": null}, {"id": "masjid-tua-wapauwe", "title": "Masjid Tua Wapauwe", "type": "masjid", "loc": "Kabupaten Maluku Tengah, Maluku", "lat": -3.585226, "lon": 128.084243, "history": "Masjid Tua Wapauwe adalah masjid tua bersejarah yang merupakan masjid tertua di Maluku. Masjid ini dibangun pada tahun 1414 M dan hingga kini masih berdiri. Keberadaannya menjadi bukti sejarah penyebaran Islam di Maluku pada masa lampau.", "sumber": "https://id.wikipedia.org/wiki/Masjid_Tua_Wapauwe", "catatan": null}, {"id": "masjid-raya-al-mashun", "title": "Masjid Raya Al-Mashun (Masjid Raya Medan)", "type": "masjid", "loc": "Kota Medan, Sumatera Utara", "lat": 3.575111, "lon": 98.687321, "history": "Masjid Raya Al-Mashun, yang lebih dikenal sebagai Masjid Raya Medan, dibangun pada tahun 1906 dan selesai pada tahun 1909 pada masa Kesultanan Deli di bawah Sultan Ma'mun Al Rasyid. Pada awal pendiriannya, masjid ini merupakan bagian dari kompleks Istana Maimun. Gaya arsitekturnya memadukan unsur Timur Tengah, India, dan Spanyol, dengan bentuk bangunan segi delapan serta sayap di bagian selatan, timur, utara, dan barat.", "sumber": "https://id.wikipedia.org/wiki/Masjid_Raya_Al-Mashun", "catatan": null}, {"id": "masjid-agung-manonjaya", "title": "Masjid Agung Manonjaya", "type": "masjid", "loc": "Kabupaten Tasikmalaya, Jawa Barat", "lat": -7.35111, "lon": 108.30694, "history": "Pembangunan Masjid Agung Manonjaya dimulai pada tahun 1832 M pada masa pemerintahan Bupati Sukapura Wiradadaha VIII (Raden Tumenggung Daruningrat) dan selesai sekitar tahun 1834 M, seiring perpindahan ibu kota Sukapura ke Harjawinangun yang kini dikenal sebagai Manonjaya. Masjid ini berarsitektur neo-klasik yang berpadu dengan gaya Sunda dan Jawa, beratap tumpang tiga tanpa kubah. Bangunannya ditetapkan sebagai cagar budaya nasional dan tetap kokoh meski sempat rusak akibat gempa Tasikmalaya 2009.", "sumber": "https://www.surau.co/2025/08/27288/masjid-agung-manonjaya-saksi-bisu-sejarah-islam-tasikmalaya/", "catatan": null}, {"id": "makam-habib-husein-luar-batang", "title": "Masjid dan Makam Habib Husein Luar Batang", "type": "makam", "loc": "Jakarta Utara, DKI Jakarta", "lat": -6.1238, "lon": 106.80646, "history": "Masjid Jami Keramat Luar Batang atau Masjid Luar Batang di daerah Penjaringan, Jakarta Utara, adalah bangunan ibadah bersejarah yang di dalamnya terdapat makam seorang ulama bernama Habib Husein bin Abubakar bin Abdillah Alaydrus. Habib Husein adalah seorang Arab Hadramaut yang hijrah ke tanah Jawa melalui Pelabuhan Sunda Kelapa pada 1736. Silsilahnya dikaitkan dengan Nabi Muhammad SAW, dan makamnya hingga kini menjadi tujuan ziarah di Jakarta.", "sumber": "https://id.wikipedia.org/wiki/Masjid_Luar_Batang", "catatan": null}, {"id": "makam-syekh-yusuf", "title": "Makam Syekh Yusuf", "type": "makam", "loc": "Kabupaten Gowa, Sulawesi Selatan", "lat": null, "lon": null, "history": "Makam Syekh Yusuf merupakan salah satu objek wisata religi di Kecamatan Somba Opu, Kabupaten Gowa, Sulawesi Selatan. Syekh Yusuf al-Makassari Tajul Khalwati wafat pada 23 Mei 1699 di Kaap (pengasingan) dan jasadnya kemudian dimakamkan pada 6 April 1705 di kampung halamannya, Lakiung, Kabupaten Gowa. Ia dikenal sebagai ulama besar, pejuang, dan penyebar agama Islam di Kabupaten Gowa.", "sumber": "https://id.wikipedia.org/wiki/Makam_Syekh_Yusuf", "catatan": "Koordinat belum terverifikasi; peta tidak ditampilkan."}, {"id": "masjid-baiturrahim", "title": "Masjid Baiturrahim Ulee Lheue", "type": "masjid", "loc": "Kota Banda Aceh, Aceh", "lat": 5.555954, "lon": 95.284068, "history": "Masjid Baiturrahim di kawasan Ulee Lheue, Banda Aceh, merupakan masjid tua peninggalan abad ke-17 yang terkait dengan masa Kesultanan Aceh. Pada awalnya masjid dibangun dengan konstruksi kayu yang sederhana, lalu bangunannya dibangun kembali dengan material permanen oleh pemerintah Hindia Belanda pada tahun 1922. Masjid ini menjadi saksi bencana gempa dan tsunami Aceh pada Desember 2004 karena termasuk bangunan yang tetap berdiri di tengah reruntuhan di sekitarnya.", "sumber": "https://www.safariwisata.co.id/masjid-baiturrahim-ulee-lheue-banda-aceh/", "catatan": null}, {"id": "masjid-sunan-giri", "title": "Masjid Sunan Giri", "type": "masjid", "loc": "Kabupaten Gresik, Jawa Timur", "lat": -7.1690381, "lon": 112.6314518, "history": "Masjid Sunan Giri berada di kompleks Giri Kedaton di Kabupaten Gresik, Jawa Timur, situs istana yang dibangun pada tahun 1487 M dan menjadi pusat pemerintahan sekaligus tempat peribadatan pada masa Sunan Giri. Kompleks ini merupakan tempat penyebaran agama Islam dan pengukuhan raja-raja Islam Demak, serta lokasi berdirinya salah satu pondok pesantren pertama di Gresik. Petilasan dan masjidnya terletak di atas bukit di Dusun Kedaton, Desa Sidomukti, Kecamatan Kebomas, dan hingga kini masih dikunjungi peziarah.", "sumber": "https://travel.kompas.com/read/2009/09/12/17532257/menelusuri-masjid-tertua-sunan-giri", "catatan": null}];
+ P.forEach(function(p, i){
+  if(getEntry(p.id)) return;
+  var rel = ["ziarah","adab-ziarah"].filter(function(r){ return !!getEntry(r); });
+  var isi = [{h:"Sejarah", p:[p.history]}];
+  isi.push({h:"Sumber data", p:["Identitas dan sejarah mengikuti sumber yang dicantumkan pada kolom tautan laporan audit; koordinat diverifikasi ke Wikidata/OpenStreetMap." + (p.catatan ? " " + p.catatan : "")]});
+  DB.ENTRIES.push({id:p.id, menu:5, material:"ziarah", sub:"tempat-bersejarah", type:"place",
+   title:p.title, summary:(p.history||"").split(/(?<=[.!?])\s/)[0].slice(0,160), order:5300+i,
+   place:{type:p.type, loc:p.loc, lat:p.lat, lon:p.lon},
+   body:isi, sources:["wikipedia"], tags:["ziarah","tempat","nusantara"], related:rel,
+   status:"ready", verificationStatus:"verified", createdAt:"2026-10-03", updatedAt:"2026-10-03"});
+  DB.PLACES.push({id:p.id, name:p.title, type:p.type, loc:p.loc, lat:p.lat, lon:p.lon, history:p.history, related:rel, tautan:p.sumber});
+ });
+ var E = [{"id": "ev-puasa-enam-syawal", "day": 6, "month": "Syawal", "title": "Puasa Enam Hari Syawal", "type": "ibadah", "desc": "Puasa sunah enam hari pada bulan Syawal yang dianjurkan untuk dikerjakan setelah Ramadan. Dalam kitab-kitab fikih, puasa enam hari Syawal termasuk puasa rawatib (berkala) seperti puasa Arafah, Asyura, dan Ayyamul Bidh, sehingga dianjurkan menyebutkan jenisnya saat niat. Puasa ini bersifat sunah dan boleh dikerjakan secara berurutan maupun terpisah selama masih di bulan Syawal.", "tautan": "https://lampung.nu.or.id/syiar/waktu-dan-lafal-niat-puasa-syawal-XdGtI"}, {"id": "ev-puasa-senin-kamis", "day": 0, "month": "*", "title": "Puasa Senin dan Kamis", "type": "ibadah", "desc": "Puasa sunah mingguan yang dikerjakan setiap hari Senin dan Kamis, mengikuti kebiasaan Rasulullah SAW. Pada kedua hari itu amal perbuatan manusia dilaporkan kepada Allah dan pintu surga dibuka, sehingga seorang Muslim dianjurkan berpuasa. Puasa ini tidak terikat tanggal Hijriah dan dapat dilakukan rutin setiap pekan.", "tautan": "https://svr.nu.or.id/nasional/4-alasan-perlu-melakukan-puasa-senin-kamis-4mF7H"}, {"id": "ev-puasa-daud", "day": 0, "month": "*", "title": "Puasa Daud", "type": "ibadah", "desc": "Puasa sunah yang dikerjakan secara selang-seling, yaitu sehari berpuasa dan sehari tidak, mengikuti kebiasaan Nabi Daud AS. Puasa ini disebut sebagai puasa yang paling disukai Allah dan dinilai setara dengan berpuasa setengah tahun. Karena tidak terikat tanggal, puasa Daud dapat dilakukan kapan saja kecuali pada hari-hari yang diharamkan untuk berpuasa.", "tautan": "https://katadata.co.id/lifestyle/religi/64212f6a7b9fe/memahami-tata-cara-puasa-daud-dan-keutamaannya"}, {"id": "ev-awal-dzulqadah", "day": 1, "month": "Dzulqa'dah", "title": "Awal Bulan Dzulqa'dah (Bulan Haram)", "type": "peringatan", "desc": "Dzulqa'dah adalah bulan ke-11 dalam kalender Hijriah dan merupakan permulaan dari empat bulan haram (al-asyhur al-hurum), yaitu Dzulqa'dah, Dzulhijjah, Muharram, dan Rajab. Pada bulan-bulan haram, pahala amal saleh dilipatgandakan dan larangan berbuat dosa lebih ditekankan. Nama Dzulqa'dah berasal dari kebiasaan bangsa Arab pada masa lalu yang tidak melakukan perang (qu'ud 'anil qital) pada bulan ini.", "tautan": "https://lampung.nu.or.id/syiar/empat-keutamaan-bulan-dzulqa-dah-yang-perlu-diketahui-JgyrA"}];
+ E.forEach(function(ev){
+  if((DB.EVENTS||[]).some(function(x){ return x.id===ev.id; })) return;
+  DB.EVENTS.push({id:ev.id, day:ev.day, month:ev.month, title:ev.title, type:ev.type, desc:ev.desc,
+   sources:["nu"], tautan:ev.tautan,
+   related:["kalender-bulanan"].filter(function(r){ return !!getEntry(r); })});
+ });
+})();
+</script>
+
+<script>
+/* ===== TAHAP 62 (9 Oktober 2026): menyinkronkan lafaz utama dengan daftar lafaz.
+   Aplikasi menyimpan lafaz pertama tiap entri dua kali: `e.arabic` (lafaz utama) dan
+   `e.arabics[0]` (daftar lafaz). Tahap 55-56 mengisi baris Sumber per lafaz hanya pada
+   daftar `arabics`, sehingga pada 16 entri lafaz utama tampil tanpa baris Sumber
+   walaupun lafaz yang sama di daftar sudah punya.
+   Aturan blok ini sengaja konservatif: HANYA mengisi field yang masih kosong di
+   `e.arabic` dari `e.arabics[0]`. Nilai yang sudah ada tidak pernah ditimpa, dan tidak
+   ada satu pun isi baru yang dikarang. ===== */
+(function(){
+ var DB = window.SILMIKAFFAH; if(!DB) return;
+ var FIELD = ["source","ulang","catatan","pengantar"];
+ (DB.ENTRIES || []).forEach(function(e){
+   if(!e || !e.arabic || !Array.isArray(e.arabics) || !e.arabics.length) return;
+   var a = e.arabic, b = e.arabics[0];
+   if(!a || !b || a === b) return;
+   FIELD.forEach(function(k){
+     var isiA = (a[k] === undefined || a[k] === null) ? "" : String(a[k]);
+     var isiB = (b[k] === undefined || b[k] === null) ? "" : String(b[k]);
+     if(!isiA && isiB) a[k] = b[k];
+   });
+ });
+})();
+</script>
+
+<script>
+/* ===== TAHAP 63 (9 Oktober 2026): dua penyelesaian kecil pada data lafaz.
+   Dijalankan ulang saat DOMContentLoaded dan load, karena pengisian rujukan lafaz
+   (Tahap 55-56) baru berjalan pada tahap itu. Tanpa pengulangan ini, perbaikan
+   di bawah langsung ditimpa kembali oleh pengisian tersebut. ===== */
+(function(){
+ function jalankan(){
+ var DB = window.SILMIKAFFAH; if(!DB) return;
+
+ /* (1) Baris Sumber lafaz utama kadang kurang lengkap dibanding daftar lafaz.
+    `arabics[0]` adalah daftar rujukan yang sudah diisi Tahap 55-56, jadi bila
+    keduanya berbeda dan daftar punya nilai, daftar yang dipakai.
+    Terjadi pada 2 entri: `iqamah` ("Materi orisinal SILMIKAFFAH" menjadi
+    "HR. Abu Dawud no. 501 (lafaz adzan dan iqamah).") dan
+    `hsm-beberapa-kebaikan-dan-adab-umum` ("HR. Muslim" menjadi "HR. Muslim no. 2013."). */
+ (DB.ENTRIES || []).forEach(function(e){
+   if(!e || !e.arabic || !Array.isArray(e.arabics) || !e.arabics.length) return;
+   var a = e.arabic, b = e.arabics[0];
+   if(!a || !b || a === b) return;
+   if(b.source && String(a.source || "") !== String(b.source)) a.source = b.source;
+ });
+
+ /* (2) Sisa tanda dari naskah sumber yang ikut terbawa ke dalam teks lafaz:
+    - garis miring terbalik (U+005C) yang di naskah aslinya dipakai sebagai penanda
+      penekanan, sehingga ikut tersalin ke dalam kutipan. Tanda ini tidak pernah
+      dipakai dalam tulisan Arab, jadi seluruhnya dibuang. Ditemukan pada 6 entri
+      (mis. `hsm-doa-setelah-makan`, `hsm-apa-yang-diucapkan-ketika-menyembelih`,
+      `hsm-doa-mayit-dalam-salat-jenazah`, `hsm-doa-ziarah-kubur`).
+    - angka catatan kaki "3" di ujung kutipan QS. Al-Hadid 57:3 pada satu entri.
+    Keduanya hanya menghapus tanda; tidak ada satu huruf Arab pun yang diubah. */
+ var PERBAIKAN = [
+   {id:null, pola:/\u005c/g, ganti:""},
+   {id:"hsm-doa-orang-yang-ditimpa-waswas-dalam-keimanan", pola:/[\s\u00a0]+3$/, ganti:""}
+ ];
+ PERBAIKAN.forEach(function(p){
+   var sasaran = p.id ? (DB.ENTRIES || []).filter(function(x){ return x && x.id === p.id; }) : (DB.ENTRIES || []);
+   sasaran.forEach(function(e){
+     if(!e) return;
+     var daftar = (Array.isArray(e.arabics) && e.arabics.length) ? e.arabics : (e.arabic ? [e.arabic] : []);
+     daftar.forEach(function(a){ if(a && typeof a.text === "string") a.text = a.text.replace(p.pola, p.ganti); });
+     if(e.arabic && typeof e.arabic.text === "string") e.arabic.text = e.arabic.text.replace(p.pola, p.ganti);
+   });
+ });
+ }
+ jalankan();
+ if(document.readyState === "loading"){
+   document.addEventListener("DOMContentLoaded", jalankan);
+   window.addEventListener("load", jalankan);
+ } else {
+   window.addEventListener("load", jalankan);
+ }
+})();
+</script>
+
+<script>
+/* ===== TAHAP 64 (9 Oktober 2026): tombol suara.
+   (A) Rekaman Asmaul Husna dari berkas yang diunggah pengguna, dipasang sebagai
+       kartu di bagian atas halaman daftar Asmaul Husna.
+   (B) Tombol suara perangkat (TTS) untuk halaman entri yang belum punya kontrol
+       suara sama sekali: tokoh, tempat, huruf hijaiyah, kitab, peristiwa, gerakan
+       shalat, pelajaran, dan panduan. ===== */
+(function(){
+ /* Blok ini sengaja tidak bergantung pada window.SILMIKAFFAH: seluruh fungsinya
+    hanya memakai tetapan, ikon, dan perkakas audio. Dengan begitu tombol suara
+    tetap tersedia walau urutan pemuatan skrip berbeda. */
+
+ /* ---- (A) Rekaman Asmaul Husna -------------------------------------------
+    Cukup tulis nama berkas bila ditaruh di folder yang sama dengan index.html.
+    Bila berkasnya berada di tempat lain, ganti dengan alamat lengkapnya, mis.
+    https://raw.githubusercontent.com/<akun>/<repo>/main/asmaulhusna-hijjaz.mp3  */
+ /* Berkas dicoba berurutan: lokasi di repositori GitHub lebih dulu, lalu nama
+    berkas di folder yang sama. Dengan begitu tombol tetap berbunyi walau aplikasi
+    dibuka langsung dari penyimpanan ponsel (file://), dan tetap berbunyi juga
+    saat berkasnya ikut disalin ke folder aplikasi. */
+ var ASMA_MP3_DAFTAR = [
+   "https://amnesfubbia.github.io/Silmikaffah/asmaulhusna-hijjaz.mp3",
+   "asmaulhusna-hijjaz.mp3"
+ ];
+ var ASMA_MP3 = ASMA_MP3_DAFTAR[0];
+ var _a = null, _i = 0, _inginMain = false;
+
+ function mmss(x){
+   if(!isFinite(x) || x < 0) return "0:00";
+   var m = Math.floor(x/60), s = Math.floor(x%60);
+   return m + ":" + (s<10 ? "0" : "") + s;
+ }
+
+ window.asmaMp3 = function(btn){
+   var note  = document.getElementById("asma-mp3-note");
+   var state = document.getElementById("asma-mp3-state");
+   var tulis = function(t){ if(state) state.textContent = t || ""; };
+   var ikon  = function(n){ if(btn) btn.innerHTML = icon(n, 18); };
+   try{
+     if(!_a){
+       _a = new Audio();
+       _a.preload = "metadata";
+       _a.addEventListener("error", function(){
+         if(_i < ASMA_MP3_DAFTAR.length - 1){
+           _i++;
+           _a.src = ASMA_MP3_DAFTAR[_i];
+           if(_inginMain){ var lanjut = _a.play(); if(lanjut && lanjut.catch) lanjut.catch(function(){}); }
+           return;
+         }
+         if(note) note.textContent = "Rekaman tidak dapat dimuat dari: " + ASMA_MP3_DAFTAR.join("  atau  ") + ". Periksa bahwa berkasnya benar-benar ada di repositori dan namanya sama persis.";
+         tulis(""); ikon("play"); _inginMain = false;
+       });
+       _a.src = ASMA_MP3_DAFTAR[_i];
+       _a.addEventListener("ended",      function(){ tulis(""); ikon("play"); _inginMain = false; });
+       _a.addEventListener("play",       function(){ ikon("pause"); });
+       _a.addEventListener("pause",      function(){ ikon("play"); });
+       _a.addEventListener("timeupdate", function(){ tulis(mmss(_a.currentTime) + " / " + mmss(_a.duration)); });
+     }
+     if(_a.paused){
+       var A = (typeof audioManager === "function") ? audioManager() : null;
+       if(A && A.stop) A.stop();
+       if(note) note.textContent = "";
+       _inginMain = true;
+       var pr = _a.play();
+       if(pr && pr.catch) pr.catch(function(){});
+     } else {
+       _inginMain = false;
+       _a.pause();
+     }
+   }catch(err){
+     if(note) note.textContent = "Perangkat ini tidak dapat memutar berkas audio.";
+   }
+ };
+
+ window.kartuSuaraAsmaul = function(){
+   var adaTts = (typeof window !== "undefined" && "speechSynthesis" in window);
+   return '<div class="card" style="margin-top:12px">'
+    + '<div class="row">'
+    + '<span class="row-icon">' + icon("audio",18) + '</span>'
+    + '<span class="grow"><span class="rt">Putar suara Asmaul Husna</span>'
+    + '<span class="rs">Rekaman lengkap 99 nama</span></span>'
+    + '<button class="btn btn-ghost" onclick="asmaMp3(this)" aria-label="Putar atau jeda rekaman">' + icon("play",18) + '</button>'
+    + '</div>'
+    + '<div class="muted" id="asma-mp3-state" style="font-size:11px;margin-top:6px"></div>'
+    + '<div class="muted" id="asma-mp3-note" style="font-size:11px;margin-top:2px">Rekaman: asmaulhusna-hijjaz.mp3 — berkas yang dipasang pemilik aplikasi.</div>'
+    + (adaTts ? "" : '<div class="muted" style="font-size:11px;margin-top:2px">Perangkat ini tidak menyediakan suara bawaan (TTS), jadi tombol suara perangkat tidak ditampilkan.</div>')
+    + '</div>';
+ };
+
+ /* ---- (B) Suara perangkat untuk halaman entri tanpa kontrol suara --------- */
+ function teksEntri(e){
+   var t = [];
+   if(e.title) t.push(e.title);
+   if(e.arabic && e.arabic.translit) t.push(e.arabic.translit);
+   if(e.summary) t.push(e.summary);
+   (e.body || []).slice(0,6).forEach(function(b){
+     if(!b) return;
+     if(b.p)    t.push([].concat(b.p).join(" "));
+     if(b.list) t.push([].concat(b.list).join("; "));
+   });
+   return t.join(". ").replace(/\s+/g," ").trim().slice(0,1400);
+ }
+
+ window.ttsEntri = function(btn){
+   if(!btn) return;
+   var e = (typeof getEntry === "function") ? getEntry(btn.getAttribute("data-id")) : null;
+   var teks = e ? teksEntri(e) : "";
+   if(!teks) return;
+   var A = (typeof audioManager === "function") ? audioManager() : null;
+   if(A && A.tts){ A.tts(teks, btn, null, e.title); return; }
+   try{
+     var u = new SpeechSynthesisUtterance(teks);
+     u.lang = "id-ID";
+     speechSynthesis.speak(u);
+   }catch(err){ /* diamkan bila perangkat tidak mendukung */ }
+ };
+
+ /* Peranti tanpa mesin suara: tombol tetap ditampilkan, tetapi saat ditekan
+    muncul keterangan cara mengaktifkannya. Sebelumnya tombol disembunyikan
+    sepenuhnya sehingga tidak jelas mengapa suara tidak ada. */
+ function mesinSuaraAda(){
+   try{ return ("speechSynthesis" in window); }catch(e){ return false; }
+ }
+ window.mesinSuaraAda = mesinSuaraAda;
+
+ window.pesanTanpaMesinSuara = function(){
+   var id = "pesan-suara-kosong";
+   var lama = document.getElementById(id);
+   if(lama && lama.parentNode) lama.parentNode.removeChild(lama);
+   var d = document.createElement("div");
+   d.id = id;
+   d.className = "card";
+   d.style.cssText = "position:fixed;left:12px;right:12px;bottom:calc(var(--bn-h,64px) + 78px);z-index:60;background:var(--c-surface,#1c1c1c);border:1px solid var(--c-line,#333);padding:12px 14px;font-size:12px;line-height:1.5";
+   d.innerHTML = '<b>Belum ada mesin suara di perangkat ini</b><br>'
+     + 'Tombol di atas membaca teks dengan suara bawaan Android (Text-to-Speech), dan perangkat ini belum menyediakannya. Cara mengaktifkan: pasang aplikasi <b>Speech Services by Google</b> (atau mesin TTS lain) dari Play Store, lalu buka <b>Pengaturan Android &rarr; Sistem &rarr; Bahasa &amp; masukan &rarr; Keluaran teks ke ucapan</b> dan pilih mesin itu sebagai pilihan utama. Setelah itu buka ulang halaman ini.'
+     + '<div style="margin-top:8px"><button class="btn btn-ghost" onclick="document.getElementById(\'' + id + '\').remove()">Tutup</button></div>';
+   document.body.appendChild(d);
+   setTimeout(function(){ var x = document.getElementById(id); if(x && x.parentNode) x.parentNode.removeChild(x); }, 15000);
+ };
+
+ var NAMA_FAB = "fab-tts-entri";
+ function pasangFab(){
+   try{
+     var lama = document.querySelector("." + NAMA_FAB);
+     if(lama && lama.parentNode) lama.parentNode.removeChild(lama);
+     var m = (location.hash || "").match(/^#\/entry\/(.+)$/);
+     if(!m) return;
+     var e = (typeof getEntry === "function") ? getEntry(decodeURIComponent(m[1])) : null;
+     if(!e) return;
+     var main = document.getElementById("app-main");
+     if(!main) return;
+     if(/data-audio-key|q-speaker|asma-audio-fab|data-action="play"/.test(main.innerHTML || "")) return;
+     if(!teksEntri(e)) return;
+     var b = document.createElement("button");
+     b.className = "asma-fab " + NAMA_FAB;
+     b.setAttribute("data-id", e.id);
+     b.setAttribute("aria-label", "Dengarkan isi halaman ini");
+     b.title = mesinSuaraAda() ? "Dengarkan (suara perangkat)" : "Dengarkan — perangkat belum punya mesin suara";
+     b.innerHTML = icon("play",22);
+     b.onclick = function(){
+       if(mesinSuaraAda()) window.ttsEntri(b);
+       else window.pesanTanpaMesinSuara();
+     };
+     document.body.appendChild(b);
+   }catch(err){ /* jangan sampai mengganggu halaman */ }
+ }
+ window.addEventListener("hashchange", function(){ setTimeout(pasangFab, 60); });
+ setTimeout(pasangFab, 400);
 })();
 </script>
 </body>
